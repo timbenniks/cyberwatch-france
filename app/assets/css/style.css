@@ -1,0 +1,231 @@
+@import 'tailwindcss';
+
+/* `static` keeps every token in the stylesheet — several are referenced from
+   inline styles (severity marks, timeline ticks) rather than utility classes. */
+@theme static {
+  /* Surfaces — deep ink navy, the dossier plane */
+  --color-bg: #080b14;
+  --color-surface-1: #111726;
+  --color-surface-2: #161e30;
+  --color-surface-3: #1c2740;
+  --color-hairline: #202a3d;
+  --color-hairline-strong: #2c3a52;
+
+  /* Ink — warm paper white against cold navy */
+  --color-ink: #f3ece1;
+  --color-ink-2: #a9b3c6;
+  --color-muted: #6f7c93;
+
+  /* Accents, used sparingly */
+  --color-amber: #f2a73b;
+  --color-coral: #e8564b;
+  --color-teal: #35c2a5;
+
+  /* Status palette — reserved, never reused as a series colour */
+  --color-sev-critical: #d03b3b;
+  --color-sev-high: #ec835a;
+  --color-sev-medium: #fab219;
+  --color-sev-low: #0ca30c;
+
+  /* Categorical series (validated against #111726) */
+  --color-series-1: #3987e5;
+  --color-series-2: #d95926;
+  --color-series-3: #199e70;
+  --color-series-4: #c98500;
+  --color-series-5: #d55181;
+
+  --font-display: 'Spectral', 'Iowan Old Style', Georgia, serif;
+  --font-sans: 'Public Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    overflow-x: clip;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a,
+  button,
+  [role='button'],
+  summary {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  a[aria-disabled='true'] {
+    cursor: not-allowed;
+  }
+
+  /* The plane: a faint dossier grid plus paper grain, both static. */
+  body::before,
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    contain: paint;
+    transform: translateZ(0);
+  }
+
+  body::before {
+    background-image:
+      linear-gradient(to right, rgba(169, 179, 198, 0.055) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(169, 179, 198, 0.055) 1px, transparent 1px);
+    background-size: 88px 88px;
+    mask-image: radial-gradient(ellipse 120% 90% at 50% 0%, #000 10%, transparent 78%);
+  }
+
+  /* Static tile — feTurbulence on a full-viewport layer was janking scroll. */
+  body::after {
+    opacity: 0.06;
+    mix-blend-mode: soft-light;
+    background-image: url('/grain.png');
+    background-repeat: repeat;
+  }
+
+  ::selection {
+    background: var(--color-amber);
+    color: #08111f;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-amber);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.015em;
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-color: var(--color-hairline-strong) transparent;
+    scrollbar-width: thin;
+  }
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: var(--color-hairline-strong);
+    border: 3px solid var(--color-bg);
+    border-radius: 99px;
+  }
+}
+
+@layer components {
+  /* Small uppercase mono label — the dossier's field marker */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .rule {
+    border-top: 1px solid var(--color-hairline);
+  }
+
+  .card {
+    background-color: var(--color-surface-1);
+    border: 1px solid var(--color-hairline);
+    border-radius: 4px;
+  }
+
+  /* Letterpress status stamp — the evidence marker, readable without colour */
+  .stamp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.45rem;
+    border: 1.5px solid currentColor;
+    border-radius: 2px;
+    line-height: 1.35;
+    white-space: nowrap;
+  }
+
+  .stamp-confirmed {
+    color: var(--color-teal);
+  }
+  .stamp-disputed {
+    color: var(--color-amber);
+    border-style: dashed;
+  }
+  .stamp-unknown {
+    color: var(--color-ink-2);
+    border-style: dotted;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .link-underline {
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--color-amber) 45%, transparent);
+    text-underline-offset: 3px;
+  }
+  .link-underline:hover {
+    text-decoration-color: var(--color-amber);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@media print {
+  body::before,
+  body::after {
+    display: none;
+  }
+  body {
+    background: #fff;
+    color: #111;
+  }
+  .no-print {
+    display: none !important;
+  }
+  [role='dialog'] {
+    position: static !important;
+    max-height: none !important;
+    max-width: none !important;
+    overflow: visible !important;
+    border: none !important;
+  }
+}

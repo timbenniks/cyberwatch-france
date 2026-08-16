@@ -1,0 +1,1052 @@
+{
+  "schemaVersion": "1.1.0",
+  "project": {
+    "name": "France Cyberwatch 2025-2026",
+    "defaultLocale": "en",
+    "supportedLocales": [
+      "en",
+      "fr"
+    ],
+    "reviewedThrough": "2026-08-16",
+    "scope": {
+      "en": "Curated public-interest dataset of major publicly reported cyberattacks and data breaches affecting French public institutions and companies in 2025 and 2026. It is not a complete register. Unknown or disputed victim counts are not converted into confirmed statistics.",
+      "fr": "Jeu de données d’intérêt public sur les principales cyberattaques et fuites de données rendues publiques touchant des institutions publiques et des entreprises françaises en 2025 et 2026. Il ne constitue pas un registre exhaustif. Les nombres de victimes inconnus ou contestés ne sont pas convertis en statistiques confirmées."
+    },
+    "methodology": {
+      "en": "Prefer official disclosures. Keep unknown values as null. Keep disputed attacker claims in labels or notes rather than numeric fields used for charts. Do not attribute attackers unless public evidence supports the attribution.",
+      "fr": "Privilégier les communiqués officiels. Conserver les valeurs inconnues à null. Garder les revendications contestées dans les libellés ou notes plutôt que dans les champs numériques utilisés pour les graphiques. Ne pas attribuer une attaque sans éléments publics suffisants."
+    }
+  },
+  "summaryStats": {
+    "anssi2025": {
+      "securityEventsHandled": 3586,
+      "reports": 2209,
+      "incidents": 1366,
+      "possibleDataLeakEvents": 460,
+      "confirmedLeakRatePercent": 42,
+      "sourceId": "anssi"
+    },
+    "cnil2025": {
+      "personalDataBreachNotifications": 6167,
+      "approxShareInvolvingHackingPercent": 50,
+      "sourceId": "cnil"
+    },
+    "sectorDistributionPercent": [
+      {
+        "id": "education-research",
+        "value": 34,
+        "label": {
+          "en": "Education & research",
+          "fr": "Éducation & recherche"
+        }
+      },
+      {
+        "id": "ministries-local-government",
+        "value": 24,
+        "label": {
+          "en": "Ministries & local government",
+          "fr": "Ministères & collectivités"
+        }
+      },
+      {
+        "id": "health",
+        "value": 10,
+        "label": {
+          "en": "Health",
+          "fr": "Santé"
+        }
+      },
+      {
+        "id": "telecom",
+        "value": 9,
+        "label": {
+          "en": "Telecom",
+          "fr": "Telecoms"
+        }
+      },
+      {
+        "id": "other",
+        "value": 23,
+        "label": {
+          "en": "Other",
+          "fr": "Autres"
+        }
+      }
+    ]
+  },
+  "sources": [
+    {
+      "id": "anssi",
+      "name": "ANSSI - Panorama de la cybermenace 2025",
+      "url": "https://cyber.gouv.fr/actualites/panorama-de-la-cybermenace-2025/"
+    },
+    {
+      "id": "cnil",
+      "name": "CNIL - Annual report 2025",
+      "url": "https://www.cnil.fr/en/annual-report-2025"
+    },
+    {
+      "id": "orange",
+      "name": "Orange - Security incident disclosure",
+      "url": "https://www.orange.com/en/press-release/the-orange-group-announces-that-it-filed-a-complaint-on-monday-28-july-concerning-a-security-incident-on-one-of-its-information-systems-307434"
+    },
+    {
+      "id": "bouygues",
+      "name": "Bouygues Telecom - Cyberattack disclosure",
+      "url": "https://www.corporate.bouyguestelecom.fr/archives-communique-presse/bouygues-telecom-annonce-avoir-ete-victime-dune-cyberattaque/"
+    },
+    {
+      "id": "ficoba",
+      "name": "French Finance Ministry - FICOBA illegal access",
+      "url": "https://presse.economie.gouv.fr/acces-illegitimes-au-fichier-national-des-comptes-bancaires-ficoba/"
+    },
+    {
+      "id": "eduStudents",
+      "name": "French Education Ministry - EduConnect incident",
+      "url": "https://www.education.gouv.fr/incident-de-securite-affectant-les-donnees-de-certains-eleves-de-l-education-nationale-504443"
+    },
+    {
+      "id": "eduCompas",
+      "name": "French Education Ministry - COMPAS incident",
+      "url": "https://www.education.gouv.fr/incident-de-securite-affectant-les-donnees-de-certains-personnels-de-l-education-nationale-470657"
+    },
+    {
+      "id": "eduStaff",
+      "name": "French Education Ministry - Staff-data incident",
+      "url": "https://www.education.gouv.fr/incident-de-securite-affectant-les-donnees-de-personnels-de-l-education-nationale-505407"
+    },
+    {
+      "id": "ants",
+      "name": "France Titres / ANTS - April 2026 incident update",
+      "url": "https://ants.gouv.fr/toute-l-actualite/incident-de-securite-relatif-au-portail-antsgouvfr-point-detape-du-21-avril-2026"
+    },
+    {
+      "id": "dgfip",
+      "name": "French Finance Ministry - DGFiP illegal access",
+      "url": "https://presse.economie.gouv.fr/acces-illegitime-au-systeme-dinformation-de-la-direction-generale-des-finances-publiques/"
+    },
+    {
+      "id": "eurofiber",
+      "name": "Eurofiber France - November 2025 incident review",
+      "url": "https://www.eurofiber.com/fr-fr/actualites/incident-de-cybersecurite-du-13-novembre-enseignements-et-actions-engagees"
+    },
+    {
+      "id": "airfrance",
+      "name": "Air France / KLM third-party breach reporting",
+      "url": "https://www.itpro.com/security/data-breaches/air-france-and-klm-confirm-customer-data-stolen-in-third-party-breach"
+    },
+    {
+      "id": "weda",
+      "name": "Weda cyberattack reporting",
+      "url": "https://www.01net.com/actualites/cyberattaque-inquietante-france-donnees-medicales-auraient-piratees-23-000-professionnels-sante-paralyses.html"
+    },
+    {
+      "id": "interior",
+      "name": "French Interior Ministry breach reporting",
+      "url": "https://www.lemonde.fr/en/pixels/article/2025/12/17/hackers-pirate-french-interior-ministry-databases_6748599_13.html"
+    },
+    {
+      "id": "ceva",
+      "name": "CEVA Logistics breach reporting",
+      "url": "https://www.techradar.com/pro/security/the-ceva-logistics-data-breach-is-having-major-knock-on-effects-across-europe-heres-what-we-know"
+    },
+    {
+      "id": "sante",
+      "name": "Sante publique France contractor breach reporting",
+      "url": "https://www.e-sante.fr/cyberattaque-chez-sante-publique-france-les-donnees-de-contact-de-80-000-usagers-piratees/actualite/744070"
+    }
+  ],
+  "incidents": [
+    {
+      "id": "orange",
+      "date": "2025-07-25",
+      "year": 2025,
+      "org": {
+        "en": "Orange",
+        "fr": "Orange"
+      },
+      "domain": "orange.com",
+      "kind": "company",
+      "sector": "Telecommunications",
+      "severity": "high",
+      "status": "confirmed",
+      "affected": null,
+      "affectedLabel": {
+        "en": "No confirmed data exfiltration",
+        "fr": "Aucune exfiltration de données confirmée"
+      },
+      "data": {
+        "en": "Business management platforms and some consumer services disrupted. Orange said it had no evidence of customer or internal data exfiltration at that stage.",
+        "fr": "Des plateformes de gestion entreprises et certains services grand public ont été perturbés. Orange indiquait ne disposer d’aucun élément montrant une exfiltration de données clients ou internes à ce stade."
+      },
+      "method": {
+        "en": "Cyberattack on an information system; detailed entry route not publicly disclosed.",
+        "fr": "Cyberattaque d’un système d’information; voie d’entrée détaillée non rendue publique."
+      },
+      "risk": {
+        "en": "Service disruption and uncertainty while forensic investigation was underway.",
+        "fr": "Perturbation de services et incertitude pendant l’enquête technique."
+      },
+      "sourceName": "Orange",
+      "confidence": {
+        "en": "Official company disclosure",
+        "fr": "Communication officielle de l’entreprise"
+      },
+      "sourceId": "orange",
+      "sourceUrl": "https://www.orange.com/en/press-release/the-orange-group-announces-that-it-filed-a-complaint-on-monday-28-july-concerning-a-security-incident-on-one-of-its-information-systems-307434",
+      "logo": {
+        "domain": "orange.com",
+        "strategy": "domain-favicon-or-official-logo"
+      }
+    },
+    {
+      "id": "airfrance",
+      "date": "2025-08-06",
+      "year": 2025,
+      "org": {
+        "en": "Air France / KLM",
+        "fr": "Air France / KLM"
+      },
+      "domain": "airfrance.com",
+      "kind": "company",
+      "sector": "Aviation",
+      "severity": "high",
+      "status": "confirmed",
+      "affected": null,
+      "affectedLabel": {
+        "en": "Number not publicly disclosed",
+        "fr": "Nombre non rendu public"
+      },
+      "data": {
+        "en": "Names, contact information, Flying Blue membership number/status and subjects of customer-service requests. Passwords, travel data, passport and card numbers were reported unaffected.",
+        "fr": "Noms, coordonnées, numéro/statut Flying Blue et objet de demandes au service client. Les mots de passe, données de voyage, passeports et cartes bancaires auraient été épargnés."
+      },
+      "method": {
+        "en": "Unauthorised access to a third-party platform used by contact centres.",
+        "fr": "Accès non autorisé à une plateforme tierce utilisée par les centres de contact."
+      },
+      "risk": {
+        "en": "Highly believable phishing and impersonation using real loyalty and support context.",
+        "fr": "Hameçonnage et usurpation très crédibles grâce au contexte réel de fidélité et d’assistance."
+      },
+      "sourceName": "Air France/KLM reporting + CNIL confirmation",
+      "confidence": {
+        "en": "Confirmed; exact victim count unavailable",
+        "fr": "Confirmé ; le nombre exact de victimes n’est pas disponible"
+      },
+      "sourceId": "airfrance",
+      "sourceUrl": "https://www.itpro.com/security/data-breaches/air-france-and-klm-confirm-customer-data-stolen-in-third-party-breach",
+      "logo": {
+        "domain": "airfrance.com",
+        "strategy": "domain-favicon-or-official-logo"
+      }
+    },
+    {
+      "id": "bouygues",
+      "date": "2025-08-04",
+      "year": 2025,
+      "org": {
+        "en": "Bouygues Telecom",
+        "fr": "Bouygues Telecom"
+      },
+      "domain": "bouyguestelecom.fr",
+      "kind": "company",
+      "sector": "Telecommunications",
+      "severity": "critical",
+      "status": "confirmed",
+      "affected": 6400000,
+      "affectedLabel": {
+        "en": "6.4 million customer accounts",
+        "fr": "6,4 millions de comptes clients"
+      },
+      "data": {
+        "en": "Personal data relating to 6.4 million customer accounts. Public reporting on customer notices included identity/contact, contract information and IBANs; passwords and card data were not reported exposed.",
+        "fr": "Données personnelles liées à 6,4 millions de comptes clients. Les notifications ont notamment évoqué identité/coordonnées, informations contractuelles et IBAN; mots de passe et cartes bancaires n’étaient pas signalés comme exposés."
+      },
+      "method": {
+        "en": "Unauthorised access; detailed initial access route not publicly established.",
+        "fr": "Accès non autorisé; voie d’accès initiale détaillée non établie publiquement."
+      },
+      "risk": {
+        "en": "Targeted banking, telecom and identity scams. IBAN knowledge can make social engineering more convincing.",
+        "fr": "Arnaques ciblées bancaires, télécoms et d’identité. La connaissance de l’IBAN rend l’ingénierie sociale plus crédible."
+      },
+      "sourceName": "Bouygues Telecom",
+      "confidence": {
+        "en": "Official company disclosure",
+        "fr": "Communication officielle de l’entreprise"
+      },
+      "sourceId": "bouygues",
+      "sourceUrl": "https://www.corporate.bouyguestelecom.fr/archives-communique-presse/bouygues-telecom-annonce-avoir-ete-victime-dune-cyberattaque/",
+      "logo": {
+        "domain": "bouyguestelecom.fr",
+        "strategy": "domain-favicon-or-official-logo"
+      }
+    },
+    {
+      "id": "weda",
+      "date": "2025-11-10",
+      "year": 2025,
+      "org": {
+        "en": "Weda",
+        "fr": "Weda"
+      },
+      "domain": "weda.fr",
+      "kind": "company",
+      "sector": "Healthcare",
+      "severity": "critical",
+      "status": "confirmed",
+      "affected": null,
+      "affectedLabel": {
+        "en": "23,000 health professionals operationally affected",
+        "fr": "23 000 professionnels de santé touchés opérationnellement"
+      },
+      "data": {
+        "en": "Medical software was taken offline after an intrusion. Weda indicated malicious access may have enabled partial data extraction; precise patient-data scope was not publicly established in the cited reporting.",
+        "fr": "Le logiciel médical a été mis hors ligne après une intrusion. Weda indiquait que des accès malveillants avaient pu permettre une extraction partielle; le périmètre précis des données patients n’était pas établi publiquement dans la source citée."
+      },
+      "method": {
+        "en": "Intrusion detected on the platform; details under investigation.",
+        "fr": "Intrusion détectée sur la plateforme; détails en cours d’investigation."
+      },
+      "risk": {
+        "en": "Patient-care disruption plus potential exposure of highly sensitive health information.",
+        "fr": "Perturbation des soins et exposition potentielle d’informations de santé très sensibles."
+      },
+      "sourceName": "01net reporting on Weda communications",
+      "confidence": {
+        "en": "Attack confirmed; exact data exposure uncertain",
+        "fr": "Attaque confirmée ; l’exposition exacte des données est incertaine"
+      },
+      "sourceId": "weda",
+      "sourceUrl": "https://www.01net.com/actualites/cyberattaque-inquietante-france-donnees-medicales-auraient-piratees-23-000-professionnels-sante-paralyses.html",
+      "logo": {
+        "domain": "weda.fr",
+        "strategy": "domain-favicon-or-official-logo"
+      }
+    },
+    {
+      "id": "eurofiber",
+      "date": "2025-11-13",
+      "year": 2025,
+      "org": {
+        "en": "Eurofiber France",
+        "fr": "Eurofiber France"
+      },
+      "domain": "eurofiber.com",
+      "kind": "company",
+      "sector": "Telecom / cloud supplier",
+      "severity": "high",
+      "status": "confirmed",
+      "affected": null,
+      "affectedLabel": {
+        "en": "Customer scope not expressed as a verified person count",
+        "fr": "Périmètre client non exprimé en nombre vérifié de personnes"
+      },
+      "data": {
+        "en": "Identification data, hashed passwords, ticket content/exchanges and some attachments. Eurofiber said banking or critical data and network/cloud service integrity were not compromised.",
+        "fr": "Données d’identification, mots de passe hachés, contenu/échanges de tickets et certaines pièces jointes. Eurofiber indique que les données bancaires ou critiques et l’intégrité des services réseau/cloud n’ont pas été compromises."
+      },
+      "method": {
+        "en": "A software vulnerability in the ticketing system enabled SQL injection and API-based exfiltration.",
+        "fr": "Une vulnérabilité du logiciel de ticketing a permis une injection SQL et une exfiltration via API."
+      },
+      "risk": {
+        "en": "Supplier data can expose information about many downstream organisations and their infrastructure/support history.",
+        "fr": "Les données d’un fournisseur peuvent révéler des informations sur de nombreuses organisations clientes et leur historique d’infrastructure/support."
+      },
+      "sourceName": "Eurofiber France",
+      "confidence": {
+        "en": "Official company post-incident disclosure",
+        "fr": "Communication officielle de l’entreprise après l’incident"
+      },
+      "sourceId": "eurofiber",
+      "sourceUrl": "https://www.eurofiber.com/fr-fr/actualites/incident-de-cybersecurite-du-13-novembre-enseignements-et-actions-engagees",
+      "logo": {
+        "domain": "eurofiber.com",
+        "strategy": "domain-favicon-or-official-logo"
+      }
+    },
+    {
+      "id": "interior",
+      "date": "2025-12-11",
+      "year": 2025,
+      "org": {
+        "en": "French Interior Ministry",
+        "fr": "Ministère de l’Intérieur"
+      },
+      "domain": "interieur.gouv.fr",
+      "kind": "government",
+      "sector": "Law enforcement",
+      "severity": "critical",
+      "status": "disputed",
+      "affected": null,
+      "affectedLabel": {
+        "en": "Dozens of files confirmed extracted; 16.4M claim disputed",
+        "fr": "Des dizaines de fiches confirmées extraites; revendication de 16,4 M contestée"
+      },
+      "data": {
+        "en": "Attackers reached sensitive police resources including TAJ and FPR. The minister confirmed at least several dozen confidential files were extracted; a claim of 16.4 million records was not accepted as confirmed.",
+        "fr": "Les attaquants ont atteint des ressources policières sensibles dont TAJ et FPR. Le ministre a confirmé l’extraction d’au moins plusieurs dizaines de fiches confidentielles; une revendication de 16,4 millions n’a pas été retenue comme confirmée."
+      },
+      "method": {
+        "en": "Hijacked police email accounts reportedly exposed passwords exchanged in messages, allowing access to internal services including CHEOPS.",
+        "fr": "Des comptes de messagerie de policiers détournés auraient révélé des mots de passe échangés dans des messages, permettant l’accès à des services internes dont CHEOPS."
+      },
+      "risk": {
+        "en": "Exceptionally sensitive law-enforcement information, potential danger to individuals, investigations and operational security.",
+        "fr": "Informations policières extrêmement sensibles, risques pour les personnes, les enquêtes et la sécurité opérationnelle."
+      },
+      "sourceName": "Le Monde",
+      "confidence": {
+        "en": "Breach and limited extraction confirmed; mass-theft claim disputed",
+        "fr": "Violation et extraction limitée confirmées ; la revendication de vol massif est contestée"
+      },
+      "sourceId": "interior",
+      "sourceUrl": "https://www.lemonde.fr/en/pixels/article/2025/12/17/hackers-pirate-french-interior-ministry-databases_6748599_13.html",
+      "logo": {
+        "domain": "interieur.gouv.fr",
+        "strategy": "domain-favicon-or-official-logo"
+      }
+    },
+    {
+      "id": "ficoba",
+      "date": "2026-01-31",
+      "year": 2026,
+      "org": {
+        "en": "DGFiP / FICOBA",
+        "fr": "DGFiP / FICOBA"
+      },
+      "domain": "economie.gouv.fr",
+      "kind": "government",
+      "sector": "Finance / tax",
+      "severity": "critical",
+      "status": "confirmed",
+      "affected": 1200000,
+      "affectedLabel": {
+        "en": "About 1.2 million bank accounts",
+        "fr": "Environ 1,2 million de comptes bancaires"
+      },
+      "data": {
+        "en": "Bank-account details (RIB/IBAN), account-holder identity and address. The tax identifier was not consulted during the illegal access, according to the ministry.",
+        "fr": "Coordonnées bancaires (RIB/IBAN), identité du titulaire et adresse. L’identifiant fiscal n’a pas été consulté lors des accès illégitimes, selon le ministère."
+      },
+      "method": {
+        "en": "Attacker impersonated / used the credentials of a civil servant authorised for inter-ministry information exchange.",
+        "fr": "L’attaquant a usurpé/utilisé les identifiants d’un fonctionnaire habilité dans le cadre des échanges interministériels."
+      },
+      "risk": {
+        "en": "Highly credible bank and tax impersonation, identity fraud and targeted social engineering.",
+        "fr": "Usurpation bancaire et fiscale très crédible, fraude à l’identité et ingénierie sociale ciblée."
+      },
+      "sourceName": "French Finance Ministry",
+      "confidence": {
+        "en": "Official government disclosure",
+        "fr": "Communication officielle des autorités"
+      },
+      "sourceId": "ficoba",
+      "sourceUrl": "https://presse.economie.gouv.fr/acces-illegitimes-au-fichier-national-des-comptes-bancaires-ficoba/",
+      "logo": {
+        "domain": "economie.gouv.fr",
+        "strategy": "domain-favicon-or-official-logo"
+      }
+    },
+    {
+      "id": "educompas",
+      "date": "2026-03-15",
+      "year": 2026,
+      "org": {
+        "en": "Education Ministry / COMPAS",
+        "fr": "Ministère de l’Éducation / COMPAS"
+      },
+      "domain": "education.gouv.fr",
+      "kind": "government",
+      "sector": "Education",
+      "severity": "high",
+      "status": "confirmed",
+      "affected": 243000,
+      "affectedLabel": {
+        "en": "About 243,000 staff / trainees",
+        "fr": "Environ 243 000 agents / stagiaires"
+      },
+      "data": {
+        "en": "Identity, contact details, periods of absence without health information, plus tutor identity and professional phone numbers.",
+        "fr": "Identité, coordonnées, périodes d’absence sans information de santé, ainsi que l’identité et les numéros professionnels des tuteurs."
+      },
+      "method": {
+        "en": "Impersonation of an external account, according to the ministry.",
+        "fr": "Usurpation d’un compte externe, selon le ministère."
+      },
+      "risk": {
+        "en": "Phishing, impersonation and workplace-targeted fraud against education staff.",
+        "fr": "Hameçonnage, usurpation et fraudes ciblant le personnel de l’Éducation."
+      },
+      "sourceName": "French Education Ministry",
+      "confidence": {
+        "en": "Official government disclosure",
+        "fr": "Communication officielle des autorités"
+      },
+      "sourceId": "eduCompas",
+      "sourceUrl": "https://www.education.gouv.fr/incident-de-securite-affectant-les-donnees-de-certains-personnels-de-l-education-nationale-470657",
+      "logo": {
+        "domain": "education.gouv.fr",
+        "strategy": "domain-favicon-or-official-logo"
+      }
+    },
+    {
+      "id": "edustudents",
+      "date": "2026-04-14",
+      "year": 2026,
+      "org": {
+        "en": "Education Ministry / ÉduConnect",
+        "fr": "Ministère de l’Éducation / ÉduConnect"
+      },
+      "domain": "education.gouv.fr",
+      "kind": "government",
+      "sector": "Education",
+      "severity": "critical",
+      "status": "confirmed",
+      "affected": null,
+      "affectedLabel": {
+        "en": "Exact student count still under evaluation in disclosure",
+        "fr": "Nombre exact d’élèves encore en évaluation dans le communiqué"
+      },
+      "data": {
+        "en": "First/last name, ÉduConnect identifier, school and class, email if supplied, and activation code for accounts not yet activated.",
+        "fr": "Prénom/nom, identifiant ÉduConnect, établissement et classe, email s’il était renseigné, et code d’activation pour les comptes non encore activés."
+      },
+      "method": {
+        "en": "Impersonation of an authorised staff account at the end of 2025 plus exploitation of a vulnerability shortly before it was fixed.",
+        "fr": "Usurpation du compte d’un personnel habilité fin 2025 et exploitation d’une vulnérabilité peu avant sa correction."
+      },
+      "risk": {
+        "en": "Targeting of minors and families, school-themed phishing, and potential account abuse for unactivated accounts.",
+        "fr": "Ciblage de mineurs et de familles, hameçonnage lié à l’école et abus potentiel de comptes non activés."
+      },
+      "sourceName": "French Education Ministry",
+      "confidence": {
+        "en": "Official government disclosure",
+        "fr": "Communication officielle des autorités"
+      },
+      "sourceId": "eduStudents",
+      "sourceUrl": "https://www.education.gouv.fr/incident-de-securite-affectant-les-donnees-de-certains-eleves-de-l-education-nationale-504443",
+      "logo": {
+        "domain": "education.gouv.fr",
+        "strategy": "domain-favicon-or-official-logo"
+      }
+    },
+    {
+      "id": "ants",
+      "date": "2026-04-15",
+      "year": 2026,
+      "org": {
+        "en": "France Titres / ANTS",
+        "fr": "France Titres / ANTS"
+      },
+      "domain": "ants.gouv.fr",
+      "kind": "government",
+      "sector": "Identity / public services",
+      "severity": "critical",
+      "status": "confirmed",
+      "affected": 11700000,
+      "affectedLabel": {
+        "en": "About 11.7 million accounts may be concerned",
+        "fr": "Environ 11,7 millions de comptes pourraient être concernés"
+      },
+      "data": {
+        "en": "Login identifier, title, names, email, date of birth and unique account ID; sometimes postal address, place of birth and phone. ANTS said uploaded supporting documents and biometric data were excluded at that stage.",
+        "fr": "Identifiant de connexion, civilité, noms, email, date de naissance et identifiant unique; parfois adresse postale, lieu de naissance et téléphone. ANTS indiquait que les pièces justificatives et données biométriques étaient exclues à ce stade."
+      },
+      "method": {
+        "en": "Security incident under technical investigation; public update focused on scope rather than a confirmed initial access vector.",
+        "fr": "Incident de sécurité en investigation technique; la mise à jour publique porte surtout sur le périmètre, sans vecteur initial confirmé."
+      },
+      "risk": {
+        "en": "Large-scale identity phishing using credible government identity-document context.",
+        "fr": "Hameçonnage d’identité à grande échelle utilisant un contexte crédible de titres officiels."
+      },
+      "sourceName": "France Titres (ANTS)",
+      "confidence": {
+        "en": "Official update; investigation ongoing",
+        "fr": "Mise à jour officielle ; enquête en cours"
+      },
+      "sourceId": "ants",
+      "sourceUrl": "https://ants.gouv.fr/toute-l-actualite/incident-de-securite-relatif-au-portail-antsgouvfr-point-detape-du-21-avril-2026",
+      "logo": {
+        "domain": "ants.gouv.fr",
+        "strategy": "domain-favicon-or-official-logo"
+      }
+    },
+    {
+      "id": "edustaff",
+      "date": "2026-07-25",
+      "year": 2026,
+      "org": {
+        "en": "Education Ministry staff system",
+        "fr": "Système RH du ministère de l’Éducation"
+      },
+      "domain": "education.gouv.fr",
+      "kind": "government",
+      "sector": "Education",
+      "severity": "critical",
+      "status": "confirmed",
+      "affected": null,
+      "affectedLabel": {
+        "en": "“A significant number” of agents; exact scope under investigation",
+        "fr": "Un « nombre important » d’agents; périmètre exact en investigation"
+      },
+      "data": {
+        "en": "Identity and professional information for agents who worked in academies since 2001; for some, postal address, phone number and social security number. No banking data or passwords in the system.",
+        "fr": "Identité et informations professionnelles des agents ayant exercé en académie depuis 2001; pour certains, adresse, téléphone et numéro de sécurité sociale. Pas de données bancaires ni de mots de passe dans ce système."
+      },
+      "method": {
+        "en": "Compromise / impersonation of a professional account.",
+        "fr": "Compromission / usurpation d’un compte professionnel."
+      },
+      "risk": {
+        "en": "Long-lived identity information, social-security-number exposure and targeted staff fraud.",
+        "fr": "Informations d’identité durables, exposition du numéro de sécurité sociale et fraude ciblée contre les agents."
+      },
+      "sourceName": "French Education Ministry",
+      "confidence": {
+        "en": "Official government disclosure; final scope pending",
+        "fr": "Communication officielle des autorités ; périmètre définitif en attente"
+      },
+      "sourceId": "eduStaff",
+      "sourceUrl": "https://www.education.gouv.fr/incident-de-securite-affectant-les-donnees-de-personnels-de-l-education-nationale-505407",
+      "logo": {
+        "domain": "education.gouv.fr",
+        "strategy": "domain-favicon-or-official-logo"
+      }
+    },
+    {
+      "id": "ceva",
+      "date": "2026-07-29",
+      "year": 2026,
+      "org": {
+        "en": "CEVA Logistics",
+        "fr": "CEVA Logistics"
+      },
+      "domain": "cevalogistics.com",
+      "kind": "company",
+      "sector": "Logistics / supply chain",
+      "severity": "high",
+      "status": "confirmed",
+      "affected": null,
+      "affectedLabel": {
+        "en": "Multiple clients; at least 8 European warehouses affected",
+        "fr": "Plusieurs clients; au moins 8 entrepôts européens touchés"
+      },
+      "data": {
+        "en": "Delivery-related data exposed for some downstream clients, including names, addresses, phone numbers, emails and purchase/order details. Payment and account credentials were reported unaffected for Valve customers.",
+        "fr": "Données de livraison exposées pour certains clients en aval, dont noms, adresses, téléphones, emails et détails d’achat/commande. Les données de paiement et identifiants de compte n’étaient pas concernés pour les clients Valve."
+      },
+      "method": {
+        "en": "Initial compromise route not publicly confirmed.",
+        "fr": "Voie de compromission initiale non confirmée publiquement."
+      },
+      "risk": {
+        "en": "Supply-chain blast radius: one logistics provider can expose customers of many brands to tailored delivery scams.",
+        "fr": "Effet de chaîne d’approvisionnement: un logisticien peut exposer les clients de nombreuses marques à des arnaques de livraison ciblées."
+      },
+      "sourceName": "TechRadar / client disclosures",
+      "confidence": {
+        "en": "Incident and downstream exposure confirmed; technical details limited",
+        "fr": "Incident et exposition en aval confirmés ; détails techniques limités"
+      },
+      "sourceId": "ceva",
+      "sourceUrl": "https://www.techradar.com/pro/security/the-ceva-logistics-data-breach-is-having-major-knock-on-effects-across-europe-heres-what-we-know",
+      "logo": {
+        "domain": "cevalogistics.com",
+        "strategy": "domain-favicon-or-official-logo"
+      }
+    },
+    {
+      "id": "sante",
+      "date": "2026-08-13",
+      "year": 2026,
+      "org": {
+        "en": "Santé publique France contractor",
+        "fr": "Prestataire de Santé publique France"
+      },
+      "domain": "santepubliquefrance.fr",
+      "kind": "government",
+      "sector": "Public health",
+      "severity": "high",
+      "status": "confirmed",
+      "affected": 80000,
+      "affectedLabel": {
+        "en": "About 80,000 users",
+        "fr": "Environ 80 000 usagers"
+      },
+      "data": {
+        "en": "Contact and delivery details used for a public-health materials platform, including email, postal address and phone. The cited disclosure said no medical or social-security data was in the affected database.",
+        "fr": "Coordonnées utilisées pour une plateforme de documentation de santé publique, dont email, adresse postale et téléphone. La source citée indique qu’aucune donnée médicale ni numéro de sécurité sociale ne figurait dans la base touchée."
+      },
+      "method": {
+        "en": "Attack affected an external service provider operating a separate platform.",
+        "fr": "L’attaque a touché un prestataire externe exploitant une plateforme distincte."
+      },
+      "risk": {
+        "en": "Health-themed phishing and impersonation using real contact information.",
+        "fr": "Hameçonnage et usurpation liés à la santé utilisant de vraies coordonnées."
+      },
+      "sourceName": "E-Santé reporting",
+      "confidence": {
+        "en": "Reported breach; non-medical scope specifically noted",
+        "fr": "Violation signalée ; le périmètre non médical a été explicitement précisé"
+      },
+      "sourceId": "sante",
+      "sourceUrl": "https://www.e-sante.fr/cyberattaque-chez-sante-publique-france-les-donnees-de-contact-de-80-000-usagers-piratees/actualite/744070",
+      "logo": {
+        "domain": "santepubliquefrance.fr",
+        "strategy": "domain-favicon-or-official-logo"
+      }
+    },
+    {
+      "id": "dgfip",
+      "date": "2026-08-14",
+      "year": 2026,
+      "org": {
+        "en": "DGFiP tax systems",
+        "fr": "Systèmes fiscaux DGFiP"
+      },
+      "domain": "economie.gouv.fr",
+      "kind": "government",
+      "sector": "Finance / tax",
+      "severity": "critical",
+      "status": "confirmed",
+      "affected": 678000,
+      "affectedLabel": {
+        "en": "678,000 individuals and businesses",
+        "fr": "678 000 particuliers et professionnels"
+      },
+      "data": {
+        "en": "Tax information including reference taxable income, household quotient and withholding-tax rate; business identity/SIREN; cadastral address and property-surface data were also consulted. User tax-space passwords were not compromised.",
+        "fr": "Données fiscales dont revenu fiscal de référence, quotient familial et taux de prélèvement; raison sociale/SIREN; des données cadastrales d’adresse et de surface ont aussi été consultées. Les mots de passe des espaces fiscaux n’ont pas été compromis."
+      },
+      "method": {
+        "en": "Impersonated credentials belonging to a DGFiP agent and an authorised third party; incidents occurred in June and July.",
+        "fr": "Identifiants usurpés d’un agent DGFiP et d’un tiers habilité; intrusions survenues en juin et juillet."
+      },
+      "risk": {
+        "en": "Exceptionally persuasive tax and wealth-targeted scams, identity fraud and potential physical-security concerns for targeted households.",
+        "fr": "Arnaques fiscales et patrimoniales extrêmement crédibles, fraude à l’identité et risques potentiels de sécurité physique pour certains foyers ciblés."
+      },
+      "sourceName": "French Finance Ministry",
+      "confidence": {
+        "en": "Official government disclosure",
+        "fr": "Communication officielle des autorités"
+      },
+      "sourceId": "dgfip",
+      "sourceUrl": "https://presse.economie.gouv.fr/acces-illegitime-au-systeme-dinformation-de-la-direction-generale-des-finances-publiques/",
+      "logo": {
+        "domain": "economie.gouv.fr",
+        "strategy": "domain-favicon-or-official-logo"
+      }
+    }
+  ],
+  "patterns": [
+    {
+      "id": "stolen-credentials",
+      "title": {
+        "en": "Stolen credentials",
+        "fr": "Identifiants volés"
+      },
+      "description": {
+        "en": "Compromised staff or third-party accounts can turn a normal login into a privileged intrusion. FICOBA, Education and DGFiP incidents all highlight identity and access risk.",
+        "fr": "Des comptes de personnel ou de tiers compromis peuvent transformer une connexion ordinaire en intrusion privilégiée. Les incidents FICOBA, Éducation et DGFiP illustrent le risque lié aux identités et aux accès."
+      },
+      "priority": {
+        "en": "Phishing-resistant MFA + tighter privileges",
+        "fr": "MFA résistante au phishing + privilèges plus stricts"
+      }
+    },
+    {
+      "id": "supplier-exposure",
+      "title": {
+        "en": "Supplier exposure",
+        "fr": "Exposition via les fournisseurs"
+      },
+      "description": {
+        "en": "Air France/KLM, Eurofiber, CEVA and Sante publique France show how a supplier can become a route into many organisations or customers at once.",
+        "fr": "Air France/KLM, Eurofiber, CEVA et Santé publique France montrent comment un fournisseur peut devenir un point de passage vers de nombreuses organisations ou clients."
+      },
+      "priority": {
+        "en": "Vendor security + data minimisation",
+        "fr": "Sécurité fournisseurs + minimisation des données"
+      }
+    },
+    {
+      "id": "legacy-edge-systems",
+      "title": {
+        "en": "Legacy and edge systems",
+        "fr": "Systèmes anciens et périmétriques"
+      },
+      "description": {
+        "en": "Old services, exposed gateways and vulnerable internet-facing software create high-value entry points. ANSSI specifically warns about vulnerable edge equipment.",
+        "fr": "Les services anciens, passerelles exposées et logiciels vulnérables accessibles depuis Internet créent des points d’entrée de grande valeur. ANSSI alerte notamment sur les équipements périmétriques vulnérables."
+      },
+      "priority": {
+        "en": "Asset inventory + rapid patching",
+        "fr": "Inventaire des actifs + correctifs rapides"
+      }
+    },
+    {
+      "id": "post-breach-phishing",
+      "title": {
+        "en": "Phishing after the breach",
+        "fr": "Hameçonnage après la fuite"
+      },
+      "description": {
+        "en": "Names, phone numbers, addresses, tax details and order histories make scams much more believable. The breach is often only the first stage of harm to the public.",
+        "fr": "Noms, téléphones, adresses, données fiscales et historiques de commande rendent les arnaques beaucoup plus crédibles. La fuite n’est souvent que la première étape du préjudice pour le public."
+      },
+      "priority": {
+        "en": "Verified channels + public warnings",
+        "fr": "Canaux vérifiés + alertes au public"
+      }
+    },
+    {
+      "id": "excessive-data-reachability",
+      "title": {
+        "en": "Too much reachable data",
+        "fr": "Trop de données accessibles"
+      },
+      "description": {
+        "en": "When a compromised account can query large central databases, the blast radius becomes enormous. Sensitive datasets need segmentation and query-level controls.",
+        "fr": "Lorsqu’un compte compromis peut interroger de grandes bases centrales, l’impact potentiel devient énorme. Les données sensibles doivent être segmentées et contrôlées au niveau des requêtes."
+      },
+      "priority": {
+        "en": "Least privilege + segmentation + monitoring",
+        "fr": "Moindre privilège + segmentation + supervision"
+      }
+    },
+    {
+      "id": "detection-gaps",
+      "title": {
+        "en": "Detection gaps",
+        "fr": "Lacunes de détection"
+      },
+      "description": {
+        "en": "Some breaches were discovered only after attacker claims or after access had already occurred. Logging alone is not enough if unusual extraction is not detected.",
+        "fr": "Certaines fuites n’ont été détectées qu’après des revendications d’attaquants ou après que l’accès a déjà eu lieu. Les journaux ne suffisent pas si les extractions anormales ne sont pas détectées."
+      },
+      "priority": {
+        "en": "Behaviour analytics + exfiltration alerts",
+        "fr": "Analyse comportementale + alertes d’exfiltration"
+      }
+    }
+  ],
+  "recommendations": {
+    "organizations": [
+      {
+        "id": "phishing-resistant-mfa",
+        "title": {
+          "en": "Use phishing-resistant MFA",
+          "fr": "Utiliser une MFA résistante au phishing"
+        },
+        "description": {
+          "en": "Prefer passkeys or hardware-backed authentication for administrators, remote access and sensitive databases. Avoid relying on SMS for privileged access.",
+          "fr": "Privilégier les passkeys ou l’authentification matérielle pour les administrateurs, les accès distants et les bases sensibles. Éviter de dépendre des SMS pour les accès privilégiés."
+        }
+      },
+      {
+        "id": "least-privilege",
+        "title": {
+          "en": "Make least privilege real",
+          "fr": "Appliquer réellement le moindre privilège"
+        },
+        "description": {
+          "en": "Separate everyday accounts from privileged accounts, review access continuously, and require stronger controls for bulk queries or exports.",
+          "fr": "Séparer les comptes courants des comptes privilégiés, revoir les accès en continu et exiger des contrôles renforcés pour les requêtes ou exports massifs."
+        }
+      },
+      {
+        "id": "segment-sensitive-systems",
+        "title": {
+          "en": "Segment sensitive systems",
+          "fr": "Segmenter les systèmes sensibles"
+        },
+        "description": {
+          "en": "Compromise of email or a training system should not become a route to police, tax, identity or financial datasets.",
+          "fr": "La compromission d’une messagerie ou d’un système de formation ne doit pas devenir une voie vers des données policières, fiscales, d’identité ou financières."
+        }
+      },
+      {
+        "id": "detect-extraction",
+        "title": {
+          "en": "Detect extraction, not just login",
+          "fr": "Détecter l’extraction, pas seulement la connexion"
+        },
+        "description": {
+          "en": "Alert on unusual record volumes, new locations, odd query patterns, bulk downloads and service-account behaviour.",
+          "fr": "Alerter sur les volumes inhabituels, les nouvelles localisations, les requêtes anormales, les téléchargements massifs et le comportement des comptes de service."
+        }
+      },
+      {
+        "id": "supplier-perimeter",
+        "title": {
+          "en": "Treat suppliers as part of your perimeter",
+          "fr": "Traiter les fournisseurs comme une partie du périmètre"
+        },
+        "description": {
+          "en": "Contract for minimum controls, incident notification, logging, access boundaries and data deletion. Verify, do not just collect questionnaires.",
+          "fr": "Contractualiser des contrôles minimums, la notification d’incident, les journaux, les limites d’accès et la suppression des données. Vérifier, pas seulement collecter des questionnaires."
+        }
+      },
+      {
+        "id": "reduce-retained-data",
+        "title": {
+          "en": "Reduce retained data",
+          "fr": "Réduire les données conservées"
+        },
+        "description": {
+          "en": "If a supplier does not need historical data, delete it. Less retained data means less to steal.",
+          "fr": "Si un fournisseur n’a pas besoin de données historiques, les supprimer. Moins de données conservées signifie moins de données à voler."
+        }
+      }
+    ],
+    "public": [
+      {
+        "id": "assume-scam-use",
+        "title": {
+          "en": "Assume leaked details may be used in scams",
+          "fr": "Supposer que les données divulguées peuvent servir à des arnaques"
+        },
+        "description": {
+          "en": "A caller knowing your address, IBAN, tax office or recent order is not proof they are legitimate.",
+          "fr": "Un appelant connaissant votre adresse, IBAN, centre des impôts ou commande récente n’est pas pour autant légitime."
+        }
+      },
+      {
+        "id": "open-official-services",
+        "title": {
+          "en": "Open official services yourself",
+          "fr": "Ouvrir soi-même les services officiels"
+        },
+        "description": {
+          "en": "Do not use a link from an unexpected email or SMS about taxes, deliveries, identity documents or banking. Open the official app or type the site address yourself.",
+          "fr": "Ne pas utiliser un lien d’un e-mail ou SMS inattendu concernant les impôts, livraisons, titres d’identité ou banque. Ouvrir l’application officielle ou saisir soi-même l’adresse du site."
+        }
+      },
+      {
+        "id": "unique-passwords-passkeys",
+        "title": {
+          "en": "Use unique passwords and passkeys",
+          "fr": "Utiliser des mots de passe uniques et des passkeys"
+        },
+        "description": {
+          "en": "A password manager prevents one stolen password from unlocking several services. Enable MFA wherever available.",
+          "fr": "Un gestionnaire de mots de passe évite qu’un mot de passe volé ouvre plusieurs services. Activer la MFA partout où elle est disponible."
+        }
+      },
+      {
+        "id": "watch-financial-activity",
+        "title": {
+          "en": "Watch financial activity",
+          "fr": "Surveiller l’activité financière"
+        },
+        "description": {
+          "en": "An exposed IBAN does not normally let someone directly take over an account, but it can support convincing fraud. Review transactions and bank alerts.",
+          "fr": "Un IBAN exposé ne permet normalement pas de prendre directement le contrôle d’un compte, mais peut renforcer des fraudes crédibles. Vérifier les transactions et alertes bancaires."
+        }
+      },
+      {
+        "id": "preserve-evidence",
+        "title": {
+          "en": "Preserve evidence",
+          "fr": "Conserver les preuves"
+        },
+        "description": {
+          "en": "Keep suspicious emails, SMS, URLs and screenshots if you believe stolen data is being used against you. Report fraud through official channels.",
+          "fr": "Conserver les e-mails, SMS, URL et captures suspects si vous pensez que des données volées sont utilisées contre vous. Signaler la fraude via les canaux officiels."
+        }
+      },
+      {
+        "id": "expect-delayed-attacks",
+        "title": {
+          "en": "Expect delayed attacks",
+          "fr": "S’attendre à des attaques différées"
+        },
+        "description": {
+          "en": "Stolen data can circulate for months or years. Increased caution should not end a week after the breach notice.",
+          "fr": "Les données volées peuvent circuler pendant des mois ou des années. La vigilance ne doit pas s’arrêter une semaine après la notification de fuite."
+        }
+      }
+    ]
+  },
+  "ui": {
+    "severityOrder": [
+      "critical",
+      "high",
+      "medium",
+      "low"
+    ],
+    "statusValues": [
+      "confirmed",
+      "disputed",
+      "unknown"
+    ],
+    "kindValues": [
+      "government",
+      "company"
+    ],
+    "chartRules": {
+      "affectedCounts": {
+        "en": "Plot only incidents where affected is a non-null numeric value.",
+        "fr": "Ne représenter que les incidents dont le champ affected est une valeur numérique non nulle."
+      },
+      "unknownCounts": {
+        "en": "Display as Unknown / under investigation, never as zero.",
+        "fr": "Afficher comme Inconnu / sous enquête, jamais comme zéro."
+      },
+      "disputedClaims": {
+        "en": "Do not include disputed attacker-claimed victim counts in aggregate charts.",
+        "fr": "Ne pas inclure les nombres de victimes revendiqués et contestés dans les graphiques agrégés."
+      }
+    },
+    "sectorLabels": {
+      "Aviation": {
+        "en": "Aviation",
+        "fr": "Aviation"
+      },
+      "Education": {
+        "en": "Education",
+        "fr": "Éducation"
+      },
+      "Finance / tax": {
+        "en": "Finance / tax",
+        "fr": "Finances / fiscalité"
+      },
+      "Healthcare": {
+        "en": "Healthcare",
+        "fr": "Santé"
+      },
+      "Identity / public services": {
+        "en": "Identity / public services",
+        "fr": "Identité / services publics"
+      },
+      "Law enforcement": {
+        "en": "Law enforcement",
+        "fr": "Forces de l’ordre"
+      },
+      "Logistics / supply chain": {
+        "en": "Logistics / supply chain",
+        "fr": "Logistique / chaîne d’approvisionnement"
+      },
+      "Public health": {
+        "en": "Public health",
+        "fr": "Santé publique"
+      },
+      "Telecom / cloud supplier": {
+        "en": "Telecom / cloud supplier",
+        "fr": "Télécoms / fournisseur cloud"
+      },
+      "Telecommunications": {
+        "en": "Telecommunications",
+        "fr": "Télécommunications"
+      }
+    }
+  }
+}

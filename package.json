@@ -1,0 +1,32 @@
+{
+  "name": "france-cyberwatch",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "typecheck": "nuxt typecheck"
+  },
+  "dependencies": {
+    "@lucide/vue": "^1.31.0",
+    "@nuxt/fonts": "^0.14.0",
+    "@takumi-rs/core": "^2.9.2",
+    "echarts": "^6.0.0",
+    "nuxt": "^4.5.2",
+    "nuxt-og-image": "^6.7.8",
+    "vue": "^3.5.40",
+    "vue-echarts": "^8.1.0",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.16",
+    "@types/node": "^26.2.0",
+    "tailwindcss": "^4.1.16",
+    "typescript": "~6.0.2",
+    "vue-tsc": "^3.3.8"
+  }
+}
