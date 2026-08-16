@@ -13,34 +13,32 @@ function hashScrollOffset(hash: string) {
   }
 }
 
-const isRecord = (path: string) => /^\/(fr\/)?incident\//.test(path)
 const samePath = (a: string, b: string) => a.replace(/\/$/, '') === b.replace(/\/$/, '')
 
+/** Nuxt may emit `/incident/:id()`; keep the same param syntax on the French twin. */
+function frenchTwin(path: string) {
+  return path === '/' ? '/fr' : `/fr${path}`
+}
+
 /**
- * Four paths, one page component: `/` and `/incident/:id` in English, `/fr`
- * and `/fr/incident/:id` in French. Sharing the component means opening a
- * record is an overlay rather than a remount, and switching language keeps
- * the reader on the same record.
+ * File routes cover `/`, `/docs` and `/incident/:id`. French twins are real
+ * route records (not aliases) so `/fr/incident/:id` keeps the same page
+ * component — language switch is a navigation, not a client flip.
  *
- * These are real route records rather than aliases: an alias whose param the
- * original path lacks is unsupported by Vue Router and warns on every render.
- *
- * Providing scrollBehavior makes Vue Router take over scrolling, so hash
- * targets must be handled here. Query-only changes (timeline filters) must
- * keep the current position — Nuxt's default already does that, and
- * replacing scrollBehavior would otherwise drop it.
+ * Query-only changes (timeline filters) must keep the current position.
+ * Opening an incident page is a real navigation and scrolls to the top.
  */
 export default <RouterConfig>{
   routes: (routes) => {
     const home = routes.find((route) => route.path === '/')
     const docs = routes.find((route) => route.path === '/docs')
+    const incident = routes.find((route) => route.path === '/incident/:id' || route.path.startsWith('/incident/:id'))
     if (!home) return routes
     return [
       ...routes,
-      { ...home, name: 'incident', path: '/incident/:id' },
-      { ...home, name: 'home-fr', path: '/fr' },
-      { ...home, name: 'incident-fr', path: '/fr/incident/:id' },
-      ...(docs ? [{ ...docs, name: 'docs-fr', path: '/fr/docs' }] : []),
+      { ...home, name: 'home-fr', path: frenchTwin(home.path) },
+      ...(incident ? [{ ...incident, name: 'incident-fr', path: frenchTwin(incident.path) }] : []),
+      ...(docs ? [{ ...docs, name: 'docs-fr', path: frenchTwin(docs.path) }] : []),
     ]
   },
 
@@ -50,7 +48,6 @@ export default <RouterConfig>{
       return { el: to.hash, top: hashScrollOffset(to.hash), behavior: 'smooth' }
     }
     if (samePath(to.path, from.path)) return false
-    if (isRecord(to.path) || isRecord(from.path)) return false
     return { left: 0, top: 0 }
   },
 }

@@ -1,50 +1,62 @@
 <script setup lang="ts">
 import {
+  ArrowLeft,
   Building2,
   Check,
   ChevronLeft,
   ChevronRight,
   ExternalLink,
-  Link2,
   Landmark,
+  Link2,
   Printer,
   TriangleAlert,
-  X,
 } from '@lucide/vue'
-import type { Incident } from '~/types/cyberwatch'
+import type { Incident, MethodDisclosure } from '~/types/cyberwatch'
 
-const props = defineProps<{ incident: Incident; hasPrevious: boolean; hasNext: boolean }>()
-const emit = defineEmits<{ close: []; previous: []; next: [] }>()
+const props = defineProps<{ incident: Incident }>()
 
 const { locale, t, L, localePath } = useLocale()
 const { absolute } = useSiteUrl()
-const { sectorLabel } = useCyberData()
+const { sectorLabel, sourceById } = useCyberData()
+const { previous, next, step } = useIncidentRoute()
 
-const panel = ref<HTMLElement | null>(null)
-const body = ref<HTMLElement | null>(null)
-const closeButton = ref<HTMLElement | null>(null)
 const copied = ref(false)
-
-useScrollLock(true)
-useRestoreFocus()
-useFocusTrap(panel, () => emit('close'))
-
 const affected = computed(() => formatAffected(props.incident, locale.value))
 const isUnknownCount = computed(() => props.incident.affected === null)
-// Share the record in the language the reader is looking at.
 const shareUrl = computed(() => absolute(localePath(`/incident/${props.incident.id}`)))
+const detail = computed(() => props.incident.detail)
 
 const terms = computed(() =>
   glossaryFor(
-    [props.incident.data[locale.value], props.incident.method[locale.value], props.incident.risk[locale.value]].join(' '),
+    [
+      L(detail.value.lead),
+      L(detail.value.how),
+      L(detail.value.taken),
+      L(detail.value.notTaken),
+      L(props.incident.risk),
+      L(detail.value.response),
+      L(detail.value.attackerClaim),
+    ].join(' '),
   ),
 )
 
-const sections = computed(() => [
-  { key: 'dataAffected' as const, text: L(props.incident.data) },
-  { key: 'method' as const, text: L(props.incident.method) },
-  { key: 'risk' as const, text: L(props.incident.risk) },
-])
+const citedSources = computed(() =>
+  (props.incident.sourceIds ?? [props.incident.sourceId])
+    .map((id) => sourceById.value.get(id))
+    .filter((source): source is NonNullable<typeof source> => Boolean(source)),
+)
+
+const disclosureLabel: Record<MethodDisclosure, 'methodDisclosed' | 'methodPartial' | 'methodUndisclosed'> = {
+  disclosed: 'methodDisclosed',
+  partial: 'methodPartial',
+  undisclosed: 'methodUndisclosed',
+}
+
+const disclosureStamp: Record<MethodDisclosure, string> = {
+  disclosed: 'stamp stamp-confirmed',
+  partial: 'stamp stamp-disputed',
+  undisclosed: 'stamp stamp-unknown',
+}
 
 function printRecord() {
   window.print()
@@ -59,95 +71,126 @@ async function copyLink() {
     copied.value = false
   }
 }
-
-watch(
-  () => props.incident.id,
-  async () => {
-    await nextTick()
-    body.value?.scrollTo({ top: 0 })
-  },
-)
-
-onMounted(async () => {
-  await nextTick()
-  closeButton.value?.focus()
-})
 </script>
 
 <template>
-  <div class="fixed inset-0 z-50 grid sm:place-items-center sm:p-6">
-    <div class="no-print absolute inset-0 bg-bg/80 backdrop-blur-sm" @click="emit('close')" />
+  <article>
+    <p class="no-print">
+      <NuxtLink
+        :to="localePath('/')"
+        class="link-underline inline-flex items-center gap-2 text-sm text-ink-2 hover:text-amber"
+        @click="trackPlausibleEvent('Close Incident')"
+      >
+        <ArrowLeft :size="14" aria-hidden="true" />
+        {{ t('backToDossier') }}
+      </NuxtLink>
+    </p>
 
-    <article
-      ref="panel"
-      role="dialog"
-      aria-modal="true"
-      :aria-label="`${t('incidentRecord')} — ${L(incident.org)}`"
-      class="card relative flex h-full max-h-none w-full max-w-none flex-col overflow-hidden rounded-none sm:h-auto sm:max-h-[min(90vh,880px)] sm:max-w-[680px] sm:rounded"
-    >
-      <header class="flex shrink-0 items-center gap-2 border-b border-hairline px-4 py-3 pt-[max(0.75rem,env(safe-area-inset-top))] sm:px-7">
-        <p class="eyebrow mr-auto">{{ t('incidentRecord') }}</p>
-        <button
-          type="button"
-          class="grid h-11 w-11 place-items-center rounded border border-hairline text-ink-2 transition-colors enabled:hover:text-ink disabled:opacity-35 sm:h-9 sm:w-9"
-          :disabled="!hasPrevious"
-          :aria-label="t('previousIncident')"
-          @click="emit('previous')"
-        >
-          <ChevronLeft :size="15" />
-        </button>
-        <button
-          type="button"
-          class="grid h-11 w-11 place-items-center rounded border border-hairline text-ink-2 transition-colors enabled:hover:text-ink disabled:opacity-35 sm:h-9 sm:w-9"
-          :disabled="!hasNext"
-          :aria-label="t('nextIncident')"
-          @click="emit('next')"
-        >
-          <ChevronRight :size="15" />
-        </button>
-        <button
-          ref="closeButton"
-          type="button"
-          class="grid h-11 w-11 place-items-center rounded border border-hairline text-ink-2 transition-colors hover:border-hairline-strong hover:text-ink sm:h-9 sm:w-9"
-          :aria-label="t('close')"
-          @click="emit('close')"
-        >
-          <X :size="15" />
-        </button>
-      </header>
-
-      <div ref="body" class="overflow-y-auto px-4 pb-[max(2rem,env(safe-area-inset-bottom))] pt-6 sm:px-7 sm:pb-8">
-        <div class="flex items-start gap-4">
-          <OrgLogo :org="L(incident.org)" :size="52" />
-          <div class="min-w-0">
-            <p class="eyebrow tabular">{{ formatDate(incident.date, locale) }}</p>
-            <h2 class="mt-1.5 font-display text-2xl leading-tight text-ink sm:text-3xl">{{ L(incident.org) }}</h2>
-            <p class="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.8125rem] text-ink-2">
-              <component :is="incident.kind === 'government' ? Landmark : Building2" :size="13" aria-hidden="true" />
-              {{ t(incident.kind === 'government' ? 'government' : 'company') }}
-              <span class="text-hairline-strong" aria-hidden="true">/</span>
-              {{ sectorLabel(incident.sector) }}
-            </p>
-          </div>
-        </div>
-
-        <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
+    <header class="mt-8 flex items-start gap-5 sm:gap-6">
+      <OrgLogo :org="L(incident.org)" :incident="incident" :size="88" />
+      <div class="min-w-0 pt-0.5">
+        <p class="eyebrow tabular">{{ formatDate(incident.date, locale) }}</p>
+        <h1 class="mt-1.5 font-display text-[1.75rem] leading-[1.12] text-ink sm:text-4xl lg:text-[2.75rem]">
+          {{ L(incident.org) }}
+        </h1>
+        <p class="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.8125rem] text-ink-2">
+          <component :is="incident.kind === 'government' ? Landmark : Building2" :size="13" aria-hidden="true" />
+          {{ t(incident.kind === 'government' ? 'government' : 'company') }}
+          <span class="text-hairline-strong" aria-hidden="true">/</span>
+          {{ sectorLabel(incident.sector) }}
+        </p>
+        <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
           <SeverityMark :severity="incident.severity" />
           <StatusStamp :status="incident.status" />
         </div>
+      </div>
+    </header>
 
-        <div
-          v-if="incident.status !== 'confirmed'"
-          class="mt-6 flex gap-3 rounded border border-amber/40 bg-amber/8 p-4"
+    <div
+      v-if="incident.status !== 'confirmed'"
+      class="mt-8 flex gap-3 rounded border border-amber/40 bg-amber/8 p-4"
+      role="note"
+    >
+      <TriangleAlert :size="17" class="mt-0.5 shrink-0 text-amber" aria-hidden="true" />
+      <p class="text-[0.875rem] leading-relaxed text-ink-2">
+        {{ incident.status === 'disputed' ? t('disputedWarning') : t('unknownWarning') }}
+      </p>
+    </div>
+
+    <div class="mt-10 grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-14 xl:grid-cols-[minmax(0,1fr)_22rem] xl:gap-16">
+      <div>
+        <p class="max-w-[62ch] text-base leading-relaxed text-ink-2 sm:text-lg">{{ L(detail.lead) }}</p>
+
+        <section
+          v-if="detail.timeline.length"
+          class="mt-12 border-t border-hairline pt-8"
+          :aria-labelledby="`timeline-${incident.id}`"
+        >
+          <h2 :id="`timeline-${incident.id}`" class="font-display text-2xl leading-tight text-ink">
+            {{ t('recordTimeline') }}
+          </h2>
+          <ol class="mt-5 space-y-4">
+            <li
+              v-for="entry in detail.timeline"
+              :key="`${entry.date}-${entry.label.en}`"
+              class="grid gap-1 sm:grid-cols-[8.5rem_1fr] sm:gap-6"
+            >
+              <time class="eyebrow tabular text-amber" :datetime="entry.date">{{ formatDate(entry.date, locale) }}</time>
+              <p class="text-[0.9375rem] leading-relaxed text-ink-2">{{ L(entry.label) }}</p>
+            </li>
+          </ol>
+        </section>
+
+        <section class="mt-12 border-t border-hairline pt-8">
+          <h2 class="font-display text-2xl leading-tight text-ink">{{ t('howItHappened') }}</h2>
+          <p class="mt-4 max-w-[62ch] text-[0.9375rem] leading-relaxed text-ink-2">{{ L(detail.how) }}</p>
+        </section>
+
+        <section class="mt-12 border-t border-hairline pt-8">
+          <h2 class="font-display text-2xl leading-tight text-ink">{{ t('whatWasTaken') }}</h2>
+          <p class="mt-4 max-w-[62ch] text-[0.9375rem] leading-relaxed text-ink-2">{{ L(detail.taken) }}</p>
+        </section>
+
+        <section class="mt-12 border-t border-hairline pt-8">
+          <h2 class="font-display text-2xl leading-tight text-ink">{{ t('whatWasNotTaken') }}</h2>
+          <p class="mt-4 max-w-[62ch] text-[0.9375rem] leading-relaxed text-ink-2">{{ L(detail.notTaken) }}</p>
+        </section>
+
+        <section class="mt-12 border-t border-hairline pt-8">
+          <h2 class="font-display text-2xl leading-tight text-ink">{{ t('risk') }}</h2>
+          <p class="mt-4 max-w-[62ch] text-[0.9375rem] leading-relaxed text-ink-2">{{ L(incident.risk) }}</p>
+        </section>
+
+        <section class="mt-12 border-t border-hairline pt-8">
+          <h2 class="font-display text-2xl leading-tight text-ink">{{ t('officialResponse') }}</h2>
+          <p class="mt-4 max-w-[62ch] text-[0.9375rem] leading-relaxed text-ink-2">{{ L(detail.response) }}</p>
+        </section>
+
+        <section
+          v-if="detail.attackerClaim"
+          class="mt-12 flex gap-3 rounded border border-dashed border-amber/50 bg-amber/8 p-5"
           role="note"
         >
           <TriangleAlert :size="17" class="mt-0.5 shrink-0 text-amber" aria-hidden="true" />
-          <p class="text-[0.875rem] leading-relaxed text-ink-2">
-            {{ incident.status === 'disputed' ? t('disputedWarning') : t('unknownWarning') }}
-          </p>
-        </div>
+          <div>
+            <p class="eyebrow text-amber">{{ t('attackerClaim') }}</p>
+            <p class="mt-2 text-[0.9375rem] leading-relaxed text-ink-2">{{ L(detail.attackerClaim) }}</p>
+          </div>
+        </section>
 
-        <section class="mt-7 border-t border-hairline pt-5">
+        <section v-if="terms.length" class="mt-12 border-t border-hairline pt-8">
+          <h2 class="font-display text-2xl leading-tight text-ink">{{ t('whatDoesThisMean') }}</h2>
+          <dl class="mt-5 grid gap-3 sm:grid-cols-2">
+            <div v-for="term in terms" :key="term.id" class="rounded border border-hairline bg-surface-2 p-3.5">
+              <dt class="font-mono text-[0.75rem] uppercase tracking-wider text-amber">{{ L(term.term) }}</dt>
+              <dd class="mt-1.5 text-[0.875rem] leading-relaxed text-ink-2">{{ L(term.definition) }}</dd>
+            </div>
+          </dl>
+        </section>
+      </div>
+
+      <aside class="lg:sticky lg:top-24">
+        <div class="rounded border border-hairline bg-surface-1 p-5 sm:p-6">
           <p class="eyebrow mb-2">{{ t('affected') }}</p>
           <p
             class="font-display leading-snug"
@@ -158,46 +201,42 @@ onMounted(async () => {
           <p v-if="!isUnknownCount" class="mt-2 text-sm leading-relaxed text-muted">
             {{ L(incident.affectedLabel) }}
           </p>
-        </section>
+        </div>
 
-        <section v-for="section in sections" :key="section.key" class="mt-6 border-t border-hairline pt-5">
-          <p class="eyebrow mb-2.5">{{ t(section.key) }}</p>
-          <p class="text-[0.9375rem] leading-relaxed text-ink-2">{{ section.text }}</p>
-        </section>
+        <div class="mt-4 rounded border border-hairline bg-surface-1 p-5 sm:p-6">
+          <p class="eyebrow mb-3">{{ t('methodDisclosure') }}</p>
+          <span :class="disclosureStamp[detail.methodDisclosure]">
+            {{ t(disclosureLabel[detail.methodDisclosure]) }}
+          </span>
+        </div>
 
-        <section class="mt-6 border-t border-hairline pt-5">
+        <div class="mt-4 rounded border border-hairline bg-surface-1 p-5 sm:p-6">
           <p class="eyebrow mb-2.5">{{ t('confidence') }}</p>
-          <p class="text-[0.9375rem] leading-relaxed text-ink-2">{{ L(incident.confidence) }}</p>
+          <p class="text-[0.875rem] leading-relaxed text-ink-2">{{ L(incident.confidence) }}</p>
+        </div>
+
+        <section class="mt-4 rounded border border-hairline bg-surface-1 p-5 sm:p-6">
+          <h2 class="eyebrow mb-3">{{ t('citedSources') }}</h2>
+          <ul class="space-y-3">
+            <li v-for="source in citedSources" :key="source.id">
+              <a
+                :href="source.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="link-underline inline-flex items-start gap-2 text-[0.8125rem] leading-relaxed text-ink hover:text-amber"
+              >
+                {{ source.name }}
+                <ExternalLink :size="13" class="mt-0.5 shrink-0" aria-hidden="true" />
+                <span class="sr-only">({{ t('opensNewTab') }})</span>
+              </a>
+            </li>
+          </ul>
         </section>
 
-        <section v-if="terms.length" class="mt-6 border-t border-hairline pt-5">
-          <p class="eyebrow mb-3">{{ t('whatDoesThisMean') }}</p>
-          <dl class="space-y-3">
-            <div v-for="term in terms" :key="term.id" class="rounded border border-hairline bg-surface-2 p-3.5">
-              <dt class="font-mono text-[0.75rem] uppercase tracking-wider text-amber">{{ L(term.term) }}</dt>
-              <dd class="mt-1.5 text-[0.875rem] leading-relaxed text-ink-2">{{ L(term.definition) }}</dd>
-            </div>
-          </dl>
-        </section>
-
-        <section class="mt-6 border-t border-hairline pt-5">
-          <p class="eyebrow mb-2.5">{{ t('source') }}</p>
-          <a
-            :href="incident.sourceUrl"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="link-underline inline-flex items-start gap-2 text-[0.9375rem] leading-relaxed text-ink hover:text-amber"
-          >
-            {{ incident.sourceName }}
-            <ExternalLink :size="14" class="mt-1 shrink-0" aria-hidden="true" />
-            <span class="sr-only">({{ t('opensNewTab') }})</span>
-          </a>
-        </section>
-
-        <div class="no-print mt-8 flex flex-wrap gap-2 border-t border-hairline pt-5">
+        <div class="no-print mt-4 flex flex-wrap gap-2">
           <button
             type="button"
-            class="inline-flex items-center gap-2 rounded border border-hairline px-3.5 py-2 text-[0.8125rem] text-ink-2 transition-colors hover:border-hairline-strong hover:text-ink"
+            class="inline-flex h-11 flex-1 items-center justify-center gap-2 rounded border border-hairline px-3.5 text-[0.8125rem] text-ink-2 transition-colors hover:border-hairline-strong hover:text-ink sm:h-9"
             @click="copyLink(); trackPlausibleEvent('Copy Link', { id: incident.id })"
           >
             <component :is="copied ? Check : Link2" :size="14" aria-hidden="true" />
@@ -205,14 +244,37 @@ onMounted(async () => {
           </button>
           <button
             type="button"
-            class="inline-flex items-center gap-2 rounded border border-hairline px-3.5 py-2 text-[0.8125rem] text-ink-2 transition-colors hover:border-hairline-strong hover:text-ink"
+            class="inline-flex h-11 flex-1 items-center justify-center gap-2 rounded border border-hairline px-3.5 text-[0.8125rem] text-ink-2 transition-colors hover:border-hairline-strong hover:text-ink sm:h-9"
             @click="printRecord(); trackPlausibleEvent('Print Incident', { id: incident.id })"
           >
             <Printer :size="14" aria-hidden="true" />
             {{ t('print') }}
           </button>
         </div>
-      </div>
-    </article>
-  </div>
+      </aside>
+    </div>
+
+    <div class="no-print mt-14 flex flex-wrap items-center gap-2 border-t border-hairline pt-6">
+      <button
+        type="button"
+        class="inline-flex h-11 items-center gap-2 rounded border border-hairline px-3.5 text-[0.8125rem] text-ink-2 transition-colors hover:border-hairline-strong hover:text-ink sm:h-9"
+        :disabled="!previous"
+        :aria-label="t('previousIncident')"
+        @click="step(-1)"
+      >
+        <ChevronLeft :size="15" />
+        <span class="hidden sm:inline">{{ previous ? L(previous.org) : t('previousIncident') }}</span>
+      </button>
+      <button
+        type="button"
+        class="inline-flex h-11 items-center gap-2 rounded border border-hairline px-3.5 text-[0.8125rem] text-ink-2 transition-colors hover:border-hairline-strong hover:text-ink sm:h-9"
+        :disabled="!next"
+        :aria-label="t('nextIncident')"
+        @click="step(1)"
+      >
+        <span class="hidden sm:inline">{{ next ? L(next.org) : t('nextIncident') }}</span>
+        <ChevronRight :size="15" />
+      </button>
+    </div>
+  </article>
 </template>

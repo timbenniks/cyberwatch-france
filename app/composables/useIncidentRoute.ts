@@ -1,8 +1,8 @@
 import type { Incident } from '~/types/cyberwatch'
 
 /**
- * The open record is derived from the URL, so a prerendered /incident/:id page
- * ships the record in its HTML and a click merely changes the address.
+ * Opening a record is a real navigation to `/incident/:id` (or `/fr/incident/:id`).
+ * Prev/next step through the filtered set when the reader came from the timeline.
  */
 export function useIncidentRoute() {
   const route = useRoute()
@@ -10,7 +10,12 @@ export function useIncidentRoute() {
   const { incidents } = useCyberData()
   const { filtered } = useFilters()
 
-  const selected = computed(() => incidents.value.find((incident) => incident.id === route.params.id) ?? null)
+  const selectedId = computed(() => {
+    const id = route.params.id
+    return typeof id === 'string' ? id : Array.isArray(id) ? id[0] : undefined
+  })
+
+  const selected = computed(() => incidents.value.find((incident) => incident.id === selectedId.value) ?? null)
 
   /** Step through what the reader is currently looking at, not the whole set. */
   const navigable = computed(() => (filtered.value.length ? filtered.value : incidents.value))
@@ -32,16 +37,17 @@ export function useIncidentRoute() {
     if (next) open(next)
   }
 
-  /** A link to an id that isn't in the dataset falls back to the overview. */
-  watch([selected, incidents], () => {
-    if (route.params.id && incidents.value.length && !selected.value) close()
-  })
-
   return {
     selected,
     navigable,
     hasPrevious: computed(() => selectedIndex.value > 0),
     hasNext: computed(() => selectedIndex.value > -1 && selectedIndex.value < navigable.value.length - 1),
+    previous: computed(() => (selectedIndex.value > 0 ? navigable.value[selectedIndex.value - 1] : undefined)),
+    next: computed(() =>
+      selectedIndex.value > -1 && selectedIndex.value < navigable.value.length - 1
+        ? navigable.value[selectedIndex.value + 1]
+        : undefined,
+    ),
     open,
     close,
     step,

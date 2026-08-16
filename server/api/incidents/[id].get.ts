@@ -1,7 +1,6 @@
-import { incidents, isLocale, localizeIncident, meta } from '~~/server/utils/dataset'
-import { dataset } from '~~/server/utils/dataset'
+import { dataset, incidents, isLocale, localizeIncident, meta, sourcesFor } from '~~/server/utils/dataset'
 
-/** GET /api/incidents/:id — one record, plus its full source entry. */
+/** GET /api/incidents/:id — one record, plus every cited source. */
 export default defineEventHandler((event) => {
   const id = getRouterParam(event, 'id')
   const query = getQuery(event)
@@ -16,9 +15,12 @@ export default defineEventHandler((event) => {
     })
   }
 
+  const cited = sourcesFor(incident)
+
   return {
     meta: { ...meta, lang },
     incident: localizeIncident(incident, lang),
-    source: dataset.sources.find((source) => source.id === incident.sourceId) ?? null,
+    source: cited[0] ?? dataset.sources.find((source) => source.id === incident.sourceId) ?? null,
+    sources: cited,
   }
 })

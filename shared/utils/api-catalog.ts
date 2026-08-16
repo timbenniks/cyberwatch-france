@@ -64,8 +64,8 @@ export const apiEndpoints: ApiEndpointDoc[] = [
       {
         name: 'q',
         detail: {
-          en: 'Full-text across organisation, sector, method, data, risk, confidence and source.',
-          fr: 'Recherche plein texte sur l’organisation, le secteur, la méthode, les données, le risque, la confiance et la source.',
+          en: 'Full-text across organisation, sector, method, data, risk, confidence, source and the longer incident-page fields.',
+          fr: 'Recherche plein texte sur l’organisation, le secteur, la méthode, les données, le risque, la confiance, la source et les champs longs de la fiche.',
         },
       },
       { name: 'kind', detail: { en: 'government | company', fr: 'government | company' } },
@@ -94,8 +94,8 @@ export const apiEndpoints: ApiEndpointDoc[] = [
   {
     path: '/api/incidents/{id}',
     description: {
-      en: 'One incident with its source. Unknown ids return 404 and list the valid ones.',
-      fr: 'Un incident avec sa source. Un identifiant inconnu renvoie 404 et la liste des identifiants valides.',
+      en: 'One incident with its localized `detail` (lead, timeline, how, taken, notTaken, response, methodDisclosure) plus `source` and `sources`. Unknown ids return 404 and list the valid ones. CSV is not offered here; list CSV stays compact and still leaves unknown `affected` empty.',
+      fr: 'Un incident avec son `detail` localisé (lead, timeline, how, taken, notTaken, response, methodDisclosure) plus `source` et `sources`. Un identifiant inconnu renvoie 404 et la liste des identifiants valides. Pas de CSV ici ; le CSV de la liste reste compact et laisse `affected` inconnu vide.',
     },
     query: [{ name: 'lang', detail: { en: 'en | fr', fr: 'en | fr' } }],
     examples: ['/api/incidents/ants'],

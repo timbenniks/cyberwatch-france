@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.1.0",
+  "schemaVersion": "1.2.0",
   "project": {
     "name": "France Cyberwatch 2025-2026",
     "defaultLocale": "en",
@@ -154,6 +154,71 @@
       "id": "sante",
       "name": "Sante publique France contractor breach reporting",
       "url": "https://www.e-sante.fr/cyberattaque-chez-sante-publique-france-les-donnees-de-contact-de-80-000-usagers-piratees/actualite/744070"
+    },
+    {
+      "id": "orangeFollowup",
+      "name": "ZDNet — Orange later confirmed a limited data leak",
+      "url": "https://www.zdnet.fr/actualites/la-cyberattaque-dorange-se-solde-finalement-par-une-fuite-de-donnees-480732.htm"
+    },
+    {
+      "id": "bouyguesFaq",
+      "name": "Bouygues Telecom — customer FAQ on the August 2025 attack",
+      "url": "https://mag.bouyguestelecom.fr/cybersecurite/cyberattaque-fuite-de-donnees-questions/"
+    },
+    {
+      "id": "bouyguesCybermalveillance",
+      "name": "Cybermalveillance.gouv.fr — Bouygues Telecom breach advice",
+      "url": "https://www.cybermalveillance.gouv.fr/tous-nos-contenus/actualites/violation-de-donnees-personnelles-bouygues-telecom-202508"
+    },
+    {
+      "id": "airfranceBleeping",
+      "name": "BleepingComputer — Air France and KLM third-party breach",
+      "url": "https://www.bleepingcomputer.com/news/security/air-france-and-klm-disclose-data-breaches-impacting-customers/"
+    },
+    {
+      "id": "eurofiberInitial",
+      "name": "Eurofiber France — 13 November incident announcement",
+      "url": "https://www.eurofiber.com/fr-fr/actualites/incident-de-cybersecurite-chez-eurofiber-france"
+    },
+    {
+      "id": "interiorFrance24",
+      "name": "France 24 — Interior Ministry, tens of files extracted",
+      "url": "https://www.france24.com/fr/info-en-continu/20251217-des-dizaines-de-fichiers-sensibles-du-ministere-de-l-interieur-voles-lors-dune-attaque-informatique"
+    },
+    {
+      "id": "ficobaFaq",
+      "name": "DGFiP — FICOBA victim FAQ, 27 February 2026",
+      "url": "https://www.impots.gouv.fr/sites/default/files/media/2_actu/home/2026/faq_ficoba.pdf"
+    },
+    {
+      "id": "antsBfmtv",
+      "name": "BFMTV — what is known about the ANTS incident",
+      "url": "https://www.bfmtv.com/tech/cybersecurite/11-7-millions-de-comptes-touches-fuite-de-donnees-ce-que-l-on-sait-de-l-attaque-informatique-ayant-vise-l-ants_AV-202604220198.html"
+    },
+    {
+      "id": "cevaTechcrunch",
+      "name": "TechCrunch — CEVA Logistics warehouse breach",
+      "url": "https://techcrunch.com/2026/08/10/a-data-breach-at-shipping-giant-ceva-logistics-is-rippling-across-banks-retailers-steam-gamers-and-beyond/"
+    },
+    {
+      "id": "cevaValve",
+      "name": "BleepingComputer — Valve notice to Steam hardware customers",
+      "url": "https://www.bleepingcomputer.com/news/security/valve-notifies-steam-hardware-customers-of-a-data-breach/"
+    },
+    {
+      "id": "santeFranceinfo",
+      "name": "franceinfo — Santé publique France contractor breach",
+      "url": "https://www.franceinfo.fr/internet/securite-sur-internet/cyberattaques/un-prestataire-de-sante-publique-france-victime-d-une-cyberattaque-pres-de-80-000-donnees-de-contact-concernees_8146196.html"
+    },
+    {
+      "id": "dgfipBriefing",
+      "name": "Le Figaro — DGFiP briefing on the 678,000-account intrusion",
+      "url": "https://www.lefigaro.fr/conjoncture/piratage-de-l-administration-fiscale-la-dgfip-revele-les-contours-du-vol-de-donnees-de-678-000-comptes-20260814"
+    },
+    {
+      "id": "eduCompasBfmtv",
+      "name": "BFMTV — COMPAS, 243,000 education staff",
+      "url": "https://www.bfmtv.com/tech/cybersecurite/a-cause-de-l-usurpation-d-un-compte-externe-les-donnees-personnelles-de-243-000-agents-de-l-education-nationale-essentiellement-des-enseignants-ont-ete-piratees_AD-202603240371.html"
     }
   ],
   "incidents": [
@@ -172,16 +237,16 @@
       "status": "confirmed",
       "affected": null,
       "affectedLabel": {
-        "en": "No confirmed data exfiltration",
-        "fr": "Aucune exfiltration de données confirmée"
+        "en": "Limited internal files later reported leaked; customer data not confirmed stolen",
+        "fr": "Fichiers internes limités ensuite signalés comme divulgués ; vol de données clients non confirmé"
       },
       "data": {
-        "en": "Business management platforms and some consumer services disrupted. Orange said it had no evidence of customer or internal data exfiltration at that stage.",
-        "fr": "Des plateformes de gestion entreprises et certains services grand public ont été perturbés. Orange indiquait ne disposer d’aucun élément montrant une exfiltration de données clients ou internes à ce stade."
+        "en": "Business management platforms and some consumer services were disrupted. Orange first said it had no evidence of customer or internal data exfiltration; later reporting and a spokesperson described a limited leak of outdated or low-sensitivity internal files, not a confirmed customer-database theft.",
+        "fr": "Des plateformes de gestion entreprises et certains services grand public ont été perturbés. Orange indiquait d’abord ne disposer d’aucun élément d’exfiltration ; des articles et un porte-parole ont ensuite décrit une fuite limitée de fichiers internes anciens ou peu sensibles, sans vol confirmé d’une base clients."
       },
       "method": {
-        "en": "Cyberattack on an information system; detailed entry route not publicly disclosed.",
-        "fr": "Cyberattaque d’un système d’information; voie d’entrée détaillée non rendue publique."
+        "en": "Cyberattack on an information system; the initial access route has not been published.",
+        "fr": "Cyberattaque d’un système d’information ; la voie d’accès initiale n’a pas été publiée."
       },
       "risk": {
         "en": "Service disruption and uncertainty while forensic investigation was underway.",
@@ -189,14 +254,65 @@
       },
       "sourceName": "Orange",
       "confidence": {
-        "en": "Official company disclosure",
-        "fr": "Communication officielle de l’entreprise"
+        "en": "Official company disclosure, later qualified by a spokesperson on a limited internal leak",
+        "fr": "Communication officielle de l’entreprise, ensuite précisée par un porte-parole sur une fuite interne limitée"
       },
       "sourceId": "orange",
       "sourceUrl": "https://www.orange.com/en/press-release/the-orange-group-announces-that-it-filed-a-complaint-on-monday-28-july-concerning-a-security-incident-on-one-of-its-information-systems-307434",
       "logo": {
         "domain": "orange.com",
-        "strategy": "domain-favicon-or-official-logo"
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "orange.svg"
+      },
+      "sourceIds": [
+        "orange",
+        "orangeFollowup"
+      ],
+      "detail": {
+        "lead": {
+          "en": "On 25 July 2025 Orange detected a cyberattack on one of its information systems. Isolation of affected platforms disrupted some business-management tools and a few consumer services in France. The company later said a limited set of outdated or low-sensitivity internal files had been taken; it did not confirm theft of customer data in this France incident.",
+          "fr": "Le 25 juillet 2025, Orange a détecté une cyberattaque sur l’un de ses systèmes d’information. L’isolement des plateformes concernées a perturbé certains outils de gestion entreprises et quelques services grand public en France. L’entreprise a ensuite indiqué qu’un ensemble limité de fichiers internes anciens ou peu sensibles avait été emporté ; elle n’a pas confirmé de vol de données clients dans cet incident français."
+        },
+        "timeline": [
+          {
+            "date": "2025-07-25",
+            "label": {
+              "en": "Orange detects the attack.",
+              "fr": "Orange détecte l’attaque."
+            }
+          },
+          {
+            "date": "2025-07-28",
+            "label": {
+              "en": "Press release: isolation of platforms, complaint filed, no evidence of exfiltration at that stage.",
+              "fr": "Communiqué : isolement des plateformes, plainte déposée, aucun élément d’exfiltration à ce stade."
+            }
+          },
+          {
+            "date": "2025-08-22",
+            "label": {
+              "en": "Press reports a later leak of internal files; a spokesperson described limited access to outdated or low-sensitivity data. A separate Orange Belgium incident is not this record.",
+              "fr": "La presse fait état d’une fuite ultérieure de fichiers internes ; un porte-parole décrit un accès limité à des données anciennes ou peu sensibles. L’incident distinct d’Orange Belgique n’est pas cette fiche."
+            }
+          }
+        ],
+        "how": {
+          "en": "Orange has not published the initial access route, citing the investigation. The 28 July statement says isolation of potentially affected services caused the disruption. Later reporting attributed a dark-web leak of internal documents to a criminal group; Orange did not name an entry vector in the cited sources.",
+          "fr": "Orange n’a pas publié la voie d’accès initiale, invoquant l’enquête. Le communiqué du 28 juillet indique que l’isolement des services potentiellement concernés a causé la perturbation. Des articles ultérieurs ont attribué une fuite de documents internes sur le dark web à un groupe criminel ; Orange ne nomme pas de vecteur d’entrée dans les sources citées."
+        },
+        "taken": {
+          "en": "At disclosure: no confirmed customer or internal data exfiltration. In August, reporting and a company spokesperson described a limited volume of outdated or low-sensitivity internal files. Customer personal data in this France incident was not confirmed stolen.",
+          "fr": "Au moment du communiqué : aucune exfiltration confirmée de données clients ou internes. En août, la presse et un porte-parole ont décrit un volume limité de fichiers internes anciens ou peu sensibles. Le vol de données personnelles de clients dans cet incident français n’a pas été confirmé."
+        },
+        "notTaken": {
+          "en": "Orange did not report passwords, payment cards or a confirmed customer-database theft in this France incident. Orange Belgium’s later 850,000-account notice is a separate event and is not counted here.",
+          "fr": "Orange n’a pas signalé de vol de mots de passe, de cartes bancaires ni d’une base clients confirmée dans cet incident français. L’avis ultérieur d’Orange Belgique concernant 850 000 comptes est un événement distinct et n’est pas compté ici."
+        },
+        "response": {
+          "en": "Orange Cyberdefense isolated affected services, filed a complaint, and notified the authorities. Main disrupted services were to be restored under heightened watch by 30 July. The company said it would not comment further for security reasons.",
+          "fr": "Orange Cyberdefense a isolé les services concernés, déposé plainte et alerté les autorités. Les principaux services perturbés devaient être rétablis sous vigilance renforcée d’ici le 30 juillet. L’entreprise a indiqué ne pas commenter davantage pour des raisons de sécurité."
+        },
+        "methodDisclosure": "undisclosed"
       }
     },
     {
@@ -238,7 +354,44 @@
       "sourceUrl": "https://www.itpro.com/security/data-breaches/air-france-and-klm-confirm-customer-data-stolen-in-third-party-breach",
       "logo": {
         "domain": "airfrance.com",
-        "strategy": "domain-favicon-or-official-logo"
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "airfrance.svg"
+      },
+      "sourceIds": [
+        "airfrance",
+        "airfranceBleeping"
+      ],
+      "detail": {
+        "lead": {
+          "en": "In early August 2025 Air France and KLM said unusual activity on an external customer-service platform used by their contact centres had given unauthorised access to some customer data. Internal airline systems were not affected. The number of people is unpublished.",
+          "fr": "Début août 2025, Air France et KLM ont indiqué qu’une activité inhabituelle sur une plateforme externe de service client utilisée par leurs centres de contact avait permis un accès non autorisé à certaines données clients. Les systèmes internes des compagnies n’étaient pas concernés. Le nombre de personnes n’est pas publié."
+        },
+        "timeline": [
+          {
+            "date": "2025-08-06",
+            "label": {
+              "en": "The airlines disclose unauthorised access on a third-party contact-centre platform and say they have cut it off.",
+              "fr": "Les compagnies rendent public un accès non autorisé sur une plateforme tierce de centres de contact et indiquent l’avoir coupé."
+            }
+          }
+        ],
+        "how": {
+          "en": "The airlines said attackers reached a third-party platform used by contact centres, not Air France or KLM’s own networks. They did not name the vendor. Security reporting linked the incident to a wider wave of social-engineering attacks on third-party CRM platforms; the companies would not confirm that account when asked.",
+          "fr": "Les compagnies ont indiqué que les attaquants avaient atteint une plateforme tierce utilisée par les centres de contact, et non leurs propres réseaux. Elles n’ont pas nommé le prestataire. La presse spécialisée a rattaché l’incident à une vague plus large d’ingénierie sociale contre des plateformes CRM tierces ; les compagnies n’ont pas confirmé cette lecture."
+        },
+        "taken": {
+          "en": "Names, contact details, Flying Blue membership number and status, and the subject of customer-service requests. Some notices also mentioned related agent notes.",
+          "fr": "Noms, coordonnées, numéro et statut Flying Blue, et l’objet des demandes au service client. Certaines notifications mentionnent aussi des notes d’agents associées."
+        },
+        "notTaken": {
+          "en": "Passwords, passport numbers, payment-card data, travel itineraries and Flying Blue mileage balances were reported unaffected.",
+          "fr": "Les mots de passe, numéros de passeport, données de cartes bancaires, itinéraires de voyage et soldes de miles Flying Blue n’étaient pas concernés, selon les compagnies."
+        },
+        "response": {
+          "en": "Access was cut with the external party. Air France notified the CNIL; KLM notified the Dutch data-protection authority. Affected customers were told to watch for phishing emails and calls.",
+          "fr": "L’accès a été coupé avec le prestataire. Air France a notifié la CNIL ; KLM, l’autorité néerlandaise. Les clients concernés ont été invités à la vigilance face aux e-mails et appels d’hameçonnage."
+        },
+        "methodDisclosure": "partial"
       }
     },
     {
@@ -280,7 +433,52 @@
       "sourceUrl": "https://www.corporate.bouyguestelecom.fr/archives-communique-presse/bouygues-telecom-annonce-avoir-ete-victime-dune-cyberattaque/",
       "logo": {
         "domain": "bouyguestelecom.fr",
-        "strategy": "domain-favicon-or-official-logo"
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "bouygues.svg"
+      },
+      "sourceIds": [
+        "bouygues",
+        "bouyguesFaq",
+        "bouyguesCybermalveillance"
+      ],
+      "detail": {
+        "lead": {
+          "en": "Bouygues Telecom detected a cyberattack on 4 August 2025 that gave unauthorised access to personal data on 6.4 million customer accounts, including IBANs. Passwords and payment-card numbers were not reported exposed. The company has not published how the attackers first got in.",
+          "fr": "Bouygues Telecom a détecté le 4 août 2025 une cyberattaque ayant permis l’accès non autorisé aux données personnelles de 6,4 millions de comptes clients, dont des IBAN. Les mots de passe et numéros de carte n’étaient pas signalés comme exposés. L’opérateur n’a pas publié comment les attaquants sont entrés."
+        },
+        "timeline": [
+          {
+            "date": "2025-08-04",
+            "label": {
+              "en": "Attack detected.",
+              "fr": "Attaque détectée."
+            }
+          },
+          {
+            "date": "2025-08-06",
+            "label": {
+              "en": "Public disclosure: 6.4 million accounts, CNIL notified, complaint filed, customers emailed or texted.",
+              "fr": "Annonce publique : 6,4 millions de comptes, CNIL notifiée, plainte déposée, clients informés par e-mail ou SMS."
+            }
+          }
+        ],
+        "how": {
+          "en": "The operator described unauthorised access that its technical teams stopped. Neither the press release nor the customer FAQ names an initial access route, a vulnerability or an attacker.",
+          "fr": "L’opérateur décrit un accès non autorisé stoppé par ses équipes techniques. Ni le communiqué ni la FAQ client ne nomment de voie d’accès initiale, de vulnérabilité ou d’attaquant."
+        },
+        "taken": {
+          "en": "Contact details; civil-status data (or, for professionals, company identity including SIREN in the Cybermalveillance summary); contract information; BIC and IBAN. Cybermalveillance.gouv.fr notes that Bouygues Business/Pro division customers were not in scope of that advice page.",
+          "fr": "Coordonnées ; état civil (ou, pour les professionnels, identité de l’entreprise dont le SIREN dans la synthèse Cybermalveillance) ; données contractuelles ; BIC et IBAN. Cybermalveillance.gouv.fr précise que les clients de la division Entreprises n’étaient pas concernés par cette fiche de conseils."
+        },
+        "notTaken": {
+          "en": "Bouygues Telecom account passwords and payment-card numbers were not reported exposed.",
+          "fr": "Les mots de passe des comptes Bouygues Telecom et les numéros de carte bancaire n’étaient pas signalés comme exposés."
+        },
+        "response": {
+          "en": "The operator said the situation was contained, notified the CNIL, filed a complaint, and messaged affected customers. A FAQ explains IBAN risk (convincing scams, not automatic debit) and points people to their bank and the 13-month objection window for unauthorised direct debits.",
+          "fr": "L’opérateur indique avoir contenu l’attaque, notifié la CNIL, déposé plainte et informé les clients. Une FAQ explique le risque IBAN (arnaques crédibles, pas un débit automatique) et renvoie vers la banque et le délai de 13 mois pour contester un prélèvement non autorisé."
+        },
+        "methodDisclosure": "undisclosed"
       }
     },
     {
@@ -322,7 +520,50 @@
       "sourceUrl": "https://www.01net.com/actualites/cyberattaque-inquietante-france-donnees-medicales-auraient-piratees-23-000-professionnels-sante-paralyses.html",
       "logo": {
         "domain": "weda.fr",
-        "strategy": "domain-favicon-or-official-logo"
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "weda.svg"
+      },
+      "sourceIds": [
+        "weda"
+      ],
+      "detail": {
+        "lead": {
+          "en": "On the night of 10 November 2025 the medical software publisher Weda detected an intrusion, took the platform offline, and left about 23,000 health professionals without their usual records and billing tools for several days. Weda told users malicious access may have allowed a partial extraction; the exact patient-data scope was not established in the cited reporting.",
+          "fr": "Dans la nuit du 10 novembre 2025, l’éditeur de logiciel médical Weda a détecté une intrusion, coupé la plateforme et laissé environ 23 000 professionnels de santé sans leurs dossiers et outils de facturation habituels pendant plusieurs jours. Weda a indiqué aux utilisateurs que des accès malveillants avaient pu permettre une extraction partielle ; le périmètre précis des données patients n’était pas établi dans la source citée."
+        },
+        "timeline": [
+          {
+            "date": "2025-11-10",
+            "label": {
+              "en": "Intrusion detected; platform suspended.",
+              "fr": "Intrusion détectée ; plateforme suspendue."
+            }
+          },
+          {
+            "date": "2025-11-14",
+            "label": {
+              "en": "Degraded access restored in the morning so clinicians could again see basic patient records.",
+              "fr": "Accès dégradé rétabli le matin pour permettre de consulter à nouveau les dossiers patients de base."
+            }
+          }
+        ],
+        "how": {
+          "en": "Weda described a detected intrusion or attempted intrusion and then isolated systems. The cited communications do not name an initial access vector, a vulnerability or an attacker.",
+          "fr": "Weda décrit une intrusion ou tentative d’intrusion détectée, puis l’isolement des systèmes. Les communications citées ne nomment ni voie d’accès initiale, ni vulnérabilité, ni attaquant."
+        },
+        "taken": {
+          "en": "Weda told clients that malicious access may have allowed a partial extraction, and in at least one client message referred to possible consultation of some patient-record data (identity, contact details and some health data). Mass exfiltration was not confirmed in the cited reporting. The 23,000 figure is operational impact (professionals locked out), not a published victim count.",
+          "fr": "Weda a indiqué à ses clients que des accès malveillants avaient pu permettre une extraction partielle, et dans au moins un message a évoqué la consultation possible de certaines données de dossiers patients (identité, coordonnées et certaines données de santé). Une exfiltration massive n’était pas confirmée dans la source citée. Le chiffre de 23 000 décrit l’impact opérationnel (professionnels privés d’accès), pas un nombre publié de victimes."
+        },
+        "notTaken": {
+          "en": "The precise patient-data scope was not publicly established. Billing links to health insurance and some device integrations remained limited after the partial restore.",
+          "fr": "Le périmètre précis des données patients n’était pas établi publiquement. Les liens de facturation avec l’assurance maladie et certaines intégrations de matériel restaient limités après le rétablissement partiel."
+        },
+        "response": {
+          "en": "Weda suspended the platform, isolated affected systems, notified ANSSI and the CNIL, filed a complaint, and restored degraded access from 14 November. Independent cybersecurity help was reported.",
+          "fr": "Weda a suspendu la plateforme, isolé les systèmes concernés, notifié l’ANSSI et la CNIL, déposé plainte, et rétabli un accès dégradé à partir du 14 novembre. Une aide cybersécurité indépendante a été signalée."
+        },
+        "methodDisclosure": "undisclosed"
       }
     },
     {
@@ -364,7 +605,58 @@
       "sourceUrl": "https://www.eurofiber.com/fr-fr/actualites/incident-de-cybersecurite-du-13-novembre-enseignements-et-actions-engagees",
       "logo": {
         "domain": "eurofiber.com",
-        "strategy": "domain-favicon-or-official-logo"
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "eurofiber.svg"
+      },
+      "sourceIds": [
+        "eurofiber",
+        "eurofiberInitial"
+      ],
+      "detail": {
+        "lead": {
+          "en": "Eurofiber France detected a cybersecurity incident on 13 November 2025 on its customer ticketing platform (and the ATE cloud portal). Attackers had used a software vulnerability for SQL injection from 6 November and REST-API exfiltration from 10 November. The company said banking or critical data and network/cloud service integrity were not compromised.",
+          "fr": "Eurofiber France a détecté le 13 novembre 2025 un incident sur sa plateforme de ticketing client (et le portail cloud ATE). Les attaquants avaient exploité une vulnérabilité logicielle pour une injection SQL dès le 6 novembre et une exfiltration via l’API REST dès le 10 novembre. L’entreprise indique que les données bancaires ou critiques et l’intégrité des services réseau/cloud n’ont pas été compromises."
+        },
+        "timeline": [
+          {
+            "date": "2025-11-06",
+            "label": {
+              "en": "Earliest traces: blind SQL injection against the user database.",
+              "fr": "Premières traces : injection SQL aveugle contre la base des utilisateurs."
+            }
+          },
+          {
+            "date": "2025-11-10",
+            "label": {
+              "en": "Exfiltration intensifies via REST API calls targeting tickets and documents.",
+              "fr": "L’exfiltration s’intensifie via des appels à l’API REST visant tickets et documents."
+            }
+          },
+          {
+            "date": "2025-11-13",
+            "label": {
+              "en": "Monitoring detects the activity at 14:49; crisis cell activated; platforms secured and the flaw patched.",
+              "fr": "La supervision détecte l’activité à 14 h 49 ; cellule de crise ; plateformes sécurisées et faille corrigée."
+            }
+          }
+        ],
+        "how": {
+          "en": "Eurofiber’s post-incident note says a software vulnerability in the ticketing system — identified in the community under a CVE — allowed SQL injection and API-based exfiltration. A customised version had not been flagged as vulnerable by the vendor. The official notes do not name the product. Later security reporting attributed the platform to GLPI and named a threat actor; those details are not in Eurofiber’s cited statements.",
+          "fr": "La note post-incident d’Eurofiber indique qu’une vulnérabilité du logiciel de ticketing — identifiée dans la communauté sous une référence CVE — a permis des injections SQL et une exfiltration par API. Une version personnalisée n’avait pas été signalée comme vulnérable par l’éditeur. Les notes officielles ne nomment pas le produit. Des articles de sécurité ultérieurs ont attribué la plateforme à GLPI et nommé un acteur ; ces détails ne figurent pas dans les déclarations d’Eurofiber citées."
+        },
+        "taken": {
+          "en": "Identification data, hashed passwords, ticket content and exchanges, and some attachments, for Eurofiber France and regional brands (Eurafibre, FullSave, Netiwan, Avelia) plus the ATE / Cloud Infra France portal. Customers outside France were reported unaffected.",
+          "fr": "Données d’identification, mots de passe hachés, contenu et échanges de tickets, et certaines pièces jointes, pour Eurofiber France et ses marques régionales (Eurafibre, FullSave, Netiwan, Avelia) ainsi que le portail ATE / Cloud Infra France. Les clients hors de France n’étaient pas concernés, selon l’entreprise."
+        },
+        "notTaken": {
+          "en": "Eurofiber said banking or critical data and the integrity of network and cloud services were not compromised.",
+          "fr": "Eurofiber indique que les données bancaires ou critiques et l’intégrité des services réseau et cloud n’ont pas été compromises."
+        },
+        "response": {
+          "en": "Crisis cell with the SOC provider, platforms placed under enhanced security, vulnerability patched, customers informed, CNIL and ANSSI notified. An extortion attempt was reported in the company’s follow-up.",
+          "fr": "Cellule de crise avec le prestataire SOC, plateformes sous sécurité renforcée, vulnérabilité corrigée, clients informés, CNIL et ANSSI notifiées. Une tentative d’extorsion est mentionnée dans le suivi de l’entreprise."
+        },
+        "methodDisclosure": "disclosed"
       }
     },
     {
@@ -406,7 +698,55 @@
       "sourceUrl": "https://www.lemonde.fr/en/pixels/article/2025/12/17/hackers-pirate-french-interior-ministry-databases_6748599_13.html",
       "logo": {
         "domain": "interieur.gouv.fr",
-        "strategy": "domain-favicon-or-official-logo"
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "interior.svg"
+      },
+      "sourceIds": [
+        "interior",
+        "interiorFrance24"
+      ],
+      "detail": {
+        "lead": {
+          "en": "In December 2025 attackers reached sensitive Interior Ministry police resources, including the TAJ criminal-records file and the FPR wanted-persons file, after hijacked professional mailboxes exposed access to internal services. The minister confirmed extraction of tens of confidential files. A claim of 16.4 million records is disputed and is not treated as a confirmed count.",
+          "fr": "En décembre 2025, des attaquants ont atteint des ressources policières sensibles du ministère de l’Intérieur, dont le TAJ et le FPR, après que des messageries professionnelles compromises ont ouvert l’accès à des services internes. Le ministre a confirmé l’extraction de dizaines de fiches confidentielles. Une revendication de 16,4 millions d’enregistrements est contestée et n’est pas retenue comme un chiffre confirmé."
+        },
+        "timeline": [
+          {
+            "date": "2025-12-11",
+            "label": {
+              "en": "Intrusion into ministry systems reported around this date; attackers had already had access for several days.",
+              "fr": "Intrusion dans les systèmes du ministère signalée vers cette date ; les attaquants avaient déjà eu accès pendant plusieurs jours."
+            }
+          },
+          {
+            "date": "2025-12-17",
+            "label": {
+              "en": "Minister Laurent Nuñez: tens of confidential files extracted; TAJ and FPR consulted; 16.4 million claim rejected; a 22-year-old arrested.",
+              "fr": "Le ministre Laurent Nuñez : dizaines de fiches confidentielles extraites ; TAJ et FPR consultés ; revendication de 16,4 millions écartée ; un homme de 22 ans interpellé."
+            }
+          }
+        ],
+        "how": {
+          "en": "Reporting based on the ministry describes hijacked police email accounts. Passwords that should not have been in those messages were used to reach internal services, including the CHEOPS portal shared by police and gendarmerie, from which TAJ and FPR could be queried. The 16.4 million figure matches the known size of TAJ, not a confirmed bulk export. Later hearings discussed tens of extracted files; that is still not a published person count.",
+          "fr": "Les comptes rendus s’appuyant sur le ministère décrivent des messageries de policiers détournées. Des mots de passe qui n’auraient pas dû figurer dans ces messages ont servi à atteindre des services internes, dont le portail CHEOPS commun à la police et à la gendarmerie, depuis lequel le TAJ et le FPR pouvaient être interrogés. Le chiffre de 16,4 millions correspond à la taille connue du TAJ, pas à un export massif confirmé. Des auditions ultérieures ont évoqué des dizaines de fiches extraites ; ce n’est toujours pas un nombre publié de personnes."
+        },
+        "taken": {
+          "en": "Confirmed: consultation of TAJ and FPR and extraction of tens of confidential files (the minister; Le Parisien later reported on the order of a hundred TAJ files). Interpol records were also mentioned in later official discussion. The 16.4 million claim is not accepted as confirmed extraction.",
+          "fr": "Confirmé : consultation du TAJ et du FPR et extraction de dizaines de fiches confidentielles (le ministre ; Le Parisien a ensuite évoqué de l’ordre d’une centaine de fiches TAJ). Des fiches Interpol ont aussi été mentionnées dans des échanges officiels ultérieurs. La revendication de 16,4 millions n’est pas retenue comme une extraction confirmée."
+        },
+        "notTaken": {
+          "en": "The minister said there had been no extraction of millions of records and that he had received no ransom demand. Destruction or modification of files was not reported in the cited coverage.",
+          "fr": "Le ministre a indiqué qu’il n’y avait pas eu d’extraction de millions de données et qu’il n’avait pas reçu de demande de rançon. Aucune destruction ni modification de fichiers n’était signalée dans les sources citées."
+        },
+        "response": {
+          "en": "A criminal investigation followed, with at least one arrest reported on 17 December. The ministry treated the event as a serious compromise of police information systems. MFA rollout for ministry applications was later discussed in parliamentary hearings.",
+          "fr": "Une enquête pénale a suivi, avec au moins une interpellation rapportée le 17 décembre. Le ministère a traité l’événement comme une compromission grave des systèmes d’information de police. Le déploiement de la MFA pour les applications ministérielles a ensuite été évoqué en audition parlementaire."
+        },
+        "methodDisclosure": "partial",
+        "attackerClaim": {
+          "en": "A group using the name Indra claimed access to data on more than 16 million people from police files. The interior minister said that mass extraction was not established.",
+          "fr": "Un groupe se présentant sous le nom d’Indra a revendiqué l’accès aux données de plus de 16 millions de personnes issues de fichiers de police. Le ministre de l’Intérieur a indiqué que cette extraction massive n’était pas établie."
+        }
       }
     },
     {
@@ -448,7 +788,58 @@
       "sourceUrl": "https://presse.economie.gouv.fr/acces-illegitimes-au-fichier-national-des-comptes-bancaires-ficoba/",
       "logo": {
         "domain": "economie.gouv.fr",
-        "strategy": "domain-favicon-or-official-logo"
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "economie.svg"
+      },
+      "sourceIds": [
+        "ficoba",
+        "ficobaFaq"
+      ],
+      "detail": {
+        "lead": {
+          "en": "From late January 2026 a malicious actor used the usurped credentials of a civil servant who had legitimate inter-ministry access to FICOBA, the national register of French bank accounts. About 1.2 million accounts — under 1% of the file — were consulted. FICOBA holds identity and IBAN, not balances or the means to move money.",
+          "fr": "À compter de fin janvier 2026, un acteur malveillant a utilisé les identifiants usurpés d’un fonctionnaire disposant d’un accès légitime interministériel à FICOBA, le fichier national des comptes bancaires. Environ 1,2 million de comptes — moins de 1 % du fichier — ont été consultés. FICOBA contient l’identité et l’IBAN, pas les soldes ni les moyens de déplacer de l’argent."
+        },
+        "timeline": [
+          {
+            "date": "2026-01-28",
+            "label": {
+              "en": "Illegitimate consultations begin (DGFiP FAQ window).",
+              "fr": "Début des consultations illégitimes (fenêtre indiquée dans la FAQ DGFiP)."
+            }
+          },
+          {
+            "date": "2026-02-13",
+            "label": {
+              "en": "Last day of the illegitimate access window in the FAQ; external access later cut.",
+              "fr": "Dernier jour de la fenêtre d’accès illégitime selon la FAQ ; les accès externes ont ensuite été coupés."
+            }
+          },
+          {
+            "date": "2026-02-18",
+            "label": {
+              "en": "Finance ministry public disclosure: ~1.2 million accounts, CNIL notified, complaint filed.",
+              "fr": "Annonce du ministère : environ 1,2 million de comptes, CNIL notifiée, plainte déposée."
+            }
+          }
+        ],
+        "how": {
+          "en": "The attacker impersonated a civil servant outside DGFiP who was authorised to query FICOBA for inter-ministry information exchange. A later parliamentary answer said the breach came from that third-administration account, not from exploiting a software flaw in FICOBA itself. How those credentials were stolen is not in the cited sources.",
+          "fr": "L’attaquant a usurpé les identifiants d’un fonctionnaire extérieur à la DGFiP habilité à interroger FICOBA dans le cadre des échanges interministériels. Une réponse parlementaire ultérieure indique que la violation vient de ce compte d’une administration tierce, et non de l’exploitation d’une faille logicielle de FICOBA. La manière dont ces identifiants ont été volés n’est pas dans les sources citées."
+        },
+        "taken": {
+          "en": "Bank-account details (RIB/IBAN), account-holder identity and postal address. The ministry said the tax identifier was not consulted during the illegitimate FICOBA access. The FAQ: civil status, postal address and bank details; no account balances or transactions, which FICOBA does not hold.",
+          "fr": "Coordonnées bancaires (RIB/IBAN), identité du titulaire et adresse postale. Le ministère indique que l’identifiant fiscal n’a pas été consulté lors des accès illégitimes à FICOBA. La FAQ : état civil, adresse postale et coordonnées bancaires ; pas de soldes ni d’opérations, que FICOBA ne contient pas."
+        },
+        "notTaken": {
+          "en": "No balances, transaction histories, bank passwords or access to impots.gouv.fr accounts. Consulting FICOBA is not the same as moving money.",
+          "fr": "Pas de soldes, d’historiques d’opérations, de mots de passe bancaires ni d’accès aux espaces impots.gouv.fr. Consulter FICOBA n’équivaut pas à déplacer de l’argent."
+        },
+        "response": {
+          "en": "DGFiP restricted access, worked with the ministry defence/security officer and ANSSI, notified the CNIL, filed a complaint, and wrote to affected users. Banks were alerted. People who did not receive a DGFiP message were told they were not in the consulted set.",
+          "fr": "La DGFiP a restreint les accès, travaillé avec le HFDS et l’ANSSI, notifié la CNIL, déposé plainte et écrit aux usagers concernés. Les banques ont été alertées. Les personnes n’ayant pas reçu de message DGFiP n’étaient pas dans l’ensemble consulté."
+        },
+        "methodDisclosure": "disclosed"
       }
     },
     {
@@ -490,7 +881,58 @@
       "sourceUrl": "https://www.education.gouv.fr/incident-de-securite-affectant-les-donnees-de-certains-personnels-de-l-education-nationale-470657",
       "logo": {
         "domain": "education.gouv.fr",
-        "strategy": "domain-favicon-or-official-logo"
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "education.png"
+      },
+      "sourceIds": [
+        "eduCompas",
+        "eduCompasBfmtv"
+      ],
+      "detail": {
+        "lead": {
+          "en": "On 15 March 2026 an attacker used an impersonated external account to reach COMPAS, the Education Ministry HR system for trainee teachers. Detection came on 19 March. About 243,000 staff and trainees had identity and contact data extracted. How the external account was stolen is not published.",
+          "fr": "Le 15 mars 2026, un attaquant a utilisé un compte externe usurpé pour atteindre COMPAS, le système RH du ministère de l’Éducation pour les enseignants stagiaires. La détection a eu lieu le 19 mars. Les données d’identité et de contact d’environ 243 000 agents et stagiaires ont été extraites. La manière dont le compte externe a été volé n’est pas publiée."
+        },
+        "timeline": [
+          {
+            "date": "2026-03-15",
+            "label": {
+              "en": "Fraudulent access to COMPAS begins.",
+              "fr": "Début de l’accès frauduleux à COMPAS."
+            }
+          },
+          {
+            "date": "2026-03-19",
+            "label": {
+              "en": "Ministry SOC (COSSIM) detects the intrusion at the end of the day.",
+              "fr": "Le COSSIM du ministère détecte l’intrusion en fin de journée."
+            }
+          },
+          {
+            "date": "2026-03-23",
+            "label": {
+              "en": "Public disclosure: ~243,000 agents; ANSSI and CNIL seized; complaint in preparation.",
+              "fr": "Annonce publique : environ 243 000 agents ; ANSSI et CNIL saisies ; plainte en préparation."
+            }
+          }
+        ],
+        "how": {
+          "en": "The ministry said the access was made possible by impersonation of an external account. That is a valid login, not a described software exploit. How the attacker obtained that account is not in the official note.",
+          "fr": "Le ministère indique que l’accès a été rendu possible par l’usurpation d’un compte externe. Il s’agit d’une connexion valide, pas d’un exploit logiciel décrit. La manière dont l’attaquant a obtenu ce compte n’est pas dans le communiqué officiel."
+        },
+        "taken": {
+          "en": "Names, postal addresses, phone numbers, and periods of absence without the health reason, for about 243,000 agents recorded in COMPAS, plus tutor names and professional landline numbers. Reporting said a sample later appeared on data-resale sites under a handle; that is not a second official count.",
+          "fr": "Noms, adresses postales, téléphones et périodes d’absence sans le motif de santé, pour environ 243 000 agents enregistrés dans COMPAS, plus les noms et lignes fixes professionnelles des tuteurs. La presse a indiqué qu’un échantillon est ensuite apparu sur des sites de revente sous un pseudonyme ; ce n’est pas un second décompte officiel."
+        },
+        "notTaken": {
+          "en": "The ministry said no social-security numbers and no medical data were in the compromised COMPAS scope.",
+          "fr": "Le ministère indique qu’aucun numéro de sécurité sociale ni donnée médicale ne figurait dans le périmètre COMPAS compromis."
+        },
+        "response": {
+          "en": "External access to COMPAS was suspended, a crisis cell opened, checks launched on other ministry systems, ANSSI and the CNIL were notified, a Paris complaint was prepared, and staff were to be informed individually.",
+          "fr": "L’accès externe à COMPAS a été suspendu, une cellule de crise ouverte, des vérifications lancées sur les autres systèmes, l’ANSSI et la CNIL saisies, une plainte à Paris préparée, et les agents devaient être informés individuellement."
+        },
+        "methodDisclosure": "partial"
       }
     },
     {
@@ -532,7 +974,50 @@
       "sourceUrl": "https://www.education.gouv.fr/incident-de-securite-affectant-les-donnees-de-certains-eleves-de-l-education-nationale-504443",
       "logo": {
         "domain": "education.gouv.fr",
-        "strategy": "domain-favicon-or-official-logo"
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "education.png"
+      },
+      "sourceIds": [
+        "eduStudents"
+      ],
+      "detail": {
+        "lead": {
+          "en": "On 14 April 2026 the Education Ministry said pupil data had been exfiltrated from a service tied to ÉduConnect. Access came from impersonation of an authorised staff account at the end of 2025, plus a vulnerability exploited shortly before it was fixed. The exact number of pupils is still unpublished; attacker claims of millions are not treated as confirmed.",
+          "fr": "Le 14 avril 2026, le ministère de l’Éducation a indiqué que des données d’élèves avaient été exfiltrées d’un service lié à ÉduConnect. L’accès venait de l’usurpation du compte d’un personnel habilité fin 2025, plus une vulnérabilité exploitée peu avant sa correction. Le nombre exact d’élèves n’est pas publié ; les revendications d’attaquants parlant de millions ne sont pas retenues comme confirmées."
+        },
+        "timeline": [
+          {
+            "date": "2025-12-01",
+            "label": {
+              "en": "Official note: impersonation of an authorised staff account at the end of 2025; a flaw identified in December was exploited shortly before it was fixed (exact day not published).",
+              "fr": "Communiqué : usurpation du compte d’un personnel habilité fin 2025 ; une faille identifiée en décembre a été exploitée peu avant sa correction (jour exact non publié)."
+            }
+          },
+          {
+            "date": "2026-04-14",
+            "label": {
+              "en": "Ministry discloses the pupil-data incident; exact count still under evaluation.",
+              "fr": "Le ministère rend public l’incident sur les données d’élèves ; le décompte exact est encore en évaluation."
+            }
+          }
+        ],
+        "how": {
+          "en": "The ministry described two elements: impersonation of an authorised staff account, and exploitation of a vulnerability in an account-management service shortly before the fix. The vulnerability is not named (no CVE in the official note).",
+          "fr": "Le ministère décrit deux éléments : l’usurpation du compte d’un personnel habilité, et l’exploitation d’une vulnérabilité d’un service de gestion des comptes peu avant sa correction. La vulnérabilité n’est pas nommée (pas de CVE dans le communiqué)."
+        },
+        "taken": {
+          "en": "First and last name, ÉduConnect identifier, school and class, email if supplied, and the activation code for accounts not yet activated. The ministry confirmed data had been exfiltrated. Press reports of millions of pupils or extra school documents are attacker claims, not the official scope.",
+          "fr": "Prénom et nom, identifiant ÉduConnect, établissement et classe, e-mail s’il était renseigné, et le code d’activation des comptes non encore activés. Le ministère confirme que des données ont été exfiltrées. Les articles parlant de millions d’élèves ou de documents scolaires supplémentaires sont des revendications, pas le périmètre officiel."
+        },
+        "notTaken": {
+          "en": "The official list does not include health data, social-security numbers or passwords of already-activated family accounts. Activation codes for dormant accounts were in scope.",
+          "fr": "La liste officielle n’inclut pas de données de santé, de numéros de sécurité sociale ni les mots de passe des comptes familles déjà activés. Les codes d’activation des comptes dormants étaient dans le périmètre."
+        },
+        "response": {
+          "en": "Crisis cell, access to the affected service suspended, dormant-account codes reset, ANSSI and CNIL notified, complaint filed. Families were told to watch for school-themed phishing.",
+          "fr": "Cellule de crise, accès au service touché suspendu, codes des comptes dormants réinitialisés, ANSSI et CNIL saisies, plainte déposée. Les familles ont été invitées à la vigilance face à l’hameçonnage lié à l’école."
+        },
+        "methodDisclosure": "partial"
       }
     },
     {
@@ -574,7 +1059,62 @@
       "sourceUrl": "https://ants.gouv.fr/toute-l-actualite/incident-de-securite-relatif-au-portail-antsgouvfr-point-detape-du-21-avril-2026",
       "logo": {
         "domain": "ants.gouv.fr",
-        "strategy": "domain-favicon-or-official-logo"
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "ants.svg"
+      },
+      "sourceIds": [
+        "ants",
+        "antsBfmtv"
+      ],
+      "detail": {
+        "lead": {
+          "en": "On 15 April 2026 France Titres (ANTS) detected a security incident on ants.gouv.fr that may have disclosed identification data from about 11.7 million individual and professional accounts. The 21 April official update said technical investigation of the origin was still under way. Uploaded documents and biometric data were excluded at that stage.",
+          "fr": "Le 15 avril 2026, France Titres (ANTS) a détecté un incident de sécurité sur ants.gouv.fr pouvant impliquer la divulgation de données d’identification d’environ 11,7 millions de comptes particuliers et professionnels. Le point d’étape officiel du 21 avril indiquait que l’investigation sur l’origine était toujours en cours. Les pièces jointes et données biométriques étaient exclues à ce stade."
+        },
+        "timeline": [
+          {
+            "date": "2026-04-15",
+            "label": {
+              "en": "ANTS detects the incident.",
+              "fr": "L’ANTS détecte l’incident."
+            }
+          },
+          {
+            "date": "2026-04-16",
+            "label": {
+              "en": "ANTS reports to the Paris prosecutor that data presented as coming from the incident is being offered for sale.",
+              "fr": "L’ANTS signale au parquet de Paris la mise en vente de données présentées comme issues de l’incident."
+            }
+          },
+          {
+            "date": "2026-04-21",
+            "label": {
+              "en": "Official update: 11.7 million accounts may be concerned; origin still under investigation.",
+              "fr": "Point d’étape : 11,7 millions de comptes pourraient être concernés ; l’origine est encore en investigation."
+            }
+          }
+        ],
+        "how": {
+          "en": "The ANTS update of 21 April says internal technical investigations begun at detection were still aiming to establish origin and scale. It does not name a vulnerability or an attacker. Later press described an IDOR-style flaw (changing an identifier in an API request). That account is journalism, not the official note, and is not treated here as a confirmed method.",
+          "fr": "Le point d’étape ANTS du 21 avril indique que les investigations techniques internes, commencées dès la détection, visaient encore à établir l’origine et l’ampleur. Il ne nomme ni vulnérabilité ni attaquant. La presse a ensuite décrit une faille de type IDOR (modifier un identifiant dans une requête d’API). Cette lecture est journalistique, pas le communiqué officiel, et n’est pas retenue ici comme méthode confirmée."
+        },
+        "taken": {
+          "en": "Identification data: login identifier, title, names, email, date of birth, unique account ID; sometimes postal address, place of birth and phone. 11.7 million accounts. These data do not by themselves log someone into the nominative ANTS account, according to the agency.",
+          "fr": "Données d’identification : identifiant de connexion, civilité, noms, e-mail, date de naissance, identifiant unique ; parfois adresse postale, lieu de naissance et téléphone. 11,7 millions de comptes. Ces données ne permettent pas à elles seules d’accéder au compte nominatif ANTS, selon l’agence."
+        },
+        "notTaken": {
+          "en": "At that stage ANTS excluded supporting documents uploaded for procedures and biometric data. Passwords as stored credentials were not listed among disclosed fields.",
+          "fr": "À ce stade, l’ANTS excluait les pièces jointes déposées pour les démarches et les données de biométrie. Les mots de passe en tant qu’identifiants stockés n’étaient pas dans les champs divulgués."
+        },
+        "response": {
+          "en": "CNIL notified, Paris prosecutor seized (OFAC investigation), IGA asked to map responsibility. Professional-account holders were emailed; individual users were still being notified on 21 April. Users were told to change their password at next login and to treat unexpected ANTS messages as suspect. No other user action was required.",
+          "fr": "CNIL notifiée, parquet de Paris saisi (enquête OFAC), IGA chargée d’établir les responsabilités. Les titulaires de comptes professionnels ont été informés par e-mail ; l’information des particuliers était encore en cours le 21 avril. Il était demandé de changer le mot de passe à la prochaine connexion et de traiter comme suspects les messages ANTS inattendus. Aucune autre démarche n’était exigée."
+        },
+        "methodDisclosure": "undisclosed",
+        "attackerClaim": {
+          "en": "Sellers on criminal forums claimed on the order of 18–19 million records. The ministry’s published figure is 11.7 million accounts. The larger claim is not treated as confirmed.",
+          "fr": "Des vendeurs sur des forums criminels ont revendiqué de l’ordre de 18 à 19 millions d’enregistrements. Le chiffre publié par le ministère est de 11,7 millions de comptes. La revendication plus élevée n’est pas retenue comme confirmée."
+        }
       }
     },
     {
@@ -616,7 +1156,57 @@
       "sourceUrl": "https://www.education.gouv.fr/incident-de-securite-affectant-les-donnees-de-personnels-de-l-education-nationale-505407",
       "logo": {
         "domain": "education.gouv.fr",
-        "strategy": "domain-favicon-or-official-logo"
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "education.png"
+      },
+      "sourceIds": [
+        "eduStaff"
+      ],
+      "detail": {
+        "lead": {
+          "en": "On the night of 25 July 2026 an impersonated professional account was used to reach the Education Ministry information system for staff training. A significant number of agents who had worked in academies since 2001 may have had identity and professional data extracted; for some, address, phone and social-security number. The exact headcount is unpublished.",
+          "fr": "Dans la nuit du 25 juillet 2026, un compte professionnel usurpé a servi à atteindre le système d’information du ministère de l’Éducation dédié à la formation des personnels. Un nombre important d’agents ayant exercé en académie depuis 2001 ont pu voir extraire des données d’identité et professionnelles ; pour certains, adresse, téléphone et numéro de sécurité sociale. L’effectif exact n’est pas publié."
+        },
+        "timeline": [
+          {
+            "date": "2026-07-25",
+            "label": {
+              "en": "Fraudulent access during the night, via impersonation of a professional account.",
+              "fr": "Accès frauduleux dans la nuit, par usurpation d’un compte professionnel."
+            }
+          },
+          {
+            "date": "2026-07-26",
+            "label": {
+              "en": "Ministry SOC alerted; external access to the system suspended; crisis cell.",
+              "fr": "COSSIM alerté ; accès externe au système suspendu ; cellule de crise."
+            }
+          },
+          {
+            "date": "2026-07-31",
+            "label": {
+              "en": "Public disclosure: significant number of agents; exact volume not yet known.",
+              "fr": "Annonce publique : nombre important d’agents ; volumétrie exacte pas encore connue."
+            }
+          }
+        ],
+        "how": {
+          "en": "The ministry said the fraudulent access followed impersonation of a professional account. That is a valid login. How the account was obtained is not in the cited communiqué.",
+          "fr": "Le ministère indique que l’accès frauduleux a suivi l’usurpation d’un compte professionnel. Il s’agit d’une connexion valide. La manière dont le compte a été obtenu n’est pas dans le communiqué cité."
+        },
+        "taken": {
+          "en": "Identity and professional information (status and functions) for agents who worked in academies since 2001. For some, postal address, phone and social-security number. The ministry could not yet give a headcount.",
+          "fr": "Éléments d’identité et informations professionnelles (statut et fonctions) des agents ayant exercé en académie depuis 2001. Pour une partie, adresse postale, téléphone et numéro de sécurité sociale. Le ministère ne pouvait pas encore donner d’effectif."
+        },
+        "notTaken": {
+          "en": "The system holds neither banking data, nor passwords, nor pupil data, according to the ministry.",
+          "fr": "Le système ne contient ni données bancaires, ni mots de passe, ni données relatives aux élèves, selon le ministère."
+        },
+        "response": {
+          "en": "External access suspended, crisis cell, ANSSI and CNIL notified. Agents who may be concerned were to be informed. This is the third Education Ministry incident in the 2026 dossier (after COMPAS and ÉduConnect).",
+          "fr": "Accès externe suspendu, cellule de crise, ANSSI et CNIL saisies. Les agents susceptibles d’être concernés devaient être informés. C’est le troisième incident du ministère de l’Éducation dans ce dossier 2026 (après COMPAS et ÉduConnect)."
+        },
+        "methodDisclosure": "partial"
       }
     },
     {
@@ -658,7 +1248,59 @@
       "sourceUrl": "https://www.techradar.com/pro/security/the-ceva-logistics-data-breach-is-having-major-knock-on-effects-across-europe-heres-what-we-know",
       "logo": {
         "domain": "cevalogistics.com",
-        "strategy": "domain-favicon-or-official-logo"
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "ceva.png"
+      },
+      "sourceIds": [
+        "ceva",
+        "cevaTechcrunch",
+        "cevaValve"
+      ],
+      "detail": {
+        "lead": {
+          "en": "Between 29 July and 1 August 2026 a cyber intrusion hit part of CEVA Logistics’ European contract-logistics operations, affecting eight warehouses. Downstream retailers and Valve (Steam hardware in Europe) later told customers that shipping details held by CEVA had likely been taken. CEVA has not published the initial access route.",
+          "fr": "Entre le 29 juillet et le 1er août 2026, une intrusion a touché une partie des opérations de logistique contractuelle européenne de CEVA Logistics, concernant huit entrepôts. Des enseignes en aval et Valve (matériel Steam en Europe) ont ensuite indiqué à leurs clients que des données de livraison détenues par CEVA avaient probablement été emportées. CEVA n’a pas publié la voie d’accès initiale."
+        },
+        "timeline": [
+          {
+            "date": "2026-07-29",
+            "label": {
+              "en": "Start of the access window in Valve’s customer notice.",
+              "fr": "Début de la fenêtre d’accès dans l’avis client de Valve."
+            }
+          },
+          {
+            "date": "2026-08-01",
+            "label": {
+              "en": "CEVA confirms to affected customers an intrusion in part of its European contract logistics.",
+              "fr": "CEVA confirme à des clients concernés une intrusion dans une partie de sa logistique contractuelle européenne."
+            }
+          },
+          {
+            "date": "2026-08-07",
+            "label": {
+              "en": "Valve learns of likely compromise of Steam hardware shipping data retained up to 90 days.",
+              "fr": "Valve apprend la probable compromission de données d’expédition de matériel Steam conservées jusqu’à 90 jours."
+            }
+          }
+        ],
+        "how": {
+          "en": "CEVA confirmed a cyber intrusion affecting eight European warehouses and said other global systems were unaffected. It has not published the initial access method, ransomware use, or an attacker. Warehouse disruption led some reporters to speculate about destructive malware; that is not a CEVA confirmation.",
+          "fr": "CEVA a confirmé une intrusion touchant huit entrepôts européens et indiqué que les autres systèmes mondiaux n’étaient pas concernés. Elle n’a pas publié la méthode d’accès initiale, l’usage d’un rançongiciel, ni d’attaquant. La perturbation des entrepôts a conduit certains articles à évoquer un logiciel destructeur ; ce n’est pas une confirmation de CEVA."
+        },
+        "taken": {
+          "en": "Delivery-related personal data for some downstream customers: names, addresses, phone numbers, emails and, in Valve’s notice, product type and price of Steam hardware. CEVA stores that shipping information for a limited time (Valve: up to 90 days).",
+          "fr": "Données personnelles de livraison pour certains clients en aval : noms, adresses, téléphones, e-mails et, dans l’avis Valve, type et prix du matériel Steam. CEVA conserve ces informations d’expédition un temps limité (Valve : jusqu’à 90 jours)."
+        },
+        "notTaken": {
+          "en": "Valve said CEVA does not hold Steam payment data, passwords or Steam Guard codes. CEVA told TechCrunch that air, ocean, ground and rail operations continued and that impact was limited to the eight warehouses.",
+          "fr": "Valve indique que CEVA ne détient pas les données de paiement Steam, les mots de passe ni les codes Steam Guard. CEVA a indiqué à TechCrunch que les activités air, mer, terre et rail continuaient et que l’impact était limité aux huit entrepôts."
+        },
+        "response": {
+          "en": "CEVA said it activated security protocols, isolated affected systems and brought in outside investigators. Client companies notified customers and data-protection authorities. The Dutch authority was reported to have received notices from multiple organisations.",
+          "fr": "CEVA indique avoir activé ses protocoles, isolé les systèmes concernés et fait appel à des enquêteurs externes. Les entreprises clientes ont informé leurs clients et les autorités de protection des données. L’autorité néerlandaise aurait reçu des notifications de plusieurs organisations."
+        },
+        "methodDisclosure": "undisclosed"
       }
     },
     {
@@ -700,7 +1342,51 @@
       "sourceUrl": "https://www.e-sante.fr/cyberattaque-chez-sante-publique-france-les-donnees-de-contact-de-80-000-usagers-piratees/actualite/744070",
       "logo": {
         "domain": "santepubliquefrance.fr",
-        "strategy": "domain-favicon-or-official-logo"
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "sante.svg"
+      },
+      "sourceIds": [
+        "sante",
+        "santeFranceinfo"
+      ],
+      "detail": {
+        "lead": {
+          "en": "On 13 August 2026 Santé publique France confirmed that a contractor-hosted platform for ordering prevention-campaign materials — moncoupon.santepubliquefrance.fr — had been attacked. About 80,000 contact records used for delivery were involved. The agency said the database held no health data and no social-security numbers, and that the site is independent of the agency’s other systems.",
+          "fr": "Le 13 août 2026, Santé publique France a confirmé qu’une plateforme hébergée par un prestataire pour commander des documents de prévention — moncoupon.santepubliquefrance.fr — avait été attaquée. Environ 80 000 fiches de contact utilisées pour l’acheminement étaient concernées. L’agence indique que la base ne contenait ni données de santé ni numéros de sécurité sociale, et que le site est indépendant de ses autres systèmes."
+        },
+        "timeline": [
+          {
+            "date": "2026-08-11",
+            "label": {
+              "en": "A claim appears online; Santé publique France later confirms the scale.",
+              "fr": "Une revendication apparaît en ligne ; Santé publique France confirme ensuite l’ampleur."
+            }
+          },
+          {
+            "date": "2026-08-13",
+            "label": {
+              "en": "Agency confirmation: ~80,000 contact records, platform in maintenance, passwords cleared, CNIL notified.",
+              "fr": "Confirmation de l’agence : environ 80 000 fiches de contact, plateforme en maintenance, mots de passe supprimés, CNIL notifiée."
+            }
+          }
+        ],
+        "how": {
+          "en": "The confirmed fact is that a contractor-hosted, separate ordering platform was attacked. Santé publique France has not published the initial access vector. Claim posts described obtaining administrator rights and using an export function; that is the attackers’ account, not an agency technical note.",
+          "fr": "Le fait confirmé est qu’une plateforme de commande distincte, hébergée par un prestataire, a été attaquée. Santé publique France n’a pas publié le vecteur d’accès initial. Des revendications décrivent l’obtention de droits administrateur et l’usage d’une fonction d’export ; c’est le récit des attaquants, pas une note technique de l’agence."
+        },
+        "taken": {
+          "en": "Contact data for shipping ordered materials: email, postal address and phone. Reporting on published extracts also mentioned professional role and organisation for many records. About 80,000 people, which the agency confirmed.",
+          "fr": "Données de contact pour l’envoi des documents commandés : e-mail, adresse postale et téléphone. Les extraits commentés dans la presse mentionnent aussi, pour beaucoup de fiches, la fonction et la structure. Environ 80 000 personnes, chiffre confirmé par l’agence."
+        },
+        "notTaken": {
+          "en": "No medical data and no social-security numbers, according to the agency. The platform is independent of other Santé publique France sites.",
+          "fr": "Aucune donnée médicale ni numéro de sécurité sociale, selon l’agence. La plateforme est indépendante des autres sites de Santé publique France."
+        },
+        "response": {
+          "en": "The platform was put in maintenance, passwords were cleared, the CNIL was notified, and restoration was expected the same morning. Users of a public-health materials shop should treat unexpected health-themed messages as suspect.",
+          "fr": "La plateforme a été mise en maintenance, les mots de passe supprimés, la CNIL notifiée, et le rétablissement prévu dans la matinée. Les utilisateurs de cette boutique de documents devraient traiter comme suspects les messages inattendus à thème santé."
+        },
+        "methodDisclosure": "partial"
       }
     },
     {
@@ -742,7 +1428,58 @@
       "sourceUrl": "https://presse.economie.gouv.fr/acces-illegitime-au-systeme-dinformation-de-la-direction-generale-des-finances-publiques/",
       "logo": {
         "domain": "economie.gouv.fr",
-        "strategy": "domain-favicon-or-official-logo"
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "economie.svg"
+      },
+      "sourceIds": [
+        "dgfip",
+        "dgfipBriefing"
+      ],
+      "detail": {
+        "lead": {
+          "en": "DGFiP confirmed illegitimate access to tax systems after a compromised agent account was used, detected in June 2026. Extraction of data on 678,000 individuals and businesses was established after a 12 August claim. A separate cadastral consultation of about 200,000 accounts was also reported. User passwords for impots.gouv.fr were not compromised.",
+          "fr": "La DGFiP a confirmé un accès illégitime à ses systèmes fiscaux après la compromission du compte d’un agent, détectée en juin 2026. L’extraction de données concernant 678 000 particuliers et professionnels a été établie après une revendication du 12 août. Une consultation cadastrale distincte d’environ 200 000 comptes a aussi été signalée. Les mots de passe des espaces impots.gouv.fr n’ont pas été compromis."
+        },
+        "timeline": [
+          {
+            "date": "2026-06-30",
+            "label": {
+              "en": "Compromise of an agent account detected around late June; access cut. Extraction was not identified at that moment.",
+              "fr": "Compromission d’un compte d’agent détectée vers fin juin ; accès coupé. L’extraction n’était alors pas identifiée."
+            }
+          },
+          {
+            "date": "2026-08-12",
+            "label": {
+              "en": "Public claim; DGFiP matches activity in its logs, including the extraction.",
+              "fr": "Revendication publique ; la DGFiP rattache l’activité dans ses journaux, dont l’extraction."
+            }
+          },
+          {
+            "date": "2026-08-14",
+            "label": {
+              "en": "Director-general briefing: 678,000 tax records; ~200,000 cadastral accounts; CNIL notified; users to be written to.",
+              "fr": "Point de la directrice générale : 678 000 dossiers fiscaux ; environ 200 000 comptes cadastraux ; CNIL notifiée ; courriers aux usagers."
+            }
+          }
+        ],
+        "how": {
+          "en": "The director-general said an agent’s email and password had been used. The agent connected through an external access that, at the time, did not require the multi-factor authentication used on internal access — MFA was not yet generalised. Extraction was slow and paused, which evaded bulk-query detection until the claim. A claimant described a VPN used by tax staff; that is the claimant’s wording, consistent with external access, not a second official product name.",
+          "fr": "La directrice générale a indiqué que l’e-mail et le mot de passe d’un agent avaient été utilisés. L’agent se connectait par un accès externe qui, à l’époque, n’exigeait pas la MFA en vigueur en interne — la MFA n’était pas encore généralisée. L’extraction était lente et entrecoupée de pauses, ce qui a échappé à la détection de requêtes massives jusqu’à la revendication. Un revendicateur a parlé d’un VPN d’agents ; c’est son vocabulaire, cohérent avec un accès externe, pas un second nom de produit officiel."
+        },
+        "taken": {
+          "en": "For individuals: identity, address, reference taxable income, household quotient / number of shares, withholding-tax rate. For businesses: less sensitive, often already public data such as SIREN and addresses. Cadastral identity and surface data were consulted for about 200,000 accounts, a separate figure from the 678,000.",
+          "fr": "Pour les particuliers : identité, adresse, revenu fiscal de référence, quotient / nombre de parts, taux de prélèvement à la source. Pour les professionnels : données moins sensibles, souvent déjà publiques (SIREN, adresses). Des données cadastrales d’identité et de surface ont été consultées pour environ 200 000 comptes, chiffre distinct des 678 000."
+        },
+        "notTaken": {
+          "en": "These data do not log someone into the secured impots.gouv.fr account. User tax-space passwords were not compromised, according to DGFiP.",
+          "fr": "Ces données ne permettent pas d’entrer dans l’espace sécurisé impots.gouv.fr. Les mots de passe des espaces fiscaux n’ont pas été compromis, selon la DGFiP."
+        },
+        "response": {
+          "en": "Access was cut in June. After the claim, CNIL was notified and users were to be contacted. MFA for remaining agents was to be rolled out in the following months. The 678,000 figure is the official extracted-tax-data count; attacker dump sizes are not used in charts.",
+          "fr": "L’accès a été coupé en juin. Après la revendication, la CNIL a été notifiée et les usagers devaient être contactés. La MFA pour les agents restants devait être déployée dans les mois suivants. Le chiffre de 678 000 est le décompte officiel des données fiscales extraites ; les tailles de dumps revendiqués ne sont pas utilisées dans les graphiques."
+        },
+        "methodDisclosure": "disclosed"
       }
     }
   ],

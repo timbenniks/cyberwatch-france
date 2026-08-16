@@ -81,10 +81,11 @@ The site itself does not call the API: the dataset is read on the server and arr
 ```
 data/france-cyberwatch-data.json   source of truth; served at /data, imported by the API
 app/
-  pages/index.vue        the page for / and /incident/:id (overlay, not a remount)
+  pages/index.vue        the dossier (/ and /fr)
+  pages/incident/[id].vue article page for /incident/:id and /fr/incident/:id
   pages/docs.vue         human-readable API reference (/docs and /fr/docs)
-  router.options.ts      maps EN/FR paths onto those two page components
-  components/            dossier, timeline, charts, overlays
+  router.options.ts      French twins of those file routes
+  components/            dossier, timeline, charts, incident article
   composables/           data, filters, locale, focus trap, reduced motion
   plugins/               locale detect (inline, before paint) and Plausible
   utils/                 format.ts is the only path for displaying an affected count
@@ -117,8 +118,8 @@ Chart colours come from a palette validated for colour-vision deficiency and con
 
 ## Deep links
 
-Every record has a real, prerendered, indexable URL: `/incident/ants` and `/fr/incident/ants`, each with its own title, description and canonical tag. Opening one is an overlay on the page rather than a remount, so scroll position, filters and charts survive. Filter buttons write query params (`/?kind=company&severity=critical`) without jumping the page. `Copy link` in the panel copies the absolute URL.
+Every record is a real, prerendered, indexable article: `/incident/ants` and `/fr/incident/ants`, each with its own title, description and canonical tag. Opening one is a navigation (scroll to top). Language switch stays on the same record. Filter buttons on the dossier write query params (`/?kind=company&severity=critical`) without jumping the page. `Copy link` copies the absolute article URL.
 
 ## Accessibility
 
-Semantic landmarks, a skip link, keyboard-operable filters and modals with focus trapping and focus restore, visible focus rings, text equivalents for every chart, initials fallbacks for organisation marks, and `prefers-reduced-motion` respected in count-ups, transitions and chart animation. On small screens: larger tap targets, a horizontally scrollable incident spine, full-screen records, and a card layout for the data table.
+Semantic landmarks, a skip link, keyboard-operable filters and modals with focus trapping and focus restore, visible focus rings, text equivalents for every chart, initials fallbacks for organisation marks, and `prefers-reduced-motion` respected in count-ups, transitions and chart animation. On small screens: larger tap targets, a horizontally scrollable incident spine, and a card layout for the data table.

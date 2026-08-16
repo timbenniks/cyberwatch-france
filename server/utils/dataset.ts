@@ -1,5 +1,5 @@
 import raw from '~~/data/france-cyberwatch-data.json'
-import type { CyberwatchData, Incident, Locale } from '~~/app/types/cyberwatch'
+import type { CyberwatchData, Incident, Locale, Source } from '~~/app/types/cyberwatch'
 
 export const dataset = raw as unknown as CyberwatchData
 
@@ -31,6 +31,18 @@ export function filterIncidents(query: IncidentQuery, locale: Locale): Incident[
   return incidents.filter((incident) => incidentMatches(incident, query, locale))
 }
 
+/** Sources this record cites, in `sourceIds` order. */
+export function sourcesFor(incident: Incident): Source[] {
+  const ids = incident.sourceIds.length ? incident.sourceIds : [incident.sourceId]
+  return ids
+    .map((id) => dataset.sources.find((source) => source.id === id))
+    .filter((source): source is Source => Boolean(source))
+}
+
+export function incidentCites(incident: Incident, sourceId: string): boolean {
+  return incident.sourceId === sourceId || incident.sourceIds.includes(sourceId)
+}
+
 /** Collapses the bilingual fields to one language, keeping nulls as nulls. */
 export function localizeIncident(incident: Incident, locale: Locale) {
   return {
@@ -53,7 +65,21 @@ export function localizeIncident(incident: Incident, locale: Locale) {
     sourceName: incident.sourceName,
     sourceId: incident.sourceId,
     sourceUrl: incident.sourceUrl,
+    sourceIds: incident.sourceIds,
     url: locale === 'fr' ? `/fr/incident/${incident.id}` : `/incident/${incident.id}`,
+    detail: {
+      lead: incident.detail.lead[locale],
+      timeline: incident.detail.timeline.map((entry) => ({
+        date: entry.date,
+        label: entry.label[locale],
+      })),
+      how: incident.detail.how[locale],
+      taken: incident.detail.taken[locale],
+      notTaken: incident.detail.notTaken[locale],
+      response: incident.detail.response[locale],
+      methodDisclosure: incident.detail.methodDisclosure,
+      ...(incident.detail.attackerClaim ? { attackerClaim: incident.detail.attackerClaim[locale] } : {}),
+    },
   }
 }
 

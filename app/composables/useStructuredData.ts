@@ -100,11 +100,16 @@ export function useStructuredData() {
 
   function incidentArticle(incident: Incident) {
     const url = absolute(localePath(`/incident/${incident.id}`))
+    const citations = (incident.sourceIds.length ? incident.sourceIds : [incident.sourceId])
+      .map((id) => data.value?.sources.find((source) => source.id === id))
+      .filter((source): source is NonNullable<typeof source> => Boolean(source))
+      .map((source) => ({ '@type': 'CreativeWork', name: source.name, url: source.url }))
+
     return {
       '@type': 'Article',
       '@id': `${url}#record`,
       headline: `${incident.org[locale.value]} — ${data.value?.ui.sectorLabels[incident.sector]?.[locale.value] ?? incident.sector}, ${formatDate(incident.date, locale.value)}`,
-      description: L(incident.data),
+      description: L(incident.detail.lead),
       url,
       mainEntityOfPage: url,
       inLanguage: locale.value,
@@ -113,7 +118,7 @@ export function useStructuredData() {
       contentReferenceTime: incident.date,
       dateModified: data.value?.project.reviewedThrough,
       about: { '@type': 'Organization', name: incident.org[locale.value], url: `https://${incident.domain}` },
-      citation: { '@type': 'CreativeWork', name: incident.sourceName, url: incident.sourceUrl },
+      citation: citations.length === 1 ? citations[0] : citations,
       image: absolute('/og.png'),
     }
   }

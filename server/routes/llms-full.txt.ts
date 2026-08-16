@@ -6,8 +6,12 @@ export default defineEventHandler((event) => {
   const lang = isLocale(getQuery(event).lang) ? (getQuery(event).lang as 'en' | 'fr') : 'en'
   const prefix = lang === 'fr' ? '/fr' : ''
 
-  const records = incidents.map((incident) =>
-    [
+  const records = incidents.map((incident) => {
+    const extraSources = incident.sourceIds
+      .map((id) => dataset.sources.find((source) => source.id === id))
+      .filter((source): source is NonNullable<typeof source> => Boolean(source))
+
+    return [
       `## ${incident.org[lang]}`,
       '',
       `- Date: ${incident.date}`,
@@ -15,20 +19,34 @@ export default defineEventHandler((event) => {
       `- Sector: ${dataset.ui.sectorLabels[incident.sector]?.[lang] ?? incident.sector}`,
       `- Severity: ${incident.severity}`,
       `- Evidence status: ${incident.status}`,
+      `- Method disclosure: ${incident.detail.methodDisclosure}`,
       `- People or records affected: ${
         incident.affected === null
           ? `unknown — ${incident.affectedLabel[lang]}`
           : `${incident.affected} (${incident.affectedLabel[lang]})`
       }`,
-      `- Data and systems affected: ${incident.data[lang]}`,
-      `- Known or suspected entry method: ${incident.method[lang]}`,
+      `- Lead: ${incident.detail.lead[lang]}`,
+      `- How it happened: ${incident.detail.how[lang]}`,
+      `- What was exposed: ${incident.detail.taken[lang]}`,
+      `- What was not in scope: ${incident.detail.notTaken[lang]}`,
       `- Why it matters to the public: ${incident.risk[lang]}`,
+      `- What was done next: ${incident.detail.response[lang]}`,
       `- Evidence note: ${incident.confidence[lang]}`,
-      `- Source: ${incident.sourceName} — ${incident.sourceUrl}`,
+      ...(incident.detail.attackerClaim
+        ? [`- Attacker claim (not a confirmed count): ${incident.detail.attackerClaim[lang]}`]
+        : []),
+      ...(incident.detail.timeline.length
+        ? [
+            `- Dated facts:`,
+            ...incident.detail.timeline.map((entry) => `  - ${entry.date}: ${entry.label[lang]}`),
+          ]
+        : []),
+      `- Sources:`,
+      ...extraSources.map((source) => `  - ${source.name} — ${source.url}`),
       `- Page: ${base}${prefix}/incident/${incident.id}`,
       `- API: ${base}/api/incidents/${incident.id}`,
-    ].join('\n'),
-  )
+    ].join('\n')
+  })
 
   setHeader(event, 'content-type', 'text/plain; charset=utf-8')
   setHeader(event, 'cache-control', 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400')

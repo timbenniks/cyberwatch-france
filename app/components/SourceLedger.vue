@@ -10,7 +10,9 @@ function isOfficial(source: Source): boolean {
   const host = new URL(source.url).hostname
   if (host.endsWith('.gouv.fr') || host.endsWith('.europa.eu')) return true
   return incidents.value.some(
-    (incident) => incident.sourceId === source.id && host.includes(incident.logo.domain.split('.')[0]!),
+    (incident) =>
+      (incident.sourceId === source.id || incident.sourceIds.includes(source.id)) &&
+      host.includes(incident.logo.domain.split('.')[0]!),
   )
 }
 
@@ -18,7 +20,9 @@ const entries = computed(() =>
   (data.value?.sources ?? []).map((source) => ({
     source,
     official: isOfficial(source),
-    citedBy: incidents.value.filter((incident) => incident.sourceId === source.id),
+    citedBy: incidents.value.filter(
+      (incident) => incident.sourceId === source.id || incident.sourceIds.includes(source.id),
+    ),
   })),
 )
 </script>

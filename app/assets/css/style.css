@@ -221,6 +221,9 @@
   .no-print {
     display: none !important;
   }
+  aside {
+    break-inside: avoid;
+  }
   [role='dialog'] {
     position: static !important;
     max-height: none !important;

@@ -6,6 +6,26 @@ export type Bilingual = Record<Locale, string>
 export type Severity = 'critical' | 'high' | 'medium' | 'low'
 export type IncidentStatus = 'confirmed' | 'disputed' | 'unknown'
 export type IncidentKind = 'government' | 'company'
+export type MethodDisclosure = 'disclosed' | 'partial' | 'undisclosed'
+
+export interface IncidentTimelineEntry {
+  /** ISO date, YYYY-MM-DD. */
+  date: string
+  label: Bilingual
+}
+
+/** Longer sourced copy for the incident page. Cards still use the short fields. */
+export interface IncidentDetail {
+  lead: Bilingual
+  timeline: IncidentTimelineEntry[]
+  how: Bilingual
+  taken: Bilingual
+  notTaken: Bilingual
+  response: Bilingual
+  methodDisclosure: MethodDisclosure
+  /** Attacker-claimed figures as text only — never copied into `affected`. */
+  attackerClaim?: Bilingual
+}
 
 export interface Project {
   name: string
@@ -65,11 +85,17 @@ export interface Incident {
   risk: Bilingual
   sourceName: string
   confidence: Bilingual
+  /** Primary citation; also first in `sourceIds`. */
   sourceId: string
   sourceUrl: string
+  /** Every source this record cites, including follow-ups. */
+  sourceIds: string[]
+  detail: IncidentDetail
   logo: {
     domain: string
     strategy: string
+    /** Filename under /public/logos — identification only, not incident prose. */
+    file: string
   }
 }
 

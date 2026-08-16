@@ -40,6 +40,12 @@ export function incidentMatches(incident: Incident, query: IncidentMatchQuery, l
     incident.data[locale],
     incident.method[locale],
     incident.risk[locale],
+    incident.detail?.lead[locale],
+    incident.detail?.how[locale],
+    incident.detail?.taken[locale],
+    incident.detail?.notTaken[locale],
+    incident.detail?.response[locale],
+    incident.detail?.attackerClaim?.[locale],
   ]
     .join(' ')
     .toLowerCase()

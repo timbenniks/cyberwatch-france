@@ -108,6 +108,9 @@ export default defineNuxtConfig({
     '/favicon.svg': {
       headers: { 'cache-control': 'public, max-age=31536000, immutable' },
     },
+    '/logos/**': {
+      headers: { 'cache-control': 'public, max-age=31536000, immutable' },
+    },
     '/og.png': {
       headers: { 'cache-control': 'public, max-age=86400, stale-while-revalidate=604800' },
     },

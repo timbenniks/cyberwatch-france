@@ -20,7 +20,7 @@ const isUnknownCount = computed(() => props.incident.affected === null)
     @click="emit('open', incident)"
   >
     <div class="flex items-start gap-3.5">
-      <OrgLogo :org="L(incident.org)" :size="40" />
+      <OrgLogo :org="L(incident.org)" :incident="incident" :size="40" />
 
       <div class="min-w-0 flex-1">
         <div class="flex flex-wrap items-center gap-x-2.5 gap-y-1">

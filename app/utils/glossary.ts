@@ -77,6 +77,51 @@ export const glossary: GlossaryEntry[] = [
     pattern: /supplier|supply chain|prestataire|fournisseur|sous-traitant/i,
   },
   {
+    id: 'vpn',
+    term: { en: 'VPN', fr: 'VPN' },
+    definition: {
+      en: 'A private tunnel onto an organisation’s network, often used so staff can work from outside the office.',
+      fr: 'Un tunnel privé vers le réseau d’une organisation, souvent utilisé pour que le personnel travaille hors du bureau.',
+    },
+    pattern: /\bvpn\b/i,
+  },
+  {
+    id: 'taj',
+    term: { en: 'TAJ', fr: 'TAJ' },
+    definition: {
+      en: 'France’s police file of judicial antecedents — records of people linked to criminal investigations.',
+      fr: 'Le fichier de police des traitements d’antécédents judiciaires — les personnes liées à des enquêtes pénales.',
+    },
+    pattern: /\btaj\b/i,
+  },
+  {
+    id: 'fpr',
+    term: { en: 'FPR', fr: 'FPR' },
+    definition: {
+      en: 'The wanted-persons file used by French police and gendarmerie.',
+      fr: 'Le fichier des personnes recherchées, utilisé par la police et la gendarmerie.',
+    },
+    pattern: /\bfpr\b/i,
+  },
+  {
+    id: 'cheops',
+    term: { en: 'CHEOPS', fr: 'CHEOPS' },
+    definition: {
+      en: 'An internal portal through which French police and gendarmerie applications, including some files, can be reached.',
+      fr: 'Un portail interne par lequel les applications de la police et de la gendarmerie, dont certains fichiers, sont accessibles.',
+    },
+    pattern: /\bcheops\b/i,
+  },
+  {
+    id: 'idor',
+    term: { en: 'IDOR', fr: 'IDOR' },
+    definition: {
+      en: 'Insecure Direct Object Reference: changing an identifier in a request to see someone else’s record because the server does not check that you are allowed to.',
+      fr: 'Insecure Direct Object Reference : modifier un identifiant dans une requête pour voir le dossier de quelqu’un d’autre, faute de contrôle d’autorisation côté serveur.',
+    },
+    pattern: /\bidor\b/i,
+  },
+  {
     id: 'edge',
     term: { en: 'Edge or legacy system', fr: 'Système exposé ou ancien' },
     definition: {
