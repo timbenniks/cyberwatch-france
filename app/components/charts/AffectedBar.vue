@@ -9,6 +9,7 @@ const { incidents, withoutPublishedCount, severitiesPresent } = useCyberData()
 const { locale, t } = useLocale()
 const { base, theme } = useChartBase()
 const narrow = useNarrowViewport()
+const { inspect, selectedKey, onSelect } = useChartInspect()
 
 /** Only confirmed incidents with a published numeric figure. Unknown and disputed claims are never plotted as 0. */
 const plotted = computed(() =>
@@ -16,6 +17,8 @@ const plotted = computed(() =>
     .filter((i): i is Incident & { affected: number } => i.status === 'confirmed' && typeof i.affected === 'number')
     .sort((a, b) => a.affected - b.affected),
 )
+
+const selected = computed(() => plotted.value.find((incident) => incident.id === selectedKey.value) ?? null)
 
 const legendSeverities = computed(() => {
   const present = new Set(plotted.value.map((i) => i.severity))
@@ -26,7 +29,7 @@ const option = computed(() => {
   const { chrome, severityColor, axisLabelStyle, tooltipStyle } = theme.value
   return {
     ...base.value,
-    grid: { left: 4, right: narrow.value ? 12 : 80, top: 8, bottom: 4, containLabel: true },
+    grid: { left: 4, right: narrow.value ? 56 : 80, top: 8, bottom: 4, containLabel: true },
     xAxis: {
       type: 'value',
       axisLabel: { ...axisLabelStyle, formatter: (value: number) => formatCompact(value, locale.value) },
@@ -50,6 +53,7 @@ const option = computed(() => {
     },
     tooltip: {
       ...tooltipStyle,
+      show: !inspect.value,
       trigger: 'item',
       formatter: (params: TooltipParam) => {
         const incident = plotted.value[params.dataIndex]!
@@ -72,12 +76,12 @@ const option = computed(() => {
           color: (params: TooltipParam) => severityColor[plotted.value[params.dataIndex]!.severity],
         },
         label: {
-          show: !narrow.value,
+          show: true,
           position: 'right',
           distance: 8,
           color: chrome.ink,
           fontFamily: chrome.mono,
-          fontSize: 11,
+          fontSize: narrow.value ? 10 : 11,
           formatter: (params: TooltipParam) => formatNumber(params.value, locale.value),
         },
         data: plotted.value.map((i) => i.affected),
@@ -94,9 +98,18 @@ const tableRows = computed(() =>
 
 const note = computed(() => `${withoutPublishedCount.value.length} ${t('noCountPublished')}.`)
 
+const selectedDetail = computed(() => {
+  if (!selected.value) return ''
+  return [
+    formatDate(selected.value.date, locale.value),
+    t(selected.value.severity),
+    formatAffected(selected.value, locale.value),
+  ].join(' · ')
+})
+
 function onClick(params: ECElementEvent) {
   const incident = plotted.value[params.dataIndex]
-  if (incident) emit('select', incident)
+  if (incident) onSelect(incident.id, () => emit('select', incident))
 }
 </script>
 
@@ -106,6 +119,16 @@ function onClick(params: ECElementEvent) {
       <AppChart :option="option" :label="t('chartAffectedTitle')" @click="onClick" />
     </div>
     <SeverityLegend class="mt-4" :severities="legendSeverities" />
+
+    <template #readout>
+      <ChartReadout
+        v-if="inspect && selected"
+        :title="selected.org[locale]"
+        :detail="selectedDetail"
+        :action-label="t('openRecord')"
+        @action="emit('select', selected)"
+      />
+    </template>
 
     <template #table>
       <ChartTable

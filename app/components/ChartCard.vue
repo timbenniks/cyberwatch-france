@@ -12,7 +12,12 @@ defineProps<{
 }>()
 
 const { t } = useLocale()
+const inspect = useCoarsePointer()
 const tableOpen = ref(false)
+
+onMounted(() => {
+  if (window.matchMedia('(max-width: 639px)').matches) tableOpen.value = true
+})
 
 function toggleTable() {
   tableOpen.value = !tableOpen.value
@@ -35,6 +40,8 @@ function toggleTable() {
       <slot />
     </div>
 
+    <slot name="readout" />
+
     <p v-if="note" class="mt-4 border-l-2 border-hairline-strong pl-3 text-[0.8125rem] leading-relaxed text-muted">
       {{ note }}
     </p>
@@ -49,7 +56,7 @@ function toggleTable() {
         <ChevronDown :size="14" class="transition-transform" :class="tableOpen ? 'rotate-180' : ''" />
         {{ tableOpen ? t('hideTable') : t('showTable') }}
       </button>
-      <p v-if="interactive" class="eyebrow">{{ t('clickToFilter') }}</p>
+      <p v-if="interactive" class="eyebrow">{{ inspect ? t('tapToInspect') : t('clickToFilter') }}</p>
       <a
         v-if="sourceUrl"
         :href="sourceUrl"

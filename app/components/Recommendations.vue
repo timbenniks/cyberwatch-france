@@ -4,10 +4,10 @@ import { Building2, Info, Users } from '@lucide/vue'
 const { data } = useCyberData()
 const { t, L, localePath } = useLocale()
 
-const tabs = ['organizations', 'public'] as const
+const tabs = ['public', 'organizations'] as const
 type Tab = (typeof tabs)[number]
 
-const tab = ref<Tab>('organizations')
+const tab = ref<Tab>('public')
 const items = computed(() => data.value?.recommendations[tab.value] ?? [])
 
 function onTabKey(event: KeyboardEvent, option: Tab) {
@@ -24,7 +24,7 @@ function onTabKey(event: KeyboardEvent, option: Tab) {
 <template>
   <section id="guidance" class="scroll-mt-24">
     <header class="mb-8 max-w-[62ch]">
-      <p class="eyebrow">04 · {{ t('navGuidance') }}</p>
+      <p class="eyebrow">02 · {{ t('navGuidance') }}</p>
       <h2 class="mt-3 font-display text-3xl leading-tight text-ink sm:text-[2.5rem]">{{ t('guidanceTitle') }}</h2>
       <p class="mt-4 text-base leading-relaxed text-ink-2">{{ t('guidanceLead') }}</p>
     </header>

@@ -8,6 +8,7 @@ const emit = defineEmits<{ filter: [Severity] }>()
 const { incidents, severitiesPresent } = useCyberData()
 const { locale, t } = useLocale()
 const { base, theme } = useChartBase()
+const { inspect, selectedKey, onSelect } = useChartInspect()
 
 const counts = computed(() =>
   severitiesPresent.value.map((severity) => ({
@@ -15,6 +16,8 @@ const counts = computed(() =>
     count: incidents.value.filter((i) => i.severity === severity).length,
   })),
 )
+
+const selected = computed(() => counts.value.find((entry) => entry.severity === selectedKey.value) ?? null)
 
 const total = computed(() => incidents.value.length)
 
@@ -27,6 +30,7 @@ const option = computed(() => {
     yAxis: { type: 'category', data: [''], show: false },
     tooltip: {
       ...tooltipStyle,
+      show: !inspect.value,
       trigger: 'item',
       formatter: (params: TooltipParam) =>
         `${swatch(params.color)}<strong>${escapeHtml(params.seriesName ?? '')}</strong><br/>${params.value} / ${
@@ -39,7 +43,6 @@ const option = computed(() => {
       stack: 'severity',
       barWidth: 44,
       cursor: 'pointer',
-      // 2px surface gap between adjacent fills.
       itemStyle: {
         color: severityColor[entry.severity],
         borderColor: chrome.surface,
@@ -66,9 +69,17 @@ const tableRows = computed(() =>
   ]),
 )
 
+const selectedDetail = computed(() => {
+  if (!selected.value) return ''
+  return `${selected.value.count} / ${total.value} ${t('incidentsCount')} · ${formatPercent(
+    (selected.value.count / total.value) * 100,
+    locale.value,
+  )}`
+})
+
 function onClick(params: ECElementEvent) {
   const entry = counts.value.find((candidate) => t(candidate.severity) === params.seriesName)
-  if (entry) emit('filter', entry.severity)
+  if (entry) onSelect(entry.severity, () => emit('filter', entry.severity))
 }
 </script>
 
@@ -91,6 +102,16 @@ function onClick(params: ECElementEvent) {
         >
       </li>
     </ul>
+
+    <template #readout>
+      <ChartReadout
+        v-if="inspect && selected"
+        :title="t(selected.severity)"
+        :detail="selectedDetail"
+        :action-label="t('filterInTimeline')"
+        @action="emit('filter', selected.severity)"
+      />
+    </template>
 
     <template #table>
       <ChartTable :caption="t('chartSeverityTitle')" :headers="[t('severity'), t('count'), t('share')]" :rows="tableRows" />

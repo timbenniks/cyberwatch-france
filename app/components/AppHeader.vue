@@ -5,7 +5,7 @@ const { t, locale, alternates, localePath } = useLocale()
 
 const route = useRoute()
 const menuOpen = ref(false)
-const active = ref('overview')
+const active = ref('')
 const progress = ref(0)
 
 const isHome = computed(() => {
@@ -32,7 +32,7 @@ watch(
   (hash) => {
     const id = hash.replace(/^#/, '')
     if (!id) {
-      active.value = 'overview'
+      active.value = ''
       return
     }
     if (navSections.some((section) => section.id === id)) activate(id)

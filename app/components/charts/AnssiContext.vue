@@ -1,12 +1,15 @@
 <script setup lang="ts">
+import type { ECElementEvent } from 'echarts/core'
 import { escapeHtml, swatch, type TooltipParam } from '~/utils/echarts'
 
 const { data, sourceById } = useCyberData()
 const { locale, t, L } = useLocale()
 const { base, theme } = useChartBase()
+const { inspect, selectedKey, select } = useChartInspect()
 
 const shares = computed(() => data.value?.summaryStats.sectorDistributionPercent ?? [])
 const source = computed(() => sourceById.value.get(data.value?.summaryStats.anssi2025.sourceId ?? ''))
+const selected = computed(() => shares.value.find((share) => share.id === selectedKey.value) ?? null)
 
 const option = computed(() => {
   const { chrome, seriesColors, tooltipStyle } = theme.value
@@ -17,6 +20,7 @@ const option = computed(() => {
     yAxis: { type: 'category', data: [''], show: false },
     tooltip: {
       ...tooltipStyle,
+      show: !inspect.value,
       trigger: 'item',
       formatter: (params: TooltipParam) =>
         `${swatch(params.color)}<strong>${escapeHtml(params.seriesName ?? '')}</strong><br/>${formatPercent(
@@ -29,6 +33,7 @@ const option = computed(() => {
       type: 'bar',
       stack: 'anssi',
       barWidth: 44,
+      cursor: 'pointer',
       itemStyle: {
         color: seriesColors[index % seriesColors.length],
         borderColor: chrome.surface,
@@ -48,6 +53,16 @@ const option = computed(() => {
 })
 
 const tableRows = computed(() => shares.value.map((share) => [L(share.label), formatPercent(share.value, locale.value)]))
+
+const selectedDetail = computed(() => {
+  if (!selected.value) return ''
+  return `${formatPercent(selected.value.value, locale.value)} ${t('share').toLowerCase()}`
+})
+
+function onClick(params: ECElementEvent) {
+  const share = shares.value[typeof params.seriesIndex === 'number' ? params.seriesIndex : -1]
+  if (share) select(share.id)
+}
 </script>
 
 <template>
@@ -59,7 +74,7 @@ const tableRows = computed(() => shares.value.map((share) => [L(share.label), fo
     :source-url="source?.url"
   >
     <div class="h-[60px] w-full">
-      <AppChart :option="option" :label="t('chartAnssiTitle')" />
+      <AppChart :option="option" :label="t('chartAnssiTitle')" @click="onClick" />
     </div>
     <ul class="mt-5 grid gap-2.5 sm:grid-cols-2">
       <li v-for="(share, index) in shares" :key="share.id" class="flex items-baseline gap-3 text-sm">
@@ -72,6 +87,10 @@ const tableRows = computed(() => shares.value.map((share) => [L(share.label), fo
         <span class="ml-auto tabular text-ink-2">{{ formatPercent(share.value, locale) }}</span>
       </li>
     </ul>
+
+    <template #readout>
+      <ChartReadout v-if="inspect && selected" :title="L(selected.label)" :detail="selectedDetail" />
+    </template>
 
     <template #table>
       <ChartTable :caption="t('chartAnssiTitle')" :headers="[t('sector'), t('share')]" :rows="tableRows" />

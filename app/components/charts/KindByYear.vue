@@ -8,6 +8,7 @@ const emit = defineEmits<{ filter: [{ kind: IncidentKind; year: number }] }>()
 const { incidents, years } = useCyberData()
 const { t } = useLocale()
 const { base, theme } = useChartBase()
+const { inspect, selectedKey, onSelect } = useChartInspect()
 
 const ascendingYears = computed(() => [...years.value].sort((a, b) => a - b))
 const kinds: IncidentKind[] = ['government', 'company']
@@ -15,6 +16,24 @@ const kinds: IncidentKind[] = ['government', 'company']
 function countFor(kind: IncidentKind, year: number) {
   return incidents.value.filter((i) => i.kind === kind && i.year === year).length
 }
+
+function keyFor(kind: IncidentKind, year: number) {
+  return `${kind}:${year}`
+}
+
+function parseKey(key: string): { kind: IncidentKind; year: number } | null {
+  const [rawKind, yearText] = key.split(':')
+  const year = Number(yearText)
+  if ((rawKind !== 'government' && rawKind !== 'company') || !Number.isFinite(year)) return null
+  return { kind: rawKind, year }
+}
+
+const selected = computed(() => {
+  if (!selectedKey.value) return null
+  const parsed = parseKey(selectedKey.value)
+  if (!parsed) return null
+  return { ...parsed, count: countFor(parsed.kind, parsed.year) }
+})
 
 const option = computed(() => {
   const { chrome, seriesColors, axisLabelStyle, tooltipStyle } = theme.value
@@ -33,6 +52,7 @@ const option = computed(() => {
     },
     tooltip: {
       ...tooltipStyle,
+      show: !inspect.value,
       trigger: 'axis',
       axisPointer: { type: 'shadow', shadowStyle: { color: chrome.axisPointer } },
     },
@@ -79,10 +99,15 @@ const tableRows = computed(() =>
   ]),
 )
 
+const selectedDetail = computed(() => {
+  if (!selected.value) return ''
+  return `${selected.value.year} · ${selected.value.count} ${t('incidentsCount')}`
+})
+
 function onClick(params: ECElementEvent) {
   const year = ascendingYears.value[params.dataIndex]
   const kind = kinds[typeof params.seriesIndex === 'number' ? params.seriesIndex : 0]
-  if (year && kind) emit('filter', { kind, year })
+  if (year && kind) onSelect(keyFor(kind, year), () => emit('filter', { kind, year }))
 }
 </script>
 
@@ -91,6 +116,16 @@ function onClick(params: ECElementEvent) {
     <div class="h-[280px] w-full">
       <AppChart :option="option" :label="t('chartKindTitle')" @click="onClick" />
     </div>
+
+    <template #readout>
+      <ChartReadout
+        v-if="inspect && selected"
+        :title="t(selected.kind === 'government' ? 'government' : 'companies')"
+        :detail="selectedDetail"
+        :action-label="t('filterInTimeline')"
+        @action="emit('filter', { kind: selected.kind, year: selected.year })"
+      />
+    </template>
 
     <template #table>
       <ChartTable

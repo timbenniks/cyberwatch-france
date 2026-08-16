@@ -78,10 +78,10 @@ function onMobileSort(event: Event) {
 
 <template>
   <section id="data" class="scroll-mt-24">
-    <header class="mb-8 max-w-[62ch]">
-      <p class="eyebrow">05 · {{ t('navData') }}</p>
-      <h2 class="mt-3 font-display text-3xl leading-tight text-ink sm:text-[2.5rem]">{{ t('dataTitle') }}</h2>
-      <p class="mt-4 text-base leading-relaxed text-ink-2">{{ t('dataLead') }}</p>
+    <header class="mb-6 max-w-[62ch]">
+      <p class="eyebrow">{{ t('navData') }}</p>
+      <h2 class="mt-2 font-display text-2xl leading-tight text-ink sm:text-3xl">{{ t('dataTitle') }}</h2>
+      <p class="mt-3 text-[0.9375rem] leading-relaxed text-ink-2">{{ t('dataLead') }}</p>
     </header>
 
     <div class="card p-5 sm:p-6">

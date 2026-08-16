@@ -8,6 +8,7 @@ const { incidents, sectorLabel } = useCyberData()
 const { t } = useLocale()
 const { base, theme } = useChartBase()
 const narrow = useNarrowViewport()
+const { inspect, selectedKey, onSelect } = useChartInspect()
 
 /** Ascending, so the largest count lands at the top of a horizontal chart. */
 const counts = computed(() => {
@@ -17,6 +18,8 @@ const counts = computed(() => {
     .map(([sector, count]) => ({ sector, count }))
     .sort((a, b) => a.count - b.count || b.sector.localeCompare(a.sector))
 })
+
+const selected = computed(() => counts.value.find((entry) => entry.sector === selectedKey.value) ?? null)
 
 const option = computed(() => {
   const { chrome, sequential, axisLabelStyle, tooltipStyle } = theme.value
@@ -46,7 +49,7 @@ const option = computed(() => {
       axisLine: { lineStyle: { color: chrome.axis } },
       axisTick: { show: false },
     },
-    tooltip: { ...tooltipStyle, trigger: 'item' },
+    tooltip: { ...tooltipStyle, show: !inspect.value, trigger: 'item' },
     series: [
       {
         type: 'bar',
@@ -72,9 +75,14 @@ const option = computed(() => {
 
 const tableRows = computed(() => [...counts.value].reverse().map((entry) => [sectorLabel(entry.sector), entry.count]))
 
+const selectedDetail = computed(() => {
+  if (!selected.value) return ''
+  return `${selected.value.count} ${t('incidentsCount')}`
+})
+
 function onClick(params: ECElementEvent) {
   const entry = counts.value[params.dataIndex]
-  if (entry) emit('filter', entry.sector)
+  if (entry) onSelect(entry.sector, () => emit('filter', entry.sector))
 }
 </script>
 
@@ -83,6 +91,16 @@ function onClick(params: ECElementEvent) {
     <div class="h-[320px] w-full">
       <AppChart :option="option" :label="t('chartSectorTitle')" @click="onClick" />
     </div>
+
+    <template #readout>
+      <ChartReadout
+        v-if="inspect && selected"
+        :title="sectorLabel(selected.sector)"
+        :detail="selectedDetail"
+        :action-label="t('filterInTimeline')"
+        @action="emit('filter', selected.sector)"
+      />
+    </template>
 
     <template #table>
       <ChartTable :caption="t('chartSectorTitle')" :headers="[t('sector'), t('count')]" :rows="tableRows" />

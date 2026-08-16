@@ -5,9 +5,11 @@ const dictionary = {
   brand: { en: 'France Cyberwatch', fr: 'France Cyberwatch' },
   brandYears: { en: '2025—2026', fr: '2025—2026' },
   navOverview: { en: 'Overview', fr: "Vue d'ensemble" },
+  navIncidents: { en: 'Incidents', fr: 'Incidents' },
   navTimeline: { en: 'Timeline', fr: 'Chronologie' },
   navPatterns: { en: 'Patterns', fr: 'Tendances' },
   navGuidance: { en: 'What people can do', fr: 'Que peut-on faire' },
+  navNumbers: { en: 'Numbers', fr: 'Chiffres' },
   navData: { en: 'Data', fr: 'Données' },
   skipToContent: { en: 'Skip to content', fr: 'Aller au contenu' },
   openMenu: { en: 'Open menu', fr: 'Ouvrir le menu' },
@@ -21,12 +23,12 @@ const dictionary = {
   seoRecordSuffix: { en: 'incident record', fr: 'fiche d’incident' },
   heroEyebrow: { en: 'Public incident dossier', fr: 'Dossier public d’incidents' },
   heroTitle: {
-    en: 'France’s digital systems were under sustained pressure across 2025 and 2026.',
-    fr: 'Les systèmes numériques français ont subi une pression continue en 2025 et 2026.',
+    en: 'Publicly reported cyberattacks on French institutions and companies.',
+    fr: 'Les cyberattaques rendues publiques contre des institutions et entreprises françaises.',
   },
   heroLead: {
-    en: '{n} publicly reported attacks on French public bodies and companies, read alongside the national figures published by ANSSI and the CNIL. Every claim here links back to its source.',
-    fr: '{n} attaques rendues publiques contre des organismes publics et des entreprises en France, mises en regard des chiffres nationaux publiés par l’ANSSI et la CNIL. Chaque affirmation renvoie à sa source.',
+    en: '{n} incidents from 2025 and 2026, each linked to its source. Open a record to see what happened and what was exposed.',
+    fr: '{n} incidents en 2025 et 2026, chacun relié à sa source. Ouvrez une fiche pour voir ce qui s’est passé et ce qui a été exposé.',
   },
   stripHint: {
     en: 'Bar height shows severity · select one to open its record',
@@ -36,6 +38,8 @@ const dictionary = {
   scopeNote: { en: 'Scope', fr: 'Périmètre' },
   methodology: { en: 'Methodology', fr: 'Méthodologie' },
   readMethodology: { en: 'Read the methodology', fr: 'Lire la méthodologie' },
+  heroLatest: { en: 'Latest record', fr: 'Dernière fiche' },
+  seeAllIncidents: { en: 'See all {n} incidents', fr: 'Voir les {n} incidents' },
   close: { en: 'Close', fr: 'Fermer' },
 
   statAnssiEvents: { en: 'ANSSI security events handled', fr: 'Événements de sécurité traités par l’ANSSI' },
@@ -52,9 +56,20 @@ const dictionary = {
 
   chartsTitle: { en: 'What the numbers show', fr: 'Ce que disent les chiffres' },
   chartsLead: {
-    en: 'Charts count only what has been published. Incidents with no released figure stay out of the totals rather than being counted as zero.',
-    fr: 'Les graphiques ne comptent que ce qui a été publié. Les incidents sans chiffre communiqué restent hors des totaux plutôt que d’être comptés comme zéro.',
+    en: '{n} incidents on this page have no published count, so they are left out of the chart totals rather than counted as zero.',
+    fr: '{n} incidents de cette page n’ont pas de chiffre publié : ils restent hors des totaux plutôt que d’être comptés comme zéro.',
   },
+  nationalFiguresTitle: {
+    en: 'France-wide figures, not this list',
+    fr: 'Chiffres nationaux, pas cette liste',
+  },
+  forResearchers: { en: 'For researchers', fr: 'Pour les chercheurs' },
+  forResearchersLead: {
+    en: 'The full table, repeating weaknesses, and every cited source.',
+    fr: 'Le tableau complet, les faiblesses récurrentes, et chaque source citée.',
+  },
+  tapToInspect: { en: 'Tap a bar to see the figure', fr: 'Touchez une barre pour voir le chiffre' },
+  filterInTimeline: { en: 'Show these in the timeline', fr: 'Voir dans la chronologie' },
   chartAffectedTitle: { en: 'Published account and record counts', fr: 'Comptes et enregistrements publiés' },
   chartAffectedSub: {
     en: 'Only incidents with a released figure',
@@ -65,8 +80,8 @@ const dictionary = {
   chartSeverityTitle: { en: 'Severity of the incidents tracked', fr: 'Gravité des incidents suivis' },
   chartAnssiTitle: { en: 'Where ANSSI saw incidents in 2025', fr: 'Où l’ANSSI a constaté des incidents en 2025' },
   chartAnssiSub: {
-    en: 'National context — all ANSSI 2025 incidents, not this dossier',
-    fr: 'Contexte national — tous les incidents ANSSI 2025, pas ce dossier',
+    en: 'France-wide figures, not this list — all ANSSI 2025 incidents',
+    fr: 'Chiffres nationaux, pas cette liste — tous les incidents ANSSI 2025',
   },
   contextBadge: { en: 'National context', fr: 'Contexte national' },
   showTable: { en: 'Show data table', fr: 'Afficher le tableau' },
@@ -80,10 +95,10 @@ const dictionary = {
   share: { en: 'Share', fr: 'Part' },
   count: { en: 'Count', fr: 'Nombre' },
 
-  timelineTitle: { en: 'Incident timeline', fr: 'Chronologie des incidents' },
+  timelineTitle: { en: 'Incidents', fr: 'Incidents' },
   timelineLead: {
-    en: 'Newest first. Select any incident to open the full record.',
-    fr: 'Du plus récent au plus ancien. Sélectionnez un incident pour ouvrir la fiche complète.',
+    en: 'Newest first. Open any card for the full record.',
+    fr: 'Du plus récent au plus ancien. Ouvrez une fiche pour le dossier complet.',
   },
   filters: { en: 'Filters', fr: 'Filtres' },
   search: { en: 'Search', fr: 'Rechercher' },

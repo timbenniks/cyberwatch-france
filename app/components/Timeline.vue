@@ -41,7 +41,7 @@ const groups = computed(() => {
 <template>
   <section id="timeline" class="scroll-mt-24">
     <header class="mb-8 max-w-[62ch]">
-      <p class="eyebrow">02 · {{ t('navTimeline') }}</p>
+      <p class="eyebrow">01 · {{ t('navIncidents') }}</p>
       <h2 class="mt-3 font-display text-3xl leading-tight text-ink sm:text-[2.5rem]">{{ t('timelineTitle') }}</h2>
       <p class="mt-4 text-base leading-relaxed text-ink-2">{{ t('timelineLead') }}</p>
     </header>

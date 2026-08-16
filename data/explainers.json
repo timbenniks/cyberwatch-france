@@ -17,18 +17,18 @@
             "fr": "La fuite écrit le scénario"
           },
           "body": {
-            "en": "When criminals get a file of names, addresses, phone numbers, IBANs, school details or tax details, they are not only collecting trophies. They are collecting facts they can read back to you.\n\nA caller who knows your address, your operator, your child’s school or a contract number is not proving they work for that organisation. They are proving they have a copy of a leak, or enough of one to sound real.",
-            "fr": "Quand des criminels obtiennent un fichier de noms, d’adresses, de téléphones, d’IBAN, de données scolaires ou fiscales, ils ne collectionnent pas seulement des trophées. Ils collectent des faits qu’ils peuvent vous relire.\n\nUn appelant qui connaît votre adresse, votre opérateur, l’école de votre enfant ou un numéro de contrat ne prouve pas qu’il travaille pour cet organisme. Il prouve qu’il a une copie d’une fuite, ou assez d’éléments pour paraître vrai."
+            "en": "When criminals get a file of names, addresses, phone numbers, IBANs, school details or tax details, they are collecting facts they can read back to you.\n\nA caller who knows your address, your operator, your child’s school or a contract number is not proving they work for that organisation. They have a copy of a leak, or enough of one to sound real.",
+            "fr": "Quand des criminels obtiennent un fichier de noms, d’adresses, de téléphones, d’IBAN, de données scolaires ou fiscales, ils collectent des faits qu’ils peuvent vous relire.\n\nUn appelant qui connaît votre adresse, votre opérateur, l’école de votre enfant ou un numéro de contrat ne prouve pas qu’il travaille pour cet organisme. Il a une copie d’une fuite, ou assez d’éléments pour paraître vrai."
           }
         },
         {
           "heading": {
-            "en": "What they actually want",
-            "fr": "Ce qu’ils veulent vraiment"
+            "en": "What they want",
+            "fr": "Ce qu’ils veulent"
           },
           "body": {
-            "en": "The usual goal is not to empty an account in one click. It is to get you to do something: click a link, read out a one-time code, approve a payment, send a document, or stay on the line while they connect to your bank.\n\nLeaked data makes that conversation cheaper to run at scale. A generic “your parcel is waiting” scam is easy to ignore. A message that names the right ministry, the right telco, or the right airline loyalty programme is harder to dismiss.",
-            "fr": "L’objectif habituel n’est pas de vider un compte en un clic. C’est de vous faire agir : cliquer un lien, dicter un code à usage unique, valider un paiement, envoyer un document, ou rester en ligne pendant qu’ils se connectent à votre banque.\n\nLes données divulguées rendent cette conversation moins chère à industrialiser. Une arnaque générique du type « votre colis vous attend » est facile à ignorer. Un message qui nomme le bon ministère, le bon opérateur ou le bon programme de fidélité aérien est plus difficile à écarter."
+            "en": "Usually they are not emptying an account in one click. They want you to do something: click a link, read out a one-time code, approve a payment, send a document, or stay on the line while they connect to your bank.\n\nLeaked data makes that conversation cheaper to run at scale. A generic “your parcel is waiting” scam is easy to ignore. A message that names the right ministry, the right telco, or the right airline loyalty programme is harder to dismiss.",
+            "fr": "En général, ils ne vident pas un compte en un clic. Ils veulent vous faire agir : cliquer un lien, dicter un code à usage unique, valider un paiement, envoyer un document, ou rester en ligne pendant qu’ils se connectent à votre banque.\n\nLes données divulguées rendent cette conversation moins chère à industrialiser. Une arnaque générique du type « votre colis vous attend » est facile à ignorer. Un message qui nomme le bon ministère, le bon opérateur ou le bon programme de fidélité aérien est plus difficile à écarter."
           }
         },
         {
@@ -37,8 +37,8 @@
             "fr": "Il n’est pas besoin d’un mot de passe"
           },
           "body": {
-            "en": "Many incidents in this dossier did not publish passwords. They still matter. Identity details, contact details, bank identifiers, tax figures and customer-service notes are enough to impersonate an official service.\n\nIf someone already has the facts an agency would know about you, “they knew my file” is not a reason to trust them. It is a reason to hang up and open the official site yourself.",
-            "fr": "Beaucoup d’incidents de ce dossier n’ont pas rendu publics des mots de passe. Ils restent graves. Identité, coordonnées, identifiants bancaires, données fiscales et notes de service client suffisent à usurper un service officiel.\n\nSi quelqu’un a déjà les faits qu’une administration connaîtrait sur vous, « ils connaissaient mon dossier » n’est pas une raison de leur faire confiance. C’est une raison de raccrocher et d’ouvrir vous-même le site officiel."
+            "en": "Many incidents in this dossier did not publish passwords. They still matter. Identity details, contact details, bank identifiers, tax figures and customer-service notes are enough to impersonate an official service.\n\nIf someone already has the facts an agency would know about you, “they knew my file” is not a reason to trust them. Hang up and open the official site yourself.",
+            "fr": "Beaucoup d’incidents de ce dossier n’ont pas rendu publics des mots de passe. Ils restent graves. Identité, coordonnées, identifiants bancaires, données fiscales et notes de service client suffisent à usurper un service officiel.\n\nSi quelqu’un a déjà les faits qu’une administration connaîtrait sur vous, « ils connaissaient mon dossier » n’est pas une raison de leur faire confiance. Raccrochez et ouvrez vous-même le site officiel."
           }
         },
         {
@@ -48,7 +48,7 @@
           },
           "body": {
             "en": "Stolen files are copied, sold and reused. A scam can arrive weeks or years after the original notice. Treating a breach as finished because it left the headlines is how delayed attacks work.",
-            "fr": "Les fichiers volés sont copiés, revendus et réutilisés. Une arnaque peut arriver des semaines ou des années après la notification initiale. Considérer qu’une fuite est terminée parce qu’elle a quitté les titres est précisément le mode d’emploi des attaques différées."
+            "fr": "Les fichiers volés sont copiés, revendus et réutilisés. Une arnaque peut arriver des semaines ou des années après la notification initiale. Considérer qu’une fuite est terminée parce qu’elle a quitté les titres, c’est précisément le mode d’emploi des attaques différées."
           }
         }
       ],
@@ -89,8 +89,8 @@
             "fr": "Du spam de masse au discours sur mesure"
           },
           "body": {
-            "en": "Ordinary phishing guesses. Post-breach phishing recites. Once a dump includes your name, email, phone, postal address or a customer number, a message can mention those facts in the first sentence.\n\nThat is the point of stealing contact and contract data. It lets criminals skip the generic greeting and go straight to a story that looks like it came from your operator, your airline or your child’s school.",
-            "fr": "Le hameçonnage ordinaire devine. Le hameçonnage après une fuite récite. Dès qu’un dump contient votre nom, e-mail, téléphone, adresse postale ou un numéro client, un message peut citer ces faits dès la première phrase.\n\nC’est tout l’intérêt de voler des coordonnées et des données de contrat. Les criminels sautent la formule générique et passent directement à une histoire qui semble venir de votre opérateur, de votre compagnie aérienne ou de l’école de votre enfant."
+            "en": "Ordinary phishing guesses. After a leak, the message recites. Once a dump includes your name, email, phone, postal address or a customer number, it can mention those facts in the first sentence.\n\nThat is why contact and contract data get stolen. Criminals skip the generic greeting and go straight to a story that looks like it came from your operator, your airline or your child’s school.",
+            "fr": "Le hameçonnage ordinaire devine. Après une fuite, le message récite. Dès qu’un dump contient votre nom, e-mail, téléphone, adresse postale ou un numéro client, il peut citer ces faits dès la première phrase.\n\nC’est pour cela qu’on vole des coordonnées et des données de contrat. Les criminels sautent la formule générique et passent à une histoire qui semble venir de votre opérateur, de votre compagnie aérienne ou de l’école de votre enfant."
           }
         },
         {
@@ -99,8 +99,8 @@
             "fr": "Les canaux"
           },
           "body": {
-            "en": "This is not only email. SMS, messaging apps, phone calls and fake login pages all use the same trick: lead with a true detail, then ask for a code, a password, a payment or a document.\n\nA phone call is often more convincing than an email because you can hear urgency. The script is the same. They already know something. They need you to hand over the thing they do not have: access.",
-            "fr": "Ce n’est pas seulement l’e-mail. SMS, applications de messagerie, appels et fausses pages de connexion utilisent le même procédé : commencer par un détail vrai, puis demander un code, un mot de passe, un paiement ou un document.\n\nUn appel est souvent plus convaincant qu’un e-mail, parce que l’urgence s’entend. Le scénario est le même. Ils savent déjà quelque chose. Ils ont besoin que vous leur donniez ce qui leur manque : l’accès."
+            "en": "This is not only email. SMS, messaging apps, phone calls and fake login pages use the same trick: lead with a true detail, then ask for a code, a password, a payment or a document.\n\nA phone call is often more convincing than an email because you can hear the urgency. The script does not change. They already know something, and they need you to hand over the access they do not have.",
+            "fr": "Ce n’est pas seulement l’e-mail. SMS, applications de messagerie, appels et fausses pages de connexion utilisent le même procédé : commencer par un détail vrai, puis demander un code, un mot de passe, un paiement ou un document.\n\nUn appel est souvent plus convaincant qu’un e-mail, parce que l’urgence s’entend. Le scénario ne change pas. Ils savent déjà quelque chose, et ils ont besoin que vous leur donniez l’accès qui leur manque."
           }
         },
         {
@@ -109,8 +109,8 @@
             "fr": "À quoi sert une fuite de service client"
           },
           "body": {
-            "en": "Notes from a support mailbox, a loyalty number, a ticket subject line: these look minor until someone uses them. “We are calling about the message you sent on Tuesday” is a powerful opener if they actually have that subject line.\n\nTreat unexpected contact about a delivery, a bill, a booking or a school account as a prompt to go to the official app or website yourself.",
-            "fr": "Des notes d’une messagerie d’assistance, un numéro de fidélité, l’objet d’un ticket : cela paraît mineur jusqu’à ce que quelqu’un s’en serve. « Nous vous appelons au sujet du message que vous avez envoyé mardi » est une ouverture puissante s’ils ont réellement cet objet.\n\nTraitez un contact inattendu au sujet d’une livraison, d’une facture, d’une réservation ou d’un compte scolaire comme le signal d’ouvrir vous-même l’application ou le site officiel."
+            "en": "Notes from a support mailbox, a loyalty number, a ticket subject line: these look minor until someone uses them. “We are calling about the message you sent on Tuesday” works if they actually have that subject line.\n\nIf someone contacts you out of the blue about a delivery, a bill, a booking or a school account, go to the official app or website yourself.",
+            "fr": "Des notes d’une messagerie d’assistance, un numéro de fidélité, l’objet d’un ticket : cela paraît mineur jusqu’à ce que quelqu’un s’en serve. « Nous vous appelons au sujet du message que vous avez envoyé mardi » fonctionne s’ils ont réellement cet objet.\n\nSi quelqu’un vous contacte à l’improviste au sujet d’une livraison, d’une facture, d’une réservation ou d’un compte scolaire, ouvrez vous-même l’application ou le site officiel."
           }
         }
       ],
@@ -137,8 +137,8 @@
     {
       "slug": "iban-and-banking",
       "title": {
-        "en": "What an IBAN leak actually lets someone do",
-        "fr": "Ce qu’une fuite d’IBAN permet vraiment"
+        "en": "What an IBAN leak lets someone do",
+        "fr": "Ce qu’une fuite d’IBAN permet"
       },
       "dek": {
         "en": "An IBAN in a stolen file is not a PIN. It is still dangerous, because it lets a stranger talk about your bank account as if they already belong in the conversation.",
@@ -161,8 +161,8 @@
             "fr": "Pourquoi les criminels le veulent quand même"
           },
           "body": {
-            "en": "They want the conversation. A caller who can recite your IBAN, your name and your address can pretend to be the bank, the tax office, an operator collecting a bill, or a company updating a mandate.\n\nTypical asks: approve a SEPA mandate you did not create, send a “refund” the other way, install remote-access software, or read a code from your banking app to cancel a transfer. The IBAN is the prop. You are the one who completes the fraud.",
-            "fr": "Ils veulent la conversation. Un appelant capable de réciter votre IBAN, votre nom et votre adresse peut se faire passer pour la banque, les impôts, un opérateur qui recouvre une facture, ou une entreprise qui « met à jour un mandat ».\n\nDemandes typiques : valider un mandat SEPA que vous n’avez pas créé, renvoyer un « remboursement » dans l’autre sens, installer un logiciel de prise de contrôle, ou dicter un code de l’application bancaire pour « annuler un virement ». L’IBAN est l’accessoire. C’est vous qui terminez la fraude."
+            "en": "They want the conversation. A caller who can recite your IBAN, your name and your address can pretend to be the bank, the tax office, an operator collecting a bill, or a company updating a mandate.\n\nTypical asks: approve a SEPA mandate you did not create, send a “refund” the other way, install remote-access software, or read a code from your banking app to cancel a transfer. The IBAN is just the prop. You complete the fraud if you follow the instructions.",
+            "fr": "Ils veulent la conversation. Un appelant capable de réciter votre IBAN, votre nom et votre adresse peut se faire passer pour la banque, les impôts, un opérateur qui recouvre une facture, ou une entreprise qui « met à jour un mandat ».\n\nDemandes typiques : valider un mandat SEPA que vous n’avez pas créé, renvoyer un « remboursement » dans l’autre sens, installer un logiciel de prise de contrôle, ou dicter un code de l’application bancaire pour « annuler un virement ». L’IBAN n’est que l’accessoire. C’est vous qui terminez la fraude si vous suivez les consignes."
           }
         },
         {
@@ -203,14 +203,14 @@
         "fr": "Quand le fichier divulgué est un fichier de l’État"
       },
       "dek": {
-        "en": "A message that sounds like the tax office, the identity-document service or the police is easier to believe. That is exactly why those files are valuable to scammers.",
-        "fr": "Un message qui a l’air de venir des impôts, du service des titres ou de la police est plus facile à croire. C’est précisément pour cela que ces fichiers intéressent les escrocs."
+        "en": "A message that sounds like the tax office, the identity-document service or the police is easier to believe. That is why those files are valuable to scammers.",
+        "fr": "Un message qui a l’air de venir des impôts, du service des titres ou de la police est plus facile à croire. C’est pour cela que ces fichiers intéressent les escrocs."
       },
       "sections": [
         {
           "heading": {
-            "en": "Official context is the product",
-            "fr": "Le contexte officiel est le produit"
+            "en": "Why official files are worth more",
+            "fr": "Pourquoi les fichiers officiels valent plus"
           },
           "body": {
             "en": "France runs services that already know a lot about you: tax, identity documents, driving licences, school administration, law-enforcement files. When those systems are reached without authorisation, criminals do not only get data. They get a costume.\n\n“We are calling from the tax office” is a weak line until the caller can mention a plausible income figure, a withholding rate, a property address or a pending title application. Then it is a strong line.",
@@ -223,8 +223,8 @@
             "fr": "Titres d’identité et fichiers de comptes"
           },
           "body": {
-            "en": "Portals for identity documents and driving licences hold the kind of civil-status data a phishing kit needs: names, dates of birth, email addresses, sometimes postal addresses and phone numbers. Even when supporting documents and biometrics are not in the leak, the remaining fields are enough to send a very convincing “your card is ready, pay the fee here” message.\n\nOpen ANTS, taxes and identity services by typing the official address or using the official app. A link in an SMS is not the service.",
-            "fr": "Les portails de titres d’identité et de permis conservent le type d’état civil dont un kit de hameçonnage a besoin : noms, dates de naissance, e-mails, parfois adresses postales et téléphones. Même lorsque les pièces justificatives et les données biométriques ne sont pas dans la fuite, les champs restants suffisent à envoyer un message très convaincant du type « votre titre est prêt, réglez les frais ici ».\n\nOuvrez ANTS, les impôts et les services d’identité en saisissant l’adresse officielle ou via l’application officielle. Un lien dans un SMS n’est pas le service."
+            "en": "Portals for identity documents and driving licences hold the kind of civil-status data a phishing kit needs: names, dates of birth, email addresses, sometimes postal addresses and phone numbers. Even when supporting documents and biometrics are not in the leak, the remaining fields are enough to send a convincing “your card is ready, pay the fee here” message.\n\nOpen ANTS, taxes and identity services by typing the official address or using the official app. A link in an SMS is not the service.",
+            "fr": "Les portails de titres d’identité et de permis conservent le type d’état civil dont un kit de hameçonnage a besoin : noms, dates de naissance, e-mails, parfois adresses postales et téléphones. Même lorsque les pièces justificatives et les données biométriques ne sont pas dans la fuite, les champs restants suffisent à envoyer un message convaincant du type « votre titre est prêt, réglez les frais ici ».\n\nOuvrez ANTS, les impôts et les services d’identité en saisissant l’adresse officielle ou via l’application officielle. Un lien dans un SMS n’est pas le service."
           }
         },
         {
@@ -233,8 +233,8 @@
             "fr": "Fichiers fiscaux et fichiers de comptes"
           },
           "body": {
-            "en": "Tax data such as income, household details, withholding rates and property references, together with bank-account directories (who holds which IBAN, and where they live), are a kit for wealth-targeted fraud. The scam can look like a regularisation, a refund, a control, or a problem with a mandate.\n\nThe tax office will not ask you to buy vouchers, install software, or read codes from your espace impôt over the phone.",
-            "fr": "Les données fiscales (revenu, foyer, taux de prélèvement, références de biens), associées aux répertoires de comptes bancaires (qui détient quel IBAN, et où), forment un kit pour la fraude patrimoniale. L’arnaque peut ressembler à une régularisation, un remboursement, un contrôle, ou un problème de mandat.\n\nLes impôts ne vous demanderont pas d’acheter des bons, d’installer un logiciel, ni de dicter des codes de votre espace impôt au téléphone."
+            "en": "Tax data such as income, household details, withholding rates and property references, together with bank-account directories (who holds which IBAN, and where they live), are a kit for fraud aimed at people with money on the line. The scam can look like a regularisation, a refund, a control, or a problem with a mandate.\n\nThe tax office will not ask you to buy vouchers, install software, or read codes from your espace impôt over the phone.",
+            "fr": "Les données fiscales (revenu, foyer, taux de prélèvement, références de biens), associées aux répertoires de comptes bancaires (qui détient quel IBAN, et où), forment un kit pour la fraude quand de l’argent est en jeu. L’arnaque peut ressembler à une régularisation, un remboursement, un contrôle, ou un problème de mandat.\n\nLes impôts ne vous demanderont pas d’acheter des bons, d’installer un logiciel, ni de dicter des codes de votre espace impôt au téléphone."
           }
         },
         {
@@ -243,8 +243,8 @@
             "fr": "Les fichiers de police sont autre chose, et restent un appât"
           },
           "body": {
-            "en": "Police files are not a consumer mailing list. When they are reached, the public risk is both the sensitivity of the records and the wave of copycat messages that follow the news. A message that claims to be from the police, or “about your file”, after a widely reported incident is a classic follow-on scam.\n\nDo not treat a headline figure as a personal notification. If an authority needs to contact you, use the channel you opened. On this site, disputed mass-theft claims stay labelled as claims. They are never treated as a confirmed count.",
-            "fr": "Les fichiers de police ne sont pas un fichier client. Quand ils sont atteints, le risque public tient à la sensibilité des dossiers et à la vague de messages copiés qui suit l’actualité. Un message qui se prétend de la police, ou « au sujet de votre dossier », après un incident très médiatisé est une arnaque classique de second rideau.\n\nNe prenez pas un chiffre à la une comme une notification personnelle. Si une autorité doit vous contacter, utilisez le canal que vous avez ouvert. Sur ce site, les revendications de vol massif contestées restent des revendications. Elles ne sont jamais traitées comme un décompte confirmé."
+            "en": "Police files are not a consumer mailing list. When they are reached, the public risk is both the sensitivity of the records and the wave of copycat messages that follow the news. A message that claims to be from the police, or “about your file”, after a widely reported incident is a common follow-on scam.\n\nDo not treat a headline figure as a personal notification. If an authority needs to contact you, use the channel you opened. On this site, disputed mass-theft claims stay labelled as claims. They are never treated as a confirmed count.",
+            "fr": "Les fichiers de police ne sont pas un fichier client. Quand ils sont atteints, le risque public tient à la sensibilité des dossiers et à la vague de messages copiés qui suit l’actualité. Un message qui se prétend de la police, ou « au sujet de votre dossier », après un incident très médiatisé est une arnaque fréquente de second rideau.\n\nNe prenez pas un chiffre à la une comme une notification personnelle. Si une autorité doit vous contacter, utilisez le canal que vous avez ouvert. Sur ce site, les revendications de vol massif contestées restent des revendications. Elles ne sont jamais traitées comme un décompte confirmé."
           }
         }
       ],
@@ -301,8 +301,8 @@
         },
         {
           "heading": {
-            "en": "Delayed reuse",
-            "fr": "La réutilisation différée"
+            "en": "The data stays useful",
+            "fr": "Les données restent utiles"
           },
           "body": {
             "en": "Stolen data is cheap to keep. A dump from this year can fuel SMS next winter. Health and school context also tracks life events, a new school year or a public-health campaign, that give scammers a fresh excuse.\n\nIncreased caution should not end a week after a notice. Watch for messages that reuse the organisation’s name long after the incident left the news.",
@@ -329,6 +329,78 @@
         }
       ],
       "relatedIncidentIds": ["weda", "sante", "educompas", "edustaff", "edustudents"]
+    },
+    {
+      "slug": "ai-written-attacks",
+      "title": {
+        "en": "When a machine writes the scam",
+        "fr": "Quand une machine écrit l’arnaque"
+      },
+      "dek": {
+        "en": "Language models do not understand you. They predict the next word. That is already enough to write fluent, personal-sounding messages at a scale no call centre can match, especially once a leak has supplied the facts.",
+        "fr": "Les modèles de langue ne vous comprennent pas. Ils prédisent le mot suivant. Cela suffit déjà à écrire des messages fluides et personnels à une échelle qu’aucun centre d’appels ne peut suivre, surtout une fois qu’une fuite a fourni les faits."
+      },
+      "sections": [
+        {
+          "heading": {
+            "en": "What the model is doing",
+            "fr": "Ce que le modèle fait"
+          },
+          "body": {
+            "en": "The systems people call AI here are language models. They are trained on enormous amounts of text: websites, articles, manuals, code, and the kind of letters and emails that already exist in public. Their job is narrow. Given the words so far, guess the next one, then keep going.\n\nDo that fast enough and you get paragraphs that look planned. The model is not thinking about you. It has no file on your tax office or your bank unless a person pastes those details in. It is completing a pattern, which is why the writing can sound official or urgent without anyone meaning it.",
+            "fr": "Les systèmes qu’on appelle ici IA sont des modèles de langue. Ils sont entraînés sur d’énormes quantités de texte : sites, articles, manuels, code, et le type de lettres et d’e-mails qui existent déjà en public. Leur tâche est étroite. À partir des mots déjà là, deviner le suivant, puis continuer.\n\nAssez vite, on obtient des paragraphes qui ont l’air pensés. Le modèle ne réfléchit pas à votre sujet. Il n’a aucun dossier sur votre centre des impôts ou votre banque, sauf si quelqu’un y colle ces détails. Il complète un motif, c’est pourquoi le texte peut sembler officiel ou urgent sans que personne ne le « veuille »."
+          }
+        },
+        {
+          "heading": {
+            "en": "Why that is useful for crime",
+            "fr": "Pourquoi cela sert le crime"
+          },
+          "body": {
+            "en": "A convincing scam used to need a competent writer, or a cheap script that was easy to spot. A language model is a competent writer on demand. It can produce French that reads like a ministry, English that reads like a bank, and many slightly different versions of the same story so that filters see less repetition.\n\nIt does not get tired or need a translator. A short instruction such as “write as customer service, mention a delivery, ask them to sign in” becomes a finished message in seconds. The person aiming it no longer has to be good at language. They have to be willing to send the result.\n\nThe useful part for crime is not a machine that breaks into systems by itself. It is a machine that makes the email, the SMS and the call script cheap enough to run all day.",
+            "fr": "Une arnaque convaincante demandait un rédacteur compétent, ou un script pauvre, facile à reconnaître. Un modèle de langue est un rédacteur compétent à la demande. Il peut produire un français qui a l’air d’un ministère, un anglais qui a l’air d’une banque, et beaucoup de variantes du même récit pour que les filtres voient moins de répétition.\n\nIl ne se fatigue pas et n’a pas besoin de traducteur. Une courte consigne du type « écris comme le service client, mentionne une livraison, demande une connexion » devient un message fini en quelques secondes. La personne qui le dirige n’a plus besoin d’être douée pour la langue. Elle doit seulement accepter d’envoyer le résultat.\n\nCe qui sert le crime, ce n’est pas une machine qui force les systèmes toute seule. C’est une machine qui rend l’e-mail, le SMS et le script d’appel assez bon marché pour tourner toute la journée."
+          }
+        },
+        {
+          "heading": {
+            "en": "Leaked facts do the real work",
+            "fr": "Ce sont les faits divulgués qui font le travail"
+          },
+          "body": {
+            "en": "A fluent generic message is still easy to ignore. What makes it dangerous is a true detail sitting next to that fluency. Once a stolen file has your name, address, IBAN, school, operator or a contract number, those facts can be dropped into the prompt. The model then writes a letter that recites them as if a real agent had opened your file.\n\nThis dossier does not claim that any of the incidents here were carried out with a language model. The same leaked fields that already make ordinary phishing work also make generated phishing work. The machine did not invent your IBAN; a person supplied it. The machine made the paragraph around it sound like the tax office.\n\nVoice clones and fake login pages follow the same logic. A model that has heard or seen enough examples can imitate a tone or a layout. You still decide whether to stay on the line or type a password.",
+            "fr": "Un message générique, même fluide, reste facile à ignorer. Ce qui le rend dangereux, c’est un détail vrai à côté de cette fluidité. Une fois qu’un fichier volé contient votre nom, adresse, IBAN, établissement, opérateur ou un numéro de contrat, ces faits peuvent être placés dans la consigne. Le modèle écrit alors une lettre qui les récite comme si un vrai agent avait ouvert votre dossier.\n\nCe dossier n’affirme pas que les incidents suivis ici ont été commis avec un modèle de langue. Les mêmes champs divulgués qui font déjà marcher le hameçonnage ordinaire font aussi marcher le hameçonnage généré. La machine n’a pas inventé votre IBAN ; une personne l’a fourni. La machine a fait sonner le paragraphe autour comme les impôts.\n\nLes clones de voix et les fausses pages de connexion suivent la même logique. Un modèle qui a assez d’exemples peut imiter un ton ou une mise en page. C’est encore vous qui décidez de rester en ligne ou de saisir un mot de passe."
+          }
+        },
+        {
+          "heading": {
+            "en": "What the model cannot do",
+            "fr": "Ce que le modèle ne peut pas faire"
+          },
+          "body": {
+            "en": "A language model is not a master hacker and it is not a person who has logged into your account. It cannot approve a payment. It cannot read the code on your banking app unless you read that code out. Most of what the public will meet is still social engineering: a better-written ask.\n\nUsing these tools to break into systems, steal data, or run fraud is a crime. This page is not a guide to doing that. It is a guide to recognising the output. The test is the same as for any other unexpected contact. Did you open the official site yourself? Did anyone ask you to hurry, to pay, or to share a code? Knowing a real detail about you is still not proof of identity, even when the French is perfect.",
+            "fr": "Un modèle de langue n’est pas un pirate hors pair, et ce n’est pas une personne connectée à votre compte. Il ne peut pas valider un paiement. Il ne peut pas lire le code de votre application bancaire, sauf si vous le dictez. Ce que le public rencontrera le plus souvent reste de l’ingénierie sociale : une demande mieux écrite.\n\nSe servir de ces outils pour forcer des systèmes, voler des données ou commettre une fraude est un délit. Cette page n’est pas un mode d’emploi. C’est un guide pour reconnaître le résultat. Le test est le même que pour tout autre contact inattendu. Avez-vous ouvert vous-même le site officiel ? Vous a-t-on demandé de vous dépêcher, de payer, ou de partager un code ? Connaître un vrai détail sur vous n’est toujours pas une preuve d’identité, même quand le français est parfait."
+          }
+        }
+      ],
+      "takeaways": [
+        {
+          "en": "Perfect French or a perfect official tone is not proof that a ministry, a bank or a school wrote the message.",
+          "fr": "Un français parfait ou un ton officiel parfait ne prouve pas qu’un ministère, une banque ou une école a écrit le message."
+        },
+        {
+          "en": "A generated message that recites your address, IBAN or contract number is more dangerous, not more trustworthy.",
+          "fr": "Un message généré qui récite votre adresse, votre IBAN ou votre numéro de contrat est plus dangereux, pas plus digne de confiance."
+        },
+        {
+          "en": "Open taxes, banking and identity services yourself. Type the address. Do not use a link from an unexpected message, however well written.",
+          "fr": "Ouvrez vous-même impôts, banque et services d’identité. Saisissez l’adresse. N’utilisez pas un lien d’un message inattendu, si bien rédigé soit-il."
+        },
+        {
+          "en": "Never read a one-time code or approve a payment because the caller sounds like a real agent. Hang up and use the official app.",
+          "fr": "Ne dictez jamais un code à usage unique et ne validez jamais un paiement parce que l’appelant a l’air d’un vrai agent. Raccrochez et utilisez l’application officielle."
+        }
+      ],
+      "relatedIncidentIds": []
     }
   ]
 }

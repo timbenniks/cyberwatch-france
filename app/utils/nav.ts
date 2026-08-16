@@ -1,9 +1,7 @@
 import type { UiKey } from '~/composables/useLocale'
 
 export const navSections = [
-  { id: 'overview', key: 'navOverview' },
-  { id: 'timeline', key: 'navTimeline' },
-  { id: 'patterns', key: 'navPatterns' },
+  { id: 'timeline', key: 'navIncidents' },
   { id: 'guidance', key: 'navGuidance' },
-  { id: 'data', key: 'navData' },
+  { id: 'numbers', key: 'navNumbers' },
 ] as const satisfies readonly { id: string; key: UiKey }[]
