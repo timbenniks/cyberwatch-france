@@ -2,10 +2,20 @@
 import type { NuxtError } from '#app'
 
 const props = defineProps<{ error: NuxtError }>()
-const { t, localePath } = useLocale()
+const { t, locale, localePath } = useLocale()
 
 const is404 = computed(() => props.error.statusCode === 404)
 const home = computed(() => localePath('/'))
+
+useSeoMeta({
+  title: () => `${is404.value ? t('errorNotFoundTitle') : t('errorGenericTitle')} · ${t('brand')}`,
+  description: () => (is404.value ? t('errorNotFoundLead') : t('errorGeneric')),
+  robots: 'noindex, nofollow',
+})
+
+useHead({
+  htmlAttrs: { lang: locale },
+})
 
 function goHome() {
   clearError({ redirect: home.value })

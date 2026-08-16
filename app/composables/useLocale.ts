@@ -15,10 +15,13 @@ const dictionary = {
   openMenu: { en: 'Open menu', fr: 'Ouvrir le menu' },
   closeMenu: { en: 'Close menu', fr: 'Fermer le menu' },
   language: { en: 'Language', fr: 'Langue' },
+  theme: { en: 'Appearance', fr: 'Apparence' },
+  themeLight: { en: 'Light', fr: 'Clair' },
+  themeDark: { en: 'Dark', fr: 'Sombre' },
 
   seoTagline: {
     en: 'French cyberattacks and data breaches, explained',
-    fr: 'cyberattaques et fuites de données en France, expliquées',
+    fr: 'Cyberattaques et fuites de données en France, expliquées',
   },
   seoRecordSuffix: { en: 'incident record', fr: 'fiche d’incident' },
   heroEyebrow: { en: 'Public incident dossier', fr: 'Dossier public d’incidents' },
@@ -280,12 +283,18 @@ const dictionary = {
 
   sourcesTitle: { en: 'Source ledger', fr: 'Registre des sources' },
   sourcesLead: {
-    en: 'Every source this dossier cites, including follow-up reporting. Official disclosures are marked. Each entry lists the records that point to it.',
-    fr: 'Toutes les sources citées par ce dossier, y compris les suites. Les communications officielles sont signalées. Chaque entrée liste les fiches qui s’y réfèrent.',
+    en: 'Every source this dossier cites, including follow-up reporting. Primary disclosures, official records and press are marked. Each entry lists the records that point to it.',
+    fr: 'Toutes les sources citées par ce dossier, y compris les suites. Les communications primaires, les documents officiels et la presse sont signalés. Chaque entrée liste les fiches qui s’y réfèrent.',
   },
-  officialSource: { en: 'Official', fr: 'Officielle' },
-  pressSource: { en: 'Press', fr: 'Presse' },
   usedBy: { en: 'Cited by', fr: 'Citée par' },
+  sourceKindPrimary: { en: 'Primary', fr: 'Primaire' },
+  sourceKindOfficial: { en: 'Official', fr: 'Officielle' },
+  sourceKindSecondary: { en: 'Press', fr: 'Presse' },
+  operationalImpact: { en: 'What it meant in practice', fr: 'Ce que cela a changé concrètement' },
+  laterRevision: { en: 'What later reporting changed', fr: 'Ce que les suites ont modifié' },
+  pressQuotes: { en: 'In their words', fr: 'Dans leurs mots' },
+  quoteOriginal: { en: 'Original', fr: 'Original' },
+  lastResearched: { en: 'Last researched', fr: 'Dernière recherche' },
   opensNewTab: { en: 'opens in a new tab', fr: 'ouvre un nouvel onglet' },
 
   loading: { en: 'Loading the dossier…', fr: 'Chargement du dossier…' },
@@ -350,7 +359,13 @@ const dictionary = {
   learnOpen: { en: 'Read this guide', fr: 'Lire ce guide' },
 
   errorNotFound: { en: 'This page could not be found.', fr: 'Cette page est introuvable.' },
+  errorNotFoundTitle: { en: 'Page not found', fr: 'Page introuvable' },
+  errorNotFoundLead: {
+    en: 'That address is not a page in this dossier.',
+    fr: 'Cette adresse n’est pas une page de ce dossier.',
+  },
   errorGeneric: { en: 'Something went wrong.', fr: 'Une erreur s’est produite.' },
+  errorGenericTitle: { en: 'Something went wrong', fr: 'Une erreur s’est produite' },
   errorBack: { en: 'Back to the dossier', fr: 'Retour au dossier' },
 } satisfies Record<string, Bilingual>
 

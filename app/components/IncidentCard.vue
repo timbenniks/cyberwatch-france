@@ -43,7 +43,7 @@ const isUnknownCount = computed(() => props.incident.affected === null)
 
         <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
           <SeverityMark :severity="incident.severity" />
-          <StatusStamp :status="incident.status" :tilt="false" />
+          <StatusStamp :status="incident.status" />
           <span
             class="text-[0.8125rem]"
             :class="isUnknownCount ? 'italic text-muted' : 'tabular font-medium text-ink'"

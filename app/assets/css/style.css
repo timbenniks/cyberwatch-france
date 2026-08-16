@@ -2,8 +2,8 @@
 
 /* `static` keeps every token in the stylesheet — several are referenced from
    inline styles (severity marks, timeline ticks) rather than utility classes.
-   Light values live in the prefers-color-scheme override below, not here:
-   Tailwind needs a single concrete default to emit the utilities. */
+   Light values live in the overrides below, not here: Tailwind needs a
+   single concrete default to emit the utilities. */
 @theme static {
   /* Surfaces — deep ink navy, the dossier plane */
   --color-bg: #080b14;
@@ -203,9 +203,11 @@
 
 /* Unlayered so these beat Tailwind's @layer theme defaults. Same dossier,
    opened in daylight: the dark-mode ink becomes the page, navy becomes the ink.
-   Accents and severity darken so labels still meet AA against the paper. */
+   Accents and severity darken so labels still meet AA against the paper.
+   Keep these two light blocks in step: OS light unless locked dark, and an
+   explicit light lock from the theme switch. */
 @media (prefers-color-scheme: light) {
-  :root {
+  html:not([data-theme='dark']) {
     color-scheme: light;
     --grid-line: rgba(18, 24, 38, 0.07);
     --grain-opacity: 0.11;
@@ -233,6 +235,39 @@
     --color-sev-medium: #8a5e00;
     --color-sev-low: #0a7a12;
   }
+}
+
+html[data-theme='light'] {
+  color-scheme: light;
+  --grid-line: rgba(18, 24, 38, 0.07);
+  --grain-opacity: 0.11;
+  --grain-blend: multiply;
+
+  --color-bg: #f3ece1;
+  --color-surface-1: #fffcf7;
+  --color-surface-2: #e8e0d2;
+  --color-surface-3: #ddd3c3;
+  --color-hairline: #d0c4b0;
+  --color-hairline-strong: #b7aa94;
+
+  --color-ink: #121826;
+  --color-ink-2: #3a4860;
+  --color-muted: #5c6a82;
+
+  --color-amber: #9a5600;
+  --color-on-amber: #fff8ee;
+  --color-coral: #b8332a;
+  --color-teal: #09705d;
+  --color-logo-plate: #ffffff;
+
+  --color-sev-critical: #b42318;
+  --color-sev-high: #b0441c;
+  --color-sev-medium: #8a5e00;
+  --color-sev-low: #0a7a12;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
 }
 
 @media (prefers-reduced-motion: reduce) {

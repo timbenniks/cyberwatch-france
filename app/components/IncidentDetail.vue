@@ -11,7 +11,7 @@ import {
   Printer,
   TriangleAlert,
 } from '@lucide/vue'
-import type { Incident, MethodDisclosure } from '~/types/cyberwatch'
+import type { Incident, IncidentQuote, MethodDisclosure, SourceKind } from '~/types/cyberwatch'
 
 const props = defineProps<{ incident: Incident }>()
 
@@ -33,9 +33,12 @@ const terms = computed(() =>
       L(detail.value.how),
       L(detail.value.taken),
       L(detail.value.notTaken),
+      L(detail.value.impact),
       L(props.incident.risk),
       L(detail.value.response),
+      L(detail.value.revision),
       L(detail.value.attackerClaim),
+      ...(detail.value.quotes ?? []).flatMap((quote) => [quote.original, quote.translation]),
     ].join(' '),
   ),
 )
@@ -56,6 +59,20 @@ const disclosureStamp: Record<MethodDisclosure, string> = {
   disclosed: 'stamp stamp-confirmed',
   partial: 'stamp stamp-disputed',
   undisclosed: 'stamp stamp-unknown',
+}
+
+const kindLabel: Record<SourceKind, 'sourceKindPrimary' | 'sourceKindOfficial' | 'sourceKindSecondary'> = {
+  primary: 'sourceKindPrimary',
+  official: 'sourceKindOfficial',
+  secondary: 'sourceKindSecondary',
+}
+
+function quoteMain(quote: IncidentQuote): string {
+  return locale.value === quote.originalLang ? quote.original : quote.translation
+}
+
+function quoteOriginal(quote: IncidentQuote): string | null {
+  return locale.value === quote.originalLang ? null : quote.original
 }
 
 function printRecord() {
@@ -86,40 +103,51 @@ async function copyLink() {
       </NuxtLink>
     </p>
 
-    <header class="mt-8 flex items-start gap-5 sm:gap-6">
-      <OrgLogo :org="L(incident.org)" :incident="incident" :size="88" />
-      <div class="min-w-0 pt-0.5">
-        <p class="eyebrow tabular">{{ formatDate(incident.date, locale) }}</p>
-        <h1 class="mt-1.5 font-display text-[1.75rem] leading-[1.12] text-ink sm:text-4xl lg:text-[2.75rem]">
-          {{ L(incident.org) }}
-        </h1>
-        <p class="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.8125rem] text-ink-2">
-          <component :is="incident.kind === 'government' ? Landmark : Building2" :size="13" aria-hidden="true" />
-          {{ t(incident.kind === 'government' ? 'government' : 'company') }}
-          <span class="text-hairline-strong" aria-hidden="true">/</span>
-          {{ sectorLabel(incident.sector) }}
-        </p>
-        <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
-          <SeverityMark :severity="incident.severity" />
-          <StatusStamp :status="incident.status" />
-        </div>
-      </div>
-    </header>
-
-    <div
-      v-if="incident.status !== 'confirmed'"
-      class="mt-8 flex gap-3 rounded border border-amber/40 bg-amber/8 p-4"
-      role="note"
-    >
-      <TriangleAlert :size="17" class="mt-0.5 shrink-0 text-amber" aria-hidden="true" />
-      <p class="text-[0.875rem] leading-relaxed text-ink-2">
-        {{ incident.status === 'disputed' ? t('disputedWarning') : t('unknownWarning') }}
-      </p>
-    </div>
-
-    <div class="mt-10 grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-14 xl:grid-cols-[minmax(0,1fr)_22rem] xl:gap-16">
+    <div class="mt-8 grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-14 xl:grid-cols-[minmax(0,1fr)_22rem] xl:gap-16">
       <div>
-        <p class="max-w-[62ch] text-base leading-relaxed text-ink-2 sm:text-lg">{{ L(detail.lead) }}</p>
+        <header class="grid grid-cols-[auto_minmax(0,1fr)] items-stretch gap-5 sm:gap-6">
+          <div class="aspect-square h-0 min-h-full">
+            <OrgLogo class="h-full w-full" :org="L(incident.org)" :incident="incident" :size="88" stretch />
+          </div>
+          <div class="min-w-0">
+            <p class="eyebrow tabular">{{ formatDate(incident.date, locale) }}</p>
+            <h1 class="mt-1.5 font-display text-[1.75rem] leading-[1.12] text-ink sm:text-4xl lg:text-[2.75rem]">
+              {{ L(incident.org) }}
+            </h1>
+            <p class="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.8125rem] text-ink-2">
+              <component :is="incident.kind === 'government' ? Landmark : Building2" :size="13" aria-hidden="true" />
+              {{ t(incident.kind === 'government' ? 'government' : 'company') }}
+              <span class="text-hairline-strong" aria-hidden="true">/</span>
+              {{ sectorLabel(incident.sector) }}
+            </p>
+            <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+              <SeverityMark :severity="incident.severity" />
+              <StatusStamp :status="incident.status" />
+            </div>
+          </div>
+        </header>
+
+        <div
+          v-if="incident.status !== 'confirmed'"
+          class="mt-8 flex gap-3 rounded border border-amber/40 bg-amber/8 p-4"
+          role="note"
+        >
+          <TriangleAlert :size="17" class="mt-0.5 shrink-0 text-amber" aria-hidden="true" />
+          <p class="text-[0.875rem] leading-relaxed text-ink-2">
+            {{ incident.status === 'disputed' ? t('disputedWarning') : t('unknownWarning') }}
+          </p>
+        </div>
+
+        <div class="mt-10 max-w-[62ch]">
+          <p
+            v-for="(paragraph, index) in proseParagraphs(L(detail.lead))"
+            :key="`lead-${index}`"
+            class="text-base leading-relaxed text-ink-2 sm:text-lg"
+            :class="index ? 'mt-4' : undefined"
+          >
+            {{ paragraph }}
+          </p>
+        </div>
 
         <section
           v-if="detail.timeline.length"
@@ -143,27 +171,46 @@ async function copyLink() {
 
         <section class="mt-12 border-t border-hairline pt-8">
           <h2 class="font-display text-2xl leading-tight text-ink">{{ t('howItHappened') }}</h2>
-          <p class="mt-4 max-w-[62ch] text-[0.9375rem] leading-relaxed text-ink-2">{{ L(detail.how) }}</p>
+          <p
+            v-for="(paragraph, index) in proseParagraphs(L(detail.how))"
+            :key="`how-${index}`"
+            class="mt-4 max-w-[62ch] text-[0.9375rem] leading-relaxed text-ink-2"
+          >
+            {{ paragraph }}
+          </p>
         </section>
 
         <section class="mt-12 border-t border-hairline pt-8">
           <h2 class="font-display text-2xl leading-tight text-ink">{{ t('whatWasTaken') }}</h2>
-          <p class="mt-4 max-w-[62ch] text-[0.9375rem] leading-relaxed text-ink-2">{{ L(detail.taken) }}</p>
+          <p
+            v-for="(paragraph, index) in proseParagraphs(L(detail.taken))"
+            :key="`taken-${index}`"
+            class="mt-4 max-w-[62ch] text-[0.9375rem] leading-relaxed text-ink-2"
+          >
+            {{ paragraph }}
+          </p>
         </section>
 
         <section class="mt-12 border-t border-hairline pt-8">
           <h2 class="font-display text-2xl leading-tight text-ink">{{ t('whatWasNotTaken') }}</h2>
-          <p class="mt-4 max-w-[62ch] text-[0.9375rem] leading-relaxed text-ink-2">{{ L(detail.notTaken) }}</p>
+          <p
+            v-for="(paragraph, index) in proseParagraphs(L(detail.notTaken))"
+            :key="`notTaken-${index}`"
+            class="mt-4 max-w-[62ch] text-[0.9375rem] leading-relaxed text-ink-2"
+          >
+            {{ paragraph }}
+          </p>
         </section>
 
         <section class="mt-12 border-t border-hairline pt-8">
-          <h2 class="font-display text-2xl leading-tight text-ink">{{ t('risk') }}</h2>
-          <p class="mt-4 max-w-[62ch] text-[0.9375rem] leading-relaxed text-ink-2">{{ L(incident.risk) }}</p>
-        </section>
-
-        <section class="mt-12 border-t border-hairline pt-8">
-          <h2 class="font-display text-2xl leading-tight text-ink">{{ t('officialResponse') }}</h2>
-          <p class="mt-4 max-w-[62ch] text-[0.9375rem] leading-relaxed text-ink-2">{{ L(detail.response) }}</p>
+          <h2 class="font-display text-2xl leading-tight text-ink">{{ t('operationalImpact') }}</h2>
+          <p
+            v-for="(paragraph, index) in proseParagraphs(L(detail.impact))"
+            :key="`impact-${index}`"
+            class="mt-4 max-w-[62ch] text-[0.9375rem] leading-relaxed text-ink-2"
+          >
+            {{ paragraph }}
+          </p>
         </section>
 
         <section
@@ -174,8 +221,52 @@ async function copyLink() {
           <TriangleAlert :size="17" class="mt-0.5 shrink-0 text-amber" aria-hidden="true" />
           <div>
             <p class="eyebrow text-amber">{{ t('attackerClaim') }}</p>
-            <p class="mt-2 text-[0.9375rem] leading-relaxed text-ink-2">{{ L(detail.attackerClaim) }}</p>
+            <p
+              v-for="(paragraph, index) in proseParagraphs(L(detail.attackerClaim))"
+              :key="`claim-${index}`"
+              class="mt-2 text-[0.9375rem] leading-relaxed text-ink-2"
+            >
+              {{ paragraph }}
+            </p>
           </div>
+        </section>
+
+        <section class="mt-12 border-t border-hairline pt-8">
+          <h2 class="font-display text-2xl leading-tight text-ink">{{ t('officialResponse') }}</h2>
+          <p
+            v-for="(paragraph, index) in proseParagraphs(L(detail.response))"
+            :key="`response-${index}`"
+            class="mt-4 max-w-[62ch] text-[0.9375rem] leading-relaxed text-ink-2"
+          >
+            {{ paragraph }}
+          </p>
+        </section>
+
+        <section v-if="detail.revision" class="mt-12 border-t border-hairline pt-8">
+          <h2 class="font-display text-2xl leading-tight text-ink">{{ t('laterRevision') }}</h2>
+          <p
+            v-for="(paragraph, index) in proseParagraphs(L(detail.revision))"
+            :key="`revision-${index}`"
+            class="mt-4 max-w-[62ch] text-[0.9375rem] leading-relaxed text-ink-2"
+          >
+            {{ paragraph }}
+          </p>
+        </section>
+
+        <section v-if="detail.quotes?.length" class="mt-12 border-t border-hairline pt-8">
+          <h2 class="font-display text-2xl leading-tight text-ink">{{ t('pressQuotes') }}</h2>
+          <ul class="mt-5 space-y-6">
+            <li v-for="(quote, index) in detail.quotes" :key="`${quote.sourceId}-${index}`" class="max-w-[62ch]">
+              <blockquote class="border-l-2 border-amber/60 pl-4">
+                <p class="text-[0.9375rem] leading-relaxed text-ink">{{ quoteMain(quote) }}</p>
+                <p v-if="quoteOriginal(quote)" class="mt-2 text-[0.8125rem] leading-relaxed text-muted">
+                  <span class="font-mono text-[0.6875rem] uppercase tracking-widest">{{ t('quoteOriginal') }}</span>
+                  {{ quoteOriginal(quote) }}
+                </p>
+              </blockquote>
+              <p class="mt-2 text-[0.8125rem] text-ink-2">{{ L(quote.attribution) }}</p>
+            </li>
+          </ul>
         </section>
 
         <section v-if="terms.length" class="mt-12 border-t border-hairline pt-8">
@@ -217,8 +308,16 @@ async function copyLink() {
 
         <section class="mt-4 rounded border border-hairline bg-surface-1 p-5 sm:p-6">
           <h2 class="eyebrow mb-3">{{ t('citedSources') }}</h2>
-          <ul class="space-y-3">
+          <ul class="space-y-4">
             <li v-for="source in citedSources" :key="source.id">
+              <p class="mb-1">
+                <span
+                  class="rounded-[2px] border px-1.5 py-0.5 font-mono text-[0.625rem] uppercase tracking-widest"
+                  :class="source.kind === 'secondary' ? 'border-hairline-strong text-muted' : 'border-teal/50 text-teal'"
+                >
+                  {{ t(kindLabel[source.kind]) }}
+                </span>
+              </p>
               <a
                 :href="source.url"
                 target="_blank"
@@ -229,9 +328,21 @@ async function copyLink() {
                 <ExternalLink :size="13" class="mt-0.5 shrink-0" aria-hidden="true" />
                 <span class="sr-only">({{ t('opensNewTab') }})</span>
               </a>
+              <p class="mt-1 text-[0.75rem] text-muted">
+                {{ source.publisher }}
+                <template v-if="source.published">
+                  <span aria-hidden="true"> · </span>
+                  <time :datetime="source.published">{{ formatDate(source.published, locale) }}</time>
+                </template>
+              </p>
             </li>
           </ul>
         </section>
+
+        <p class="mt-4 px-1 text-[0.75rem] leading-relaxed text-muted">
+          {{ t('lastResearched') }}
+          <time class="tabular" :datetime="incident.lastResearched">{{ formatDate(incident.lastResearched, locale) }}</time>
+        </p>
 
         <div class="no-print mt-4 flex flex-wrap gap-2">
           <button

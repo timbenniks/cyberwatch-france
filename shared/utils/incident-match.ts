@@ -45,7 +45,15 @@ export function incidentMatches(incident: Incident, query: IncidentMatchQuery, l
     incident.detail?.taken[locale],
     incident.detail?.notTaken[locale],
     incident.detail?.response[locale],
+    incident.detail?.impact[locale],
+    incident.detail?.revision?.[locale],
     incident.detail?.attackerClaim?.[locale],
+    ...(incident.detail?.quotes ?? []).flatMap((quote) => [
+      quote.original,
+      quote.translation,
+      quote.attribution.en,
+      quote.attribution.fr,
+    ]),
   ]
     .join(' ')
     .toLowerCase()

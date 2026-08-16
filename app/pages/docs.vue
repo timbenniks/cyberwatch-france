@@ -5,7 +5,6 @@ const { absolute } = useSiteUrl()
 const { title } = usePageSeo({
   title: () => `${t('apiDocsTitle')} — ${t('brand')}`,
   description: () => t('apiDocsLead'),
-  ogType: 'article',
   ogImageAlt: () => `${t('brand')} — ${t('apiDocsTitle')}`,
   links: () => [{ rel: 'alternate', type: 'application/json', href: absolute('/api'), title: 'API index' }],
 })

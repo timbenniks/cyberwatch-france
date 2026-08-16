@@ -11,6 +11,7 @@ type PageSeoOptions = {
   description: MaybeRefOrGetter<string>
   ogType?: 'website' | 'article'
   ogImageAlt?: MaybeRefOrGetter<string>
+  robots?: MaybeRefOrGetter<string>
   links?: MaybeRefOrGetter<PageSeoLink[]>
   jsonLd?: MaybeRefOrGetter<unknown>
 }
@@ -22,15 +23,18 @@ type PageSeoOptions = {
  */
 export function usePageSeo(options: PageSeoOptions) {
   const route = useRoute()
-  const { data } = useCyberData()
-  const { locale, localePath, alternates } = useLocale()
+  const { locale, localePath, t, alternates } = useLocale()
   const { absolute } = useSiteUrl()
 
-  const siteName = computed(() => data.value?.project.name ?? 'France Cyberwatch')
+  const siteName = computed(() => t('brand'))
   const title = computed(() => toValue(options.title))
-  const description = computed(() => toValue(options.description))
+  const description = computed(() => truncateMeta(toValue(options.description)))
   const canonical = computed(() => absolute(route.path))
   const ogImageAlt = computed(() => (options.ogImageAlt != null ? toValue(options.ogImageAlt) : title.value))
+  const robots = computed(
+    () =>
+      toValue(options.robots) ?? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+  )
 
   const headLinks = computed(() => [
     { rel: 'canonical' as const, href: canonical.value },
@@ -57,7 +61,7 @@ export function usePageSeo(options: PageSeoOptions) {
     twitterCard: 'summary_large_image',
     twitterTitle: title,
     twitterDescription: description,
-    robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+    robots,
   })
 
   useHead({

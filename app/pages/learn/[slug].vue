@@ -33,16 +33,13 @@ const { title } = usePageSeo({
 })
 
 defineOgImage(
-  'OgDossier',
+  'OgExplainer',
   {
     eyebrow: t('learnEyebrow'),
-    years: t('brandYears'),
-    incidentCount: explainers.value.length,
-    incidentLabel: t('learnGuides'),
-    anssiEvents: '—',
-    anssiLabel: t('learnNav'),
-    reviewedLabel: t('learnHelp'),
-    reviewedThrough: 'cybermalveillance.gouv.fr',
+    title: explainer.value ? L(explainer.value.title) : t('learnTitle'),
+    dek: explainer.value ? truncateMeta(L(explainer.value.dek), 180) : '',
+    helpLabel: t('learnHelp'),
+    helpThrough: 'cybermalveillance.gouv.fr',
   },
   { alt: title },
 )

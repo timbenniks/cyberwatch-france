@@ -48,6 +48,14 @@ export function monthKey(iso: string): string {
   return iso.slice(0, 7)
 }
 
+/** Split bilingual long copy that stores paragraphs as `\n\n`. */
+export function proseParagraphs(body: string): string[] {
+  return body
+    .split(/\n\n+/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean)
+}
+
 export function initials(org: string): string {
   return org
     .replace(/[^\p{L}\p{N}\s/]/gu, ' ')
@@ -56,4 +64,21 @@ export function initials(org: string): string {
     .slice(0, 2)
     .map((word) => word[0]!.toUpperCase())
     .join('')
+}
+
+/**
+ * Meta descriptions: keep whole sentences when they fit, otherwise cut on a
+ * word. Never mid-word, and never a hard slice that leaves a dangling clause.
+ */
+export function truncateMeta(text: string, max = 200): string {
+  const trimmed = text.replace(/\s+/g, ' ').trim()
+  if (trimmed.length <= max) return trimmed
+
+  const slice = trimmed.slice(0, max)
+  const sentenceEnd = Math.max(slice.lastIndexOf('. '), slice.lastIndexOf('? '), slice.lastIndexOf('! '))
+  if (sentenceEnd >= Math.floor(max * 0.45)) return slice.slice(0, sentenceEnd + 1).trim()
+
+  const space = slice.lastIndexOf(' ')
+  const clipped = (space > 0 ? slice.slice(0, space) : slice).replace(/[.,;:]+$/u, '')
+  return `${clipped}…`
 }

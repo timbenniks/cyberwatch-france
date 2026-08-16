@@ -9,7 +9,6 @@ const { locale, t, L, localePath } = useLocale()
 
 const reviewed = computed(() => (data.value ? formatDate(data.value.project.reviewedThrough, locale.value) : ''))
 const latest = computed(() => incidents.value[0] ?? null)
-const alsoRecent = computed(() => incidents.value.slice(1, 5))
 
 function open(incident: Incident) {
   emit('select', incident)
@@ -69,7 +68,7 @@ function open(incident: Incident) {
           <p class="mt-4 text-[0.9375rem] leading-relaxed text-ink-2">{{ L(latest.detail.lead) }}</p>
           <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
             <SeverityMark :severity="latest.severity" />
-            <StatusStamp :status="latest.status" :tilt="false" />
+            <StatusStamp :status="latest.status" />
             <span
               class="text-[0.8125rem]"
               :class="latest.affected === null ? 'italic text-muted' : 'tabular font-medium text-ink'"
@@ -82,23 +81,6 @@ function open(incident: Incident) {
             <ArrowUpRight :size="14" aria-hidden="true" />
           </p>
         </button>
-
-        <ul v-if="alsoRecent.length" class="mt-3 divide-y divide-hairline border-t border-hairline">
-          <li v-for="incident in alsoRecent" :key="incident.id">
-            <button
-              type="button"
-              class="flex w-full gap-3 py-3 text-left transition-colors hover:text-amber"
-              :aria-label="`${L(incident.org)} — ${t('openRecord')}`"
-              @click="open(incident)"
-            >
-              <span class="eyebrow w-[5.5rem] shrink-0 pt-0.5 tabular">{{ formatDateShort(incident.date, locale) }}</span>
-              <span class="min-w-0">
-                <span class="block truncate font-medium text-ink">{{ L(incident.org) }}</span>
-                <span class="mt-0.5 block truncate text-sm text-muted">{{ L(incident.data) }}</span>
-              </span>
-            </button>
-          </li>
-        </ul>
 
         <NuxtLink
           :to="localePath('/incidents')"

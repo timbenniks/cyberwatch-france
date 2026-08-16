@@ -119,7 +119,8 @@ export function useStructuredData() {
       dateModified: data.value?.project.reviewedThrough,
       about: { '@type': 'Organization', name: incident.org[locale.value], url: `https://${incident.domain}` },
       citation: citations.length === 1 ? citations[0] : citations,
-      image: absolute('/og.png'),
+      // Share cards are the per-page og:image. A static fallback here would
+      // disagree with what crawlers already see on the page.
     }
   }
 

@@ -8,11 +8,10 @@ const { graphFor } = useStructuredData()
 
 useLegacyHomeRedirect()
 
-const siteName = computed(() => data.value?.project.name ?? 'France Cyberwatch')
-const { title } = usePageSeo({
-  title: () => `${siteName.value}: ${t('seoTagline')}`,
+usePageSeo({
+  title: () => `${t('brand')}: ${t('seoTagline')}`,
   description: () => t('heroLead', { n: incidents.value.length }),
-  ogImageAlt: () => `${siteName.value} — ${t('heroTitle')}`,
+  ogImageAlt: () => `${t('brand')} — ${t('heroTitle')}`,
   links: () => [
     { rel: 'alternate', type: 'application/json', href: absolute('/api/incidents'), title: 'Incidents API' },
     { rel: 'alternate', type: 'application/rss+xml', href: absolute('/feed.xml'), title: 'Incident feed' },
@@ -35,7 +34,7 @@ defineOgImage(
     reviewedThrough: data.value ? formatDate(data.value.project.reviewedThrough, locale.value) : '',
     severities: incidents.value.map((item) => item.severity).join(','),
   },
-  { alt: () => `${siteName.value} — ${t('heroTitle')}` },
+  { alt: () => `${t('brand')} — ${t('heroTitle')}` },
 )
 </script>
 

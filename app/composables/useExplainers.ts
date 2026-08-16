@@ -18,10 +18,7 @@ export async function loadExplainers() {
 }
 
 export function explainerParagraphs(body: string): string[] {
-  return body
-    .split(/\n\n+/)
-    .map((paragraph) => paragraph.trim())
-    .filter(Boolean)
+  return proseParagraphs(body)
 }
 
 export function useExplainers() {

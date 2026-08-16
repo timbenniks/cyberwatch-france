@@ -1,0 +1,120 @@
+{
+  "researchCutoff": "2026-08-16",
+  "project": "France Cyberwatch 2025-2026 research package",
+  "master": "france-cyber-incidents-2025-2026.md",
+  "sourceRegister": "sources/source-register.md",
+  "incidents": [
+    {
+      "id": "orange",
+      "organization": "Orange",
+      "file": "incidents/01-orange-2025.md",
+      "status": "Confirmed incident; data-loss assessment changed after the first disclosure",
+      "affectedScope": "No verified customer-person count. A limited set of business-related internal data was later acknowledged as stolen.",
+      "sourceCount": 3
+    },
+    {
+      "id": "airfrance",
+      "organization": "Air France / KLM",
+      "file": "incidents/02-air-france-klm-2025.md",
+      "status": "Confirmed; victim count not publicly disclosed",
+      "affectedScope": "Unknown number of customers",
+      "sourceCount": 4
+    },
+    {
+      "id": "bouygues",
+      "organization": "Bouygues Telecom",
+      "file": "incidents/03-bouygues-telecom-2025.md",
+      "status": "Confirmed",
+      "affectedScope": "6.4 million customer accounts",
+      "sourceCount": 5
+    },
+    {
+      "id": "weda",
+      "organization": "WEDA",
+      "file": "incidents/04-weda-2025.md",
+      "status": "Confirmed breach; exact number of patients affected remained under investigation in the primary notification material",
+      "affectedScope": "About 23,000 health professionals were operationally affected. Patient-record count was not established in the public material reviewed.",
+      "sourceCount": 6
+    },
+    {
+      "id": "eurofiber",
+      "organization": "Eurofiber France",
+      "file": "incidents/05-eurofiber-france-2025.md",
+      "status": "Confirmed with unusually detailed post-incident disclosure",
+      "affectedScope": "No verified natural-person count. French customer ticketing and Cloud Infra portal data were in scope.",
+      "sourceCount": 3
+    },
+    {
+      "id": "interior",
+      "organization": "French Interior Ministry",
+      "file": "incidents/06-interior-ministry-2025.md",
+      "status": "Confirmed; early mass-extraction claim disproved by later official detail",
+      "affectedScope": "No verified person count. Official later detail: 72 TAJ files plus tens of thousands of TAJ index rows, 23 FPR files plus about 3,000 FPR index elements, and 1 Interpol file exfiltrated after 10 were viewed.",
+      "sourceCount": 6
+    },
+    {
+      "id": "ficoba",
+      "organization": "DGFiP / FICOBA",
+      "file": "incidents/07-ficoba-2026.md",
+      "status": "Confirmed",
+      "affectedScope": "About 1.2 million bank accounts, not necessarily 1.2 million unique people",
+      "sourceCount": 5
+    },
+    {
+      "id": "educompas",
+      "organization": "French Education Ministry / COMPAS",
+      "file": "incidents/08-education-compas-2026.md",
+      "status": "Confirmed",
+      "affectedScope": "About 243,000 agents, trainees and permanent staff",
+      "sourceCount": 4
+    },
+    {
+      "id": "edustudents",
+      "organization": "French Education Ministry / ÉduConnect",
+      "file": "incidents/09-education-educonnect-2026.md",
+      "status": "Confirmed breach; exact student count still not officially established at the research cutoff",
+      "affectedScope": "Unknown official student count. Criminal claims of 3.5 million pupils and 7.2 million report cards remain claims, not the ministry's verified scope.",
+      "sourceCount": 4
+    },
+    {
+      "id": "ants",
+      "organization": "France Titres / ANTS",
+      "file": "incidents/10-france-titres-ants-2026.md",
+      "status": "Confirmed incident; technical origin and exact downloaded volume remained under investigation in the principal official update",
+      "affectedScope": "About 11.7 million individual and professional accounts may be concerned",
+      "sourceCount": 6
+    },
+    {
+      "id": "edustaff",
+      "organization": "French Education Ministry",
+      "file": "incidents/11-education-staff-training-2026.md",
+      "status": "Confirmed; exact headcount still under investigation at the research cutoff",
+      "affectedScope": "A 'significant number' of agents who had worked in academies since 2001; exact count not published",
+      "sourceCount": 1
+    },
+    {
+      "id": "ceva",
+      "organization": "CEVA Logistics",
+      "file": "incidents/12-ceva-logistics-2026.md",
+      "status": "Confirmed by CEVA to customers and press; technical details still limited",
+      "affectedScope": "Unknown person count; at least eight European warehouses and multiple downstream clients",
+      "sourceCount": 5
+    },
+    {
+      "id": "sante",
+      "organization": "Santé publique France contractor-hosted ordering platform",
+      "file": "incidents/13-sante-publique-france-contractor-2026.md",
+      "status": "Confirmed through agency statements reported by French press",
+      "affectedScope": "About 80,000 users",
+      "sourceCount": 2
+    },
+    {
+      "id": "dgfip",
+      "organization": "Direction générale des Finances publiques",
+      "file": "incidents/14-dgfip-tax-systems-2026.md",
+      "status": "Confirmed; investigation ongoing at the research cutoff",
+      "affectedScope": "678,000 individuals and businesses in the official 14 August count",
+      "sourceCount": 4
+    }
+  ]
+}

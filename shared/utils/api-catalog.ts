@@ -94,8 +94,8 @@ export const apiEndpoints: ApiEndpointDoc[] = [
   {
     path: '/api/incidents/{id}',
     description: {
-      en: 'One incident with its localized `detail` (lead, timeline, how, taken, notTaken, response, methodDisclosure) plus `source` and `sources`. Unknown ids return 404 and list the valid ones. CSV is not offered here; list CSV stays compact and still leaves unknown `affected` empty.',
-      fr: 'Un incident avec son `detail` localisé (lead, timeline, how, taken, notTaken, response, methodDisclosure) plus `source` et `sources`. Un identifiant inconnu renvoie 404 et la liste des identifiants valides. Pas de CSV ici ; le CSV de la liste reste compact et laisse `affected` inconnu vide.',
+      en: 'One incident with its localized `detail` (lead, timeline, how, taken, notTaken, impact, response, methodDisclosure, optional revision and quotes) plus `lastResearched`, `source` and `sources`. Each source has `kind` (primary | official | secondary), `publisher` and optional `published`. Unknown ids return 404 and list the valid ones. CSV is not offered here; list CSV stays compact and still leaves unknown `affected` empty.',
+      fr: 'Un incident avec son `detail` localisé (lead, timeline, how, taken, notTaken, impact, response, methodDisclosure, revision et quotes optionnels) plus `lastResearched`, `source` et `sources`. Chaque source a un `kind` (primary | official | secondary), un `publisher` et un `published` optionnel. Un identifiant inconnu renvoie 404 et la liste des identifiants valides. Pas de CSV ici ; le CSV de la liste reste compact et laisse `affected` inconnu vide.',
     },
     query: [{ name: 'lang', detail: { en: 'en | fr', fr: 'en | fr' } }],
     examples: ['/api/incidents/ants'],
@@ -112,8 +112,8 @@ export const apiEndpoints: ApiEndpointDoc[] = [
   {
     path: '/api/sources',
     description: {
-      en: 'Every source, with the incidents that cite it.',
-      fr: 'Toutes les sources, avec les incidents qui les citent.',
+      en: 'Every source, with `kind` (primary | official | secondary), `publisher`, optional `published` date, and the incidents that cite it.',
+      fr: 'Toutes les sources, avec `kind` (primary | official | secondary), `publisher`, date `published` optionnelle, et les incidents qui les citent.',
     },
     examples: ['/api/sources'],
   },

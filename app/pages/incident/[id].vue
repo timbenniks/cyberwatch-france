@@ -5,20 +5,14 @@ const { selected } = useIncidentRoute()
 const { absolute } = useSiteUrl()
 const { graphFor } = useStructuredData()
 
-const siteName = computed(() => data.value?.project.name ?? 'France Cyberwatch')
 const incident = computed(() => selected.value)
 
 const { title } = usePageSeo({
-  title: () =>
-    incident.value ? `${L(incident.value.org)} — ${t('seoRecordSuffix')} — ${siteName.value}` : siteName.value,
+  title: () => (incident.value ? `${L(incident.value.org)} — ${t('seoRecordSuffix')}` : t('brand')),
   description: () => {
     if (!incident.value) return t('seoTagline')
     const sector = data.value?.ui.sectorLabels[incident.value.sector]?.[locale.value] ?? incident.value.sector
-    const lead = L(incident.value.detail.lead)
-    return `${formatDate(incident.value.date, locale.value)} · ${sector} · ${L(incident.value.affectedLabel)}. ${lead}`.slice(
-      0,
-      300,
-    )
+    return `${formatDate(incident.value.date, locale.value)} · ${sector} · ${L(incident.value.affectedLabel)}. ${L(incident.value.detail.lead)}`
   },
   ogType: 'article',
   links: () => [
@@ -36,7 +30,7 @@ defineOgImage(
   'OgIncident',
   {
     eyebrow: t('incidentRecord'),
-    org: incident.value ? L(incident.value.org) : siteName.value,
+    org: incident.value ? L(incident.value.org) : t('brand'),
     date: incident.value ? formatDate(incident.value.date, locale.value) : '',
     sector: incident.value
       ? (data.value?.ui.sectorLabels[incident.value.sector]?.[locale.value] ?? incident.value.sector)

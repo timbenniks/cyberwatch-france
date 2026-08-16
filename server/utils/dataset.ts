@@ -66,6 +66,7 @@ export function localizeIncident(incident: Incident, locale: Locale) {
     sourceId: incident.sourceId,
     sourceUrl: incident.sourceUrl,
     sourceIds: incident.sourceIds,
+    lastResearched: incident.lastResearched,
     url: locale === 'fr' ? `/fr/incident/${incident.id}` : `/incident/${incident.id}`,
     detail: {
       lead: incident.detail.lead[locale],
@@ -76,9 +77,22 @@ export function localizeIncident(incident: Incident, locale: Locale) {
       how: incident.detail.how[locale],
       taken: incident.detail.taken[locale],
       notTaken: incident.detail.notTaken[locale],
+      impact: incident.detail.impact[locale],
       response: incident.detail.response[locale],
       methodDisclosure: incident.detail.methodDisclosure,
       ...(incident.detail.attackerClaim ? { attackerClaim: incident.detail.attackerClaim[locale] } : {}),
+      ...(incident.detail.revision ? { revision: incident.detail.revision[locale] } : {}),
+      ...(incident.detail.quotes?.length
+        ? {
+            quotes: incident.detail.quotes.map((quote) => ({
+              text: locale === quote.originalLang ? quote.original : quote.translation,
+              original: quote.original,
+              originalLang: quote.originalLang,
+              attribution: quote.attribution[locale],
+              sourceId: quote.sourceId,
+            })),
+          }
+        : {}),
     },
   }
 }

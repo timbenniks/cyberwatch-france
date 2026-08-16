@@ -25,15 +25,27 @@ export default defineEventHandler((event) => {
           ? `unknown — ${incident.affectedLabel[lang]}`
           : `${incident.affected} (${incident.affectedLabel[lang]})`
       }`,
+      `- Last researched: ${incident.lastResearched}`,
       `- Lead: ${incident.detail.lead[lang]}`,
       `- How it happened: ${incident.detail.how[lang]}`,
       `- What was exposed: ${incident.detail.taken[lang]}`,
       `- What was not in scope: ${incident.detail.notTaken[lang]}`,
+      `- What it meant in practice: ${incident.detail.impact[lang]}`,
       `- Why it matters to the public: ${incident.risk[lang]}`,
       `- What was done next: ${incident.detail.response[lang]}`,
       `- Evidence note: ${incident.confidence[lang]}`,
       ...(incident.detail.attackerClaim
         ? [`- Attacker claim (not a confirmed count): ${incident.detail.attackerClaim[lang]}`]
+        : []),
+      ...(incident.detail.revision ? [`- What later reporting changed: ${incident.detail.revision[lang]}`] : []),
+      ...(incident.detail.quotes?.length
+        ? [
+            `- Quotes:`,
+            ...incident.detail.quotes.map((quote) => {
+              const text = lang === quote.originalLang ? quote.original : quote.translation
+              return `  - ${text} — ${quote.attribution[lang]}`
+            }),
+          ]
         : []),
       ...(incident.detail.timeline.length
         ? [
@@ -42,7 +54,10 @@ export default defineEventHandler((event) => {
           ]
         : []),
       `- Sources:`,
-      ...extraSources.map((source) => `  - ${source.name} — ${source.url}`),
+      ...extraSources.map(
+        (source) =>
+          `  - [${source.kind}] ${source.publisher}${source.published ? `, ${source.published}` : ''} — ${source.name} — ${source.url}`,
+      ),
       `- Page: ${base}${prefix}/incident/${incident.id}`,
       `- API: ${base}/api/incidents/${incident.id}`,
     ].join('\n')
@@ -82,6 +97,6 @@ ${dataset.recommendations.public.map((item) => `## ${item.title[lang]}\n\n${item
 
 # Sources
 
-${dataset.sources.map((source) => `- ${source.name} — ${source.url}`).join('\n')}
+${dataset.sources.map((source) => `- [${source.kind}] ${source.publisher} — ${source.name} — ${source.url}`).join('\n')}
 `
 })

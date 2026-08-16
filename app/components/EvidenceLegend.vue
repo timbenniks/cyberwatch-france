@@ -17,7 +17,7 @@ const entries: { status: IncidentStatus; key: UiKey }[] = [
     <dl class="grid gap-4 sm:grid-cols-3">
       <div v-for="entry in entries" :key="entry.status">
         <dt class="mb-2">
-          <StatusStamp :status="entry.status" :tilt="false" />
+          <StatusStamp :status="entry.status" />
         </dt>
         <dd class="text-[0.8125rem] leading-relaxed text-ink-2">{{ t(entry.key) }}</dd>
       </div>

@@ -132,7 +132,7 @@ function onMobileSort(event: Event) {
         </p>
         <div class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2">
           <SeverityMark :severity="incident.severity" />
-          <StatusStamp :status="incident.status" :tilt="false" />
+          <StatusStamp :status="incident.status" />
         </div>
         <p class="mt-3 text-sm" :class="incident.affected === null ? 'italic text-muted' : 'tabular text-ink'">
           {{ formatAffected(incident, locale) }}
@@ -220,7 +220,7 @@ function onMobileSort(event: Event) {
             </td>
             <td class="px-3 py-3.5 text-ink-2">{{ sectorLabel(incident.sector) }}</td>
             <td class="whitespace-nowrap px-3 py-3.5"><SeverityMark :severity="incident.severity" /></td>
-            <td class="whitespace-nowrap px-3 py-3.5"><StatusStamp :status="incident.status" :tilt="false" /></td>
+            <td class="whitespace-nowrap px-3 py-3.5"><StatusStamp :status="incident.status" /></td>
             <td class="px-3 py-3.5" :class="incident.affected === null ? 'italic text-muted' : 'tabular text-ink'">
               {{ formatAffected(incident, locale) }}
             </td>

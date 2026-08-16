@@ -37,7 +37,7 @@ export const seriesColors = ['#3987e5', '#d95926', '#199e70', '#c98500', '#d5518
 /**
  * Chart chrome and status fills. Must stay in step with the CSS tokens in
  * style.css — dark defaults in `@theme`, light overrides in
- * `prefers-color-scheme: light`.
+ * `prefers-color-scheme: light` and `html[data-theme='light']`.
  *
  * Dark sequential: brighter = more, validated at #111726.
  * Light sequential: darker = more, validated at #fffcf7.

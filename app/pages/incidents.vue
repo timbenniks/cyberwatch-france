@@ -5,9 +5,8 @@ const { open } = useIncidentRoute()
 
 useFilterQuery()
 
-const siteName = computed(() => data.value?.project.name ?? 'France Cyberwatch')
 const { title } = usePageSeo({
-  title: () => `${t('timelineTitle')} · ${siteName.value}`,
+  title: () => `${t('timelineTitle')} · ${t('brand')}`,
   description: () => t('timelineLead'),
 })
 

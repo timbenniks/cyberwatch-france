@@ -7,12 +7,11 @@ const { data, incidents, largestConfirmedAffected, withoutPublishedCount, incide
 const chartRules = computed(() => Object.entries(data.value?.ui.chartRules ?? {}))
 const { locale, t, L, localePath } = useLocale()
 
-const siteName = computed(() => data.value?.project.name ?? 'France Cyberwatch')
 const anssi = computed(() => data.value?.summaryStats.anssi2025)
 const cnil = computed(() => data.value?.summaryStats.cnil2025)
 
 const { title } = usePageSeo({
-  title: () => `${t('chartsTitle')} · ${siteName.value}`,
+  title: () => `${t('chartsTitle')} · ${t('brand')}`,
   description: () => t('chartsLead', { n: withoutPublishedCount.value.length }),
 })
 
