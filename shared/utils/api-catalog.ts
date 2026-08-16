@@ -1,13 +1,30 @@
 import type { Bilingual } from '../../app/types/cyberwatch'
 
+export type ApiParamControlKind = 'text' | 'select' | 'number' | 'date'
+export type ApiParamOptionSource = 'sectors' | 'years' | 'incidentIds'
+
+export interface ApiParamControl {
+  kind: ApiParamControlKind
+  options?: string[]
+  source?: ApiParamOptionSource
+}
+
 export interface ApiQueryParamDoc {
   name: string
   detail: Bilingual
+  control?: ApiParamControl
+}
+
+export interface ApiPathParamDoc {
+  name: string
+  detail: Bilingual
+  control?: ApiParamControl
 }
 
 export interface ApiEndpointDoc {
   path: string
   description: Bilingual
+  pathParams?: ApiPathParamDoc[]
   query?: ApiQueryParamDoc[]
   examples: string[]
 }
@@ -53,6 +70,10 @@ export const apiConventions: ApiConventionDoc[] = [
   },
 ]
 
+export function apiEndpointAnchor(path: string) {
+  return path.replace(/^\//, '').replace(/[{}]/g, '').replace(/\//g, '-')
+}
+
 export const apiEndpoints: ApiEndpointDoc[] = [
   {
     path: '/api/incidents',
@@ -67,23 +88,57 @@ export const apiEndpoints: ApiEndpointDoc[] = [
           en: 'Full-text across organisation, sector, method, data, risk, confidence, source and the longer incident-page fields.',
           fr: 'Recherche plein texte sur l’organisation, le secteur, la méthode, les données, le risque, la confiance, la source et les champs longs de la fiche.',
         },
+        control: { kind: 'text' },
       },
-      { name: 'kind', detail: { en: 'government | company', fr: 'government | company' } },
-      { name: 'severity', detail: { en: 'critical | high | medium | low', fr: 'critical | high | medium | low' } },
-      { name: 'status', detail: { en: 'confirmed | disputed | unknown', fr: 'confirmed | disputed | unknown' } },
+      {
+        name: 'kind',
+        detail: { en: 'government | company', fr: 'government | company' },
+        control: { kind: 'select', options: ['government', 'company'] },
+      },
+      {
+        name: 'severity',
+        detail: { en: 'critical | high | medium | low', fr: 'critical | high | medium | low' },
+        control: { kind: 'select', options: ['critical', 'high', 'medium', 'low'] },
+      },
+      {
+        name: 'status',
+        detail: { en: 'confirmed | disputed | unknown', fr: 'confirmed | disputed | unknown' },
+        control: { kind: 'select', options: ['confirmed', 'disputed', 'unknown'] },
+      },
       {
         name: 'sector',
         detail: { en: 'Exact sector name, case-insensitive.', fr: 'Nom exact du secteur, insensible à la casse.' },
+        control: { kind: 'select', source: 'sectors' },
       },
-      { name: 'year', detail: { en: 'e.g. 2026', fr: 'ex. 2026' } },
-      { name: 'from', detail: { en: 'ISO date, inclusive lower bound.', fr: 'Date ISO, borne inférieure inclusive.' } },
-      { name: 'to', detail: { en: 'ISO date, inclusive upper bound.', fr: 'Date ISO, borne supérieure inclusive.' } },
-      { name: 'sort', detail: { en: 'date | affected | org (default date)', fr: 'date | affected | org (date par défaut)' } },
-      { name: 'order', detail: { en: 'desc | asc (default desc)', fr: 'desc | asc (desc par défaut)' } },
-      { name: 'limit', detail: { en: '1–200, default 100', fr: '1–200, 100 par défaut' } },
-      { name: 'offset', detail: { en: 'default 0', fr: '0 par défaut' } },
-      { name: 'format', detail: { en: 'json | csv', fr: 'json | csv' } },
-      { name: 'lang', detail: { en: 'en | fr', fr: 'en | fr' } },
+      { name: 'year', detail: { en: 'e.g. 2026', fr: 'ex. 2026' }, control: { kind: 'select', source: 'years' } },
+      {
+        name: 'from',
+        detail: { en: 'ISO date, inclusive lower bound.', fr: 'Date ISO, borne inférieure inclusive.' },
+        control: { kind: 'date' },
+      },
+      {
+        name: 'to',
+        detail: { en: 'ISO date, inclusive upper bound.', fr: 'Date ISO, borne supérieure inclusive.' },
+        control: { kind: 'date' },
+      },
+      {
+        name: 'sort',
+        detail: { en: 'date | affected | org (default date)', fr: 'date | affected | org (date par défaut)' },
+        control: { kind: 'select', options: ['date', 'affected', 'org'] },
+      },
+      {
+        name: 'order',
+        detail: { en: 'desc | asc (default desc)', fr: 'desc | asc (desc par défaut)' },
+        control: { kind: 'select', options: ['desc', 'asc'] },
+      },
+      { name: 'limit', detail: { en: '1–200, default 100', fr: '1–200, 100 par défaut' }, control: { kind: 'number' } },
+      { name: 'offset', detail: { en: 'default 0', fr: '0 par défaut' }, control: { kind: 'number' } },
+      {
+        name: 'format',
+        detail: { en: 'json | csv', fr: 'json | csv' },
+        control: { kind: 'select', options: ['json', 'csv'] },
+      },
+      { name: 'lang', detail: { en: 'en | fr', fr: 'en | fr' }, control: { kind: 'select', options: ['en', 'fr'] } },
     ],
     examples: [
       '/api/incidents?kind=government&severity=critical',
@@ -97,7 +152,14 @@ export const apiEndpoints: ApiEndpointDoc[] = [
       en: 'One incident with its localized `detail` (lead, timeline, how, taken, notTaken, impact, response, methodDisclosure, optional revision and quotes) plus `lastResearched`, `source` and `sources`. Each source has `kind` (primary | official | secondary), `publisher` and optional `published`. Unknown ids return 404 and list the valid ones. CSV is not offered here; list CSV stays compact and still leaves unknown `affected` empty.',
       fr: 'Un incident avec son `detail` localisé (lead, timeline, how, taken, notTaken, impact, response, methodDisclosure, revision et quotes optionnels) plus `lastResearched`, `source` et `sources`. Chaque source a un `kind` (primary | official | secondary), un `publisher` et un `published` optionnel. Un identifiant inconnu renvoie 404 et la liste des identifiants valides. Pas de CSV ici ; le CSV de la liste reste compact et laisse `affected` inconnu vide.',
     },
-    query: [{ name: 'lang', detail: { en: 'en | fr', fr: 'en | fr' } }],
+    pathParams: [
+      {
+        name: 'id',
+        detail: { en: 'Incident id from the dossier.', fr: 'Identifiant d’incident du dossier.' },
+        control: { kind: 'select', source: 'incidentIds' },
+      },
+    ],
+    query: [{ name: 'lang', detail: { en: 'en | fr', fr: 'en | fr' }, control: { kind: 'select', options: ['en', 'fr'] } }],
     examples: ['/api/incidents/ants'],
   },
   {
@@ -106,7 +168,7 @@ export const apiEndpoints: ApiEndpointDoc[] = [
       en: 'ANSSI and CNIL national figures, plus counts derived from this list. Aggregates never include unknown or disputed attacker claims.',
       fr: 'Chiffres nationaux ANSSI et CNIL, plus les décomptes issus de cette liste. Les agrégats n’incluent jamais les inconnus ni les revendications d’attaquants contestées.',
     },
-    query: [{ name: 'lang', detail: { en: 'en | fr', fr: 'en | fr' } }],
+    query: [{ name: 'lang', detail: { en: 'en | fr', fr: 'en | fr' }, control: { kind: 'select', options: ['en', 'fr'] } }],
     examples: ['/api/summary', '/api/summary?lang=fr'],
   },
   {
@@ -123,7 +185,7 @@ export const apiEndpoints: ApiEndpointDoc[] = [
       en: 'Recurring weaknesses and the priority control for each.',
       fr: 'Faiblesses récurrentes et la mesure prioritaire pour chacune.',
     },
-    query: [{ name: 'lang', detail: { en: 'en | fr', fr: 'en | fr' } }],
+    query: [{ name: 'lang', detail: { en: 'en | fr', fr: 'en | fr' }, control: { kind: 'select', options: ['en', 'fr'] } }],
     examples: ['/api/patterns?lang=fr'],
   },
   {
@@ -133,8 +195,12 @@ export const apiEndpoints: ApiEndpointDoc[] = [
       fr: 'Recommandations pour les organisations et le grand public. Les fiches grand public incluent explainerSlug lorsqu’un guide /learn existe.',
     },
     query: [
-      { name: 'audience', detail: { en: 'organizations | public', fr: 'organizations | public' } },
-      { name: 'lang', detail: { en: 'en | fr', fr: 'en | fr' } },
+      {
+        name: 'audience',
+        detail: { en: 'organizations | public', fr: 'organizations | public' },
+        control: { kind: 'select', options: ['organizations', 'public'] },
+      },
+      { name: 'lang', detail: { en: 'en | fr', fr: 'en | fr' }, control: { kind: 'select', options: ['en', 'fr'] } },
     ],
     examples: ['/api/recommendations?audience=public&lang=fr'],
   },
