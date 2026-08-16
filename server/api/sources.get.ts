@@ -1,10 +1,4 @@
-import { dataset, incidentCites, incidents, meta } from '~~/server/utils/dataset'
+import { querySources } from '~~/server/utils/queries'
 
 /** GET /api/sources — every source, with the incidents that cite it. */
-export default defineEventHandler(() => ({
-  meta,
-  sources: dataset.sources.map((source) => ({
-    ...source,
-    citedBy: incidents.filter((incident) => incidentCites(incident, source.id)).map((incident) => incident.id),
-  })),
-}))
+export default defineEventHandler(() => querySources())

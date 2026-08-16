@@ -99,6 +99,29 @@ export function localizeIncident(incident: Incident, locale: Locale) {
 
 export type LocalizedIncident = ReturnType<typeof localizeIncident>
 
+/** Compact row for agent tools — no long `detail` fields, `affected` still nullable. */
+export function toListedIncident(incident: LocalizedIncident) {
+  return {
+    id: incident.id,
+    date: incident.date,
+    year: incident.year,
+    org: incident.org,
+    kind: incident.kind,
+    sector: incident.sector,
+    sectorLabel: incident.sectorLabel,
+    severity: incident.severity,
+    status: incident.status,
+    affected: incident.affected,
+    affectedLabel: incident.affectedLabel,
+    method: incident.method,
+    sourceName: incident.sourceName,
+    sourceUrl: incident.sourceUrl,
+    url: incident.url,
+  }
+}
+
+export type ListedIncident = ReturnType<typeof toListedIncident>
+
 const csvColumns = [
   'id',
   'date',

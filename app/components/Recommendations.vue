@@ -3,7 +3,7 @@ import { Building2, Info, Users } from '@lucide/vue'
 
 const { data } = useCyberData()
 const { t, L, localePath } = useLocale()
-const { explainers } = useExplainers()
+const { explainers, bySlug } = useExplainers()
 
 const publicItems = computed(() => data.value?.recommendations.public ?? [])
 const orgItems = computed(() => data.value?.recommendations.organizations ?? [])
@@ -41,6 +41,14 @@ const orgItems = computed(() => data.value?.recommendations.organizations ?? [])
           <div>
             <h3 class="font-display text-lg leading-snug text-ink">{{ L(item.title) }}</h3>
             <p class="mt-2 text-[0.9375rem] leading-relaxed text-ink-2">{{ L(item.description) }}</p>
+            <NuxtLink
+              v-if="item.explainerSlug && bySlug(item.explainerSlug)"
+              :to="localePath(`/learn/${item.explainerSlug}`)"
+              class="link-underline mt-3 inline-block text-sm text-amber hover:text-ink"
+              @click="trackPlausibleEvent('Open Explainer', { slug: item.explainerSlug, from: 'guidance-card' })"
+            >
+              {{ t('learnOpen') }}
+            </NuxtLink>
           </div>
         </li>
       </ol>

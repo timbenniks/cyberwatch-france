@@ -327,6 +327,58 @@ const dictionary = {
   },
   apiDocsEndpointCount: { en: 'endpoints', fr: 'points d’accès' },
   apiDocsKeyLabel: { en: 'API key', fr: 'Clé d’API' },
+  mcpTitle: { en: 'Streamable HTTP MCP', fr: 'MCP Streamable HTTP' },
+  mcpLead: {
+    en: 'The same read-only dataset, as a remote MCP server. No key. Stateless JSON over Streamable HTTP, so it runs on ordinary serverless functions and still speaks to 2025-era clients.',
+    fr: 'Le même jeu en lecture seule, exposé comme serveur MCP distant. Sans clé. JSON sans état en Streamable HTTP, donc il tourne sur des fonctions serverless ordinaires et parle encore aux clients de 2025.',
+  },
+  mcpEndpoint: { en: 'Endpoint', fr: 'Point d’accès' },
+  mcpInstallTitle: { en: 'How to install', fr: 'Comment l’installer' },
+  mcpInstallLead: {
+    en: 'Point any MCP host at this URL. No token. After adding it, reload the host and confirm the tools appear.',
+    fr: 'Pointez n’importe quel hôte MCP vers cette URL. Pas de jeton. Après l’ajout, rechargez l’hôte et vérifiez que les outils apparaissent.',
+  },
+  mcpInstallCursor: {
+    en: 'Cursor — save as .cursor/mcp.json in a project, or ~/.cursor/mcp.json for every workspace. Then Cursor Settings → Tools & MCP, enable the server.',
+    fr: 'Cursor — enregistrez comme .cursor/mcp.json dans un projet, ou ~/.cursor/mcp.json pour tous les espaces de travail. Puis Cursor Settings → Tools & MCP, activez le serveur.',
+  },
+  mcpInstallCursorClick: { en: 'Add to Cursor', fr: 'Ajouter à Cursor' },
+  mcpInstallClaude: {
+    en: 'Claude Desktop — merge into claude_desktop_config.json (Claude → Settings → Developer). Claude.ai custom connectors can use the same URL.',
+    fr: 'Claude Desktop — fusionnez dans claude_desktop_config.json (Claude → Réglages → Développeur). Les connecteurs Claude.ai peuvent utiliser la même URL.',
+  },
+  mcpInstallVscode: {
+    en: 'VS Code — save as .vscode/mcp.json, or add the server in MCP: Add Server.',
+    fr: 'VS Code — enregistrez comme .vscode/mcp.json, ou ajoutez le serveur via MCP: Add Server.',
+  },
+  mcpToolsTitle: { en: 'Tools', fr: 'Outils' },
+  mcpResourcesTitle: { en: 'Resources', fr: 'Ressources' },
+  mcpPromptsTitle: { en: 'Prompts', fr: 'Invites' },
+  mcpInput: { en: 'Input', fr: 'Entrée' },
+  webmcpTitle: { en: 'WebMCP on this site', fr: 'WebMCP sur ce site' },
+  webmcpLead: {
+    en: 'When a browser agent is already on a page, these tools run in the tab: they can filter the timeline, open a record, and read the dataset that was prerendered into the page. No extra server call.',
+    fr: 'Quand un agent navigateur est déjà sur une page, ces outils s’exécutent dans l’onglet : ils peuvent filtrer la chronologie, ouvrir une fiche, et lire le jeu prérendu dans la page. Pas d’appel serveur de plus.',
+  },
+  webmcpEnableTitle: { en: 'How to enable it', fr: 'Comment l’activer' },
+  webmcpEnableBody: {
+    en: 'WebMCP is a proposed web standard. Chrome exposes it behind a flag (and an origin trial). A WebMCP bridge or the Model Context Tool Inspector extension can also see tools registered on this page.',
+    fr: 'WebMCP est une proposition de standard web. Chrome l’expose derrière un flag (et une origin trial). Un pont WebMCP ou l’extension Model Context Tool Inspector peut aussi voir les outils enregistrés sur cette page.',
+  },
+  webmcpEnableSteps: {
+    en: 'In Chrome 146+, open chrome://flags/#enable-webmcp-testing, set it to Enabled, and relaunch. Open this site, then inspect navigator.modelContext (or document.modelContext) in DevTools, or use the inspector extension.',
+    fr: 'Dans Chrome 146+, ouvrez chrome://flags/#enable-webmcp-testing, passez à Enabled, puis relancez. Ouvrez ce site, puis inspectez navigator.modelContext (ou document.modelContext) dans DevTools, ou utilisez l’extension inspector.',
+  },
+  webmcpFlag: { en: 'chrome://flags/#enable-webmcp-testing', fr: 'chrome://flags/#enable-webmcp-testing' },
+  webmcpInspector: {
+    en: 'Model Context Tool Inspector (Chrome Web Store) lists the tools, lets you call them, and can chat against them.',
+    fr: 'Model Context Tool Inspector (Chrome Web Store) liste les outils, permet de les appeler, et peut discuter avec eux.',
+  },
+  webmcpBridge: {
+    en: 'If you use a WebMCP bridge (for example Cursor talking to the open tab), pin this origin and the page tools show up as web.* tools.',
+    fr: 'Si vous utilisez un pont WebMCP (par exemple Cursor parlant à l’onglet ouvert), épinglez cette origine et les outils de la page apparaissent comme outils web.*.',
+  },
+  webmcpToolsTitle: { en: 'Page tools', fr: 'Outils de page' },
   machineReadable: { en: 'For machines', fr: 'Pour les machines' },
   footerNote: {
     en: 'Built from public disclosures. No incident content on this site was written outside the dataset.',
@@ -373,8 +425,8 @@ const dictionary = {
     fr: 'Vérifiez ce que les guides vous ont appris',
   },
   quizLead: {
-    en: 'Fourteen questions from the public explainers. After each answer you will see why it is right or wrong. A score of 80 percent opens a pass screen you can share on LinkedIn.',
-    fr: 'Quatorze questions tirées des guides grand public. Après chaque réponse, vous verrez pourquoi elle est juste ou fausse. Un score de 80 pour cent ouvre un écran de réussite que vous pouvez partager sur LinkedIn.',
+    en: 'Sixteen questions from the public explainers. After each answer you will see why it is right or wrong. A score of 80 percent opens a pass screen you can share on LinkedIn.',
+    fr: 'Seize questions tirées des guides grand public. Après chaque réponse, vous verrez pourquoi elle est juste ou fausse. Un score de 80 pour cent ouvre un écran de réussite que vous pouvez partager sur LinkedIn.',
   },
   quizMeta: {
     en: '{total} questions · pass mark {pass}%',
@@ -443,7 +495,8 @@ function bare(path: string): string {
 /**
  * The language lives in the URL: `/` and `/incident/:id` are English, `/fr`
  * and `/fr/incident/:id` are French. `/incidents`, `/guidance`, `/numbers`,
- * `/learn`, `/learn/quiz` and `/docs` follow the same pattern. Both languages are prerendered,
+ * `/learn`, `/learn/quiz` and `/docs` follow the same pattern. MCP is `/mcp`.
+ * Both languages are prerendered,
  * both are indexable, and switching is a navigation — so there is no
  * client-side flip to disagree with the server's markup.
  */

@@ -2670,9 +2670,10 @@
           "fr": "Supposer que les données divulguées peuvent servir à des arnaques"
         },
         "description": {
-          "en": "A caller knowing your address, IBAN, tax office or recent order is not proof they are legitimate.",
-          "fr": "Un appelant connaissant votre adresse, IBAN, centre des impôts ou commande récente n’est pas pour autant légitime."
-        }
+          "en": "A caller knowing your address, IBAN, tax office or recent order is not proof they are legitimate. Hang up and start from a number or site you already trust.",
+          "fr": "Un appelant connaissant votre adresse, IBAN, centre des impôts ou commande récente n’est pas pour autant légitime. Raccrochez et repartez d’un numéro ou d’un site que vous connaissez déjà."
+        },
+        "explainerSlug": "why-leaks-matter"
       },
       {
         "id": "open-official-services",
@@ -2681,9 +2682,46 @@
           "fr": "Ouvrir soi-même les services officiels"
         },
         "description": {
-          "en": "Do not use a link from an unexpected email or SMS about taxes, deliveries, identity documents or banking. Open the official app or type the site address yourself.",
-          "fr": "Ne pas utiliser un lien d’un e-mail ou SMS inattendu concernant les impôts, livraisons, titres d’identité ou banque. Ouvrir l’application officielle ou saisir soi-même l’adresse du site."
-        }
+          "en": "Do not use a link from an unexpected email or SMS about taxes, deliveries, identity documents or banking. Open the official app or type the site address yourself. Bookmark that address so you are not guessing under pressure.",
+          "fr": "Ne pas utiliser un lien d’un e-mail ou SMS inattendu concernant les impôts, livraisons, titres d’identité ou banque. Ouvrir l’application officielle ou saisir soi-même l’adresse du site. Mettre cette adresse en favori pour ne pas la chercher sous la pression."
+        },
+        "explainerSlug": "phishing-that-knows-you"
+      },
+      {
+        "id": "named-context-still-unofficial",
+        "title": {
+          "en": "A named school, class or tax office is still not official",
+          "fr": "Nommer l’école, la classe ou les impôts ne rend pas un message officiel"
+        },
+        "description": {
+          "en": "Those details are exactly what leaks. Open ÉduConnect, impôts or ANTS yourself. Do not use a link from an unexpected SMS.",
+          "fr": "Ce sont précisément ces informations qui fuitent. Ouvrez vous-même ÉduConnect, les impôts ou ANTS. N’utilisez pas un lien d’un SMS inattendu."
+        },
+        "explainerSlug": "when-the-state-is-the-source"
+      },
+      {
+        "id": "never-share-codes",
+        "title": {
+          "en": "Never share a one-time code on an inbound call",
+          "fr": "Ne jamais dicter un code à usage unique à un appelant"
+        },
+        "description": {
+          "en": "A caller who recites your address or IBAN still needs you to read a banking or tax code, or to approve a payment. Hang up. Open the official app yourself.",
+          "fr": "Un appelant qui récite votre adresse ou votre IBAN a encore besoin que vous dictiez un code bancaire ou fiscal, ou que vous validiez un paiement. Raccrochez. Ouvrez vous-même l’application officielle."
+        },
+        "explainerSlug": "phishing-that-knows-you"
+      },
+      {
+        "id": "no-remote-access",
+        "title": {
+          "en": "Do not install remote-control software because someone asked",
+          "fr": "Ne pas installer un logiciel de prise de contrôle sur demande"
+        },
+        "description": {
+          "en": "A “technician”, bank or tax agent who needs you to install a tool so they can “secure your account” is running the fraud. End the call and use the official app.",
+          "fr": "Un « technicien », une banque ou un agent des impôts qui exige l’installation d’un outil pour « sécuriser votre compte » est en train de commettre la fraude. Raccrochez et utilisez l’application officielle."
+        },
+        "explainerSlug": "iban-and-banking"
       },
       {
         "id": "unique-passwords-passkeys",
@@ -2692,9 +2730,10 @@
           "fr": "Utiliser des mots de passe uniques et des passkeys"
         },
         "description": {
-          "en": "A password manager prevents one stolen password from unlocking several services. Enable MFA wherever available.",
-          "fr": "Un gestionnaire de mots de passe évite qu’un mot de passe volé ouvre plusieurs services. Activer la MFA partout où elle est disponible."
-        }
+          "en": "A password manager prevents one stolen password from unlocking several services. If this service held a password you reused, change it on every other account that shared it. Enable MFA wherever available.",
+          "fr": "Un gestionnaire de mots de passe évite qu’un mot de passe volé ouvre plusieurs services. Si ce service détenait un mot de passe que vous réutilisiez, changez-le sur tous les autres comptes qui le partageaient. Activez la MFA partout où elle est disponible."
+        },
+        "explainerSlug": "passwords-after-a-leak"
       },
       {
         "id": "watch-financial-activity",
@@ -2703,9 +2742,22 @@
           "fr": "Surveiller l’activité financière"
         },
         "description": {
-          "en": "An exposed IBAN does not normally let someone directly take over an account, but it can support convincing fraud. Review transactions and bank alerts.",
-          "fr": "Un IBAN exposé ne permet normalement pas de prendre directement le contrôle d’un compte, mais peut renforcer des fraudes crédibles. Vérifier les transactions et alertes bancaires."
-        }
+          "en": "An exposed IBAN does not normally let someone directly take over an account, but it can support convincing fraud. Review transactions and bank alerts. Turn on alerts for new mandates and unusual transfers.",
+          "fr": "Un IBAN exposé ne permet normalement pas de prendre directement le contrôle d’un compte, mais peut renforcer des fraudes crédibles. Vérifier les transactions et alertes bancaires. Activer les alertes pour les nouveaux mandats et les virements inhabituels."
+        },
+        "explainerSlug": "iban-and-banking"
+      },
+      {
+        "id": "sepa-to-bank",
+        "title": {
+          "en": "Take unexpected SEPA mandates to your bank",
+          "fr": "Signaler un mandat SEPA inattendu à sa banque"
+        },
+        "description": {
+          "en": "An exposed IBAN can support a convincing direct-debit story. Do not confirm a mandate with the caller. Dispute it through your bank.",
+          "fr": "Un IBAN exposé peut étayer un récit crédible de prélèvement. Ne confirmez pas un mandat avec l’appelant. Contestez-le auprès de votre banque."
+        },
+        "explainerSlug": "iban-and-banking"
       },
       {
         "id": "preserve-evidence",
@@ -2714,9 +2766,10 @@
           "fr": "Conserver les preuves"
         },
         "description": {
-          "en": "Keep suspicious emails, SMS, URLs and screenshots if you believe stolen data is being used against you. Report fraud through official channels.",
-          "fr": "Conserver les e-mails, SMS, URL et captures suspects si vous pensez que des données volées sont utilisées contre vous. Signaler la fraude via les canaux officiels."
-        }
+          "en": "Keep suspicious emails, SMS, URLs and screenshots if you believe stolen data is being used against you. Report through official channels you open yourself, starting at Cybermalveillance.gouv.fr.",
+          "fr": "Conserver les e-mails, SMS, URL et captures suspects si vous pensez que des données volées sont utilisées contre vous. Signaler via des canaux officiels que vous ouvrez vous-même, en commençant par Cybermalveillance.gouv.fr."
+        },
+        "explainerSlug": "why-leaks-matter"
       },
       {
         "id": "expect-delayed-attacks",
@@ -2725,9 +2778,10 @@
           "fr": "S’attendre à des attaques différées"
         },
         "description": {
-          "en": "Stolen data can circulate for months or years. Increased caution should not end a week after the breach notice.",
-          "fr": "Les données volées peuvent circuler pendant des mois ou des années. La vigilance ne doit pas s’arrêter une semaine après la notification de fuite."
-        }
+          "en": "Stolen data can circulate for months or years. Increased caution should not end a week after the breach notice. Treat a message that reuses the organisation’s name months later the same way you would treat one that arrives tomorrow.",
+          "fr": "Les données volées peuvent circuler pendant des mois ou des années. La vigilance ne doit pas s’arrêter une semaine après la notification de fuite. Traitez un message qui réutilise le nom de l’organisation des mois plus tard comme celui qui arriverait demain."
+        },
+        "explainerSlug": "health-school-long-tail"
       }
     ]
   },

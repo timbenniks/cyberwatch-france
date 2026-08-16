@@ -25,6 +25,7 @@ export default defineEventHandler((event) => {
     '# Machine-readable entry points',
     `# API docs:   ${base}/docs`,
     `# API index:  ${base}/api`,
+    `# MCP:        ${base}/mcp`,
     `# Full data:  ${base}/data/france-cyberwatch-data.json`,
     `# For LLMs:   ${base}/llms.txt`,
     `# Feed:       ${base}/feed.xml`,

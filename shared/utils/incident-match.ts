@@ -16,7 +16,7 @@ function isSet(value: unknown): value is string | number {
   return value !== undefined && value !== null && value !== '' && value !== 'all'
 }
 
-/** One matcher so the timeline and GET /api/incidents cannot drift. */
+/** One matcher so the timeline, GET /api/incidents, MCP and WebMCP cannot drift. */
 export function incidentMatches(incident: Incident, query: IncidentMatchQuery, locale: Locale): boolean {
   if (isSet(query.kind) && incident.kind !== query.kind) return false
   if (isSet(query.severity) && incident.severity !== query.severity) return false

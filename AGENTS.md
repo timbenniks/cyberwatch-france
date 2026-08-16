@@ -4,7 +4,7 @@ Instructions for coding agents working in this repository. (This is the *repo* c
 
 ## What this project is
 
-A bilingual public dossier of publicly reported cyberattacks and data breaches affecting French public institutions and companies in 2025–2026, plus a read-only public API over the same data. Nuxt 4, prerendered to static HTML, deployed on Vercel.
+A bilingual public dossier of publicly reported cyberattacks and data breaches affecting French public institutions and companies in 2025–2026, plus a read-only public API and a Streamable HTTP MCP server over the same data. Nuxt 4, prerendered to static HTML, deployed on Vercel.
 
 ## The rule that matters most
 
@@ -21,12 +21,14 @@ If a task seems to require a fact the dataset does not contain, stop and ask rat
 ## Layout
 
 ```
-data/                  source of truth for incidents; served at /data, imported by the API
+data/                  source of truth for incidents; served at /data, imported by the API and MCP
                        explainers.json is educational copy only (no incident facts)
 app/                   Nuxt app (pages, components, composables, utils, types)
-server/api/            the public API
-server/routes/         robots.txt, sitemap.xml, feed.xml, llms.txt, llms-full.txt
-shared/utils/          code used by both the app and the API (the filter matcher, the API catalogue)
+                       plugins/webmcp.client.ts registers in-page WebMCP tools
+server/api/            the public REST API
+server/routes/         robots.txt, sitemap.xml, feed.xml, llms.txt, llms-full.txt, mcp
+server/utils/          dataset, shared queries, Streamable HTTP MCP handler
+shared/utils/          filter matcher, API catalogue, MCP catalogue
 ```
 
 ## Conventions
@@ -37,7 +39,7 @@ shared/utils/          code used by both the app and the API (the filter matcher
 - **The language lives in the URL.** `/` and `/incident/:id` are English, `/fr` and `/fr/incident/:id` are French, `/incidents`, `/guidance` and `/numbers` (and `/fr/…`) are the former homepage sections, `/docs` and `/fr/docs` are the API reference, `/learn`, `/learn/quiz` and `/learn/:slug` (and `/fr/learn…`) are public explainers, and all of those patterns are prerendered. Locale is derived from the route — never from `localStorage`, and never flipped on the client, which would break hydration on prerendered pages. Build internal links with `localePath()` from `useLocale()`. A French browser language may *navigate* to the French URL before paint; it must not rewrite the page in place.
 - **Nothing locale-dependent may hydrate late.** Deferred hydration (`hydrate-on-visible`) on text that comes from the UI dictionary will fight the prerendered markup. `content-visibility` is fine; deferred hydration is not.
 - **State is `useState`**, never module-level `ref`/`reactive` — those leak across requests during SSR.
-- **One filter matcher.** `shared/utils/incident-match.ts` backs both the timeline and `GET /api/incidents`; change it once, and both stay in step.
+- **One filter matcher.** `shared/utils/incident-match.ts` backs the timeline, `GET /api/incidents`, MCP `list_incidents` and the in-page WebMCP tools; change it once, and they stay in step.
 - Prefer computed state over duplicated arrays. Keep components focused; no giant monolith.
 
 ## Charts
@@ -57,7 +59,8 @@ npm run typecheck    # vue-tsc; must be clean
 
 ## Before you call it done
 
-- `npm run build` succeeds and prerenders 54 routes.
+- `npm run build` succeeds and prerenders 56 routes.
 - `npm run typecheck` reports no errors.
 - Load `/` and `/fr` in a browser and confirm the console is free of hydration mismatches.
 - If you touched the API, re-check that `GET /api/incidents?sort=affected` returns the published figures first and the unknown ones last — never zeros.
+- If you touched MCP, `POST /mcp` must stay read-only, CORS-open, and must not coerce `affected: null` to 0.

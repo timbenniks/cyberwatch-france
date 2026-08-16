@@ -1,5 +1,6 @@
 import { dataset, incidents, isLocale } from '~~/server/utils/dataset'
 import { explainers } from '~~/server/utils/explainers'
+import { quizQuestions } from '~~/app/utils/quiz'
 
 /**
  * https://llmstxt.org convention: a compact, link-first briefing an LLM can
@@ -41,8 +42,9 @@ Methodology: ${dataset.project.methodology[lang]}
 
 ## Structured access
 
-- [API docs](${base}/docs): human-readable reference, also at ${base}/fr/docs.
+- [API docs](${base}/docs): human-readable reference, also at ${base}/fr/docs. MCP install: ${base}/docs#mcp. WebMCP: ${base}/docs#webmcp.
 - [API index](${base}/api): self-describing JSON; every endpoint, parameter and example.
+- [MCP server](${base}/mcp): Streamable HTTP, no key. Tools: list_incidents, get_incident, get_summary, list_sources, list_patterns, list_recommendations. Install in Cursor with \`"url": "${base}/mcp"\` in mcp.json.
 - [All incidents (JSON)](${base}/api/incidents): filter with \`q\`, \`kind\`, \`severity\`, \`status\`, \`sector\`, \`year\`, \`from\`, \`to\`; \`?lang=fr\` for French; \`?format=csv\` for CSV.
 - [One incident](${base}/api/incidents/${incidents[0]?.id ?? 'id'}): a single record plus its source.
 - [Summary statistics](${base}/api/summary): ANSSI and CNIL national figures, plus counts derived from this list.
@@ -50,7 +52,7 @@ Methodology: ${dataset.project.methodology[lang]}
 - [Patterns](${base}/api/patterns) and [recommendations](${base}/api/recommendations): the recurring weaknesses, and guidance for organisations and the public.
 - [Raw dataset](${base}/data/france-cyberwatch-data.json): the complete file this site is built from.
 - [Public explainers](${base}${prefix}/learn): bilingual guides on what leaked data is used for. Incident facts still live only in the dataset; these pages link to records by id.
-- [Leak-awareness quiz](${base}${prefix}/learn/quiz): fourteen questions from those guides. Educational copy only; no unpublished incident figures.
+- [Leak-awareness quiz](${base}${prefix}/learn/quiz): ${quizQuestions.length} questions from those guides. Educational copy only; no unpublished incident figures.
 - [Full text for LLMs](${base}/llms-full.txt): every record as markdown.
 
 ## Pages

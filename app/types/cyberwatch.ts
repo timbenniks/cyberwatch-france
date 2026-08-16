@@ -132,6 +132,8 @@ export interface Recommendation {
   id: string
   title: Bilingual
   description: Bilingual
+  /** Public-guidance cards may point at a matching explainer. */
+  explainerSlug?: string
 }
 
 /** Educational copy. Incident facts still live only in the dossier JSON. */

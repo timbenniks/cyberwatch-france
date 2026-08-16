@@ -1,13 +1,13 @@
-import { dataset, incidents, isLocale, localizeIncident, meta, sourcesFor } from '~~/server/utils/dataset'
+import { incidents } from '~~/server/utils/dataset'
+import { queryIncidentById, resolveLocale } from '~~/server/utils/queries'
 
 /** GET /api/incidents/:id — one record, plus every cited source. */
 export default defineEventHandler((event) => {
   const id = getRouterParam(event, 'id')
-  const query = getQuery(event)
-  const lang = isLocale(query.lang) ? query.lang : 'en'
+  const lang = resolveLocale(getQuery(event).lang)
 
-  const incident = incidents.find((entry) => entry.id === id)
-  if (!incident) {
+  const result = id ? queryIncidentById(id, lang) : null
+  if (!result) {
     throw createError({
       statusCode: 404,
       statusMessage: 'Incident not found',
@@ -15,12 +15,5 @@ export default defineEventHandler((event) => {
     })
   }
 
-  const cited = sourcesFor(incident)
-
-  return {
-    meta: { ...meta, lang },
-    incident: localizeIncident(incident, lang),
-    source: cited[0] ?? dataset.sources.find((source) => source.id === incident.sourceId) ?? null,
-    sources: cited,
-  }
+  return result
 })

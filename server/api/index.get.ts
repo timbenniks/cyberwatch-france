@@ -8,8 +8,14 @@ export default defineEventHandler((event) => {
   return {
     name: 'France Cyberwatch API',
     description:
-      'Read-only public API over the France Cyberwatch 2025—2026 dataset. Open CORS, cached at the edge, no key required. Human-readable docs: /docs and /fr/docs.',
+      'Read-only public API over the France Cyberwatch 2025—2026 dataset. Open CORS, cached at the edge, no key required. Human-readable docs: /docs and /fr/docs. Streamable HTTP MCP: POST /mcp.',
     docs: `${base}/docs`,
+    mcp: {
+      url: `${base}/mcp`,
+      transport: 'streamable-http',
+      docs: `${base}/docs#mcp`,
+      webmcp: `${base}/docs#webmcp`,
+    },
     ...meta,
     counts: {
       incidents: incidents.length,

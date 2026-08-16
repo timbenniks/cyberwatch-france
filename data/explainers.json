@@ -401,6 +401,78 @@
         }
       ],
       "relatedIncidentIds": []
+    },
+    {
+      "slug": "passwords-after-a-leak",
+      "title": {
+        "en": "Passwords, passkeys, and what to change after a leak",
+        "fr": "Mots de passe, passkeys, et quoi changer après une fuite"
+      },
+      "dek": {
+        "en": "A leaked password is useful because people reuse it. A hash is still a reason to change it. A passkey is harder to phish than a code sent by SMS.",
+        "fr": "Un mot de passe divulgué sert parce que les gens le réutilisent. Un hash reste une raison de le changer. Une passkey est plus difficile à hameçonner qu’un code envoyé par SMS."
+      },
+      "sections": [
+        {
+          "heading": {
+            "en": "Reuse is the real problem",
+            "fr": "C’est la réutilisation qui pose problème"
+          },
+          "body": {
+            "en": "Most people have a short list of passwords they use in several places. When one service is reached without authorisation, the useful prize is often not that one login. It is every other account that shared the same secret.\n\nA notice that “passwords were not taken” is a relief for that service. It is not a reason to keep a reused password on your bank, your mail or your tax space. If you used the same string anywhere else, change those other accounts first.",
+            "fr": "La plupart des gens ont une courte liste de mots de passe qu’ils réutilisent. Quand un service est atteint sans autorisation, le butin utile n’est souvent pas cette seule connexion. Ce sont tous les autres comptes qui partageaient le même secret.\n\nUne notification indiquant que « les mots de passe n’ont pas été pris » est un soulagement pour ce service. Ce n’est pas une raison de garder un mot de passe réutilisé sur votre banque, votre messagerie ou votre espace impôt. Si vous avez utilisé la même chaîne ailleurs, changez d’abord ces autres comptes."
+          }
+        },
+        {
+          "heading": {
+            "en": "A hash is not a reason to wait",
+            "fr": "Un hash n’est pas une raison d’attendre"
+          },
+          "body": {
+            "en": "Some notices say passwords were stored as hashes: a one-way form that is not the password itself. That is better than storing the password in clear text. It is not a guarantee that nobody will ever recover a weak or reused password from the file.\n\nTreat a hashed-password notice as a prompt to change that password, and to stop using it anywhere else. A password manager makes the next password unique, so one stolen file cannot open three services.",
+            "fr": "Certaines notifications indiquent que les mots de passe étaient stockés sous forme de hash : une forme à sens unique qui n’est pas le mot de passe lui-même. C’est mieux que de le stocker en clair. Ce n’est pas une garantie que personne ne récupérera jamais un mot de passe faible ou réutilisé à partir du fichier.\n\nTraitez une notification de mots de passe hashés comme un signal pour changer ce mot de passe, et pour cesser de l’utiliser ailleurs. Un gestionnaire de mots de passe rend le suivant unique, pour qu’un fichier volé n’ouvre pas trois services."
+          }
+        },
+        {
+          "heading": {
+            "en": "Codes you can read aloud are still phishable",
+            "fr": "Les codes que l’on peut dicter restent hameçonnables"
+          },
+          "body": {
+            "en": "Multi-factor authentication is useful. Not every factor is equal after a leak. An SMS code, or a code in an authenticator app, still has to be typed or read out. A caller who already knows your name, your number or your IBAN will ask you to read that code “to cancel a transfer” or “to secure your account”.\n\nIf your phone number was in a leak, SMS is the weaker option: the number is how they reach you, and the code is what they want you to say. Prefer an authenticator app you unlock yourself, or a passkey. Never read a code to someone who called you.",
+            "fr": "L’authentification à plusieurs facteurs est utile. Tous les facteurs ne se valent pas après une fuite. Un code SMS, ou un code dans une application d’authentification, doit encore être saisi ou dicté. Un appelant qui connaît déjà votre nom, votre numéro ou votre IBAN vous demandera de dicter ce code « pour annuler un virement » ou « pour sécuriser votre compte ».\n\nSi votre numéro de téléphone figurait dans une fuite, le SMS est l’option la plus faible : le numéro est le moyen de vous joindre, et le code est ce qu’ils veulent vous faire dire. Préférez une application d’authentification que vous déverrouillez vous-même, ou une passkey. Ne dictez jamais un code à quelqu’un qui vous a appelé."
+          }
+        },
+        {
+          "heading": {
+            "en": "What a passkey changes",
+            "fr": "Ce qu’une passkey change"
+          },
+          "body": {
+            "en": "A passkey is a key stored on your device or password manager, unlocked with your face, fingerprint or device PIN. It is made for one site. A fake page that only looks like impôts.gouv.fr or your bank cannot collect a passkey the way it can collect a typed password.\n\nPasskeys do not make you immune to a phone call. Someone can still ask you to approve a prompt, install software, or send money. The test stays the same: did you open the official app yourself, and did anyone ask you to hurry?",
+            "fr": "Une passkey est une clé stockée sur votre appareil ou dans votre gestionnaire, déverrouillée par le visage, l’empreinte ou le code de l’appareil. Elle est faite pour un seul site. Une fausse page qui a seulement l’air d’impôts.gouv.fr ou de votre banque ne peut pas collecter une passkey comme elle collecte un mot de passe saisi.\n\nLes passkeys ne vous mettent pas à l’abri d’un appel. On peut encore vous demander de valider une notification, d’installer un logiciel ou d’envoyer de l’argent. Le test reste le même : avez-vous ouvert vous-même l’application officielle, et vous a-t-on demandé de vous dépêcher ?"
+          }
+        }
+      ],
+      "takeaways": [
+        {
+          "en": "If this service held a password you reused, change it on every other account that shared it.",
+          "fr": "Si ce service détenait un mot de passe que vous réutilisiez, changez-le sur tous les autres comptes qui le partageaient."
+        },
+        {
+          "en": "A hashed password is still a reason to change it. Do not wait to see whether money moves.",
+          "fr": "Un mot de passe hashé reste une raison de le changer. N’attendez pas de voir si de l’argent bouge."
+        },
+        {
+          "en": "Never read an SMS or app code to someone who called you. Prefer a passkey or an authenticator you unlock yourself.",
+          "fr": "Ne dictez jamais un code SMS ou d’application à quelqu’un qui vous a appelé. Préférez une passkey ou une application d’authentification que vous déverrouillez vous-même."
+        },
+        {
+          "en": "A password manager makes the next secret unique. One stolen file should not open several services.",
+          "fr": "Un gestionnaire de mots de passe rend le secret suivant unique. Un fichier volé ne devrait pas ouvrir plusieurs services."
+        }
+      ],
+      "relatedIncidentIds": ["eurofiber"]
     }
   ]
 }

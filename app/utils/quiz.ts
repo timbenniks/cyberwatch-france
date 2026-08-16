@@ -2,7 +2,7 @@ import type { Bilingual } from '~/types/cyberwatch'
 
 export const quizPath = '/learn/quiz'
 
-/** Shareable pass mark. 12 of 14 is 86%; 11 of 14 falls short of 80%. */
+/** Shareable pass mark. 13 of 16 is 81%; 12 of 16 is 75%. */
 export const quizPassPercent = 80
 
 export type QuizKind = 'choice' | 'yesno'
@@ -682,6 +682,110 @@ export const quizQuestions: QuizQuestion[] = [
         why: {
           en: 'Those details are part of the lure. Type cybermalveillance.gouv.fr yourself, or open the official app of the real organisation from your own bookmark.',
           fr: 'Ces éléments font partie de l’appât. Saisissez vous-même cybermalveillance.gouv.fr, ou ouvrez l’application officielle du vrai organisme depuis votre propre favori.',
+        },
+      },
+    ],
+  },
+  {
+    id: 'password-reuse',
+    section: {
+      en: 'Passwords after a leak',
+      fr: 'Mots de passe après une fuite',
+    },
+    prompt: {
+      en: 'A service you used may have held a password you also used on your bank and your mail. What should you do first?',
+      fr: 'Un service que vous utilisiez a pu détenir un mot de passe que vous utilisiez aussi pour votre banque et votre messagerie. Que faire d’abord ?',
+    },
+    dek: {
+      en: 'The useful prize after a leak is often not that one login. It is every other account that shared the same secret.',
+      fr: 'Le butin utile après une fuite n’est souvent pas cette seule connexion. Ce sont tous les autres comptes qui partageaient le même secret.',
+    },
+    kind: 'choice',
+    correctId: 'b',
+    choices: [
+      {
+        id: 'a',
+        label: {
+          en: 'Change the password only on the service that was breached.',
+          fr: 'Changer le mot de passe uniquement sur le service qui a fuité.',
+        },
+        why: {
+          en: 'Changing it there is useful, but the other accounts still accept the old secret. Change every account that shared it, starting with mail and banking.',
+          fr: 'Le changer là est utile, mais les autres comptes acceptent encore l’ancien secret. Changez tous les comptes qui le partageaient, en commençant par la messagerie et la banque.',
+        },
+      },
+      {
+        id: 'b',
+        label: {
+          en: 'Change it on every other account that shared that password.',
+          fr: 'Le changer sur tous les autres comptes qui partageaient ce mot de passe.',
+        },
+        why: {
+          en: 'Reuse is the real problem. One stolen file should not open several services. A password manager makes the next secret unique.',
+          fr: 'C’est la réutilisation qui pose problème. Un fichier volé ne devrait pas ouvrir plusieurs services. Un gestionnaire de mots de passe rend le secret suivant unique.',
+        },
+      },
+      {
+        id: 'c',
+        label: {
+          en: 'Wait to see whether money leaves your accounts before changing anything.',
+          fr: 'Attendre de voir si de l’argent quitte vos comptes avant de changer quoi que ce soit.',
+        },
+        why: {
+          en: 'A hashed or unused password is still a reason to change it. Do not wait to see whether money moves. The other accounts that shared the secret are already exposed.',
+          fr: 'Un mot de passe hashé ou encore inutilisé reste une raison de le changer. N’attendez pas de voir si de l’argent bouge. Les autres comptes qui partageaient le secret sont déjà exposés.',
+        },
+      },
+    ],
+  },
+  {
+    id: 'passkey-vs-sms',
+    section: {
+      en: 'Passwords after a leak',
+      fr: 'Mots de passe après une fuite',
+    },
+    prompt: {
+      en: 'Why is a passkey harder to phish than an SMS code after a leak?',
+      fr: 'Pourquoi une passkey est-elle plus difficile à hameçonner qu’un code SMS après une fuite ?',
+    },
+    dek: {
+      en: 'Multi-factor authentication is useful. Not every factor is equal once someone already has your name, number or IBAN.',
+      fr: 'L’authentification à plusieurs facteurs est utile. Tous les facteurs ne se valent pas une fois que quelqu’un a déjà votre nom, votre numéro ou votre IBAN.',
+    },
+    kind: 'choice',
+    correctId: 'b',
+    choices: [
+      {
+        id: 'a',
+        label: {
+          en: 'A passkey is simply a longer password.',
+          fr: 'Une passkey n’est qu’un mot de passe plus long.',
+        },
+        why: {
+          en: 'A passkey is a key stored on your device or password manager, made for one site. It is not a string you type. Length is not the difference.',
+          fr: 'Une passkey est une clé stockée sur votre appareil ou dans votre gestionnaire, faite pour un seul site. Ce n’est pas une chaîne que vous saisissez. La longueur n’est pas la différence.',
+        },
+      },
+      {
+        id: 'b',
+        label: {
+          en: 'A passkey is bound to the real site. An SMS code can be read aloud to a caller.',
+          fr: 'Une passkey est liée au vrai site. Un code SMS peut être dicté à un appelant.',
+        },
+        why: {
+          en: 'A fake page cannot collect a passkey the way it collects a typed password. An SMS code still has to be typed or read out, which is what a caller who already knows your number will ask for.',
+          fr: 'Une fausse page ne peut pas collecter une passkey comme elle collecte un mot de passe saisi. Un code SMS doit encore être saisi ou dicté, ce qu’un appelant qui connaît déjà votre numéro vous demandera.',
+        },
+      },
+      {
+        id: 'c',
+        label: {
+          en: 'SMS codes become illegal to send after a breach notice.',
+          fr: 'Les codes SMS deviennent illégaux à envoyer après une notification de fuite.',
+        },
+        why: {
+          en: 'Banks and tax services still send SMS codes. The problem is that a code you can read aloud is still phishable. Prefer a passkey or an authenticator you unlock yourself.',
+          fr: 'Les banques et les impôts envoient encore des codes SMS. Le problème est qu’un code que l’on peut dicter reste hameçonnable. Préférez une passkey ou une application d’authentification que vous déverrouillez vous-même.',
         },
       },
     ],

@@ -129,8 +129,8 @@ export const apiEndpoints: ApiEndpointDoc[] = [
   {
     path: '/api/recommendations',
     description: {
-      en: 'Guidance for organisations and the public.',
-      fr: 'Recommandations pour les organisations et le grand public.',
+      en: 'Guidance for organisations and the public. Public items include explainerSlug when a matching /learn guide exists.',
+      fr: 'Recommandations pour les organisations et le grand public. Les fiches grand public incluent explainerSlug lorsqu’un guide /learn existe.',
     },
     query: [
       { name: 'audience', detail: { en: 'organizations | public', fr: 'organizations | public' } },

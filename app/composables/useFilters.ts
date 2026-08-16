@@ -9,18 +9,20 @@ export interface FilterState {
   sector: string | 'all'
 }
 
-const emptyFilters = (): FilterState => ({
-  query: '',
-  kind: 'all',
-  severity: 'all',
-  status: 'all',
-  year: 'all',
-  sector: 'all',
-})
+export function emptyFilterState(): FilterState {
+  return {
+    query: '',
+    kind: 'all',
+    severity: 'all',
+    status: 'all',
+    year: 'all',
+    sector: 'all',
+  }
+}
 
 export function useFilters() {
   // useState keeps this per-request on the server; one shared object on the client.
-  const filters = useState<FilterState>('filters', emptyFilters)
+  const filters = useState<FilterState>('filters', emptyFilterState)
   const { incidents } = useCyberData()
   const { locale } = useLocale()
 
@@ -41,12 +43,12 @@ export function useFilters() {
   })
 
   function reset() {
-    filters.value = emptyFilters()
+    filters.value = emptyFilterState()
   }
 
   /** Chart click-through: one dimension at a time, cleared of anything else. */
   function applyOnly(patch: Partial<FilterState>) {
-    filters.value = { ...emptyFilters(), ...patch }
+    filters.value = { ...emptyFilterState(), ...patch }
   }
 
   return {

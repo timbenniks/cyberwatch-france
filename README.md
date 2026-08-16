@@ -42,6 +42,7 @@ The displayed language always comes from the path — never from `localStorage`,
 
 - `/`, `/incident/:id`, `/docs`, `/learn`, `/learn/quiz`, `/learn/:slug` — English
 - `/fr`, `/fr/incident/:id`, `/fr/docs`, `/fr/learn`, `/fr/learn/quiz`, `/fr/learn/:slug` — French
+- `/mcp` — Streamable HTTP MCP (not localized; docs are at `/docs#mcp` and `/fr/docs#mcp`)
 
 If the browser language starts with `fr`, a tiny inline script sends the reader to the matching French URL **before paint**. Everyone else stays on English. An explicit EN/FR click is remembered in a cookie so auto-detect does not bounce people who chose English.
 
@@ -70,6 +71,62 @@ The raw dataset is also served verbatim at `/data/france-cyberwatch-data.json`. 
 
 Every JSON response carries a `meta` block with the project name, `reviewedThrough`, scope, methodology and the dataset’s own charting rules, so a consumer cannot use the numbers without seeing the caveats.
 
+## MCP (Streamable HTTP)
+
+Remote agents can query the same dataset over [Model Context Protocol](https://modelcontextprotocol.io) at `POST /mcp`. No key, CORS open, stateless JSON (2025-era clients still work). Human docs and install snippets: [`/docs#mcp`](/docs#mcp).
+
+Tools: `list_incidents`, `get_incident`, `get_summary`, `list_sources`, `list_patterns`, `list_recommendations`. Resources: `cyberwatch://conventions`, `cyberwatch://incident/{id}`. Prompts: `explain_incident`, `brief_the_dossier`.
+
+### Cursor
+
+Save as `.cursor/mcp.json` in a project, or `~/.cursor/mcp.json` globally, then enable the server in **Cursor Settings → Tools & MCP**:
+
+```json
+{
+  "mcpServers": {
+    "france-cyberwatch": {
+      "url": "https://YOUR_SITE/mcp"
+    }
+  }
+}
+```
+
+### Claude Desktop
+
+Merge into `claude_desktop_config.json` (**Claude → Settings → Developer**):
+
+```json
+{
+  "mcpServers": {
+    "france-cyberwatch": {
+      "type": "http",
+      "url": "https://YOUR_SITE/mcp"
+    }
+  }
+}
+```
+
+### VS Code
+
+Save as `.vscode/mcp.json`, or run **MCP: Add Server**:
+
+```json
+{
+  "servers": {
+    "france-cyberwatch": {
+      "type": "http",
+      "url": "https://YOUR_SITE/mcp"
+    }
+  }
+}
+```
+
+Replace `YOUR_SITE` with the deployed origin (or `http://localhost:3000` while `npm run dev` is running).
+
+## WebMCP
+
+The site also registers in-page tools on `navigator.modelContext` / `document.modelContext` when the browser exposes WebMCP (Chrome flag `chrome://flags/#enable-webmcp-testing`, origin trial, or a WebMCP bridge). Those tools filter the timeline, open records, and read the dataset already in the page — they do not call `/mcp`. Install notes: [`/docs#webmcp`](/docs#webmcp).
+
 ## Stack
 
 Nuxt 4 (Vue 3, TypeScript) with Nitro for the API · Tailwind CSS v4 · ECharts via `vue-echarts`, loaded only when a chart nears the viewport · `@lucide/vue` icons · Plausible (optional).
@@ -89,16 +146,17 @@ app/
   router.options.ts      French twins of those file routes
   components/            dossier, timeline, charts, incident article
   composables/           data, filters, locale, focus trap, reduced motion
-  plugins/               locale detect (inline, before paint)
+  plugins/               locale detect, theme detect, WebMCP (client)
   utils/                 format.ts is the only path for displaying an affected count
 server/
-  api/                   the endpoints above
-  middleware/api-headers.ts   CORS, caching, read-only enforcement
-  routes/                robots.txt, sitemap.xml, feed.xml, llms.txt, llms-full.txt
-  utils/dataset.ts       localisation and CSV, sharing the site’s filter matcher
+  api/                   the REST endpoints above
+  middleware/            CORS and caching for /api and /mcp
+  routes/                robots.txt, sitemap.xml, feed.xml, llms.txt, llms-full.txt, mcp
+  utils/                 localisation, queries shared by REST and MCP, MCP handler
 shared/utils/
-  incident-match.ts      one matcher for the timeline and GET /api/incidents
+  incident-match.ts      one matcher for the timeline, GET /api/incidents, MCP and WebMCP
   api-catalog.ts         endpoint catalogue shared by /docs and GET /api
+  mcp-catalog.ts         MCP and WebMCP catalogue shared by /docs
 ```
 
 ## How the data rules are enforced

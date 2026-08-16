@@ -44,6 +44,12 @@ const { locale, t, localePath } = useLocale();
             <a href="/api" class="link-underline hover:text-amber">{{
               t("jsonApi")
             }}</a>
+            <NuxtLink
+              :to="`${localePath('/docs')}#mcp`"
+              class="link-underline hover:text-amber"
+            >
+              MCP
+            </NuxtLink>
             <a href="/llms.txt" class="link-underline hover:text-amber"
               >llms.txt</a
             >
