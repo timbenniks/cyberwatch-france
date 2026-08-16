@@ -9,6 +9,9 @@ export default defineEventHandler((event) => {
   const base = (useRuntimeConfig().public.siteUrl || getRequestURL(event).origin).replace(/\/$/, '')
   const paths = [
     '/',
+    '/incidents',
+    '/guidance',
+    '/numbers',
     '/docs',
     '/learn',
     ...incidents.map((incident) => `/incident/${incident.id}`),

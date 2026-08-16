@@ -34,7 +34,7 @@ shared/utils/          code used by both the app and the API (the filter matcher
 - **Auto-imports are on.** `app/composables/**`, `app/utils/**` and `shared/utils/**` are global in the app; `shared/utils/**` is also global in `server/`. Because of that, exported names must be specific — `chartTheme`, not `theme`. Do not export a bare `series`, `format`, `data` or similar.
 - **Theme follows the OS.** Light and dark are CSS custom properties under `prefers-color-scheme`. Do not store a theme in `localStorage`, and do not toggle a class on `<html>` — that would disagree with prerendered markup. Charts read the same scheme on the client via `useColorScheme()`.
 - **Avoid inline tuple/complex type annotations on exported consts** in auto-imported files. Nuxt's import scanner mis-parses them and emits broken globals; use a named type alias instead.
-- **The language lives in the URL.** `/` and `/incident/:id` are English, `/fr` and `/fr/incident/:id` are French, `/docs` and `/fr/docs` are the API reference, `/learn` and `/learn/:slug` (and `/fr/learn…`) are public explainers, and all of those patterns are prerendered. Locale is derived from the route — never from `localStorage`, and never flipped on the client, which would break hydration on prerendered pages. Build internal links with `localePath()` from `useLocale()`. A French browser language may *navigate* to the French URL before paint; it must not rewrite the page in place.
+- **The language lives in the URL.** `/` and `/incident/:id` are English, `/fr` and `/fr/incident/:id` are French, `/incidents`, `/guidance` and `/numbers` (and `/fr/…`) are the former homepage sections, `/docs` and `/fr/docs` are the API reference, `/learn` and `/learn/:slug` (and `/fr/learn…`) are public explainers, and all of those patterns are prerendered. Locale is derived from the route — never from `localStorage`, and never flipped on the client, which would break hydration on prerendered pages. Build internal links with `localePath()` from `useLocale()`. A French browser language may *navigate* to the French URL before paint; it must not rewrite the page in place.
 - **Nothing locale-dependent may hydrate late.** Deferred hydration (`hydrate-on-visible`) on text that comes from the UI dictionary will fight the prerendered markup. `content-visibility` is fine; deferred hydration is not.
 - **State is `useState`**, never module-level `ref`/`reactive` — those leak across requests during SSR.
 - **One filter matcher.** `shared/utils/incident-match.ts` backs both the timeline and `GET /api/incidents`; change it once, and both stay in step.
@@ -57,7 +57,7 @@ npm run typecheck    # vue-tsc; must be clean
 
 ## Before you call it done
 
-- `npm run build` succeeds and prerenders 44 routes.
+- `npm run build` succeeds and prerenders 52 routes.
 - `npm run typecheck` reports no errors.
 - Load `/` and `/fr` in a browser and confirm the console is free of hydration mismatches.
 - If you touched the API, re-check that `GET /api/incidents?sort=affected` returns the published figures first and the unknown ones last — never zeros.

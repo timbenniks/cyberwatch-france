@@ -6,6 +6,7 @@ const emit = defineEmits<{ open: [Incident] }>()
 
 const { filtered, activeCount, reset, isFiltered } = useFilters()
 const { locale, t } = useLocale()
+const { incidentComposition } = useCyberData()
 
 const drawerOpen = ref(false)
 const drawer = ref<HTMLElement | null>(null)
@@ -39,12 +40,27 @@ const groups = computed(() => {
 </script>
 
 <template>
-  <section id="timeline" class="scroll-mt-24">
-    <header class="mb-8 max-w-[62ch]">
-      <p class="eyebrow">01 · {{ t('navIncidents') }}</p>
-      <h2 class="mt-3 font-display text-3xl leading-tight text-ink sm:text-[2.5rem]">{{ t('timelineTitle') }}</h2>
+  <section>
+    <header class="mb-10 max-w-[62ch]">
+      <p class="eyebrow">{{ t('navIncidents') }}</p>
+      <h1 class="mt-3 font-display text-3xl leading-tight text-ink sm:text-[2.5rem]">{{ t('timelineTitle') }}</h1>
       <p class="mt-4 text-base leading-relaxed text-ink-2">{{ t('timelineLead') }}</p>
+      <p class="mt-4 text-[0.9375rem] leading-relaxed text-ink-2">
+        {{
+          t('listMix', {
+            gov: incidentComposition.government,
+            co: incidentComposition.company,
+            published: incidentComposition.published,
+            unknown: incidentComposition.unknown,
+          })
+        }}
+        <template v-if="incidentComposition.disputed">
+          {{ ' ' + t('listMixDisputed', { n: incidentComposition.disputed }) }}
+        </template>
+      </p>
     </header>
+
+    <EvidenceLegend class="mb-10" />
 
     <div class="grid gap-10 lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-12">
       <aside class="no-print hidden lg:block" :aria-label="t('filters')">
@@ -123,7 +139,7 @@ const groups = computed(() => {
           </div>
         </div>
 
-        <EvidenceLegend class="mt-10" />
+        <EvidenceLegend class="mt-12" />
       </div>
     </div>
 

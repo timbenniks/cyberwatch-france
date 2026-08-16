@@ -27,8 +27,45 @@ const dictionary = {
     fr: 'Les cyberattaques rendues publiques contre des institutions et entreprises françaises.',
   },
   heroLead: {
-    en: '{n} incidents from 2025 and 2026, each linked to its source. Open a record to see what happened and what was exposed.',
-    fr: '{n} incidents en 2025 et 2026, chacun relié à sa source. Ouvrez une fiche pour voir ce qui s’est passé et ce qui a été exposé.',
+    en: '{n} incidents from 2025 and 2026, each linked to its source. This is a curated public dossier, not a complete register of every French breach. Open a record to see what happened, what was exposed, and what the cited source actually said.',
+    fr: '{n} incidents en 2025 et 2026, chacun relié à sa source. C’est un dossier public choisi, pas un registre de toutes les fuites en France. Ouvrez une fiche pour voir ce qui s’est passé, ce qui a été exposé, et ce que dit vraiment la source citée.',
+  },
+  homeHowTitle: { en: 'How to read this dossier', fr: 'Comment lire ce dossier' },
+  homeHowLead: {
+    en: 'A few rules sit under every page, so a missing figure never turns into a fake total.',
+    fr: 'Quelques règles tiennent sous chaque page, pour qu’un chiffre manquant ne devienne jamais un faux total.',
+  },
+  homeRuleUnknownTitle: { en: 'A missing count is not zero', fr: 'Un décompte manquant n’est pas zéro' },
+  homeRuleUnknown: {
+    en: 'If a record has no published figure, it is never shown as 0, never added into a total, and never plotted on a chart.',
+    fr: 'Si une fiche n’a pas de chiffre publié, ce chiffre n’est jamais affiché comme 0, jamais ajouté à un total, et jamais tracé sur un graphique.',
+  },
+  homeRuleDisputedTitle: { en: 'A contested figure stays a claim', fr: 'Un chiffre contesté reste une revendication' },
+  homeRuleDisputed: {
+    en: 'When the breach is real but the headline number is contested, that claim stays in the text. It does not enter a chart or a sum.',
+    fr: 'Quand la fuite est réelle mais que le chiffre annoncé est contesté, cette revendication reste dans le texte. Elle n’entre ni dans un graphique ni dans un total.',
+  },
+  homeRuleCiteTitle: { en: 'The source is the source', fr: 'La source reste la source' },
+  homeRuleCite: {
+    en: 'No attacker is named unless the cited disclosure supports it. Each record links out to that disclosure.',
+    fr: 'Aucun attaquant n’est nommé sans que la communication citée le permette. Chaque fiche renvoie vers cette communication.',
+  },
+  homeContinueTitle: { en: 'Where to go next', fr: 'Où aller ensuite' },
+  homePathIncidentsLead: {
+    en: 'The full timeline, newest first. Filter by organisation, sector, severity or year.',
+    fr: 'La chronologie complète, du plus récent au plus ancien. Filtrez par organisation, secteur, gravité ou année.',
+  },
+  homePathGuidanceLead: {
+    en: 'Practical steps if your data was in a leak, and for the organisations that hold this kind of file.',
+    fr: 'Des actions concrètes si vos données figuraient dans une fuite, et pour les organisations qui détiennent ce type de fichiers.',
+  },
+  homePathNumbersLead: {
+    en: 'Charts from this list, plus the France-wide ANSSI and CNIL figures. Unknown counts stay out of the totals.',
+    fr: 'Les graphiques de cette liste, plus les chiffres nationaux de l’ANSSI et de la CNIL. Les décomptes inconnus restent hors des totaux.',
+  },
+  homePathLearnLead: {
+    en: 'Plain-language guides on the scams that follow a leak. They do not replace official notices.',
+    fr: 'Des guides en langage simple sur les arnaques qui suivent une fuite. Ils ne remplacent pas les notifications officielles.',
   },
   stripHint: {
     en: 'Bar height shows severity · select one to open its record',
@@ -56,20 +93,37 @@ const dictionary = {
 
   chartsTitle: { en: 'What the numbers show', fr: 'Ce que disent les chiffres' },
   chartsLead: {
-    en: '{n} incidents on this page have no published count, so they are left out of the chart totals rather than counted as zero.',
-    fr: '{n} incidents de cette page n’ont pas de chiffre publié : ils restent hors des totaux plutôt que d’être comptés comme zéro.',
+    en: 'These charts are built from this curated list, not from every breach in France. {n} incidents here have no published count, so they are left out of the totals rather than counted as zero. Select a bar to open the matching incidents.',
+    fr: 'Ces graphiques viennent de cette liste choisie, pas de toutes les fuites en France. {n} incidents ici n’ont pas de chiffre publié : ils restent hors des totaux plutôt que d’être comptés comme zéro. Sélectionnez une barre pour ouvrir les incidents correspondants.',
+  },
+  chartsRulesTitle: { en: 'How the charts are drawn', fr: 'Comment les graphiques sont tracés' },
+  chartsRulesLead: {
+    en: 'The same rules the API applies. That is why a bar can be missing for an incident you just read.',
+    fr: 'Les mêmes règles que l’API. C’est pourquoi une barre peut manquer pour un incident que vous venez de lire.',
+  },
+  listMix: {
+    en: '{gov} concern government systems, {co} concern companies. {published} have a published count. {unknown} do not.',
+    fr: '{gov} concernent des systèmes publics, {co} des entreprises. {published} ont un chiffre publié. {unknown} n’en ont pas.',
+  },
+  listMixDisputed: {
+    en: 'Disputed scope: {n}. Attacker-claimed figures stay in the label and are never summed.',
+    fr: 'Ampleur contestée : {n}. Les chiffres revendiqués restent dans le libellé et ne sont jamais additionnés.',
   },
   nationalFiguresTitle: {
     en: 'France-wide figures, not this list',
     fr: 'Chiffres nationaux, pas cette liste',
   },
+  nationalFiguresLead: {
+    en: 'ANSSI and the CNIL publish country-wide figures. They cover far more than this curated list, so they sit in their own block.',
+    fr: 'L’ANSSI et la CNIL publient des chiffres pour toute la France. Ils couvrent bien plus que cette liste, donc ils ont leur propre bloc.',
+  },
   forResearchers: { en: 'For researchers', fr: 'Pour les chercheurs' },
   forResearchersLead: {
-    en: 'The full table, repeating weaknesses, and every cited source.',
-    fr: 'Le tableau complet, les faiblesses récurrentes, et chaque source citée.',
+    en: 'The repeating weaknesses named in the dataset, every field in a sortable table, and the full source ledger. The table uses the same filters as the incident list.',
+    fr: 'Les faiblesses récurrentes nommées dans le jeu de données, tous les champs dans un tableau triable, et le registre complet des sources. Le tableau utilise les mêmes filtres que la liste des incidents.',
   },
   tapToInspect: { en: 'Tap a bar to see the figure', fr: 'Touchez une barre pour voir le chiffre' },
-  filterInTimeline: { en: 'Show these in the timeline', fr: 'Voir dans la chronologie' },
+  filterInTimeline: { en: 'Show these incidents', fr: 'Voir ces incidents' },
   chartAffectedTitle: { en: 'Published account and record counts', fr: 'Comptes et enregistrements publiés' },
   chartAffectedSub: {
     en: 'Only incidents with a released figure',
@@ -86,7 +140,7 @@ const dictionary = {
   contextBadge: { en: 'National context', fr: 'Contexte national' },
   showTable: { en: 'Show data table', fr: 'Afficher le tableau' },
   hideTable: { en: 'Hide data table', fr: 'Masquer le tableau' },
-  clickToFilter: { en: 'Select a bar to filter the timeline', fr: 'Sélectionnez une barre pour filtrer la chronologie' },
+  clickToFilter: { en: 'Select a bar to open the matching incidents', fr: 'Sélectionnez une barre pour ouvrir les incidents correspondants' },
   noCountPublished: {
     en: 'incidents have no published figure and are not plotted here',
     fr: 'incidents sans chiffre publié ne sont pas représentés ici',
@@ -97,8 +151,8 @@ const dictionary = {
 
   timelineTitle: { en: 'Incidents', fr: 'Incidents' },
   timelineLead: {
-    en: 'Newest first. Open any card for the full record.',
-    fr: 'Du plus récent au plus ancien. Ouvrez une fiche pour le dossier complet.',
+    en: 'Newest first. Use the filters if you are looking for a sector, a year, or a kind of organisation. Open a card for the full record: what happened, what was exposed, and the sources behind it.',
+    fr: 'Du plus récent au plus ancien. Utilisez les filtres pour un secteur, une année ou un type d’organisation. Ouvrez une fiche pour le dossier complet : ce qui s’est passé, ce qui a été exposé, et les sources.',
   },
   filters: { en: 'Filters', fr: 'Filtres' },
   search: { en: 'Search', fr: 'Rechercher' },
@@ -161,7 +215,7 @@ const dictionary = {
   confidence: { en: 'Evidence note', fr: 'Note sur les preuves' },
   source: { en: 'Source', fr: 'Source' },
   citedSources: { en: 'Sources', fr: 'Sources' },
-  backToDossier: { en: 'Back to the dossier', fr: 'Retour au dossier' },
+  backToDossier: { en: 'Back to the incidents', fr: 'Retour aux incidents' },
   howItHappened: { en: 'How it happened', fr: 'Comment cela s’est passé' },
   whatWasTaken: { en: 'What was exposed', fr: 'Ce qui a été exposé' },
   whatWasNotTaken: { en: 'What was not in scope', fr: 'Ce qui n’était pas dans le périmètre' },
@@ -183,16 +237,24 @@ const dictionary = {
 
   patternsTitle: { en: 'Repeating patterns', fr: 'Tendances récurrentes' },
   patternsLead: {
-    en: 'The same handful of weaknesses shows up across these incidents. Each card names the weakness and the control that addresses it first.',
-    fr: 'Les mêmes faiblesses reviennent d’un incident à l’autre. Chaque fiche nomme la faiblesse et la mesure à traiter en priorité.',
+    en: 'The same handful of weaknesses shows up across these incidents. Each card names the weakness, the control that addresses it first, and the records whose own wording mentions the organisation.',
+    fr: 'Les mêmes faiblesses reviennent d’un incident à l’autre. Chaque fiche nomme la faiblesse, la mesure à traiter en priorité, et les dossiers dont le texte cite l’organisation.',
   },
   priorityControl: { en: 'Priority control', fr: 'Mesure prioritaire' },
   relatedIncidents: { en: 'Named in this dossier', fr: 'Cités dans ce dossier' },
 
   guidanceTitle: { en: 'What people can do', fr: 'Que peut-on faire' },
   guidanceLead: {
-    en: 'Two sets of practical steps: one for the organisations holding the data, one for the people whose data it is.',
-    fr: 'Deux séries d’actions concrètes : l’une pour les organisations qui détiennent les données, l’autre pour les personnes concernées.',
+    en: 'If your details were in one of these incidents, or you hold files like these, start here. The first list is for people. The second is for the organisations and administrations that keep the data.',
+    fr: 'Si vos informations figuraient dans l’un de ces incidents, ou si vous détenez ce type de fichiers, commencez ici. La première liste est pour les personnes. La seconde est pour les organisations et administrations qui gardent les données.',
+  },
+  guidancePublicLead: {
+    en: 'These steps do not replace an official notice from the organisation that held your data. They are the habits that still help after a leak, including months later.',
+    fr: 'Ces actions ne remplacent pas une notification officielle de l’organisation qui détenait vos données. Ce sont les réflexes qui restent utiles après une fuite, y compris des mois plus tard.',
+  },
+  guidanceOrgLead: {
+    en: 'The same weaknesses keep showing up in the public record: phishing, over-broad access, suppliers, and extraction that nobody noticed in time.',
+    fr: 'Les mêmes faiblesses reviennent dans le dossier public : hameçonnage, accès trop larges, fournisseurs, et extractions que personne n’a vues à temps.',
   },
   forOrganisations: { en: 'For organisations and government', fr: 'Pour les organisations et l’administration' },
   forPublic: { en: 'For the general public', fr: 'Pour le grand public' },
@@ -203,8 +265,8 @@ const dictionary = {
 
   dataTitle: { en: 'The full dataset', fr: 'Le jeu de données complet' },
   dataLead: {
-    en: 'Every field behind the cards above. Sort, filter, and export what you see.',
-    fr: 'Tous les champs derrière les fiches ci-dessus. Triez, filtrez et exportez ce que vous voyez.',
+    en: 'Every field from the incident records. Sort, filter, and export the rows you see.',
+    fr: 'Tous les champs des fiches d’incident. Triez, filtrez et exportez les lignes affichées.',
   },
   date: { en: 'Date', fr: 'Date' },
   organisation: { en: 'Organisation', fr: 'Organisation' },
@@ -218,8 +280,8 @@ const dictionary = {
 
   sourcesTitle: { en: 'Source ledger', fr: 'Registre des sources' },
   sourcesLead: {
-    en: 'Every source referenced by this dossier, in full.',
-    fr: 'Toutes les sources citées par ce dossier, en intégralité.',
+    en: 'Every source this dossier cites, including follow-up reporting. Official disclosures are marked. Each entry lists the records that point to it.',
+    fr: 'Toutes les sources citées par ce dossier, y compris les suites. Les communications officielles sont signalées. Chaque entrée liste les fiches qui s’y réfèrent.',
   },
   officialSource: { en: 'Official', fr: 'Officielle' },
   pressSource: { en: 'Press', fr: 'Presse' },
@@ -303,10 +365,10 @@ function bare(path: string): string {
 
 /**
  * The language lives in the URL: `/` and `/incident/:id` are English, `/fr`
- * and `/fr/incident/:id` are French. `/learn` and `/docs` follow the same
- * pattern. Both languages are prerendered, both are indexable, and switching
- * is a navigation — so there is no client-side flip to disagree with the
- * server's markup.
+ * and `/fr/incident/:id` are French. `/incidents`, `/guidance`, `/numbers`,
+ * `/learn` and `/docs` follow the same pattern. Both languages are prerendered,
+ * both are indexable, and switching is a navigation — so there is no
+ * client-side flip to disagree with the server's markup.
  */
 export function useLocale() {
   const route = useRoute()

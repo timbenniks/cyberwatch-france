@@ -13,11 +13,6 @@ const siteUrl =
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
     : 'http://localhost:3000')
 
-const plausibleDomain = process.env.NUXT_PUBLIC_PLAUSIBLE_DOMAIN || ''
-const plausibleSrc =
-  process.env.NUXT_PUBLIC_PLAUSIBLE_SRC || 'https://plausible.io/js/script.outbound-links.tagged-events.js'
-const plausibleApiHost = process.env.NUXT_PUBLIC_PLAUSIBLE_API_HOST || ''
-
 /** Every incident gets its own prerendered, indexable page. */
 const incidentRoutes = dataset.incidents.flatMap((incident) => [
   `/incident/${incident.id}`,
@@ -31,7 +26,7 @@ const explainerRoutes = explainerData.explainers.flatMap((explainer) => [
 
 export default defineNuxtConfig({
   compatibilityDate: '2026-08-16',
-  modules: ['@nuxt/fonts', 'nuxt-og-image'],
+  modules: ['@nuxt/fonts', 'nuxt-og-image', '@nuxtjs/plausible'],
 
   css: ['~/assets/css/style.css'],
 
@@ -62,6 +57,16 @@ export default defineNuxtConfig({
     },
   },
 
+  /**
+   * Off until NUXT_PUBLIC_PLAUSIBLE_DOMAIN is set (build-time on Vercel).
+   * Domain and apiHost also come from NUXT_PUBLIC_PLAUSIBLE_DOMAIN /
+   * NUXT_PUBLIC_PLAUSIBLE_API_HOST via the module's runtime config.
+   */
+  plausible: {
+    enabled: Boolean(process.env.NUXT_PUBLIC_PLAUSIBLE_DOMAIN),
+    autoOutboundTracking: true,
+  },
+
   app: {
     head: {
       htmlAttrs: { lang: 'en' },
@@ -84,13 +89,6 @@ export default defineNuxtConfig({
        * build time; override locally with NUXT_PUBLIC_SITE_URL.
        */
       siteUrl,
-      /**
-       * Plausible site domain as registered in the dashboard (not a secret).
-       * Leave empty locally; set NUXT_PUBLIC_PLAUSIBLE_DOMAIN on Vercel.
-       */
-      plausibleDomain,
-      plausibleSrc,
-      plausibleApiHost,
     },
   },
 
@@ -99,7 +97,22 @@ export default defineNuxtConfig({
     publicAssets: [{ baseURL: '/data', dir: fileURLToPath(new URL('./data', import.meta.url)), maxAge: 3600 }],
     prerender: {
       crawlLinks: false,
-      routes: ['/', '/fr', '/docs', '/fr/docs', '/learn', '/fr/learn', ...incidentRoutes, ...explainerRoutes],
+      routes: [
+        '/',
+        '/fr',
+        '/incidents',
+        '/fr/incidents',
+        '/guidance',
+        '/fr/guidance',
+        '/numbers',
+        '/fr/numbers',
+        '/docs',
+        '/fr/docs',
+        '/learn',
+        '/fr/learn',
+        ...incidentRoutes,
+        ...explainerRoutes,
+      ],
     },
   },
 
@@ -127,6 +140,24 @@ export default defineNuxtConfig({
       headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
     },
     '/fr': {
+      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
+    },
+    '/incidents': {
+      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
+    },
+    '/fr/incidents': {
+      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
+    },
+    '/guidance': {
+      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
+    },
+    '/fr/guidance': {
+      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
+    },
+    '/numbers': {
+      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
+    },
+    '/fr/numbers': {
       headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
     },
     '/docs': {

@@ -1,43 +1,13 @@
 <script setup lang="ts">
-const route = useRoute()
-const { locale, t, L, alternates, localePath } = useLocale()
+const { t, L } = useLocale()
 const { absolute } = useSiteUrl()
-const siteName = 'France Cyberwatch'
 
-const title = computed(() => `${t('apiDocsTitle')} — ${siteName}`)
-const description = computed(() => t('apiDocsLead'))
-const canonical = computed(() => absolute(route.path))
-const headLinks = computed(() => [
-  { rel: 'canonical' as const, href: canonical.value },
-  ...alternates.value.map((alternate) => ({
-    rel: 'alternate' as const,
-    hreflang: alternate.code,
-    href: absolute(alternate.path),
-  })),
-  { rel: 'alternate' as const, hreflang: 'x-default', href: absolute(localePath('/docs', 'en')) },
-  { rel: 'alternate' as const, type: 'application/json', href: absolute('/api'), title: 'API index' },
-])
-
-useSeoMeta({
-  title,
-  description,
-  ogTitle: title,
-  ogDescription: description,
+const { title } = usePageSeo({
+  title: () => `${t('apiDocsTitle')} — ${t('brand')}`,
+  description: () => t('apiDocsLead'),
   ogType: 'article',
-  ogSiteName: siteName,
-  ogUrl: canonical,
-  ogImageAlt: () => `${siteName} — ${t('apiDocsTitle')}`,
-  ogLocale: () => (locale.value === 'fr' ? 'fr_FR' : 'en_GB'),
-  ogLocaleAlternate: () => (locale.value === 'fr' ? 'en_GB' : 'fr_FR'),
-  twitterCard: 'summary_large_image',
-  twitterTitle: title,
-  twitterDescription: description,
-  robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
-})
-
-useHead({
-  htmlAttrs: { lang: locale },
-  link: headLinks,
+  ogImageAlt: () => `${t('brand')} — ${t('apiDocsTitle')}`,
+  links: () => [{ rel: 'alternate', type: 'application/json', href: absolute('/api'), title: 'API index' }],
 })
 
 defineOgImage(

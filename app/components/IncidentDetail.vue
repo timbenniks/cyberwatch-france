@@ -77,7 +77,7 @@ async function copyLink() {
   <article>
     <p class="no-print">
       <NuxtLink
-        :to="localePath('/')"
+        :to="localePath('/incidents')"
         class="link-underline inline-flex items-center gap-2 text-sm text-ink-2 hover:text-amber"
         @click="trackPlausibleEvent('Close Incident')"
       >

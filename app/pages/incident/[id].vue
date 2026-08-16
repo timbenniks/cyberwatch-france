@@ -1,7 +1,6 @@
 <script setup lang="ts">
-const route = useRoute()
 const { data, incidents } = useCyberData()
-const { locale, t, L, alternates, localePath } = useLocale()
+const { locale, t, L } = useLocale()
 const { selected } = useIncidentRoute()
 const { absolute } = useSiteUrl()
 const { graphFor } = useStructuredData()
@@ -9,64 +8,28 @@ const { graphFor } = useStructuredData()
 const siteName = computed(() => data.value?.project.name ?? 'France Cyberwatch')
 const incident = computed(() => selected.value)
 
-const title = computed(() =>
-  incident.value ? `${L(incident.value.org)} — ${t('seoRecordSuffix')} — ${siteName.value}` : siteName.value,
-)
-
-const description = computed(() => {
-  if (!incident.value) return t('seoTagline')
-  const sector = data.value?.ui.sectorLabels[incident.value.sector]?.[locale.value] ?? incident.value.sector
-  const lead = L(incident.value.detail.lead)
-  return `${formatDate(incident.value.date, locale.value)} · ${sector} · ${L(incident.value.affectedLabel)}. ${lead}`.slice(
-    0,
-    300,
-  )
-})
-
-const canonical = computed(() => absolute(route.path))
-
-const headLinks = computed(() => [
-  { rel: 'canonical' as const, href: canonical.value },
-  ...alternates.value.map((alternate) => ({
-    rel: 'alternate' as const,
-    hreflang: alternate.code,
-    href: absolute(alternate.path),
-  })),
-  { rel: 'alternate' as const, hreflang: 'x-default', href: absolute(localePath(route.path, 'en')) },
-  {
-    rel: 'alternate' as const,
-    type: 'application/json',
-    href: absolute(`/api/incidents/${incident.value?.id ?? ''}`),
-    title: 'Incident API',
+const { title } = usePageSeo({
+  title: () =>
+    incident.value ? `${L(incident.value.org)} — ${t('seoRecordSuffix')} — ${siteName.value}` : siteName.value,
+  description: () => {
+    if (!incident.value) return t('seoTagline')
+    const sector = data.value?.ui.sectorLabels[incident.value.sector]?.[locale.value] ?? incident.value.sector
+    const lead = L(incident.value.detail.lead)
+    return `${formatDate(incident.value.date, locale.value)} · ${sector} · ${L(incident.value.affectedLabel)}. ${lead}`.slice(
+      0,
+      300,
+    )
   },
-])
-
-useSeoMeta({
-  title,
-  description,
-  ogTitle: title,
-  ogDescription: description,
   ogType: 'article',
-  ogSiteName: siteName,
-  ogUrl: canonical,
-  ogImageAlt: title,
-  ogLocale: () => (locale.value === 'fr' ? 'fr_FR' : 'en_GB'),
-  ogLocaleAlternate: () => (locale.value === 'fr' ? 'en_GB' : 'fr_FR'),
-  twitterCard: 'summary_large_image',
-  twitterTitle: title,
-  twitterDescription: description,
-  robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
-})
-
-useHead({
-  htmlAttrs: { lang: locale },
-  link: headLinks,
-  script: () => [
+  links: () => [
     {
-      type: 'application/ld+json',
-      innerHTML: JSON.stringify(graphFor(incident.value)),
+      rel: 'alternate',
+      type: 'application/json',
+      href: absolute(`/api/incidents/${incident.value?.id ?? ''}`),
+      title: 'Incident API',
     },
   ],
+  jsonLd: () => graphFor(incident.value),
 })
 
 defineOgImage(

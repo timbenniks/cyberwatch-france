@@ -1,45 +1,13 @@
 <script setup lang="ts">
 await loadExplainers()
 
-const route = useRoute()
-const { locale, t, L, alternates, localePath } = useLocale()
+const { t, L, localePath } = useLocale()
 const { explainers } = useExplainers()
-const { absolute } = useSiteUrl()
-const siteName = 'France Cyberwatch'
 
-const title = computed(() => `${t('learnTitle')} · ${siteName}`)
-const description = computed(() => t('learnLead'))
-const canonical = computed(() => absolute(route.path))
-const headLinks = computed(() => [
-  { rel: 'canonical' as const, href: canonical.value },
-  ...alternates.value.map((alternate) => ({
-    rel: 'alternate' as const,
-    hreflang: alternate.code,
-    href: absolute(alternate.path),
-  })),
-  { rel: 'alternate' as const, hreflang: 'x-default', href: absolute(localePath('/learn', 'en')) },
-])
-
-useSeoMeta({
-  title,
-  description,
-  ogTitle: title,
-  ogDescription: description,
-  ogType: 'website',
-  ogSiteName: siteName,
-  ogUrl: canonical,
-  ogImageAlt: () => `${siteName} · ${t('learnTitle')}`,
-  ogLocale: () => (locale.value === 'fr' ? 'fr_FR' : 'en_GB'),
-  ogLocaleAlternate: () => (locale.value === 'fr' ? 'en_GB' : 'fr_FR'),
-  twitterCard: 'summary_large_image',
-  twitterTitle: title,
-  twitterDescription: description,
-  robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
-})
-
-useHead({
-  htmlAttrs: { lang: locale },
-  link: headLinks,
+const { title } = usePageSeo({
+  title: () => `${t('learnTitle')} · ${t('brand')}`,
+  description: () => t('learnLead'),
+  ogImageAlt: () => `${t('brand')} · ${t('learnTitle')}`,
 })
 
 defineOgImage(

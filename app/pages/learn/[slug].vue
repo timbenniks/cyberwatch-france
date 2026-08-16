@@ -2,10 +2,9 @@
 await loadExplainers()
 
 const route = useRoute()
-const { locale, t, L, alternates, localePath } = useLocale()
+const { locale, t, L, localePath } = useLocale()
 const { explainers, bySlug, relatedIncidents } = useExplainers()
 const { absolute } = useSiteUrl()
-const siteName = 'France Cyberwatch'
 
 const slug = computed(() => {
   const value = route.params.slug
@@ -15,56 +14,22 @@ const slug = computed(() => {
 const explainer = computed(() => bySlug(slug.value))
 const related = computed(() => (explainer.value ? relatedIncidents(explainer.value.relatedIncidentIds) : []))
 
-const title = computed(() => (explainer.value ? `${L(explainer.value.title)} · ${siteName}` : siteName))
-const description = computed(() => (explainer.value ? L(explainer.value.dek) : t('learnLead')))
-const canonical = computed(() => absolute(route.path))
-const headLinks = computed(() => [
-  { rel: 'canonical' as const, href: canonical.value },
-  ...alternates.value.map((alternate) => ({
-    rel: 'alternate' as const,
-    hreflang: alternate.code,
-    href: absolute(alternate.path),
-  })),
-  { rel: 'alternate' as const, hreflang: 'x-default', href: absolute(localePath(route.path, 'en')) },
-])
-
-useSeoMeta({
-  title,
-  description,
-  ogTitle: title,
-  ogDescription: description,
+const { title } = usePageSeo({
+  title: () => (explainer.value ? `${L(explainer.value.title)} · ${t('brand')}` : t('brand')),
+  description: () => (explainer.value ? L(explainer.value.dek) : t('learnLead')),
   ogType: 'article',
-  ogSiteName: siteName,
-  ogUrl: canonical,
-  ogImageAlt: title,
-  ogLocale: () => (locale.value === 'fr' ? 'fr_FR' : 'en_GB'),
-  ogLocaleAlternate: () => (locale.value === 'fr' ? 'en_GB' : 'fr_FR'),
-  twitterCard: 'summary_large_image',
-  twitterTitle: title,
-  twitterDescription: description,
-  robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
-})
-
-useHead({
-  htmlAttrs: { lang: locale },
-  link: headLinks,
-  script: () =>
+  jsonLd: () =>
     explainer.value
-      ? [
-          {
-            type: 'application/ld+json',
-            innerHTML: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Article',
-              headline: L(explainer.value.title),
-              description: L(explainer.value.dek),
-              inLanguage: locale.value,
-              url: canonical.value,
-              isPartOf: { '@type': 'WebSite', name: siteName, url: absolute('/') },
-            }),
-          },
-        ]
-      : [],
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          headline: L(explainer.value.title),
+          description: L(explainer.value.dek),
+          inLanguage: locale.value,
+          url: absolute(route.path),
+          isPartOf: { '@type': 'WebSite', name: t('brand'), url: absolute('/') },
+        }
+      : null,
 })
 
 defineOgImage(

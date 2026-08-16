@@ -1,54 +1,23 @@
 <script setup lang="ts">
-const route = useRoute()
 const { data, incidents } = useCyberData()
-const { locale, t, alternates } = useLocale()
+const { locale, t } = useLocale()
+const { open } = useIncidentRoute()
 const { open: methodologyOpen } = useMethodology()
 const { absolute } = useSiteUrl()
 const { graphFor } = useStructuredData()
 
+useLegacyHomeRedirect()
+
 const siteName = computed(() => data.value?.project.name ?? 'France Cyberwatch')
-const title = computed(() => `${siteName.value}: ${t('seoTagline')}`)
-const description = computed(() => t('heroLead', { n: incidents.value.length }))
-const canonical = computed(() => absolute(route.path))
-
-const headLinks = computed(() => [
-  { rel: 'canonical' as const, href: canonical.value },
-  ...alternates.value.map((alternate) => ({
-    rel: 'alternate' as const,
-    hreflang: alternate.code,
-    href: absolute(alternate.path),
-  })),
-  { rel: 'alternate' as const, hreflang: 'x-default', href: absolute(alternates.value[0]!.path) },
-  { rel: 'alternate' as const, type: 'application/json', href: absolute('/api/incidents'), title: 'Incidents API' },
-  { rel: 'alternate' as const, type: 'application/rss+xml', href: absolute('/feed.xml'), title: 'Incident feed' },
-])
-
-useSeoMeta({
-  title,
-  description,
-  ogTitle: title,
-  ogDescription: description,
-  ogType: 'website',
-  ogSiteName: siteName,
-  ogUrl: canonical,
+const { title } = usePageSeo({
+  title: () => `${siteName.value}: ${t('seoTagline')}`,
+  description: () => t('heroLead', { n: incidents.value.length }),
   ogImageAlt: () => `${siteName.value} — ${t('heroTitle')}`,
-  ogLocale: () => (locale.value === 'fr' ? 'fr_FR' : 'en_GB'),
-  ogLocaleAlternate: () => (locale.value === 'fr' ? 'en_GB' : 'fr_FR'),
-  twitterCard: 'summary_large_image',
-  twitterTitle: title,
-  twitterDescription: description,
-  robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
-})
-
-useHead({
-  htmlAttrs: { lang: locale },
-  link: headLinks,
-  script: () => [
-    {
-      type: 'application/ld+json',
-      innerHTML: JSON.stringify(graphFor()),
-    },
+  links: () => [
+    { rel: 'alternate', type: 'application/json', href: absolute('/api/incidents'), title: 'Incidents API' },
+    { rel: 'alternate', type: 'application/rss+xml', href: absolute('/feed.xml'), title: 'Incident feed' },
   ],
+  jsonLd: () => graphFor(),
 })
 
 defineOgImage(
@@ -74,7 +43,11 @@ defineOgImage(
   <div>
     <p v-if="!data" class="mx-auto max-w-[52ch] py-32 text-center text-ink-2" role="alert">{{ t('loadError') }}</p>
     <template v-else>
-      <Dossier />
+      <PageMain>
+        <HeroStats @select="open" @methodology="methodologyOpen = true" />
+        <HomeReading />
+        <HomeContinue />
+      </PageMain>
       <MethodologyModal v-if="methodologyOpen" @close="methodologyOpen = false" />
     </template>
   </div>

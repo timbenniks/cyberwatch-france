@@ -78,7 +78,7 @@ export function useStructuredData() {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: `${absolute(localePath('/'))}?q={search_term_string}`,
+        urlTemplate: `${absolute(localePath('/incidents'))}?q={search_term_string}`,
       },
       'query-input': 'required name=search_term_string',
     },
@@ -128,7 +128,8 @@ export function useStructuredData() {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: data.value?.project.name, item: absolute(localePath('/')) },
-        { '@type': 'ListItem', position: 2, name: incident.org[locale.value] },
+        { '@type': 'ListItem', position: 2, name: t('navIncidents'), item: absolute(localePath('/incidents')) },
+        { '@type': 'ListItem', position: 3, name: incident.org[locale.value] },
       ],
     }
   }

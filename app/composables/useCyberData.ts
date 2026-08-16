@@ -56,6 +56,14 @@ export function useCyberData() {
 
   const withoutPublishedCount = computed(() => incidents.value.filter((i) => i.affected === null))
 
+  const incidentComposition = computed(() => ({
+    government: incidents.value.filter((incident) => incident.kind === 'government').length,
+    company: incidents.value.filter((incident) => incident.kind === 'company').length,
+    published: incidents.value.filter((incident) => typeof incident.affected === 'number').length,
+    unknown: incidents.value.filter((incident) => incident.affected === null).length,
+    disputed: incidents.value.filter((incident) => incident.status === 'disputed').length,
+  }))
+
   const { locale } = useLocale()
   const sectorLabel = (sector: string) => data.value?.ui.sectorLabels?.[sector]?.[locale.value] ?? sector
 
@@ -70,5 +78,6 @@ export function useCyberData() {
     sectorLabel,
     largestConfirmedAffected,
     withoutPublishedCount,
+    incidentComposition,
   }
 }

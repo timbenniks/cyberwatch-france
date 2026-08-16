@@ -5,40 +5,18 @@ const { t, locale, alternates, localePath } = useLocale()
 
 const route = useRoute()
 const menuOpen = ref(false)
-const active = ref('')
 const progress = ref(0)
 
-const isHome = computed(() => {
-  const path = route.path.replace(/\/$/, '') || '/'
-  return path === '/' || path === '/fr'
-})
-const isLearn = computed(() => {
-  const path = route.path
-  return path === '/learn' || path.startsWith('/learn/') || path === '/fr/learn' || path.startsWith('/fr/learn/')
-})
+const currentPath = computed(() => route.path.replace(/\/$/, '') || '/')
 
-useScrollLock(menuOpen)
-
-/** While a header click is scrolling, ignore the observer so it cannot snap back. */
-let ignoreObserverUntil = 0
-
-function activate(id: string) {
-  active.value = id
-  ignoreObserverUntil = performance.now() + 900
+function isActive(path: string) {
+  const target = localePath(path).replace(/\/$/, '') || '/'
+  return currentPath.value === target || currentPath.value.startsWith(`${target}/`)
 }
 
-watch(
-  () => route.hash,
-  (hash) => {
-    const id = hash.replace(/^#/, '')
-    if (!id) {
-      active.value = ''
-      return
-    }
-    if (navSections.some((section) => section.id === id)) activate(id)
-  },
-  { immediate: true },
-)
+const isLearn = computed(() => isActive('/learn'))
+
+useScrollLock(menuOpen)
 
 let ticking = false
 function onScroll() {
@@ -52,34 +30,18 @@ function onScroll() {
   })
 }
 
-let observer: IntersectionObserver | null = null
-
 onMounted(() => {
   onScroll()
   window.addEventListener('scroll', onScroll, { passive: true })
-  observer = new IntersectionObserver(
-    (entries) => {
-      if (performance.now() < ignoreObserverUntil) return
-      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)
-      if (visible[0]?.target.id) active.value = visible[0].target.id
-    },
-    { rootMargin: '-96px 0px -60% 0px' },
-  )
-  for (const section of navSections) {
-    const element = document.getElementById(section.id)
-    if (element) observer.observe(element)
-  }
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', onScroll)
-  observer?.disconnect()
 })
 
-function onNav(id: string) {
-  activate(id)
+function onNav(path: string) {
   menuOpen.value = false
-  trackPlausibleEvent('Nav', { section: id })
+  trackPlausibleEvent('Nav', { section: path })
 }
 
 function onLearn() {
@@ -94,21 +56,18 @@ function onLanguage(code: string) {
 
 async function goToSearch() {
   menuOpen.value = false
-  activate('timeline')
   trackPlausibleEvent('Search Jump')
-  await navigateTo({ path: localePath('/'), hash: '#timeline' })
-  window.setTimeout(() => {
-    // The rail is hidden on small screens, so focus whichever bar is on screen.
-    const inputs = [...document.querySelectorAll<HTMLInputElement>('[data-search-input]')]
-    inputs.find((input) => input.offsetParent !== null)?.focus()
-  }, 420)
+  await navigateTo(localePath('/incidents'))
+  await nextTick()
+  const inputs = [...document.querySelectorAll<HTMLInputElement>('[data-search-input]')]
+  inputs.find((input) => input.offsetParent !== null)?.focus()
 }
 </script>
 
 <template>
   <header class="no-print sticky top-0 z-40 border-b border-hairline bg-bg/92 pt-[env(safe-area-inset-top)] backdrop-blur-sm">
     <div class="mx-auto flex h-14 max-w-[1400px] items-center gap-3 px-4 sm:h-16 sm:gap-4 sm:px-6 lg:px-10">
-      <NuxtLink :to="{ path: localePath('/'), hash: '#overview' }" class="group flex min-w-0 shrink-0 items-baseline gap-2" @click="onNav('overview')">
+      <NuxtLink :to="localePath('/')" class="group flex min-w-0 shrink-0 items-baseline gap-2" @click="onNav('/')">
         <span class="font-display text-[1.0625rem] font-semibold tracking-tight text-ink">
           France<span class="text-amber"> Cyberwatch</span>
         </span>
@@ -117,15 +76,15 @@ async function goToSearch() {
 
       <nav class="ml-auto hidden items-center gap-1 lg:flex" :aria-label="t('brand')">
         <NuxtLink
-          v-for="section in navSections"
-          :key="section.id"
-          :to="{ path: localePath('/'), hash: `#${section.id}` }"
+          v-for="page in navPages"
+          :key="page.path"
+          :to="localePath(page.path)"
           class="rounded px-3 py-2 text-[0.8125rem] transition-colors"
-          :class="isHome && active === section.id ? 'text-amber' : 'text-ink-2 hover:text-ink'"
-          :aria-current="isHome && active === section.id ? 'true' : undefined"
-          @click="onNav(section.id)"
+          :class="isActive(page.path) ? 'text-amber' : 'text-ink-2 hover:text-ink'"
+          :aria-current="isActive(page.path) ? 'page' : undefined"
+          @click="onNav(page.path)"
         >
-          {{ t(section.key) }}
+          {{ t(page.key) }}
         </NuxtLink>
         <NuxtLink
           :to="localePath('/learn')"
@@ -153,7 +112,6 @@ async function goToSearch() {
           role="group"
           :aria-label="t('language')"
         >
-          <!-- Real links: each language is its own indexable URL. -->
           <NuxtLink
             v-for="alternate in alternates"
             :key="alternate.code"
@@ -180,7 +138,6 @@ async function goToSearch() {
       </div>
     </div>
 
-    <!-- Reading progress: the spine, carried into the header -->
     <div class="h-px w-full bg-hairline" aria-hidden="true">
       <div
         class="h-px origin-left bg-amber will-change-transform"
@@ -191,14 +148,14 @@ async function goToSearch() {
     <div v-if="menuOpen" class="border-t border-hairline bg-bg lg:hidden">
       <nav class="mx-auto max-w-[1400px] px-4 py-3 sm:px-6" :aria-label="t('brand')">
         <NuxtLink
-          v-for="section in navSections"
-          :key="section.id"
-          :to="{ path: localePath('/'), hash: `#${section.id}` }"
+          v-for="page in navPages"
+          :key="page.path"
+          :to="localePath(page.path)"
           class="block border-b border-hairline py-3.5 font-display text-lg"
-          :class="isHome && active === section.id ? 'text-amber' : 'text-ink'"
-          @click="onNav(section.id)"
+          :class="isActive(page.path) ? 'text-amber' : 'text-ink'"
+          @click="onNav(page.path)"
         >
-          {{ t(section.key) }}
+          {{ t(page.key) }}
         </NuxtLink>
         <NuxtLink
           :to="localePath('/learn')"

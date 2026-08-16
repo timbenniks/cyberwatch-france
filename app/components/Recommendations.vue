@@ -3,70 +3,38 @@ import { Building2, Info, Users } from '@lucide/vue'
 
 const { data } = useCyberData()
 const { t, L, localePath } = useLocale()
+const { explainers } = useExplainers()
 
-const tabs = ['public', 'organizations'] as const
-type Tab = (typeof tabs)[number]
-
-const tab = ref<Tab>('public')
-const items = computed(() => data.value?.recommendations[tab.value] ?? [])
-
-function onTabKey(event: KeyboardEvent, option: Tab) {
-  const index = tabs.indexOf(option)
-  const delta = event.key === 'ArrowRight' || event.key === 'ArrowDown' ? 1 : event.key === 'ArrowLeft' || event.key === 'ArrowUp' ? -1 : 0
-  if (!delta) return
-  event.preventDefault()
-  const next = tabs[(index + delta + tabs.length) % tabs.length]!
-  tab.value = next
-  document.getElementById(`guidance-tab-${next}`)?.focus()
-}
+const publicItems = computed(() => data.value?.recommendations.public ?? [])
+const orgItems = computed(() => data.value?.recommendations.organizations ?? [])
 </script>
 
 <template>
-  <section id="guidance" class="scroll-mt-24">
-    <header class="mb-8 max-w-[62ch]">
-      <p class="eyebrow">02 · {{ t('navGuidance') }}</p>
-      <h2 class="mt-3 font-display text-3xl leading-tight text-ink sm:text-[2.5rem]">{{ t('guidanceTitle') }}</h2>
+  <section>
+    <header class="mb-10 max-w-[62ch]">
+      <p class="eyebrow">{{ t('navGuidance') }}</p>
+      <h1 class="mt-3 font-display text-3xl leading-tight text-ink sm:text-[2.5rem]">{{ t('guidanceTitle') }}</h1>
       <p class="mt-4 text-base leading-relaxed text-ink-2">{{ t('guidanceLead') }}</p>
     </header>
 
-    <div class="flex flex-wrap gap-2 border-b border-hairline" role="tablist" :aria-label="t('guidanceTitle')">
-      <button
-        v-for="option in tabs"
-        :id="`guidance-tab-${option}`"
-        :key="option"
-        type="button"
-        role="tab"
-        :aria-selected="tab === option"
-        :aria-controls="`guidance-panel-${option}`"
-        :tabindex="tab === option ? 0 : -1"
-        :class="[
-          'inline-flex items-center gap-2 border-b-2 px-1 pb-3 pt-2 text-sm transition-colors sm:text-base',
-          tab === option ? 'border-amber text-ink' : 'border-transparent text-muted hover:text-ink-2',
-        ]"
-        @click="tab = option"
-        @keydown="onTabKey($event, option)"
-      >
-        <component :is="option === 'organizations' ? Building2 : Users" :size="15" aria-hidden="true" />
-        {{ t(option === 'organizations' ? 'forOrganisations' : 'forPublic') }}
-      </button>
+    <div class="mt-6 flex gap-3 rounded border border-amber/40 bg-amber/8 p-4 sm:p-5" role="note">
+      <Info :size="17" class="mt-0.5 shrink-0 text-amber" aria-hidden="true" />
+      <p class="text-[0.9375rem] leading-relaxed text-ink">{{ t('publicKeyPoint') }}</p>
     </div>
 
-    <div
-      :id="`guidance-panel-${tab}`"
-      role="tabpanel"
-      :aria-labelledby="`guidance-tab-${tab}`"
-    >
-      <div
-        v-if="tab === 'public'"
-        class="mt-6 flex gap-3 rounded border border-amber/40 bg-amber/8 p-4 sm:p-5"
-        role="note"
-      >
-        <Info :size="17" class="mt-0.5 shrink-0 text-amber" aria-hidden="true" />
-        <p class="text-[0.9375rem] leading-relaxed text-ink">{{ t('publicKeyPoint') }}</p>
+    <section class="mt-14 sm:mt-16" aria-labelledby="guidance-public">
+      <div class="mb-6 flex items-start gap-3">
+        <Users :size="18" class="mt-1 shrink-0 text-amber" aria-hidden="true" />
+        <div class="max-w-[62ch]">
+          <h2 id="guidance-public" class="font-display text-2xl leading-tight text-ink sm:text-3xl">
+            {{ t('forPublic') }}
+          </h2>
+          <p class="mt-3 text-[0.9375rem] leading-relaxed text-ink-2">{{ t('guidancePublicLead') }}</p>
+        </div>
       </div>
 
-      <ol class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        <li v-for="(item, index) in items" :key="item.id" class="card flex gap-4 p-5">
+      <ol class="grid gap-4 md:grid-cols-2">
+        <li v-for="(item, index) in publicItems" :key="item.id" class="card flex gap-4 p-5 sm:p-6">
           <span class="font-mono text-sm text-amber tabular" aria-hidden="true">{{
             String(index + 1).padStart(2, '0')
           }}</span>
@@ -76,17 +44,74 @@ function onTabKey(event: KeyboardEvent, option: Tab) {
           </div>
         </li>
       </ol>
+    </section>
 
-      <p v-if="tab === 'public'" class="mt-8 max-w-[62ch] text-[0.9375rem] leading-relaxed text-ink-2">
-        {{ t('learnCtaLead') }}
-        <NuxtLink
-          :to="localePath('/learn')"
-          class="link-underline text-amber hover:text-ink"
-          @click="trackPlausibleEvent('Open Learn', { from: 'guidance' })"
-        >
-          {{ t('learnCta') }}
-        </NuxtLink>
-      </p>
-    </div>
+    <section class="mt-16 sm:mt-20" aria-labelledby="guidance-org">
+      <div class="mb-6 flex items-start gap-3">
+        <Building2 :size="18" class="mt-1 shrink-0 text-amber" aria-hidden="true" />
+        <div class="max-w-[62ch]">
+          <h2 id="guidance-org" class="font-display text-2xl leading-tight text-ink sm:text-3xl">
+            {{ t('forOrganisations') }}
+          </h2>
+          <p class="mt-3 text-[0.9375rem] leading-relaxed text-ink-2">{{ t('guidanceOrgLead') }}</p>
+        </div>
+      </div>
+
+      <ol class="grid gap-4 md:grid-cols-2">
+        <li v-for="(item, index) in orgItems" :key="item.id" class="card flex gap-4 p-5 sm:p-6">
+          <span class="font-mono text-sm text-amber tabular" aria-hidden="true">{{
+            String(index + 1).padStart(2, '0')
+          }}</span>
+          <div>
+            <h3 class="font-display text-lg leading-snug text-ink">{{ L(item.title) }}</h3>
+            <p class="mt-2 text-[0.9375rem] leading-relaxed text-ink-2">{{ L(item.description) }}</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <aside class="mt-16 card max-w-[62ch] p-5 sm:mt-20 sm:p-6" aria-labelledby="guidance-help">
+      <p id="guidance-help" class="eyebrow">{{ t('learnHelp') }}</p>
+      <p class="mt-3 text-[0.9375rem] leading-relaxed text-ink-2">{{ t('learnHelpLead') }}</p>
+      <a
+        :href="learnHelpUrl"
+        class="link-underline mt-4 inline-block text-sm text-amber hover:text-ink"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ t('learnHelpLink') }}
+        <span class="sr-only">({{ t('opensNewTab') }})</span>
+      </a>
+    </aside>
+
+    <section v-if="explainers.length" class="mt-16 sm:mt-20" aria-labelledby="guidance-learn">
+      <header class="mb-6 max-w-[62ch]">
+        <h2 id="guidance-learn" class="font-display text-2xl leading-tight text-ink sm:text-3xl">{{ t('learnTitle') }}</h2>
+        <p class="mt-3 text-[0.9375rem] leading-relaxed text-ink-2">
+          {{ t('learnCtaLead') }}
+          <NuxtLink
+            :to="localePath('/learn')"
+            class="link-underline text-amber hover:text-ink"
+            @click="trackPlausibleEvent('Open Learn', { from: 'guidance' })"
+          >
+            {{ t('learnCta') }}
+          </NuxtLink>
+        </p>
+      </header>
+
+      <ul class="grid gap-4 md:grid-cols-2">
+        <li v-for="explainer in explainers" :key="explainer.slug">
+          <NuxtLink
+            :to="localePath(`/learn/${explainer.slug}`)"
+            class="card group flex h-full flex-col p-5 transition-colors hover:border-hairline-strong hover:bg-surface-2 sm:p-6"
+            @click="trackPlausibleEvent('Open Explainer', { slug: explainer.slug, from: 'guidance' })"
+          >
+            <h3 class="font-display text-lg leading-snug text-ink group-hover:text-amber">{{ L(explainer.title) }}</h3>
+            <p class="mt-2 flex-1 text-[0.9375rem] leading-relaxed text-ink-2">{{ L(explainer.dek) }}</p>
+            <p class="mt-4 font-mono text-[0.6875rem] uppercase tracking-widest text-muted">{{ t('learnOpen') }}</p>
+          </NuxtLink>
+        </li>
+      </ul>
+    </section>
   </section>
 </template>

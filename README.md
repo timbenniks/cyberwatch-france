@@ -2,7 +2,7 @@
 
 A bilingual (EN/FR) public dossier of major publicly reported cyberattacks and data breaches affecting French public institutions and companies in 2025 and 2026, read alongside the national figures published by ANSSI and the CNIL — plus a read-only public API over the same data.
 
-Live language is in the URL: [`/`](/) is English, [`/fr`](/fr) is French. Human-readable API docs live at [`/docs`](/docs) and [`/fr/docs`](/fr/docs). Public explainers live at [`/learn`](/learn) and [`/fr/learn`](/fr/learn).
+Live language is in the URL: [`/`](/) is English, [`/fr`](/fr) is French. The timeline, public guidance and charts live at [`/incidents`](/incidents), [`/guidance`](/guidance) and [`/numbers`](/numbers) (and `/fr/…`). Human-readable API docs live at [`/docs`](/docs) and [`/fr/docs`](/fr/docs). Public explainers live at [`/learn`](/learn) and [`/fr/learn`](/fr/learn).
 
 `data/france-cyberwatch-data.json` is the single source of truth. No incident content is written outside it, unknown victim counts stay unknown, and disputed attacker claims never enter a chart, a total, or an API aggregate.
 
@@ -10,11 +10,12 @@ Live language is in the URL: [`/`](/) is English, [`/fr`](/fr) is French. Human-
 
 ```bash
 npm install
-npm run dev        # http://localhost:3000
+cp .env.example .env   # optional; needed only to override the site URL or enable Plausible
+npm run dev            # http://localhost:3000
 ```
 
 ```bash
-npm run build      # prerenders / , /fr , /docs , /fr/docs , /learn and every incident and explainer page in both languages
+npm run build      # prerenders / , /fr , /incidents , /guidance , /numbers , /docs , /learn and every incident and explainer page in both languages
 npm run preview
 npm run typecheck
 ```
@@ -29,12 +30,11 @@ Push the repo and import it — Vercel detects Nuxt and needs no extra configura
 |---|---|---|
 | `NUXT_PUBLIC_SITE_URL` | recommended | Canonical and `og:` URLs baked into prerendered HTML |
 | `NUXT_PUBLIC_PLAUSIBLE_DOMAIN` | for analytics | Site domain as registered in Plausible (not a secret) |
-| `NUXT_PUBLIC_PLAUSIBLE_SRC` | optional | Script URL if you proxy or self-host Plausible |
-| `NUXT_PUBLIC_PLAUSIBLE_API_HOST` | optional | Event API host if you proxy or self-host |
+| `NUXT_PUBLIC_PLAUSIBLE_API_HOST` | optional | Event API host if you self-host Plausible |
 
-Without `NUXT_PUBLIC_SITE_URL` the build falls back to Vercel’s `VERCEL_PROJECT_PRODUCTION_URL`, then to `http://localhost:3000`.
+Copy `.env.example` to `.env` for local overrides. Without `NUXT_PUBLIC_SITE_URL` the build falls back to Vercel’s `VERCEL_PROJECT_PRODUCTION_URL`, then to `http://localhost:3000`.
 
-Plausible is off until `NUXT_PUBLIC_PLAUSIBLE_DOMAIN` is set. After that, pageviews fire on every load and client navigation; outbound source links are tracked automatically. Custom events cover language switch, nav, incident open/close, filters, chart clicks, downloads, copy link, print, methodology, and API example clicks.
+Plausible is off until `NUXT_PUBLIC_PLAUSIBLE_DOMAIN` is set. After that, `@nuxtjs/plausible` records pageviews on every load and client navigation, and outbound source links automatically. Custom events cover language switch, nav, incident open/close, filters, chart clicks, downloads, copy link, print, methodology, and API example clicks.
 
 ## Language
 
@@ -89,7 +89,7 @@ app/
   router.options.ts      French twins of those file routes
   components/            dossier, timeline, charts, incident article
   composables/           data, filters, locale, focus trap, reduced motion
-  plugins/               locale detect (inline, before paint) and Plausible
+  plugins/               locale detect (inline, before paint)
   utils/                 format.ts is the only path for displaying an affected count
 server/
   api/                   the endpoints above
@@ -114,13 +114,13 @@ If a task seems to require a fact the dataset does not contain, stop rather than
 
 ## Charts
 
-Five, all computed from the JSON: published account/record counts (confirmed numeric figures only, coloured by severity), government vs companies by year, incidents by sector, severity split, and ANSSI’s 2025 national sector distribution — the last visually set apart as national context rather than part of this dossier. Clicking a bar filters the timeline; each chart has a “Show data table” text equivalent that is rendered server-side.
+Five, all computed from the JSON: published account/record counts (confirmed numeric figures only, coloured by severity), government vs companies by year, incidents by sector, severity split, and ANSSI’s 2025 national sector distribution — the last visually set apart as national context rather than part of this dossier. Clicking a bar opens the incidents page with that filter; each chart has a “Show data table” text equivalent that is rendered server-side.
 
 Chart colours come from a palette validated for colour-vision deficiency and contrast against the chart surface `#111726`.
 
 ## Deep links
 
-Every record is a real, prerendered, indexable article: `/incident/ants` and `/fr/incident/ants`, each with its own title, description and canonical tag. Opening one is a navigation (scroll to top). Language switch stays on the same record. Filter buttons on the dossier write query params (`/?kind=company&severity=critical`) without jumping the page. `Copy link` copies the absolute article URL.
+Every record is a real, prerendered, indexable article: `/incident/ants` and `/fr/incident/ants`, each with its own title, description and canonical tag. Opening one is a navigation (scroll to top). Language switch stays on the same record. Timeline filters live on `/incidents` as query params (`/incidents?kind=company&severity=critical`). `Copy link` copies the absolute article URL.
 
 ## Accessibility
 

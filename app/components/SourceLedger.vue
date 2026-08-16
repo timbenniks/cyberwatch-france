@@ -28,7 +28,7 @@ const entries = computed(() =>
 </script>
 
 <template>
-  <section class="scroll-mt-24">
+  <section>
     <header class="mb-6 max-w-[62ch]">
       <h2 class="font-display text-2xl leading-tight text-ink sm:text-3xl">{{ t('sourcesTitle') }}</h2>
       <p class="mt-3 text-[0.9375rem] leading-relaxed text-ink-2">{{ t('sourcesLead') }}</p>

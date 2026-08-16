@@ -1,8 +1,8 @@
-/** Custom Plausible events. Pageviews are handled by the official script. */
-export function trackPlausibleEvent(name: string, props?: Record<string, string | number | boolean | undefined>) {
+type PlausiblePropValue = string | number | boolean | undefined
+
+/** Custom Plausible events. Pageviews are handled by @nuxtjs/plausible. */
+export function trackPlausibleEvent(name: string, props?: Record<string, PlausiblePropValue>) {
   if (!import.meta.client) return
-  const plausible = window.plausible
-  if (typeof plausible !== 'function') return
 
   const clean: Record<string, string> = {}
   if (props) {
@@ -12,5 +12,5 @@ export function trackPlausibleEvent(name: string, props?: Record<string, string 
     }
   }
 
-  plausible(name, Object.keys(clean).length ? { props: clean } : undefined)
+  useTrackEvent(name, Object.keys(clean).length ? { props: clean } : undefined)
 }

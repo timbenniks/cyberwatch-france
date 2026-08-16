@@ -73,7 +73,7 @@ const cards = computed(() =>
 </script>
 
 <template>
-  <section id="patterns" class="scroll-mt-24">
+  <section id="patterns">
     <header class="mb-6 max-w-[62ch]">
       <p class="eyebrow">{{ t('navPatterns') }}</p>
       <h2 class="mt-2 font-display text-2xl leading-tight text-ink sm:text-3xl">{{ t('patternsTitle') }}</h2>

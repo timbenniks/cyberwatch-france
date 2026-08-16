@@ -29,7 +29,7 @@ export function useIncidentRoute() {
   }
   const close = () => {
     trackPlausibleEvent('Close Incident')
-    return navigateTo(localePath('/'))
+    return navigateTo(localePath('/incidents'))
   }
 
   function step(delta: number) {

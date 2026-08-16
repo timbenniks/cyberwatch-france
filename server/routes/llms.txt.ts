@@ -54,6 +54,11 @@ Methodology: ${dataset.project.methodology[lang]}
 
 ## Pages
 
+- [Home](${base}${prefix || '/'}): what this dossier is, and the latest incidents.
+- [Incidents](${base}${prefix}/incidents): the full timeline, filterable by kind, severity, status, sector and year. Search lives here (?q=).
+- [What people can do](${base}${prefix}/guidance): public and organisation guidance.
+- [Numbers](${base}${prefix}/numbers): charts, national ANSSI/CNIL figures, patterns, the data table and sources.
+
 ${incidents
   .map(
     (incident) =>
