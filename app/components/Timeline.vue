@@ -117,7 +117,7 @@ const groups = computed(() => {
 
           <!-- The spine: a rail with a node per incident -->
           <div class="relative pl-6 sm:pl-8">
-            <span class="absolute bottom-2 left-[3px] top-0 w-px bg-hairline" aria-hidden="true" />
+            <span class="absolute bottom-2 left-0 top-0 w-px -translate-x-1/2 bg-hairline" aria-hidden="true" />
 
             <div v-for="month in group.months" :key="month.key" class="pb-2">
               <p class="relative -ml-6 mb-3 pl-6 eyebrow sm:-ml-8 sm:pl-8">

@@ -14,6 +14,7 @@ export default defineEventHandler((event) => {
     '/numbers',
     '/docs',
     '/learn',
+    '/learn/quiz',
     ...incidents.map((incident) => `/incident/${incident.id}`),
     ...explainers.map((explainer) => `/learn/${explainer.slug}`),
   ]

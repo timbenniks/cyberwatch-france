@@ -50,6 +50,7 @@ Methodology: ${dataset.project.methodology[lang]}
 - [Patterns](${base}/api/patterns) and [recommendations](${base}/api/recommendations): the recurring weaknesses, and guidance for organisations and the public.
 - [Raw dataset](${base}/data/france-cyberwatch-data.json): the complete file this site is built from.
 - [Public explainers](${base}${prefix}/learn): bilingual guides on what leaked data is used for. Incident facts still live only in the dataset; these pages link to records by id.
+- [Leak-awareness quiz](${base}${prefix}/learn/quiz): fourteen questions from those guides. Educational copy only; no unpublished incident figures.
 - [Full text for LLMs](${base}/llms-full.txt): every record as markdown.
 
 ## Pages
@@ -58,6 +59,7 @@ Methodology: ${dataset.project.methodology[lang]}
 - [Incidents](${base}${prefix}/incidents): the full timeline, filterable by kind, severity, status, sector and year. Search lives here (?q=).
 - [What people can do](${base}${prefix}/guidance): public and organisation guidance.
 - [Numbers](${base}${prefix}/numbers): charts, national ANSSI/CNIL figures, patterns, the data table and sources.
+- [Leak-awareness quiz](${base}${prefix}/learn/quiz): a scored test of the public explainers.
 
 ${incidents
   .map(

@@ -110,6 +110,8 @@ export default defineNuxtConfig({
         '/fr/docs',
         '/learn',
         '/fr/learn',
+        '/learn/quiz',
+        '/fr/learn/quiz',
         ...incidentRoutes,
         ...explainerRoutes,
       ],
@@ -132,6 +134,9 @@ export default defineNuxtConfig({
     },
     '/logos/**': {
       headers: { 'cache-control': 'public, max-age=31536000, immutable' },
+    },
+    '/podcasts/**': {
+      headers: { 'cache-control': 'public, max-age=86400, stale-while-revalidate=604800' },
     },
     '/og.png': {
       headers: { 'cache-control': 'public, max-age=86400, stale-while-revalidate=604800' },
@@ -170,6 +175,12 @@ export default defineNuxtConfig({
       headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
     },
     '/fr/learn': {
+      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
+    },
+    '/learn/quiz': {
+      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
+    },
+    '/fr/learn/quiz': {
       headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
     },
     '/learn/**': {

@@ -357,6 +357,68 @@ const dictionary = {
   },
   learnCta: { en: 'Read the public explainers', fr: 'Lire les guides grand public' },
   learnOpen: { en: 'Read this guide', fr: 'Lire ce guide' },
+  learnListen: { en: 'Listen', fr: 'Écouter' },
+  learnPlay: { en: 'Play', fr: 'Lecture' },
+  learnPause: { en: 'Pause', fr: 'Pause' },
+  learnSeek: { en: 'Position in the recording', fr: 'Position dans l’enregistrement' },
+  learnSpeed: { en: 'Playback speed', fr: 'Vitesse de lecture' },
+  learnAudioUnavailable: {
+    en: 'This recording could not be loaded.',
+    fr: 'Cet enregistrement n’a pas pu être chargé.',
+  },
+
+  quizEyebrow: { en: 'Leak-awareness quiz', fr: 'Quiz de vigilance' },
+  quizTitle: {
+    en: 'Test what the guides taught you',
+    fr: 'Vérifiez ce que les guides vous ont appris',
+  },
+  quizLead: {
+    en: 'Fourteen questions from the public explainers. After each answer you will see why it is right or wrong. A score of 80 percent opens a pass screen you can share on LinkedIn.',
+    fr: 'Quatorze questions tirées des guides grand public. Après chaque réponse, vous verrez pourquoi elle est juste ou fausse. Un score de 80 pour cent ouvre un écran de réussite que vous pouvez partager sur LinkedIn.',
+  },
+  quizMeta: {
+    en: '{total} questions · pass mark {pass}%',
+    fr: '{total} questions · seuil de réussite {pass} %',
+  },
+  quizStart: { en: 'Start the quiz', fr: 'Commencer le quiz' },
+  quizProgress: { en: 'Question {n} of {total}', fr: 'Question {n} sur {total}' },
+  quizCorrect: { en: 'Correct', fr: 'Correct' },
+  quizIncorrect: { en: 'Incorrect', fr: 'Incorrect' },
+  quizRightAnswer: { en: 'Right answer', fr: 'Bonne réponse' },
+  quizWhyCorrect: { en: 'Why this is correct. ', fr: 'Pourquoi c’est correct. ' },
+  quizWhyIncorrect: { en: 'Why this is incorrect. ', fr: 'Pourquoi c’est incorrect. ' },
+  quizNext: { en: 'Next question', fr: 'Question suivante' },
+  quizSeeResults: { en: 'See your result', fr: 'Voir le résultat' },
+  quizPassed: { en: 'Passed', fr: 'Réussi' },
+  quizNotYet: { en: 'Not yet', fr: 'Pas encore' },
+  quizPassTitle: { en: 'You know how the follow-up scam works.', fr: 'Vous savez comment l’arnaque de second rideau fonctionne.' },
+  quizFailTitle: { en: 'Read the guides, then try again.', fr: 'Lisez les guides, puis réessayez.' },
+  quizPassLead: {
+    en: 'You reached the pass mark. Share that result on LinkedIn if you want others to take the same test — the questions come from the public explainers, not from unpublished incident figures.',
+    fr: 'Vous avez atteint le seuil. Partagez ce résultat sur LinkedIn si vous voulez que d’autres passent le même test — les questions viennent des guides grand public, pas de chiffres d’incidents non publiés.',
+  },
+  quizFailLead: {
+    en: 'The pass mark is 80 percent. The explainers cover each of these points in plain language. Try again when you are ready.',
+    fr: 'Le seuil est de 80 pour cent. Les guides couvrent chacun de ces points en langage simple. Réessayez quand vous le souhaitez.',
+  },
+  quizScoreLine: { en: '{percent}% correct', fr: '{percent} % de bonnes réponses' },
+  quizShareLinkedIn: { en: 'Share on LinkedIn', fr: 'Partager sur LinkedIn' },
+  quizCopyShare: { en: 'Copy share text', fr: 'Copier le texte de partage' },
+  quizShareCopied: { en: 'Copied', fr: 'Copié' },
+  quizShareText: {
+    en: 'I scored {score}/{total} on the France Cyberwatch quiz on leak-driven scams — a short test on what stolen data is used for, and how not to get caught by the follow-up message.',
+    fr: 'J’ai obtenu {score}/{total} au quiz France Cyberwatch sur les arnaques qui suivent une fuite — un test court sur l’usage des données volées, et comment ne pas se faire prendre par le message qui suit.',
+  },
+  quizRetry: { en: 'Try again', fr: 'Réessayer' },
+  quizOpen: { en: 'Take the quiz', fr: 'Passer le quiz' },
+  quizCtaLead: {
+    en: 'Check what these guides taught you.',
+    fr: 'Vérifiez ce que ces guides vous ont appris.',
+  },
+  quizAsideWait: {
+    en: 'Choose an answer. The explanation will appear here.',
+    fr: 'Choisissez une réponse. L’explication apparaîtra ici.',
+  },
 
   errorNotFound: { en: 'This page could not be found.', fr: 'Cette page est introuvable.' },
   errorNotFoundTitle: { en: 'Page not found', fr: 'Page introuvable' },
@@ -381,7 +443,7 @@ function bare(path: string): string {
 /**
  * The language lives in the URL: `/` and `/incident/:id` are English, `/fr`
  * and `/fr/incident/:id` are French. `/incidents`, `/guidance`, `/numbers`,
- * `/learn` and `/docs` follow the same pattern. Both languages are prerendered,
+ * `/learn`, `/learn/quiz` and `/docs` follow the same pattern. Both languages are prerendered,
  * both are indexable, and switching is a navigation — so there is no
  * client-side flip to disagree with the server's markup.
  */

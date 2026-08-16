@@ -186,6 +186,12 @@
     color: var(--color-ink-2);
     border-style: dotted;
   }
+  .stamp-correct {
+    color: var(--color-teal);
+  }
+  .stamp-incorrect {
+    color: var(--color-coral);
+  }
 
   .tabular {
     font-variant-numeric: tabular-nums;
