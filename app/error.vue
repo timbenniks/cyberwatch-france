@@ -24,6 +24,12 @@ function goHome() {
 
 <template>
   <div class="flex min-h-dvh flex-col bg-bg text-ink">
+    <NuxtLink
+      :to="{ hash: '#content' }"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:border focus:border-amber focus:bg-surface-1 focus:px-4 focus:py-2 focus:text-sm"
+    >
+      {{ t('skipToContent') }}
+    </NuxtLink>
     <header class="border-b border-hairline">
       <div class="mx-auto flex h-16 max-w-[1400px] items-center px-4 sm:px-6 lg:px-10">
         <NuxtLink :to="home" class="font-display text-[1.0625rem] font-semibold tracking-tight" @click="goHome">
@@ -32,7 +38,7 @@ function goHome() {
       </div>
     </header>
 
-    <main class="mx-auto flex w-full max-w-[1400px] flex-1 flex-col justify-center px-4 py-24 sm:px-6 lg:px-10">
+    <main id="content" class="mx-auto flex w-full max-w-[1400px] flex-1 flex-col justify-center px-4 py-24 sm:px-6 lg:px-10">
       <p class="eyebrow">{{ error.statusCode }}</p>
       <h1 class="mt-4 max-w-[20ch] font-display text-4xl leading-tight sm:text-5xl">
         {{ is404 ? t('errorNotFound') : t('errorGeneric') }}

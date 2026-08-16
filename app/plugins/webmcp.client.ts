@@ -1,5 +1,5 @@
 import type { Incident, Locale } from '~/types/cyberwatch'
-import type { FilterState } from '~/composables/useFilters'
+import { filtersToQuery } from '~/utils/filter-query'
 
 interface WebMcpToolResult {
   content: Array<{ type: 'text'; text: string }>
@@ -70,16 +70,6 @@ function listedIncident(incident: Incident, locale: Locale, sectorLabel: string)
   }
 }
 
-function queryFromFilters(state: FilterState): Record<string, string> {
-  const query: Record<string, string> = {}
-  if (state.query) query.q = state.query
-  if (state.kind !== 'all') query.kind = state.kind
-  if (state.severity !== 'all') query.severity = state.severity
-  if (state.status !== 'all') query.status = state.status
-  if (state.sector !== 'all') query.sector = state.sector
-  if (state.year !== 'all') query.year = String(state.year)
-  return query
-}
 
 /**
  * Registers in-page tools with the WebMCP API when the browser exposes it
@@ -304,7 +294,7 @@ export default defineNuxtPlugin(() => {
         if (typeof args.year === 'number' && Number.isFinite(args.year)) next.year = args.year
         filters.value = next
         const href = localePath('/incidents')
-        await navigateTo({ path: href, query: queryFromFilters(next) })
+        await navigateTo({ path: href, query: filtersToQuery(next) })
         return textResult(`Filters applied on ${href}. ${matchCount.value} matching incidents.`)
       },
     },

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const { data, incidents } = useCyberData()
 const { locale, t } = useLocale()
-const { open } = useIncidentRoute()
 const { open: methodologyOpen } = useMethodology()
 const { absolute } = useSiteUrl()
 const { graphFor } = useStructuredData()
@@ -19,23 +18,17 @@ usePageSeo({
   jsonLd: () => graphFor(),
 })
 
-defineOgImage(
-  'OgDossier',
-  {
-    eyebrow: t('heroEyebrow'),
-    years: t('brandYears'),
-    incidentCount: incidents.value.length,
-    incidentLabel: t('incidentsCount'),
-    anssiEvents: data.value
-      ? formatNumber(data.value.summaryStats.anssi2025.securityEventsHandled, locale.value)
-      : '',
-    anssiLabel: t('statAnssiEvents'),
-    reviewedLabel: t('reviewedThrough'),
-    reviewedThrough: data.value ? formatDate(data.value.project.reviewedThrough, locale.value) : '',
-    severities: incidents.value.map((item) => item.severity).join(','),
-  },
-  { alt: () => `${t('brand')} — ${t('heroTitle')}` },
-)
+useDossierOgImage({
+  eyebrow: t('heroEyebrow'),
+  incidentLabel: t('incidentsCount'),
+  anssiEvents: data.value
+    ? formatNumber(data.value.summaryStats.anssi2025.securityEventsHandled, locale.value)
+    : '',
+  anssiLabel: t('statAnssiEvents'),
+  reviewedLabel: t('reviewedThrough'),
+  reviewedThrough: data.value ? formatDate(data.value.project.reviewedThrough, locale.value) : '',
+  alt: `${t('brand')} — ${t('heroTitle')}`,
+})
 </script>
 
 <template>
@@ -43,7 +36,7 @@ defineOgImage(
     <p v-if="!data" class="mx-auto max-w-[52ch] py-32 text-center text-ink-2" role="alert">{{ t('loadError') }}</p>
     <template v-else>
       <PageMain>
-        <HeroStats @select="open" @methodology="methodologyOpen = true" />
+        <HeroStats @methodology="methodologyOpen = true" />
         <HomeReading />
         <HomeContinue />
       </PageMain>

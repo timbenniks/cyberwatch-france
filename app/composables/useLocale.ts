@@ -4,9 +4,7 @@ import type { Bilingual, Locale } from '~/types/cyberwatch'
 const dictionary = {
   brand: { en: 'France Cyberwatch', fr: 'France Cyberwatch' },
   brandYears: { en: '2025—2026', fr: '2025—2026' },
-  navOverview: { en: 'Overview', fr: "Vue d'ensemble" },
   navIncidents: { en: 'Incidents', fr: 'Incidents' },
-  navTimeline: { en: 'Timeline', fr: 'Chronologie' },
   navPatterns: { en: 'Patterns', fr: 'Tendances' },
   navGuidance: { en: 'What people can do', fr: 'Que peut-on faire' },
   navNumbers: { en: 'Numbers', fr: 'Chiffres' },
@@ -81,6 +79,7 @@ const dictionary = {
   heroLatest: { en: 'Latest record', fr: 'Dernière fiche' },
   seeAllIncidents: { en: 'See all {n} incidents', fr: 'Voir les {n} incidents' },
   close: { en: 'Close', fr: 'Fermer' },
+  clearSearch: { en: 'Clear search', fr: 'Effacer la recherche' },
 
   statAnssiEvents: { en: 'ANSSI security events handled', fr: 'Événements de sécurité traités par l’ANSSI' },
   statAnssiEventsNote: { en: 'Reports and incidents, 2025', fr: 'Signalements et incidents, 2025' },
@@ -175,7 +174,6 @@ const dictionary = {
   status: { en: 'Evidence status', fr: 'Niveau de preuve' },
   kind: { en: 'Type', fr: 'Type' },
   resetFilters: { en: 'Reset filters', fr: 'Réinitialiser les filtres' },
-  matching: { en: 'matching', fr: 'correspondants' },
   matchingOne: { en: 'matching incident', fr: 'incident correspondant' },
   matchingMany: { en: 'matching incidents', fr: 'incidents correspondants' },
   noResults: { en: 'No incidents match these filters.', fr: 'Aucun incident ne correspond à ces filtres.' },
@@ -297,7 +295,6 @@ const dictionary = {
   lastResearched: { en: 'Last researched', fr: 'Dernière recherche' },
   opensNewTab: { en: 'opens in a new tab', fr: 'ouvre un nouvel onglet' },
 
-  loading: { en: 'Loading the dossier…', fr: 'Chargement du dossier…' },
   loadError: {
     en: 'The dataset could not be loaded. Check that data/france-cyberwatch-data.json is in place, then reload.',
     fr: 'Le jeu de données n’a pas pu être chargé. Vérifiez que data/france-cyberwatch-data.json est présent, puis rechargez.',

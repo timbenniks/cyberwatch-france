@@ -78,7 +78,7 @@ const selectedDetail = computed(() => {
 })
 
 function onClick(params: ECElementEvent) {
-  const entry = counts.value.find((candidate) => t(candidate.severity) === params.seriesName)
+  const entry = counts.value[typeof params.seriesIndex === 'number' ? params.seriesIndex : 0]
   if (entry) onSelect(entry.severity, () => emit('filter', entry.severity))
 }
 </script>

@@ -52,8 +52,8 @@ export const mcpToolDocs: McpPrimitiveDoc[] = [
   {
     name: 'list_recommendations',
     description: {
-      en: 'Guidance for organisations and the public.',
-      fr: 'Recommandations pour les organisations et le grand public.',
+      en: 'Guidance for organisations and the public. Public items include explainerSlug when a matching /learn guide exists.',
+      fr: 'Recommandations pour les organisations et le grand public. Les fiches grand public incluent explainerSlug lorsqu’un guide /learn existe.',
     },
     input: {
       en: 'audience (organizations | public), lang (en|fr).',

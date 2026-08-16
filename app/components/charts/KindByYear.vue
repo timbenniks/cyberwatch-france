@@ -13,8 +13,17 @@ const { inspect, selectedKey, onSelect } = useChartInspect()
 const ascendingYears = computed(() => [...years.value].sort((a, b) => a - b))
 const kinds: IncidentKind[] = ['government', 'company']
 
+const countsByKindYear = computed(() => {
+  const counts = new Map<string, number>()
+  for (const incident of incidents.value) {
+    const key = `${incident.kind}:${incident.year}`
+    counts.set(key, (counts.get(key) ?? 0) + 1)
+  }
+  return counts
+})
+
 function countFor(kind: IncidentKind, year: number) {
-  return incidents.value.filter((i) => i.kind === kind && i.year === year).length
+  return countsByKindYear.value.get(`${kind}:${year}`) ?? 0
 }
 
 function keyFor(kind: IncidentKind, year: number) {

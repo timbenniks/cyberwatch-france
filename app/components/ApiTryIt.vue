@@ -26,9 +26,8 @@ const values = ref<Record<string, string>>(initialValues())
 const loading = ref(false)
 const result = ref<TryResult | null>(null)
 const error = ref('')
-const copied = ref<'url' | 'body' | null>(null)
+const { copied, announcement, copy } = useCopyFeedback()
 const responseHeading = ref<HTMLElement | null>(null)
-let copyTimer: ReturnType<typeof setTimeout> | undefined
 let abort: AbortController | undefined
 
 const fieldClass =
@@ -54,7 +53,6 @@ const showLimitHint = computed(() => queryFields.value.some((field) => field.nam
 
 onUnmounted(() => {
   abort?.abort()
-  if (copyTimer) clearTimeout(copyTimer)
 })
 
 function initialValues(): Record<string, string> {
@@ -132,7 +130,6 @@ function applyExample(example: string) {
     })
   }
   values.value = next
-  send()
 }
 
 function reset() {
@@ -201,14 +198,9 @@ function statusTone(status: number) {
 
 async function copyText(which: 'url' | 'body', text: string) {
   try {
-    await navigator.clipboard.writeText(text)
-    copied.value = which
-    if (copyTimer) clearTimeout(copyTimer)
-    copyTimer = setTimeout(() => {
-      copied.value = null
-    }, 2000)
+    await copy(text, t('apiTryCopied'), which)
   } catch {
-    copied.value = null
+    /* clipboard can fail in older browsers */
   }
 }
 
@@ -220,6 +212,7 @@ function onSubmit(event: Event) {
 
 <template>
   <div class="mt-6 min-w-0 max-w-full border-t border-hairline pt-5">
+    <span class="sr-only" aria-live="polite">{{ announcement }}</span>
     <p class="eyebrow">{{ t('apiTryTitle') }}</p>
 
     <form class="mt-4" @submit="onSubmit">

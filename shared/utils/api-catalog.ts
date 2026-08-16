@@ -76,10 +76,19 @@ export function apiEndpointAnchor(path: string) {
 
 export const apiEndpoints: ApiEndpointDoc[] = [
   {
+    path: '/api',
+    description: {
+      en: 'Self-describing index: conventions, every endpoint, parameters and examples. Pass `?lang=fr` for French text. HTML docs stay at /docs.',
+      fr: 'Index auto-descriptif : conventions, chaque endpoint, paramètres et exemples. Passez `?lang=fr` pour le texte français. La doc HTML reste sur /docs.',
+    },
+    query: [{ name: 'lang', detail: { en: 'en | fr', fr: 'en | fr' }, control: { kind: 'select', options: ['en', 'fr'] } }],
+    examples: ['/api', '/api?lang=fr'],
+  },
+  {
     path: '/api/incidents',
     description: {
-      en: 'List and search incidents. Unknown counts sort last when `sort=affected`, never as zero. CSV leaves the affected cell empty.',
-      fr: 'Lister et rechercher les incidents. Les effectifs inconnus se trient en dernier avec `sort=affected`, jamais comme zéro. Le CSV laisse la cellule affected vide.',
+      en: 'List and search incidents. JSON includes full localized `detail` on each row (unlike MCP `list_incidents`, which returns compact rows). Unknown counts sort last when `sort=affected`, never as zero. CSV leaves the affected cell empty. Feed and llms routes also accept `?lang=fr`.',
+      fr: 'Lister et rechercher les incidents. Le JSON inclut le `detail` localisé complet sur chaque ligne (contrairement à MCP `list_incidents`, qui renvoie des lignes compactes). Les effectifs inconnus se trient en dernier avec `sort=affected`, jamais comme zéro. Le CSV laisse la cellule affected vide. Le flux et les routes llms acceptent aussi `?lang=fr`.',
     },
     query: [
       {

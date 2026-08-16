@@ -127,7 +127,7 @@ function onMobileSort(event: Event) {
         <p class="eyebrow tabular">{{ formatDateShort(incident.date, locale) }}</p>
         <h3 class="mt-1 font-display text-lg leading-snug text-ink">{{ L(incident.org) }}</h3>
         <p class="mt-1 text-[0.75rem] uppercase tracking-wider text-muted">
-          {{ t(incident.kind === 'government' ? 'government' : 'company') }}
+          {{ t(kindLabelKey(incident.kind)) }}
           · {{ sectorLabel(incident.sector) }}
         </p>
         <div class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2">
@@ -137,7 +137,11 @@ function onMobileSort(event: Event) {
         <p class="mt-3 text-sm" :class="incident.affected === null ? 'italic text-muted' : 'tabular text-ink'">
           {{ formatAffected(incident, locale) }}
         </p>
-        <p class="mt-2 text-sm leading-relaxed text-ink-2" :class="expanded === incident.id ? '' : 'line-clamp-3'">
+        <p
+          :id="`row-${incident.id}-detail`"
+          class="mt-2 text-sm leading-relaxed text-ink-2"
+          :class="expanded === incident.id ? '' : 'line-clamp-3'"
+        >
           {{ incident.data[locale] }}
         </p>
         <div class="mt-3 flex flex-wrap items-center gap-3">
@@ -145,6 +149,7 @@ function onMobileSort(event: Event) {
             type="button"
             class="inline-flex min-h-11 items-center gap-1 text-[0.75rem] text-amber"
             :aria-expanded="expanded === incident.id"
+            :aria-controls="`row-${incident.id}-detail`"
             @click="expanded = expanded === incident.id ? null : incident.id"
           >
             <ChevronRight :size="11" class="transition-transform" :class="expanded === incident.id ? 'rotate-90' : ''" />
@@ -216,7 +221,7 @@ function onMobileSort(event: Event) {
             </td>
             <td class="px-3 py-3.5 font-medium text-ink">{{ L(incident.org) }}</td>
             <td class="whitespace-nowrap px-3 py-3.5 text-ink-2">
-              {{ t(incident.kind === 'government' ? 'government' : 'company') }}
+              {{ t(kindLabelKey(incident.kind)) }}
             </td>
             <td class="px-3 py-3.5 text-ink-2">{{ sectorLabel(incident.sector) }}</td>
             <td class="whitespace-nowrap px-3 py-3.5"><SeverityMark :severity="incident.severity" /></td>
@@ -228,11 +233,12 @@ function onMobileSort(event: Event) {
               <p :class="expanded === incident.id ? '' : 'line-clamp-2'">{{ incident.data[locale] }}</p>
             </td>
             <td class="min-w-[220px] px-3 py-3.5 text-ink-2">
-              <p :class="expanded === incident.id ? '' : 'line-clamp-2'">{{ incident.method[locale] }}</p>
+              <p :id="`row-${incident.id}-method`" :class="expanded === incident.id ? '' : 'line-clamp-2'">{{ incident.method[locale] }}</p>
               <button
                 type="button"
                 class="mt-1.5 inline-flex items-center gap-1 text-[0.75rem] text-amber"
                 :aria-expanded="expanded === incident.id"
+                :aria-controls="`row-${incident.id}-method`"
                 @click="expanded = expanded === incident.id ? null : incident.id"
               >
                 <ChevronRight :size="11" class="transition-transform" :class="expanded === incident.id ? 'rotate-90' : ''" />

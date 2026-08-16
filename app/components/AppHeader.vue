@@ -1,59 +1,71 @@
 <script setup lang="ts">
-import { Menu, Search, X } from "@lucide/vue";
+import { Menu, X } from '@lucide/vue'
 
-const { t, locale, alternates, localePath } = useLocale();
+const { t, locale, alternates, localePath } = useLocale()
 
-const route = useRoute();
-const menuOpen = ref(false);
-const progress = ref(0);
+const route = useRoute()
+const menuOpen = ref(false)
+const progress = ref(0)
+const menuPanel = ref<HTMLElement | null>(null)
+const menuButton = ref<HTMLButtonElement | null>(null)
 
-const currentPath = computed(() => route.path.replace(/\/$/, "") || "/");
+const currentPath = computed(() => route.path.replace(/\/$/, '') || '/')
 
 function isActive(path: string) {
-  const target = localePath(path).replace(/\/$/, "") || "/";
-  return (
-    currentPath.value === target || currentPath.value.startsWith(`${target}/`)
-  );
+  const target = localePath(path).replace(/\/$/, '') || '/'
+  return currentPath.value === target || currentPath.value.startsWith(`${target}/`)
 }
 
-const isLearn = computed(() => isActive("/learn"));
+const isLearn = computed(() => isActive('/learn'))
 
-useScrollLock(menuOpen);
+useScrollLock(menuOpen)
+useFocusTrap(menuPanel, closeMenu, menuOpen)
 
-let ticking = false;
+watch(menuOpen, async (open) => {
+  if (!open) return
+  await nextTick()
+  menuPanel.value?.querySelector<HTMLElement>('a, button')?.focus()
+})
+
+function closeMenu() {
+  menuOpen.value = false
+  nextTick(() => menuButton.value?.focus())
+}
+
+let ticking = false
 function onScroll() {
-  if (ticking) return;
-  ticking = true;
+  if (ticking) return
+  ticking = true
   requestAnimationFrame(() => {
-    const doc = document.documentElement;
-    const max = doc.scrollHeight - doc.clientHeight;
-    progress.value = max > 0 ? Math.min(1, doc.scrollTop / max) : 0;
-    ticking = false;
-  });
+    const doc = document.documentElement
+    const max = doc.scrollHeight - doc.clientHeight
+    progress.value = max > 0 ? Math.min(1, doc.scrollTop / max) : 0
+    ticking = false
+  })
 }
 
 onMounted(() => {
-  onScroll();
-  window.addEventListener("scroll", onScroll, { passive: true });
-});
+  onScroll()
+  window.addEventListener('scroll', onScroll, { passive: true })
+})
 
 onUnmounted(() => {
-  window.removeEventListener("scroll", onScroll);
-});
+  window.removeEventListener('scroll', onScroll)
+})
 
 function onNav(path: string) {
-  menuOpen.value = false;
-  trackPlausibleEvent("Nav", { section: path });
+  closeMenu()
+  trackPlausibleEvent('Nav', { section: path })
 }
 
 function onLearn() {
-  menuOpen.value = false;
-  trackPlausibleEvent("Open Learn");
+  closeMenu()
+  trackPlausibleEvent('Open Learn')
 }
 
 function onLanguage(code: string) {
-  writeLocalePref(code === "fr" ? "fr" : "en");
-  trackPlausibleEvent("Language Switch", { locale: code });
+  writeLocalePref(code === 'fr' ? 'fr' : 'en')
+  trackPlausibleEvent('Language Switch', { locale: code })
 }
 </script>
 
@@ -69,12 +81,10 @@ function onLanguage(code: string) {
         class="group flex min-w-0 shrink-0 items-baseline gap-2"
         @click="onNav('/')"
       >
-        <span
-          class="font-display text-[1.0625rem] font-semibold tracking-tight text-ink"
-        >
+        <span class="font-display text-[1.0625rem] font-semibold tracking-tight text-ink">
           France<span class="text-amber"> Cyberwatch</span>
         </span>
-        <span class="eyebrow hidden sm:inline">{{ t("brandYears") }}</span>
+        <span class="eyebrow hidden sm:inline">{{ t('brandYears') }}</span>
       </NuxtLink>
 
       <nav
@@ -86,9 +96,7 @@ function onLanguage(code: string) {
           :key="page.path"
           :to="localePath(page.path)"
           class="rounded px-3 py-2 text-[0.8125rem] transition-colors"
-          :class="
-            isActive(page.path) ? 'text-amber' : 'text-ink-2 hover:text-ink'
-          "
+          :class="isActive(page.path) ? 'text-amber' : 'text-ink-2 hover:text-ink'"
           :aria-current="isActive(page.path) ? 'page' : undefined"
           @click="onNav(page.path)"
         >
@@ -101,7 +109,7 @@ function onLanguage(code: string) {
           :aria-current="isLearn ? 'page' : undefined"
           @click="onLearn"
         >
-          {{ t("learnNav") }}
+          {{ t('learnNav') }}
         </NuxtLink>
       </nav>
 
@@ -129,12 +137,18 @@ function onLanguage(code: string) {
           </NuxtLink>
         </div>
 
+        <div class="hidden lg:block">
+          <ThemeSwitch />
+        </div>
+
         <button
+          ref="menuButton"
           type="button"
           class="grid h-11 w-11 place-items-center rounded border border-hairline text-ink-2 lg:hidden"
           :aria-label="menuOpen ? t('closeMenu') : t('openMenu')"
           :aria-expanded="menuOpen"
-          @click="menuOpen = !menuOpen"
+          aria-controls="site-menu"
+          @click="menuOpen ? closeMenu() : (menuOpen = true)"
         >
           <component :is="menuOpen ? X : Menu" :size="16" />
         </button>
@@ -148,11 +162,16 @@ function onLanguage(code: string) {
       />
     </div>
 
-    <div v-if="menuOpen" class="border-t border-hairline bg-bg lg:hidden">
-      <nav
-        class="mx-auto max-w-[1400px] px-4 py-3 sm:px-6"
-        :aria-label="t('brand')"
-      >
+    <div
+      v-if="menuOpen"
+      id="site-menu"
+      ref="menuPanel"
+      class="border-t border-hairline bg-bg lg:hidden"
+      role="dialog"
+      aria-modal="true"
+      :aria-label="t('brand')"
+    >
+      <nav class="mx-auto max-w-[1400px] px-4 py-3 sm:px-6" :aria-label="t('brand')">
         <NuxtLink
           v-for="page in navPages"
           :key="page.path"
@@ -170,16 +189,14 @@ function onLanguage(code: string) {
           :aria-current="isLearn ? 'page' : undefined"
           @click="onLearn"
         >
-          {{ t("learnNav") }}
+          {{ t('learnNav') }}
         </NuxtLink>
       </nav>
       <div
         class="mx-auto flex max-w-[1400px] items-center justify-between gap-3 border-t border-hairline px-4 py-3 sm:px-6"
       >
-        <p
-          class="font-mono text-[0.6875rem] tracking-widest uppercase text-muted"
-        >
-          {{ t("theme") }}
+        <p class="font-mono text-[0.6875rem] tracking-widest uppercase text-muted">
+          {{ t('theme') }}
         </p>
         <ThemeSwitch />
       </div>

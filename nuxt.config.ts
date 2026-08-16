@@ -93,8 +93,6 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    // data/ is the single source of truth: served at /data and imported by the API.
-    publicAssets: [{ baseURL: '/data', dir: fileURLToPath(new URL('./data', import.meta.url)), maxAge: 3600 }],
     prerender: {
       crawlLinks: false,
       routes: [
@@ -141,60 +139,16 @@ export default defineNuxtConfig({
     '/og.png': {
       headers: { 'cache-control': 'public, max-age=86400, stale-while-revalidate=604800' },
     },
-    '/': {
-      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
-    },
-    '/fr': {
-      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
-    },
-    '/incidents': {
-      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
-    },
-    '/fr/incidents': {
-      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
-    },
-    '/guidance': {
-      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
-    },
-    '/fr/guidance': {
-      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
-    },
-    '/numbers': {
-      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
-    },
-    '/fr/numbers': {
-      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
-    },
-    '/docs': {
-      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
-    },
-    '/fr/docs': {
-      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
-    },
-    '/learn': {
-      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
-    },
-    '/fr/learn': {
-      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
-    },
-    '/learn/quiz': {
-      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
-    },
-    '/fr/learn/quiz': {
-      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
-    },
-    '/learn/**': {
-      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
-    },
-    '/fr/learn/**': {
-      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
-    },
-    '/incident/**': {
-      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
-    },
-    '/fr/incident/**': {
-      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
-    },
+    ...Object.fromEntries(
+      ['/', '/incidents', '/guidance', '/numbers', '/docs', '/learn', '/learn/**', '/incident/**'].flatMap((path) => {
+        const headers = { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' }
+        const french = path === '/' ? '/fr' : `/fr${path}`
+        return [
+          [path, { headers }],
+          [french, { headers }],
+        ]
+      }),
+    ),
   },
 
   typescript: { typeCheck: false },

@@ -6,7 +6,7 @@ import { meta } from '~~/server/utils/dataset'
  * allowed, and the machine-readable entry points are advertised up front.
  */
 export default defineEventHandler((event) => {
-  const base = useRuntimeConfig().public.siteUrl || getRequestURL(event).origin
+  const base = (useRuntimeConfig().public.siteUrl || getRequestURL(event).origin).replace(/\/$/, '')
 
   setHeader(event, 'content-type', 'text/plain; charset=utf-8')
   setHeader(event, 'cache-control', 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400')

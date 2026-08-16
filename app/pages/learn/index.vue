@@ -10,24 +10,19 @@ const { title } = usePageSeo({
   ogImageAlt: () => `${t('brand')} · ${t('learnTitle')}`,
 })
 
-defineOgImage(
-  'OgDossier',
-  {
-    eyebrow: t('learnEyebrow'),
-    years: t('brandYears'),
-    incidentCount: explainers.value.length,
-    incidentLabel: t('learnGuides'),
-    anssiEvents: '—',
-    anssiLabel: t('learnNav'),
-    reviewedLabel: t('learnHelp'),
-    reviewedThrough: 'cybermalveillance.gouv.fr',
-  },
-  { alt: title },
-)
+useDossierOgImage({
+  eyebrow: t('learnEyebrow'),
+  incidentCount: explainers.value.length,
+  incidentLabel: t('learnGuides'),
+  anssiLabel: t('learnNav'),
+  reviewedLabel: t('learnHelp'),
+  reviewedThrough: 'cybermalveillance.gouv.fr',
+  alt: title.value,
+})
 </script>
 
 <template>
-  <main id="content" class="relative z-10 mx-auto max-w-[1400px] px-4 pb-24 pt-10 sm:px-6 sm:pt-16 lg:px-10 lg:pt-20">
+  <PageMain>
     <div
       class="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_20rem] lg:grid-rows-[auto_1fr] lg:gap-x-14 lg:gap-y-12 xl:grid-cols-[minmax(0,1fr)_22rem] xl:gap-x-16"
     >
@@ -76,5 +71,5 @@ defineOgImage(
         </li>
       </ol>
     </div>
-  </main>
+  </PageMain>
 </template>

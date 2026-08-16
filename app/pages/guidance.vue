@@ -7,20 +7,15 @@ const { title } = usePageSeo({
   description: () => t('guidanceLead'),
 })
 
-defineOgImage(
-  'OgDossier',
-  {
-    eyebrow: t('navGuidance'),
-    years: t('brandYears'),
-    incidentCount: 2,
-    incidentLabel: t('navGuidance'),
-    anssiEvents: '—',
-    anssiLabel: t('forPublic'),
-    reviewedLabel: t('learnHelp'),
-    reviewedThrough: 'cybermalveillance.gouv.fr',
-  },
-  { alt: title },
-)
+useDossierOgImage({
+  eyebrow: t('navGuidance'),
+  incidentCount: 2,
+  incidentLabel: t('navGuidance'),
+  anssiLabel: t('forPublic'),
+  reviewedLabel: t('learnHelp'),
+  reviewedThrough: 'cybermalveillance.gouv.fr',
+  alt: title.value,
+})
 </script>
 
 <template>

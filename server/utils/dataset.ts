@@ -6,28 +6,22 @@ export const dataset = raw as unknown as CyberwatchData
 /** Newest first, matching the site. */
 export const incidents: Incident[] = [...dataset.incidents].sort((a, b) => b.date.localeCompare(a.date))
 
-export const locales: Locale[] = ['en', 'fr']
-
 export function isLocale(value: unknown): value is Locale {
   return value === 'en' || value === 'fr'
 }
 
-export interface IncidentQuery {
-  kind?: string
-  sector?: string
-  severity?: string
-  status?: string
-  year?: string
-  q?: string
-  from?: string
-  to?: string
+/** Confirmed records with a published figure — never disputed claims, never null. */
+export function hasPublishedCount(
+  incident: Incident,
+): incident is Incident & { affected: number } {
+  return incident.status === 'confirmed' && typeof incident.affected === 'number'
 }
 
 /**
  * Filtering mirrors the site exactly, including the rule that a null
  * `affected` is unknown: it is never treated as 0 and never filtered as one.
  */
-export function filterIncidents(query: IncidentQuery, locale: Locale): Incident[] {
+export function filterIncidents(query: IncidentMatchQuery, locale: Locale): Incident[] {
   return incidents.filter((incident) => incidentMatches(incident, query, locale))
 }
 
@@ -99,28 +93,28 @@ export function localizeIncident(incident: Incident, locale: Locale) {
 
 export type LocalizedIncident = ReturnType<typeof localizeIncident>
 
-/** Compact row for agent tools — no long `detail` fields, `affected` still nullable. */
-export function toListedIncident(incident: LocalizedIncident) {
+/** Compact row — listed fields only, `affected` still nullable. */
+export function localizeListedIncident(incident: Incident, locale: Locale) {
   return {
     id: incident.id,
     date: incident.date,
     year: incident.year,
-    org: incident.org,
+    org: incident.org[locale],
     kind: incident.kind,
     sector: incident.sector,
-    sectorLabel: incident.sectorLabel,
+    sectorLabel: dataset.ui.sectorLabels?.[incident.sector]?.[locale] ?? incident.sector,
     severity: incident.severity,
     status: incident.status,
     affected: incident.affected,
-    affectedLabel: incident.affectedLabel,
-    method: incident.method,
+    affectedLabel: incident.affectedLabel[locale],
+    method: incident.method[locale],
     sourceName: incident.sourceName,
     sourceUrl: incident.sourceUrl,
-    url: incident.url,
+    url: locale === 'fr' ? `/fr/incident/${incident.id}` : `/incident/${incident.id}`,
   }
 }
 
-export type ListedIncident = ReturnType<typeof toListedIncident>
+export type ListedIncident = ReturnType<typeof localizeListedIncident>
 
 const csvColumns = [
   'id',

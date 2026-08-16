@@ -1,7 +1,8 @@
 import { createMcpHandler, McpServer, ResourceTemplate, completable, preloadSchemas } from '@modelcontextprotocol/server'
 import { z } from 'zod'
 import { apiConventions } from '~~/shared/utils/api-catalog'
-import { dataset, incidents, meta, toListedIncident } from '~~/server/utils/dataset'
+import { mcpPromptDocs, mcpResourceDocs, mcpToolDocs } from '~~/shared/utils/mcp-catalog'
+import { dataset, incidents, meta } from '~~/server/utils/dataset'
 import {
   knownIncidentIds,
   queryIncidentById,
@@ -34,7 +35,17 @@ function mcpError(text: string) {
   return { content: [{ type: 'text' as const, text }], isError: true as const }
 }
 
-const conventionsText = apiConventions.map((convention) => `## ${convention.title.en}\n\n${convention.body.en}`).join('\n\n')
+function conventionsMarkdown(lang: 'en' | 'fr') {
+  return apiConventions.map((convention) => `## ${convention.title[lang]}\n\n${convention.body[lang]}`).join('\n\n')
+}
+
+function toolDoc(name: string) {
+  return mcpToolDocs.find((entry) => entry.name === name)
+}
+
+const conventionsText = ['en', 'fr']
+  .map((lang) => `# ${lang === 'fr' ? 'Français' : 'English'}\n\n${conventionsMarkdown(lang as 'en' | 'fr')}`)
+  .join('\n\n')
 
 const instructions = [
   'France Cyberwatch is a curated public dossier of major publicly reported cyberattacks and data breaches affecting French public institutions and companies in 2025–2026, plus ANSSI and CNIL national figures.',
@@ -62,8 +73,8 @@ function createCyberwatchMcpServer() {
     'list_incidents',
     {
       title: 'List incidents',
-      description:
-        'Search and filter the curated incident list. Returns compact rows (no long detail fields). affected is null when unpublished — never 0. Unknown counts sort last when sort=affected.',
+      description: toolDoc('list_incidents')?.description.en
+        ?? 'Search and filter incidents. Returns compact rows; unknown affected stays null.',
       annotations: readOnly,
       inputSchema: z.object({
         q: z.string().optional().describe('Full-text across organisation, sector, method, data, risk, source and incident-page fields.'),
@@ -82,14 +93,13 @@ function createCyberwatchMcpServer() {
       }),
     },
     async (params) => {
-      const result = queryIncidents({
-        ...params,
-        year: params.year != null ? String(params.year) : undefined,
-      })
-      return mcpJson({
-        ...result,
-        incidents: result.incidents.map(toListedIncident),
-      })
+      return mcpJson(
+        queryIncidents({
+          ...params,
+          year: params.year != null ? String(params.year) : undefined,
+          compact: true,
+        }),
+      )
     },
   )
 
@@ -97,8 +107,8 @@ function createCyberwatchMcpServer() {
     'get_incident',
     {
       title: 'Get one incident',
-      description:
-        'One incident with localized detail (lead, timeline, how, taken, notTaken, impact, response, methodDisclosure, optional revision and quotes) plus lastResearched and every cited source.',
+      description: toolDoc('get_incident')?.description.en
+        ?? 'One incident with localized detail and every cited source.',
       annotations: readOnly,
       inputSchema: z.object({
         id: incidentIdSchema(),
@@ -118,8 +128,8 @@ function createCyberwatchMcpServer() {
     'get_summary',
     {
       title: 'Get summary statistics',
-      description:
-        'ANSSI and CNIL national figures, plus counts derived from this list. Aggregates never include unknown or disputed attacker claims.',
+      description: toolDoc('get_summary')?.description.en
+        ?? 'ANSSI and CNIL national figures, plus counts from this list.',
       annotations: readOnly,
       inputSchema: z.object({ lang: langSchema }),
     },
@@ -130,7 +140,8 @@ function createCyberwatchMcpServer() {
     'list_sources',
     {
       title: 'List sources',
-      description: 'Every source, with kind (primary | official | secondary), publisher, optional published date, and the incidents that cite it.',
+      description: toolDoc('list_sources')?.description.en
+        ?? 'Every source, with the incidents that cite it.',
       annotations: readOnly,
     },
     async () => mcpJson(querySources()),
@@ -140,7 +151,8 @@ function createCyberwatchMcpServer() {
     'list_patterns',
     {
       title: 'List repeating patterns',
-      description: 'Recurring weaknesses and the priority control for each.',
+      description: toolDoc('list_patterns')?.description.en
+        ?? 'Recurring weaknesses and the priority control for each.',
       annotations: readOnly,
       inputSchema: z.object({ lang: langSchema }),
     },
@@ -151,7 +163,8 @@ function createCyberwatchMcpServer() {
     'list_recommendations',
     {
       title: 'List recommendations',
-      description: 'Guidance for organisations and the public.',
+      description: toolDoc('list_recommendations')?.description.en
+        ?? 'Guidance for organisations and the public.',
       annotations: readOnly,
       inputSchema: z.object({
         audience: z.enum(['organizations', 'public']).optional(),
@@ -166,7 +179,8 @@ function createCyberwatchMcpServer() {
     'cyberwatch://conventions',
     {
       title: 'How to use the numbers',
-      description: 'Unknown is not zero. Disputed scope stays disputed. No inferred attribution.',
+      description: mcpResourceDocs.find((entry) => entry.name === 'cyberwatch://conventions')?.description.en
+        ?? 'Unknown is not zero. Disputed scope stays disputed. No inferred attribution.',
       mimeType: 'text/markdown',
     },
     async (uri) => ({
@@ -187,12 +201,22 @@ function createCyberwatchMcpServer() {
     }),
     {
       title: 'Incident record',
-      description: 'Full localized incident JSON, same payload as get_incident.',
+      description: mcpResourceDocs.find((entry) => entry.name === 'cyberwatch://incident/{id}')?.description.en
+        ?? 'Full localized incident JSON, same payload as get_incident.',
       mimeType: 'application/json',
     },
     async (uri, { id }) => {
-      const result = queryIncidentById(String(id), 'en')
-      if (!result) throw new Error(`Incident not found: ${id}`)
+      const lang = resolveLocale(uri instanceof URL ? uri.searchParams.get('lang') : undefined)
+      const result = queryIncidentById(String(id), lang)
+      if (!result) {
+        return {
+          contents: [{
+            uri: uri.href,
+            mimeType: 'text/plain',
+            text: `Incident not found: ${id}. Known ids: ${knownIncidentIds().join(', ')}`,
+          }],
+        }
+      }
       return { contents: [{ uri: uri.href, mimeType: 'application/json', text: JSON.stringify(result, null, 2) }] }
     },
   )
@@ -201,7 +225,8 @@ function createCyberwatchMcpServer() {
     'explain_incident',
     {
       title: 'Explain an incident',
-      description: 'Explain one record using only the dataset. Do not invent counts or attackers.',
+      description: mcpPromptDocs.find((entry) => entry.name === 'explain_incident')?.description.en
+        ?? 'Explain one record using only the dataset. Do not invent counts or attackers.',
       argsSchema: z.object({
         id: incidentIdSchema(),
         lang: z.enum(['en', 'fr']).optional().describe('Language for the explanation.'),
@@ -236,7 +261,8 @@ function createCyberwatchMcpServer() {
     'brief_the_dossier',
     {
       title: 'Brief the dossier',
-      description: 'A short briefing of the curated list, with the data rules stated first.',
+      description: mcpPromptDocs.find((entry) => entry.name === 'brief_the_dossier')?.description.en
+        ?? 'A short briefing of the curated list, with the data rules stated first.',
       argsSchema: z.object({
         lang: z.enum(['en', 'fr']).optional(),
       }),

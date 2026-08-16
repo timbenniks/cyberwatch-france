@@ -56,13 +56,21 @@ export function useCyberData() {
 
   const withoutPublishedCount = computed(() => incidents.value.filter((i) => i.affected === null))
 
-  const incidentComposition = computed(() => ({
-    government: incidents.value.filter((incident) => incident.kind === 'government').length,
-    company: incidents.value.filter((incident) => incident.kind === 'company').length,
-    published: incidents.value.filter((incident) => typeof incident.affected === 'number').length,
-    unknown: incidents.value.filter((incident) => incident.affected === null).length,
-    disputed: incidents.value.filter((incident) => incident.status === 'disputed').length,
-  }))
+  const incidentComposition = computed(() => {
+    let government = 0
+    let company = 0
+    let published = 0
+    let unknown = 0
+    let disputed = 0
+    for (const incident of incidents.value) {
+      if (incident.kind === 'government') government += 1
+      else company += 1
+      if (typeof incident.affected === 'number') published += 1
+      if (incident.affected === null) unknown += 1
+      if (incident.status === 'disputed') disputed += 1
+    }
+    return { government, company, published, unknown, disputed }
+  })
 
   const { locale } = useLocale()
   const sectorLabel = (sector: string) => data.value?.ui.sectorLabels?.[sector]?.[locale.value] ?? sector

@@ -6,7 +6,7 @@ const { absolute } = useSiteUrl()
 
 const headingRef = ref<HTMLElement | null>(null)
 const nextRef = ref<HTMLButtonElement | null>(null)
-const copied = ref(false)
+const { copied, announcement, copy } = useCopyFeedback()
 
 const phase = ref<'intro' | 'ask' | 'result'>('intro')
 const index = ref(0)
@@ -40,7 +40,6 @@ function start() {
   selectedId.value = null
   revealed.value = false
   answers.value = {}
-  copied.value = false
   trackPlausibleEvent('Start Quiz')
   nextTick(() => headingRef.value?.focus())
 }
@@ -76,14 +75,10 @@ function shareLinkedIn() {
 
 async function copyShare() {
   try {
-    await navigator.clipboard.writeText(`${shareText.value} ${shareUrl.value}`)
-    copied.value = true
+    await copy(`${shareText.value} ${shareUrl.value}`, t('quizShareCopied'))
     trackPlausibleEvent('Share Quiz', { network: 'copy', score: score.value })
-    window.setTimeout(() => {
-      copied.value = false
-    }, 2000)
   } catch {
-    copied.value = false
+    /* clipboard can fail in older browsers */
   }
 }
 
@@ -107,6 +102,7 @@ function onKeydown(event: KeyboardEvent, choiceId: string, choiceIndex: number) 
 
 <template>
   <div>
+    <span class="sr-only" aria-live="polite">{{ announcement }}</span>
     <section v-if="phase === 'intro'" class="max-w-[40rem]">
       <p class="eyebrow">{{ t('quizEyebrow') }}</p>
       <h1 class="mt-5 font-display text-[2rem] leading-[1.08] text-ink sm:text-[3.25rem]">{{ t('quizTitle') }}</h1>

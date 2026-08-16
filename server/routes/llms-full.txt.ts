@@ -1,67 +1,66 @@
-import { dataset, incidents, isLocale } from '~~/server/utils/dataset'
+import { dataset, incidents, localizeIncident, sourcesFor } from '~~/server/utils/dataset'
+import { resolveRequestContext } from '~~/server/utils/request-context'
+
+function incidentToMarkdown(
+  incident: (typeof incidents)[number],
+  lang: 'en' | 'fr',
+  base: string,
+  prefix: string,
+) {
+  const localized = localizeIncident(incident, lang)
+  const cited = sourcesFor(incident)
+  const { detail } = localized
+
+  return [
+    `## ${localized.org}`,
+    '',
+    `- Date: ${localized.date}`,
+    `- Type: ${localized.kind}`,
+    `- Sector: ${localized.sectorLabel}`,
+    `- Severity: ${localized.severity}`,
+    `- Evidence status: ${localized.status}`,
+    `- Method disclosure: ${detail.methodDisclosure}`,
+    `- People or records affected: ${
+      localized.affected === null
+        ? `unknown — ${localized.affectedLabel}`
+        : `${localized.affected} (${localized.affectedLabel})`
+    }`,
+    `- Last researched: ${localized.lastResearched}`,
+    `- Lead: ${detail.lead}`,
+    `- How it happened: ${detail.how}`,
+    `- What was exposed: ${detail.taken}`,
+    `- What was not in scope: ${detail.notTaken}`,
+    `- What it meant in practice: ${detail.impact}`,
+    `- Why it matters to the public: ${localized.risk}`,
+    `- What was done next: ${detail.response}`,
+    `- Evidence note: ${localized.confidence}`,
+    ...('attackerClaim' in detail && detail.attackerClaim
+      ? [`- Attacker claim (not a confirmed count): ${detail.attackerClaim}`]
+      : []),
+    ...('revision' in detail && detail.revision ? [`- What later reporting changed: ${detail.revision}`] : []),
+    ...('quotes' in detail && detail.quotes?.length
+      ? [
+          `- Quotes:`,
+          ...detail.quotes.map((quote) => `  - ${quote.text} — ${quote.attribution}`),
+        ]
+      : []),
+    ...(detail.timeline.length
+      ? [`- Dated facts:`, ...detail.timeline.map((entry) => `  - ${entry.date}: ${entry.label}`)]
+      : []),
+    `- Sources:`,
+    ...cited.map(
+      (source) =>
+        `  - [${source.kind}] ${source.publisher}${source.published ? `, ${source.published}` : ''} — ${source.name} — ${source.url}`,
+    ),
+    `- Page: ${base}${prefix}/incident/${localized.id}`,
+    `- API: ${base}/api/incidents/${localized.id}`,
+  ].join('\n')
+}
 
 /** Every record as markdown, so a model never has to scrape the rendered page. */
 export default defineEventHandler((event) => {
-  const base = (useRuntimeConfig().public.siteUrl || getRequestURL(event).origin).replace(/\/$/, '')
-  const lang = isLocale(getQuery(event).lang) ? (getQuery(event).lang as 'en' | 'fr') : 'en'
-  const prefix = lang === 'fr' ? '/fr' : ''
-
-  const records = incidents.map((incident) => {
-    const extraSources = incident.sourceIds
-      .map((id) => dataset.sources.find((source) => source.id === id))
-      .filter((source): source is NonNullable<typeof source> => Boolean(source))
-
-    return [
-      `## ${incident.org[lang]}`,
-      '',
-      `- Date: ${incident.date}`,
-      `- Type: ${incident.kind}`,
-      `- Sector: ${dataset.ui.sectorLabels[incident.sector]?.[lang] ?? incident.sector}`,
-      `- Severity: ${incident.severity}`,
-      `- Evidence status: ${incident.status}`,
-      `- Method disclosure: ${incident.detail.methodDisclosure}`,
-      `- People or records affected: ${
-        incident.affected === null
-          ? `unknown — ${incident.affectedLabel[lang]}`
-          : `${incident.affected} (${incident.affectedLabel[lang]})`
-      }`,
-      `- Last researched: ${incident.lastResearched}`,
-      `- Lead: ${incident.detail.lead[lang]}`,
-      `- How it happened: ${incident.detail.how[lang]}`,
-      `- What was exposed: ${incident.detail.taken[lang]}`,
-      `- What was not in scope: ${incident.detail.notTaken[lang]}`,
-      `- What it meant in practice: ${incident.detail.impact[lang]}`,
-      `- Why it matters to the public: ${incident.risk[lang]}`,
-      `- What was done next: ${incident.detail.response[lang]}`,
-      `- Evidence note: ${incident.confidence[lang]}`,
-      ...(incident.detail.attackerClaim
-        ? [`- Attacker claim (not a confirmed count): ${incident.detail.attackerClaim[lang]}`]
-        : []),
-      ...(incident.detail.revision ? [`- What later reporting changed: ${incident.detail.revision[lang]}`] : []),
-      ...(incident.detail.quotes?.length
-        ? [
-            `- Quotes:`,
-            ...incident.detail.quotes.map((quote) => {
-              const text = lang === quote.originalLang ? quote.original : quote.translation
-              return `  - ${text} — ${quote.attribution[lang]}`
-            }),
-          ]
-        : []),
-      ...(incident.detail.timeline.length
-        ? [
-            `- Dated facts:`,
-            ...incident.detail.timeline.map((entry) => `  - ${entry.date}: ${entry.label[lang]}`),
-          ]
-        : []),
-      `- Sources:`,
-      ...extraSources.map(
-        (source) =>
-          `  - [${source.kind}] ${source.publisher}${source.published ? `, ${source.published}` : ''} — ${source.name} — ${source.url}`,
-      ),
-      `- Page: ${base}${prefix}/incident/${incident.id}`,
-      `- API: ${base}/api/incidents/${incident.id}`,
-    ].join('\n')
-  })
+  const { base, lang, prefix } = resolveRequestContext(event)
+  const records = incidents.map((incident) => incidentToMarkdown(incident, lang, base, prefix))
 
   setHeader(event, 'content-type', 'text/plain; charset=utf-8')
   setHeader(event, 'cache-control', 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400')

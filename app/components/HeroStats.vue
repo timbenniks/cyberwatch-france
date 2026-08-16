@@ -1,25 +1,20 @@
 <script setup lang="ts">
 import { ArrowUpRight, Info } from '@lucide/vue'
-import type { Incident } from '~/types/cyberwatch'
 
-const emit = defineEmits<{ select: [Incident]; methodology: [] }>()
+const emit = defineEmits<{ methodology: [] }>()
 
 const { data, incidents } = useCyberData()
 const { locale, t, L, localePath } = useLocale()
 
 const reviewed = computed(() => (data.value ? formatDate(data.value.project.reviewedThrough, locale.value) : ''))
 const latest = computed(() => incidents.value[0] ?? null)
-
-function open(incident: Incident) {
-  emit('select', incident)
-}
 </script>
 
 <template>
   <section class="relative">
     <div class="grid items-start gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)] lg:gap-16">
       <div>
-        <p class="eyebrow">{{ t('heroEyebrow') }} · 2025—2026</p>
+        <p class="eyebrow">{{ t('heroEyebrow') }} · {{ t('brandYears') }}</p>
         <h1 class="mt-5 max-w-[22ch] font-display text-[1.875rem] leading-[1.08] text-ink sm:text-[3.25rem] lg:text-[3.5rem]">
           {{ t('heroTitle') }}
         </h1>
@@ -50,11 +45,11 @@ function open(incident: Incident) {
 
       <aside v-if="latest" class="lg:pt-2" :aria-label="t('heroLatest')">
         <p class="eyebrow mb-3">{{ t('heroLatest') }}</p>
-        <button
-          type="button"
-          class="group card w-full border-l-2 border-l-amber p-5 text-left transition-colors hover:border-hairline-strong hover:bg-surface-2 sm:p-6"
+        <NuxtLink
+          :to="localePath(`/incident/${latest.id}`)"
+          class="group card block w-full border-l-2 border-l-amber p-5 text-left transition-colors hover:border-hairline-strong hover:bg-surface-2 sm:p-6"
           :aria-label="`${L(latest.org)} — ${t('openRecord')}`"
-          @click="open(latest)"
+          @click="trackPlausibleEvent('Open Incident', { id: latest.id })"
         >
           <div class="flex items-start gap-3.5">
             <OrgLogo :org="L(latest.org)" :incident="latest" :size="44" />
@@ -80,7 +75,7 @@ function open(incident: Incident) {
             {{ t('openRecord') }}
             <ArrowUpRight :size="14" aria-hidden="true" />
           </p>
-        </button>
+        </NuxtLink>
 
         <NuxtLink
           :to="localePath('/incidents')"

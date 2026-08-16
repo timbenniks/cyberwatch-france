@@ -1,17 +1,10 @@
 import { getHeader, getMethod, getRequestURL, getRequestWebStream, readRawBody, sendRedirect, sendWebResponse } from 'h3'
+import { MCP_CORS_HEADERS } from '~~/server/utils/mcp-cors'
 import { cyberwatchMcpHandler } from '~~/server/utils/mcp-handler'
-
-const MCP_CORS = {
-  'access-control-allow-origin': '*',
-  'access-control-allow-methods': 'GET, POST, DELETE, OPTIONS',
-  'access-control-allow-headers':
-    'Accept, Content-Type, MCP-Protocol-Version, MCP-Session-Id, Last-Event-ID, Mcp-Method, Mcp-Name',
-  'access-control-expose-headers': 'MCP-Session-Id, MCP-Protocol-Version',
-}
 
 function withMcpCors(response: Response): Response {
   const headers = new Headers(response.headers)
-  for (const [name, value] of Object.entries(MCP_CORS)) {
+  for (const [name, value] of Object.entries(MCP_CORS_HEADERS)) {
     if (!headers.has(name)) headers.set(name, value)
   }
   headers.set('cache-control', 'no-store')
@@ -27,6 +20,7 @@ async function toMcpRequest(event: Parameters<typeof readRawBody>[0]): Promise<R
   }
   const stream = getRequestWebStream(event)
   if (stream) {
+    // duplex is required for a streaming Fetch body in Node / Vercel.
     return new Request(url, { method, headers, body: stream, duplex: 'half' } as RequestInit)
   }
   const raw = await readRawBody(event, false)

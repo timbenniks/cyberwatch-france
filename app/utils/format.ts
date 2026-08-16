@@ -1,4 +1,4 @@
-import type { Incident, Locale } from '~/types/cyberwatch'
+import type { Incident, IncidentKind, Locale } from '~/types/cyberwatch'
 
 const localeTag: Record<Locale, string> = { en: 'en-GB', fr: 'fr-FR' }
 
@@ -42,6 +42,10 @@ export function formatMonth(iso: string, locale: Locale): string {
  */
 export function formatAffected(incident: Incident, locale: Locale): string {
   return incident.affected === null ? incident.affectedLabel[locale] : formatNumber(incident.affected, locale)
+}
+
+export function kindLabelKey(kind: IncidentKind): 'government' | 'company' {
+  return kind === 'government' ? 'government' : 'company'
 }
 
 export function monthKey(iso: string): string {

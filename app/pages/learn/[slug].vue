@@ -4,8 +4,8 @@ await Promise.all([loadExplainers(), loadPodcastSlugs()])
 const route = useRoute()
 const { locale, t, L, localePath } = useLocale()
 const { explainers, bySlug, relatedIncidents } = useExplainers()
-const { absolute } = useSiteUrl()
 const { data: podcastSlugs } = useNuxtData<string[]>('explainer-podcast-slugs')
+const { articleForExplainer } = useStructuredData()
 
 const slug = computed(() => {
   const value = route.params.slug
@@ -20,29 +20,7 @@ const { title } = usePageSeo({
   title: () => (explainer.value ? `${L(explainer.value.title)} · ${t('brand')}` : t('brand')),
   description: () => (explainer.value ? L(explainer.value.dek) : t('learnLead')),
   ogType: 'article',
-  jsonLd: () =>
-    explainer.value
-      ? {
-          '@context': 'https://schema.org',
-          '@type': 'Article',
-          headline: L(explainer.value.title),
-          description: L(explainer.value.dek),
-          inLanguage: locale.value,
-          url: absolute(route.path),
-          isPartOf: { '@type': 'WebSite', name: t('brand'), url: absolute('/') },
-          ...(hasPodcast.value
-            ? {
-                audio: {
-                  '@type': 'AudioObject',
-                  name: L(explainer.value.title),
-                  contentUrl: absolute(explainerPodcastSrc(explainer.value.slug, locale.value)),
-                  encodingFormat: 'audio/mp4',
-                  inLanguage: locale.value,
-                },
-              }
-            : {}),
-        }
-      : null,
+  jsonLd: () => (explainer.value ? articleForExplainer(explainer.value, hasPodcast.value) : null),
 })
 
 defineOgImage(
@@ -69,7 +47,7 @@ watch(
 </script>
 
 <template>
-  <main v-if="explainer" id="content" class="relative z-10 mx-auto max-w-[1400px] px-4 pb-24 pt-10 sm:px-6 sm:pt-16 lg:px-10 lg:pt-20">
+  <PageMain v-if="explainer">
     <p class="max-w-[62ch]">
       <NuxtLink :to="localePath('/learn')" class="link-underline text-sm text-muted hover:text-amber">
         {{ t('learnBack') }}
@@ -172,5 +150,5 @@ watch(
         </section>
       </aside>
     </div>
-  </main>
+  </PageMain>
 </template>

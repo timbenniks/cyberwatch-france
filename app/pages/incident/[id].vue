@@ -60,8 +60,8 @@ watch(
 <template>
   <div>
     <p v-if="!data" class="mx-auto max-w-[52ch] py-32 text-center text-ink-2" role="alert">{{ t('loadError') }}</p>
-    <main v-else-if="incident" id="content" class="relative z-10 mx-auto max-w-[1400px] px-4 pb-24 pt-10 sm:px-6 sm:pt-14 lg:px-10 lg:pt-16">
+    <PageMain v-else-if="incident" compact>
       <IncidentDetail :key="incident.id" :incident="incident" />
-    </main>
+    </PageMain>
   </div>
 </template>

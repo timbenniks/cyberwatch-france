@@ -8,16 +8,22 @@ import {
   localizeIncident,
   meta,
   sourcesFor,
-  type IncidentQuery,
+  hasPublishedCount,
+  localizeListedIncident,
+  type ListedIncident,
   type LocalizedIncident,
 } from '~~/server/utils/dataset'
 
-export interface ListIncidentsQuery extends IncidentQuery {
+const SORTS = new Set(['date', 'affected', 'org'])
+const ORDERS = new Set(['desc', 'asc'])
+
+export interface ListIncidentsQuery extends IncidentMatchQuery {
   lang?: string
   sort?: string
   order?: string
   limit?: string | number
   offset?: string | number
+  compact?: boolean
 }
 
 export function resolveLocale(value: unknown): Locale {
@@ -40,7 +46,22 @@ function sortIncidents(matched: typeof incidents, sort: string, descending: bool
   })
 }
 
+type IncidentListResult<T> = {
+  meta: typeof meta & {
+    lang: Locale
+    total: number
+    returned: number
+    offset: number
+    limit: number
+    withoutPublishedCount: number
+  }
+  incidents: T[]
+}
+
 /** Same payload as GET /api/incidents (JSON). */
+export function queryIncidents(query: ListIncidentsQuery & { compact: true }): IncidentListResult<ListedIncident>
+export function queryIncidents(query: ListIncidentsQuery & { compact?: false }): IncidentListResult<LocalizedIncident>
+export function queryIncidents(query: ListIncidentsQuery): IncidentListResult<LocalizedIncident | ListedIncident>
 export function queryIncidents(query: ListIncidentsQuery) {
   const lang = resolveLocale(query.lang)
   const matched = filterIncidents(
@@ -57,13 +78,16 @@ export function queryIncidents(query: ListIncidentsQuery) {
     lang,
   )
 
-  const sort = query.sort ?? 'date'
-  const descending = (query.order ?? 'desc') !== 'asc'
+  const sort = SORTS.has(String(query.sort)) ? String(query.sort) : 'date'
+  const descending = !ORDERS.has(String(query.order)) || query.order !== 'asc'
   const sorted = sortIncidents(matched, sort, descending, lang)
 
   const offset = Math.max(0, Number(query.offset ?? 0) || 0)
   const limit = Math.min(200, Math.max(1, Number(query.limit ?? 100) || 100))
-  const page: LocalizedIncident[] = sorted.slice(offset, offset + limit).map((incident) => localizeIncident(incident, lang))
+  const slice = sorted.slice(offset, offset + limit)
+  const page = query.compact
+    ? slice.map((incident) => localizeListedIncident(incident, lang))
+    : slice.map((incident) => localizeIncident(incident, lang))
 
   return {
     meta: {
@@ -102,10 +126,7 @@ export function querySummary(lang: Locale) {
   const tally = <T extends string | number>(values: T[]) =>
     values.reduce<Record<string, number>>((acc, value) => ({ ...acc, [value]: (acc[String(value)] ?? 0) + 1 }), {})
 
-  const published = incidents.filter(
-    (incident): incident is (typeof incidents)[number] & { affected: number } =>
-      incident.status === 'confirmed' && typeof incident.affected === 'number',
-  )
+  const published = incidents.filter(hasPublishedCount)
 
   const largest = published.reduce<(typeof published)[number] | null>(
     (max, incident) => (!max || incident.affected > max.affected ? incident : max),

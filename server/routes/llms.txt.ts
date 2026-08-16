@@ -1,6 +1,7 @@
-import { dataset, incidents, isLocale } from '~~/server/utils/dataset'
+import { dataset, hasPublishedCount, incidents } from '~~/server/utils/dataset'
 import { explainers } from '~~/server/utils/explainers'
-import { quizQuestions } from '~~/app/utils/quiz'
+import { resolveRequestContext } from '~~/server/utils/request-context'
+import { quizQuestionCount } from '~~/shared/utils/quiz-meta'
 
 /**
  * https://llmstxt.org convention: a compact, link-first briefing an LLM can
@@ -12,11 +13,9 @@ import { quizQuestions } from '~~/app/utils/quiz'
  * in the same file as the links.
  */
 export default defineEventHandler((event) => {
-  const base = (useRuntimeConfig().public.siteUrl || getRequestURL(event).origin).replace(/\/$/, '')
-  const lang = isLocale(getQuery(event).lang) ? (getQuery(event).lang as 'en' | 'fr') : 'en'
-  const prefix = lang === 'fr' ? '/fr' : ''
+  const { base, lang, prefix } = resolveRequestContext(event)
 
-  const published = incidents.filter((incident) => typeof incident.affected === 'number')
+  const published = incidents.filter(hasPublishedCount)
   const unknown = incidents.filter((incident) => incident.affected === null)
   const disputed = incidents.filter((incident) => incident.status === 'disputed')
 
@@ -52,8 +51,8 @@ Methodology: ${dataset.project.methodology[lang]}
 - [Patterns](${base}/api/patterns) and [recommendations](${base}/api/recommendations): the recurring weaknesses, and guidance for organisations and the public.
 - [Raw dataset](${base}/data/france-cyberwatch-data.json): the complete file this site is built from.
 - [Public explainers](${base}${prefix}/learn): bilingual guides on what leaked data is used for. Incident facts still live only in the dataset; these pages link to records by id.
-- [Leak-awareness quiz](${base}${prefix}/learn/quiz): ${quizQuestions.length} questions from those guides. Educational copy only; no unpublished incident figures.
-- [Full text for LLMs](${base}/llms-full.txt): every record as markdown.
+- [Leak-awareness quiz](${base}${prefix}/learn/quiz): ${quizQuestionCount} questions from those guides. Educational copy only; no unpublished incident figures.
+- [Full text for LLMs](${base}/llms-full.txt): every record as markdown. Add \`?lang=fr\` to this file, llms-full.txt, and feed.xml for French.
 
 ## Pages
 

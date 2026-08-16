@@ -13,10 +13,12 @@ defineProps<{
 
 const { t } = useLocale()
 const inspect = useCoarsePointer()
+const narrow = useNarrowViewport()
 const tableOpen = ref(false)
+const tableId = useId()
 
 onMounted(() => {
-  if (window.matchMedia('(max-width: 639px)').matches) tableOpen.value = true
+  if (narrow.value) tableOpen.value = true
 })
 
 function toggleTable() {
@@ -51,6 +53,7 @@ function toggleTable() {
         type="button"
         class="inline-flex items-center gap-1.5 text-[0.8125rem] text-ink-2 transition-colors hover:text-amber"
         :aria-expanded="tableOpen"
+        :aria-controls="tableId"
         @click="toggleTable"
       >
         <ChevronDown :size="14" class="transition-transform" :class="tableOpen ? 'rotate-180' : ''" />
@@ -70,7 +73,7 @@ function toggleTable() {
       </a>
     </div>
 
-    <div v-if="tableOpen" class="mt-3 overflow-x-auto">
+    <div v-if="tableOpen" :id="tableId" class="mt-3 overflow-x-auto">
       <slot name="table" />
     </div>
   </figure>

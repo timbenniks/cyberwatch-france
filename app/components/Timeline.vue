@@ -2,16 +2,20 @@
 import { SlidersHorizontal, X } from '@lucide/vue'
 import type { Incident } from '~/types/cyberwatch'
 
-const emit = defineEmits<{ open: [Incident] }>()
 
 const { filtered, activeCount, reset, isFiltered } = useFilters()
 const { locale, t } = useLocale()
-const { incidentComposition } = useCyberData()
 
 const drawerOpen = ref(false)
 const drawer = ref<HTMLElement | null>(null)
+const filterButton = ref<HTMLButtonElement | null>(null)
 useScrollLock(drawerOpen)
-useFocusTrap(drawer, () => (drawerOpen.value = false), drawerOpen)
+useFocusTrap(drawer, closeDrawer, drawerOpen)
+
+function closeDrawer() {
+  drawerOpen.value = false
+  nextTick(() => filterButton.value?.focus())
+}
 
 watch(drawerOpen, async (open) => {
   if (!open) return
@@ -45,19 +49,7 @@ const groups = computed(() => {
       <p class="eyebrow">{{ t('navIncidents') }}</p>
       <h1 class="mt-3 font-display text-3xl leading-tight text-ink sm:text-[2.5rem]">{{ t('timelineTitle') }}</h1>
       <p class="mt-4 text-base leading-relaxed text-ink-2">{{ t('timelineLead') }}</p>
-      <p class="mt-4 text-[0.9375rem] leading-relaxed text-ink-2">
-        {{
-          t('listMix', {
-            gov: incidentComposition.government,
-            co: incidentComposition.company,
-            published: incidentComposition.published,
-            unknown: incidentComposition.unknown,
-          })
-        }}
-        <template v-if="incidentComposition.disputed">
-          {{ ' ' + t('listMixDisputed', { n: incidentComposition.disputed }) }}
-        </template>
-      </p>
+      <IncidentCompositionNote />
     </header>
 
     <EvidenceLegend class="mb-10" />
@@ -73,8 +65,11 @@ const groups = computed(() => {
       <!-- Mobile filter trigger -->
       <div class="no-print flex items-center justify-between gap-3 lg:hidden">
         <button
+          ref="filterButton"
           type="button"
           class="inline-flex min-h-11 items-center gap-2 rounded border border-hairline px-3.5 py-2.5 text-sm text-ink"
+          :aria-expanded="drawerOpen"
+          aria-controls="timeline-filters"
           @click="drawerOpen = true"
         >
           <SlidersHorizontal :size="15" aria-hidden="true" />
@@ -103,7 +98,11 @@ const groups = computed(() => {
           </button>
         </div>
 
-        <div v-for="group in groups" :key="group.year" class="mb-2">
+        <div
+          v-for="group in groups"
+          :key="group.year"
+          class="mb-2 [content-visibility:auto] [contain-intrinsic-size:auto_480px]"
+        >
           <div class="sticky top-14 z-10 -mx-1 bg-bg/90 px-1 py-3 backdrop-blur-sm sm:top-16">
             <div class="flex items-baseline gap-4">
               <span class="font-display text-2xl font-light text-ink tabular">{{ group.year }}</span>
@@ -132,13 +131,14 @@ const groups = computed(() => {
                     :style="{ backgroundColor: `var(--color-sev-${incident.severity})` }"
                     aria-hidden="true"
                   />
-                  <IncidentCard :incident="incident" @open="emit('open', $event)" />
+                  <IncidentCard :incident="incident" />
                 </li>
               </ul>
             </div>
           </div>
         </div>
 
+        <!-- Repeated at the end so a long scroll still has the stamp key in view. -->
         <EvidenceLegend class="mt-12" />
       </div>
     </div>
@@ -146,8 +146,9 @@ const groups = computed(() => {
     <!-- Mobile filter drawer -->
     <Teleport to="body">
       <div v-if="drawerOpen" class="no-print fixed inset-0 z-50 lg:hidden">
-        <div class="absolute inset-0 bg-bg/80 backdrop-blur-sm" @click="drawerOpen = false" />
+        <div class="absolute inset-0 bg-bg/80 backdrop-blur-sm" @click="closeDrawer" />
         <div
+          id="timeline-filters"
           ref="drawer"
           class="absolute inset-x-0 bottom-0 max-h-[85vh] overflow-y-auto rounded-t-lg border-t border-hairline-strong bg-surface-1 p-5 pb-[max(1.25rem,env(safe-area-inset-bottom))]"
           role="dialog"
@@ -160,7 +161,7 @@ const groups = computed(() => {
               type="button"
               class="rounded border border-hairline p-2 text-ink-2"
               :aria-label="t('close')"
-              @click="drawerOpen = false"
+              @click="closeDrawer"
             >
               <X :size="16" />
             </button>

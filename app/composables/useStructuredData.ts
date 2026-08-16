@@ -1,4 +1,5 @@
 import type { Incident } from '~/types/cyberwatch'
+import { quizQuestionCount } from '~~/shared/utils/quiz-meta'
 
 /**
  * Schema.org graphs for the dossier.
@@ -142,5 +143,46 @@ export function useStructuredData() {
     return { '@context': 'https://schema.org', '@graph': nodes }
   }
 
-  return { graphFor, datasetId }
+  function articleForExplainer(explainer: {
+    slug: string
+    title: { en: string; fr: string }
+    dek: { en: string; fr: string }
+  }, hasPodcast: boolean) {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: L(explainer.title),
+      description: L(explainer.dek),
+      inLanguage: locale.value,
+      url: absolute(localePath(`/learn/${explainer.slug}`)),
+      isPartOf: { '@type': 'WebSite', name: t('brand'), url: absolute('/') },
+      ...(hasPodcast
+        ? {
+            audio: {
+              '@type': 'AudioObject',
+              name: L(explainer.title),
+              contentUrl: absolute(explainerPodcastSrc(explainer.slug, locale.value)),
+              encodingFormat: 'audio/mp4',
+              inLanguage: locale.value,
+            },
+          }
+        : {}),
+    }
+  }
+
+  function quizGraph() {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'Quiz',
+      name: t('quizTitle'),
+      description: t('quizLead'),
+      inLanguage: locale.value,
+      url: absolute(localePath(quizPath)),
+      educationalLevel: 'beginner',
+      numberOfQuestions: quizQuestionCount,
+      isPartOf: { '@type': 'WebSite', name: t('brand'), url: absolute('/') },
+    }
+  }
+
+  return { graphFor, datasetId, articleForExplainer, quizGraph }
 }

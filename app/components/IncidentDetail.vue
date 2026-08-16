@@ -1,29 +1,12 @@
 <script setup lang="ts">
-import {
-  ArrowLeft,
-  Building2,
-  Check,
-  ChevronLeft,
-  ChevronRight,
-  ExternalLink,
-  Landmark,
-  Link2,
-  Printer,
-  TriangleAlert,
-} from '@lucide/vue'
-import type { Incident, IncidentQuote, MethodDisclosure, SourceKind } from '~/types/cyberwatch'
+import { ArrowLeft, Building2, Landmark, TriangleAlert } from '@lucide/vue'
+import type { Incident, IncidentQuote } from '~/types/cyberwatch'
 
 const props = defineProps<{ incident: Incident }>()
 
 const { locale, t, L, localePath } = useLocale()
-const { absolute } = useSiteUrl()
-const { sectorLabel, sourceById } = useCyberData()
-const { previous, next, step } = useIncidentRoute()
+const { sectorLabel } = useCyberData()
 
-const copied = ref(false)
-const affected = computed(() => formatAffected(props.incident, locale.value))
-const isUnknownCount = computed(() => props.incident.affected === null)
-const shareUrl = computed(() => absolute(localePath(`/incident/${props.incident.id}`)))
 const detail = computed(() => props.incident.detail)
 
 const terms = computed(() =>
@@ -43,30 +26,6 @@ const terms = computed(() =>
   ),
 )
 
-const citedSources = computed(() =>
-  (props.incident.sourceIds ?? [props.incident.sourceId])
-    .map((id) => sourceById.value.get(id))
-    .filter((source): source is NonNullable<typeof source> => Boolean(source)),
-)
-
-const disclosureLabel: Record<MethodDisclosure, 'methodDisclosed' | 'methodPartial' | 'methodUndisclosed'> = {
-  disclosed: 'methodDisclosed',
-  partial: 'methodPartial',
-  undisclosed: 'methodUndisclosed',
-}
-
-const disclosureStamp: Record<MethodDisclosure, string> = {
-  disclosed: 'stamp stamp-confirmed',
-  partial: 'stamp stamp-disputed',
-  undisclosed: 'stamp stamp-unknown',
-}
-
-const kindLabel: Record<SourceKind, 'sourceKindPrimary' | 'sourceKindOfficial' | 'sourceKindSecondary'> = {
-  primary: 'sourceKindPrimary',
-  official: 'sourceKindOfficial',
-  secondary: 'sourceKindSecondary',
-}
-
 function quoteMain(quote: IncidentQuote): string {
   return locale.value === quote.originalLang ? quote.original : quote.translation
 }
@@ -75,19 +34,6 @@ function quoteOriginal(quote: IncidentQuote): string | null {
   return locale.value === quote.originalLang ? null : quote.original
 }
 
-function printRecord() {
-  window.print()
-}
-
-async function copyLink() {
-  try {
-    await navigator.clipboard.writeText(shareUrl.value)
-    copied.value = true
-    window.setTimeout(() => (copied.value = false), 2000)
-  } catch {
-    copied.value = false
-  }
-}
 </script>
 
 <template>
@@ -116,7 +62,7 @@ async function copyLink() {
             </h1>
             <p class="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.8125rem] text-ink-2">
               <component :is="incident.kind === 'government' ? Landmark : Building2" :size="13" aria-hidden="true" />
-              {{ t(incident.kind === 'government' ? 'government' : 'company') }}
+              {{ t(kindLabelKey(incident.kind)) }}
               <span class="text-hairline-strong" aria-hidden="true">/</span>
               {{ sectorLabel(incident.sector) }}
             </p>
@@ -280,112 +226,9 @@ async function copyLink() {
         </section>
       </div>
 
-      <aside class="lg:sticky lg:top-24">
-        <div class="rounded border border-hairline bg-surface-1 p-5 sm:p-6">
-          <p class="eyebrow mb-2">{{ t('affected') }}</p>
-          <p
-            class="font-display leading-snug"
-            :class="isUnknownCount ? 'text-lg italic text-ink-2' : 'text-3xl text-ink tabular'"
-          >
-            {{ affected }}
-          </p>
-          <p v-if="!isUnknownCount" class="mt-2 text-sm leading-relaxed text-muted">
-            {{ L(incident.affectedLabel) }}
-          </p>
-        </div>
-
-        <div class="mt-4 rounded border border-hairline bg-surface-1 p-5 sm:p-6">
-          <p class="eyebrow mb-3">{{ t('methodDisclosure') }}</p>
-          <span :class="disclosureStamp[detail.methodDisclosure]">
-            {{ t(disclosureLabel[detail.methodDisclosure]) }}
-          </span>
-        </div>
-
-        <div class="mt-4 rounded border border-hairline bg-surface-1 p-5 sm:p-6">
-          <p class="eyebrow mb-2.5">{{ t('confidence') }}</p>
-          <p class="text-[0.875rem] leading-relaxed text-ink-2">{{ L(incident.confidence) }}</p>
-        </div>
-
-        <section class="mt-4 rounded border border-hairline bg-surface-1 p-5 sm:p-6">
-          <h2 class="eyebrow mb-3">{{ t('citedSources') }}</h2>
-          <ul class="space-y-4">
-            <li v-for="source in citedSources" :key="source.id">
-              <p class="mb-1">
-                <span
-                  class="rounded-[2px] border px-1.5 py-0.5 font-mono text-[0.625rem] uppercase tracking-widest"
-                  :class="source.kind === 'secondary' ? 'border-hairline-strong text-muted' : 'border-teal/50 text-teal'"
-                >
-                  {{ t(kindLabel[source.kind]) }}
-                </span>
-              </p>
-              <a
-                :href="source.url"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="link-underline inline-flex items-start gap-2 text-[0.8125rem] leading-relaxed text-ink hover:text-amber"
-              >
-                {{ source.name }}
-                <ExternalLink :size="13" class="mt-0.5 shrink-0" aria-hidden="true" />
-                <span class="sr-only">({{ t('opensNewTab') }})</span>
-              </a>
-              <p class="mt-1 text-[0.75rem] text-muted">
-                {{ source.publisher }}
-                <template v-if="source.published">
-                  <span aria-hidden="true"> · </span>
-                  <time :datetime="source.published">{{ formatDate(source.published, locale) }}</time>
-                </template>
-              </p>
-            </li>
-          </ul>
-        </section>
-
-        <p class="mt-4 px-1 text-[0.75rem] leading-relaxed text-muted">
-          {{ t('lastResearched') }}
-          <time class="tabular" :datetime="incident.lastResearched">{{ formatDate(incident.lastResearched, locale) }}</time>
-        </p>
-
-        <div class="no-print mt-4 flex flex-wrap gap-2">
-          <button
-            type="button"
-            class="inline-flex h-11 flex-1 items-center justify-center gap-2 rounded border border-hairline px-3.5 text-[0.8125rem] text-ink-2 transition-colors hover:border-hairline-strong hover:text-ink sm:h-9"
-            @click="copyLink(); trackPlausibleEvent('Copy Link', { id: incident.id })"
-          >
-            <component :is="copied ? Check : Link2" :size="14" aria-hidden="true" />
-            {{ copied ? t('linkCopied') : t('copyLink') }}
-          </button>
-          <button
-            type="button"
-            class="inline-flex h-11 flex-1 items-center justify-center gap-2 rounded border border-hairline px-3.5 text-[0.8125rem] text-ink-2 transition-colors hover:border-hairline-strong hover:text-ink sm:h-9"
-            @click="printRecord(); trackPlausibleEvent('Print Incident', { id: incident.id })"
-          >
-            <Printer :size="14" aria-hidden="true" />
-            {{ t('print') }}
-          </button>
-        </div>
-      </aside>
+      <IncidentDetailSidebar :incident="incident" />
     </div>
 
-    <div class="no-print mt-14 flex flex-wrap items-center gap-2 border-t border-hairline pt-6">
-      <button
-        type="button"
-        class="inline-flex h-11 items-center gap-2 rounded border border-hairline px-3.5 text-[0.8125rem] text-ink-2 transition-colors hover:border-hairline-strong hover:text-ink sm:h-9"
-        :disabled="!previous"
-        :aria-label="t('previousIncident')"
-        @click="step(-1)"
-      >
-        <ChevronLeft :size="15" />
-        <span class="hidden sm:inline">{{ previous ? L(previous.org) : t('previousIncident') }}</span>
-      </button>
-      <button
-        type="button"
-        class="inline-flex h-11 items-center gap-2 rounded border border-hairline px-3.5 text-[0.8125rem] text-ink-2 transition-colors hover:border-hairline-strong hover:text-ink sm:h-9"
-        :disabled="!next"
-        :aria-label="t('nextIncident')"
-        @click="step(1)"
-      >
-        <span class="hidden sm:inline">{{ next ? L(next.org) : t('nextIncident') }}</span>
-        <ChevronRight :size="15" />
-      </button>
-    </div>
+    <IncidentDetailNav />
   </article>
 </template>

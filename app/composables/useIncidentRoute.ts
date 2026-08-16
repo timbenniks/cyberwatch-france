@@ -27,10 +27,6 @@ export function useIncidentRoute() {
     trackPlausibleEvent('Open Incident', { id: incident.id })
     return navigateTo(localePath(`/incident/${incident.id}`))
   }
-  const close = () => {
-    trackPlausibleEvent('Close Incident')
-    return navigateTo(localePath('/incidents'))
-  }
 
   function step(delta: number) {
     const next = navigable.value[selectedIndex.value + delta]
@@ -40,8 +36,6 @@ export function useIncidentRoute() {
   return {
     selected,
     navigable,
-    hasPrevious: computed(() => selectedIndex.value > 0),
-    hasNext: computed(() => selectedIndex.value > -1 && selectedIndex.value < navigable.value.length - 1),
     previous: computed(() => (selectedIndex.value > 0 ? navigable.value[selectedIndex.value - 1] : undefined)),
     next: computed(() =>
       selectedIndex.value > -1 && selectedIndex.value < navigable.value.length - 1
@@ -49,7 +43,6 @@ export function useIncidentRoute() {
         : undefined,
     ),
     open,
-    close,
     step,
   }
 }

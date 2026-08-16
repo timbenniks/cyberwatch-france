@@ -1,5 +1,7 @@
 import type { Bilingual } from '~/types/cyberwatch'
 
+import { quizQuestionCount } from '~~/shared/utils/quiz-meta'
+
 export const quizPath = '/learn/quiz'
 
 /** Shareable pass mark. 13 of 16 is 81%; 12 of 16 is 75%. */
@@ -791,6 +793,10 @@ export const quizQuestions: QuizQuestion[] = [
     ],
   },
 ]
+
+if (quizQuestions.length !== quizQuestionCount) {
+  throw new Error(`quizQuestionCount is ${quizQuestionCount} but quizQuestions has ${quizQuestions.length}`)
+}
 
 export function quizChoiceLetter(index: number): string {
   return String.fromCharCode(65 + index)

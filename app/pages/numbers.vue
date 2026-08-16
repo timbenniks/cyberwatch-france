@@ -3,9 +3,9 @@ import type { IncidentKind, Severity } from '~/types/cyberwatch'
 
 const { applyOnly } = useFilters()
 const { open } = useIncidentRoute()
-const { data, incidents, largestConfirmedAffected, withoutPublishedCount, incidentComposition } = useCyberData()
-const chartRules = computed(() => Object.entries(data.value?.ui.chartRules ?? {}))
+const { data, largestConfirmedAffected, withoutPublishedCount } = useCyberData()
 const { locale, t, L, localePath } = useLocale()
+useFilterQuery()
 
 const anssi = computed(() => data.value?.summaryStats.anssi2025)
 const cnil = computed(() => data.value?.summaryStats.cnil2025)
@@ -15,23 +15,17 @@ const { title } = usePageSeo({
   description: () => t('chartsLead', { n: withoutPublishedCount.value.length }),
 })
 
-defineOgImage(
-  'OgDossier',
-  {
-    eyebrow: t('navNumbers'),
-    years: t('brandYears'),
-    incidentCount: incidents.value.length,
-    incidentLabel: t('incidentsCount'),
-    anssiEvents: data.value
-      ? formatNumber(data.value.summaryStats.anssi2025.securityEventsHandled, locale.value)
-      : '',
-    anssiLabel: t('statAnssiEvents'),
-    reviewedLabel: t('reviewedThrough'),
-    reviewedThrough: data.value ? formatDate(data.value.project.reviewedThrough, locale.value) : '',
-    severities: incidents.value.map((item) => item.severity).join(','),
-  },
-  { alt: title },
-)
+useDossierOgImage({
+  eyebrow: t('navNumbers'),
+  incidentLabel: t('incidentsCount'),
+  anssiEvents: data.value
+    ? formatNumber(data.value.summaryStats.anssi2025.securityEventsHandled, locale.value)
+    : '',
+  anssiLabel: t('statAnssiEvents'),
+  reviewedLabel: t('reviewedThrough'),
+  reviewedThrough: data.value ? formatDate(data.value.project.reviewedThrough, locale.value) : '',
+  alt: title.value,
+})
 
 function goToIncidents(query: Record<string, string>) {
   return navigateTo({ path: localePath('/incidents'), query })
@@ -66,30 +60,13 @@ function filterBySeverity(severity: Severity) {
         <p class="mt-4 text-base leading-relaxed text-ink-2">
           {{ t('chartsLead', { n: withoutPublishedCount.length }) }}
         </p>
-        <p class="mt-4 text-[0.9375rem] leading-relaxed text-ink-2">
-          {{
-            t('listMix', {
-              gov: incidentComposition.government,
-              co: incidentComposition.company,
-              published: incidentComposition.published,
-              unknown: incidentComposition.unknown,
-            })
-          }}
-          <template v-if="incidentComposition.disputed">
-            {{ ' ' + t('listMixDisputed', { n: incidentComposition.disputed }) }}
-          </template>
-        </p>
+        <IncidentCompositionNote />
       </header>
 
       <aside class="mb-10 card max-w-[62ch] p-5 sm:p-6" :aria-label="t('chartsRulesTitle')">
         <p class="eyebrow">{{ t('chartsRulesTitle') }}</p>
         <p class="mt-3 text-[0.9375rem] leading-relaxed text-ink-2">{{ t('chartsRulesLead') }}</p>
-        <ul class="mt-4 space-y-2.5">
-          <li v-for="[key, rule] in chartRules" :key="key" class="flex gap-3 text-[0.875rem] leading-relaxed text-ink-2">
-            <span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-amber" aria-hidden="true" />
-            {{ L(rule) }}
-          </li>
-        </ul>
+        <ChartRulesList class="mt-4" />
       </aside>
 
       <div class="grid gap-4 lg:grid-cols-2">

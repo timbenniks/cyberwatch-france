@@ -7,8 +7,6 @@ const { data } = useCyberData()
 const { locale, t, L } = useLocale()
 
 const dialog = ref<HTMLElement | null>(null)
-const rules = computed(() => Object.entries(data.value?.ui.chartRules ?? {}))
-
 useScrollLock(true)
 useRestoreFocus()
 useFocusTrap(dialog, () => emit('close'))
@@ -50,12 +48,7 @@ onMounted(async () => {
 
       <div class="mt-6 border-t border-hairline pt-5">
         <p class="eyebrow mb-3">{{ t('chartsTitle') }}</p>
-        <ul class="space-y-2.5">
-          <li v-for="[key, rule] in rules" :key="key" class="flex gap-3 text-[0.875rem] leading-relaxed text-ink-2">
-            <span class="mt-2 h-1 w-1 shrink-0 rounded-full bg-amber" aria-hidden="true" />
-            {{ L(rule) }}
-          </li>
-        </ul>
+        <ChartRulesList />
       </div>
 
       <p class="mt-6 border-t border-hairline pt-5 font-mono text-[0.6875rem] uppercase tracking-widest text-muted">

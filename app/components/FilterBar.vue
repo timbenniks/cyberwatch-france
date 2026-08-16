@@ -52,7 +52,6 @@ const selectClass =
       <label :for="fieldId('search')" class="sr-only">{{ t('search') }}</label>
       <input
         :id="fieldId('search')"
-        data-search-input
         v-model="filters.query"
         type="search"
         :placeholder="t('searchPlaceholder')"
@@ -62,7 +61,7 @@ const selectClass =
         v-if="filters.query"
         type="button"
         class="absolute right-2.5 top-1/2 -translate-y-1/2 rounded p-1 text-muted hover:text-ink"
-        :aria-label="t('close')"
+        :aria-label="t('clearSearch')"
         @click="filters.query = ''"
       >
         <X :size="14" />

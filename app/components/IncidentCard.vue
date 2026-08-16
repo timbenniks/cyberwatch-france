@@ -3,9 +3,8 @@ import { ArrowUpRight, Building2, Landmark } from '@lucide/vue'
 import type { Incident } from '~/types/cyberwatch'
 
 const props = defineProps<{ incident: Incident }>()
-const emit = defineEmits<{ open: [Incident] }>()
 
-const { locale, t, L } = useLocale()
+const { locale, t, L, localePath } = useLocale()
 const { sectorLabel } = useCyberData()
 
 const affected = computed(() => formatAffected(props.incident, locale.value))
@@ -13,11 +12,11 @@ const isUnknownCount = computed(() => props.incident.affected === null)
 </script>
 
 <template>
-  <button
-    type="button"
-    class="group card relative w-full p-5 text-left transition-colors duration-200 hover:border-hairline-strong hover:bg-surface-2"
+  <NuxtLink
+    :to="localePath(`/incident/${incident.id}`)"
+    class="group card relative block w-full p-5 text-left transition-colors duration-200 hover:border-hairline-strong hover:bg-surface-2"
     :aria-label="`${L(incident.org)} — ${t('openRecord')}`"
-    @click="emit('open', incident)"
+    @click="trackPlausibleEvent('Open Incident', { id: incident.id })"
   >
     <div class="flex items-center gap-3">
       <p class="eyebrow min-w-0 flex-1 truncate">
@@ -25,7 +24,7 @@ const isUnknownCount = computed(() => props.incident.affected === null)
         <span class="mx-2 text-hairline-strong" aria-hidden="true">/</span>
         <span class="inline-flex items-center gap-1">
           <component :is="incident.kind === 'government' ? Landmark : Building2" :size="11" aria-hidden="true" />
-          {{ t(incident.kind === 'government' ? 'government' : 'company') }}
+          {{ t(kindLabelKey(incident.kind)) }}
         </span>
         <span class="mx-2 text-hairline-strong" aria-hidden="true">/</span>
         <span>{{ sectorLabel(incident.sector) }}</span>
@@ -63,5 +62,5 @@ const isUnknownCount = computed(() => props.incident.affected === null)
         {{ t('source') }} · {{ incident.sourceName }}
       </span>
     </div>
-  </button>
+  </NuxtLink>
 </template>
