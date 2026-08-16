@@ -22,7 +22,7 @@ watch(src, () => {
 <template>
   <span
     class="grid shrink-0 place-items-center overflow-hidden rounded-[3px] border"
-    :class="src && !broken ? 'border-hairline bg-[#f3ece1]' : 'border-hairline bg-surface-2 font-display font-semibold text-ink-2'"
+    :class="src && !broken ? 'border-hairline bg-logo-plate' : 'border-hairline bg-surface-2 font-display font-semibold text-ink-2'"
     :style="{ width: `${size}px`, height: `${size}px`, fontSize: `${Math.round(size * 0.36)}px` }"
     :aria-hidden="true"
   >

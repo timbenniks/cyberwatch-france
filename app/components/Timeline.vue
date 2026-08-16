@@ -63,7 +63,7 @@ const groups = computed(() => {
         >
           <SlidersHorizontal :size="15" aria-hidden="true" />
           {{ t('filters') }}
-          <span v-if="activeCount" class="rounded-full bg-amber px-1.5 text-[0.6875rem] font-medium text-[#0c1220]">
+          <span v-if="activeCount" class="rounded-full bg-amber px-1.5 text-[0.6875rem] font-medium text-on-amber">
             {{ activeCount }}
           </span>
         </button>

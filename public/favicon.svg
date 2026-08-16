@@ -1,6 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="4" fill="#080b14" />
-  <rect x="15" y="4" width="2" height="24" fill="#202a3d" />
+  <style>
+    .plane { fill: #080b14; }
+    .rule { fill: #202a3d; }
+    @media (prefers-color-scheme: light) {
+      .plane { fill: #f3ece1; }
+      .rule { fill: #d0c4b0; }
+    }
+  </style>
+  <rect class="plane" width="32" height="32" rx="4" />
+  <rect class="rule" x="15" y="4" width="2" height="24" />
   <rect x="8" y="9" width="9" height="2" fill="#f2a73b" />
   <rect x="15" y="15" width="10" height="2" fill="#e8564b" />
   <rect x="10" y="21" width="7" height="2" fill="#35c2a5" />

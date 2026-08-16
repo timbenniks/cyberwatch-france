@@ -160,7 +160,7 @@ async function goToSearch() {
             :to="alternate.path"
             :hreflang="alternate.code"
             class="grid h-full min-w-9 place-items-center rounded-[2px] px-2.5 py-1 transition-colors sm:h-auto sm:min-w-0"
-            :class="locale === alternate.code ? 'bg-amber text-[#0c1220]' : 'text-ink-2 hover:text-ink'"
+            :class="locale === alternate.code ? 'bg-amber text-on-amber' : 'text-ink-2 hover:text-ink'"
             :aria-current="locale === alternate.code ? 'true' : undefined"
             @click="onLanguage(alternate.code)"
           >

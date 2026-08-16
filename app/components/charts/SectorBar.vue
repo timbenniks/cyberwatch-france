@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import type { ECElementEvent } from 'echarts/core'
-import { axisLabelStyle, barRadiusH, chartChrome, sequential, tooltipStyle, type TooltipParam } from '~/utils/echarts'
+import { barRadiusH, type TooltipParam } from '~/utils/echarts'
 
 const emit = defineEmits<{ filter: [string] }>()
 
 const { incidents, sectorLabel } = useCyberData()
 const { t } = useLocale()
-const { base } = useChartBase()
+const { base, theme } = useChartBase()
 const narrow = useNarrowViewport()
 
 /** Ascending, so the largest count lands at the top of a horizontal chart. */
@@ -19,6 +19,7 @@ const counts = computed(() => {
 })
 
 const option = computed(() => {
+  const { chrome, sequential, axisLabelStyle, tooltipStyle } = theme.value
   const max = Math.max(...counts.value.map((entry) => entry.count), 1)
   return {
     ...base.value,
@@ -27,7 +28,7 @@ const option = computed(() => {
       type: 'value',
       minInterval: 1,
       axisLabel: axisLabelStyle,
-      splitLine: { lineStyle: { color: chartChrome.gridline } },
+      splitLine: { lineStyle: { color: chrome.gridline } },
       axisLine: { show: false },
       axisTick: { show: false },
     },
@@ -36,13 +37,13 @@ const option = computed(() => {
       data: counts.value.map((entry) => sectorLabel(entry.sector)),
       axisLabel: {
         ...axisLabelStyle,
-        color: chartChrome.ink2,
-        fontFamily: chartChrome.sans,
+        color: chrome.ink2,
+        fontFamily: chrome.sans,
         fontSize: narrow.value ? 11 : 12,
         width: narrow.value ? 96 : 150,
         overflow: 'truncate',
       },
-      axisLine: { lineStyle: { color: chartChrome.axis } },
+      axisLine: { lineStyle: { color: chrome.axis } },
       axisTick: { show: false },
     },
     tooltip: { ...tooltipStyle, trigger: 'item' },
@@ -53,15 +54,14 @@ const option = computed(() => {
         cursor: 'pointer',
         itemStyle: {
           borderRadius: barRadiusH,
-          // Sequential: one hue, darker with magnitude.
           color: (params: TooltipParam) => sequential(counts.value[params.dataIndex]?.count ?? 0, max),
         },
         label: {
           show: true,
           position: 'right',
           distance: 7,
-          color: chartChrome.ink,
-          fontFamily: chartChrome.mono,
+          color: chrome.ink,
+          fontFamily: chrome.mono,
           fontSize: 11,
         },
         data: counts.value.map((entry) => entry.count),

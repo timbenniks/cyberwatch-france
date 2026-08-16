@@ -47,7 +47,6 @@ useSeoMeta({
 
 useHead({
   htmlAttrs: { lang: locale },
-  meta: [{ name: 'theme-color', content: '#080b14' }],
   link: headLinks,
   script: () =>
     explainer.value

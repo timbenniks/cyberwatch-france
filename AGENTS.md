@@ -31,7 +31,8 @@ shared/utils/          code used by both the app and the API (the filter matcher
 
 ## Conventions
 
-- **Auto-imports are on.** `app/composables/**`, `app/utils/**` and `shared/utils/**` are global in the app; `shared/utils/**` is also global in `server/`. Because of that, exported names must be specific — `chartChrome`, not `chrome`. Do not export a bare `series`, `format`, `data` or similar.
+- **Auto-imports are on.** `app/composables/**`, `app/utils/**` and `shared/utils/**` are global in the app; `shared/utils/**` is also global in `server/`. Because of that, exported names must be specific — `chartTheme`, not `theme`. Do not export a bare `series`, `format`, `data` or similar.
+- **Theme follows the OS.** Light and dark are CSS custom properties under `prefers-color-scheme`. Do not store a theme in `localStorage`, and do not toggle a class on `<html>` — that would disagree with prerendered markup. Charts read the same scheme on the client via `useColorScheme()`.
 - **Avoid inline tuple/complex type annotations on exported consts** in auto-imported files. Nuxt's import scanner mis-parses them and emits broken globals; use a named type alias instead.
 - **The language lives in the URL.** `/` and `/incident/:id` are English, `/fr` and `/fr/incident/:id` are French, `/docs` and `/fr/docs` are the API reference, `/learn` and `/learn/:slug` (and `/fr/learn…`) are public explainers, and all of those patterns are prerendered. Locale is derived from the route — never from `localStorage`, and never flipped on the client, which would break hydration on prerendered pages. Build internal links with `localePath()` from `useLocale()`. A French browser language may *navigate* to the French URL before paint; it must not rewrite the page in place.
 - **Nothing locale-dependent may hydrate late.** Deferred hydration (`hydrate-on-visible`) on text that comes from the UI dictionary will fight the prerendered markup. `content-visibility` is fine; deferred hydration is not.
@@ -41,7 +42,7 @@ shared/utils/          code used by both the app and the API (the filter matcher
 
 ## Charts
 
-ECharts via `vue-echarts`, client-side only, in `app/components/charts/`. The palette in `app/utils/echarts.ts` was validated for colour-vision deficiency and contrast against the chart surface `#111726` — if you change a colour, re-validate it rather than picking by eye. Every chart ships a "Show data table" text equivalent, and unknown values are excluded from the plot rather than zeroed.
+ECharts via `vue-echarts`, client-side only, in `app/components/charts/`. The palettes in `app/utils/echarts.ts` (and the matching CSS tokens) were validated for colour-vision deficiency and contrast against the chart surfaces `#111726` (dark) and `#fffcf7` (light). If you change a colour, re-validate it rather than picking by eye. Every chart ships a "Show data table" text equivalent, and unknown values are excluded from the plot rather than zeroed.
 
 ## Commands
 
