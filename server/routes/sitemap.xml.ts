@@ -1,4 +1,5 @@
 import { incidents, meta } from '~~/server/utils/dataset'
+import { explainers } from '~~/server/utils/explainers'
 
 const escape = (value: string) =>
   value.replace(/[<>&'"]/g, (char) => `&${{ '<': 'lt', '>': 'gt', '&': 'amp', "'": 'apos', '"': 'quot' }[char]};`)
@@ -6,7 +7,13 @@ const escape = (value: string) =>
 /** Every page in both languages, each pointing at its twin via hreflang. */
 export default defineEventHandler((event) => {
   const base = (useRuntimeConfig().public.siteUrl || getRequestURL(event).origin).replace(/\/$/, '')
-  const paths = ['/', '/docs', ...incidents.map((incident) => `/incident/${incident.id}`)]
+  const paths = [
+    '/',
+    '/docs',
+    '/learn',
+    ...incidents.map((incident) => `/incident/${incident.id}`),
+    ...explainers.map((explainer) => `/learn/${explainer.slug}`),
+  ]
 
   const urls = paths.flatMap((path) =>
     (['en', 'fr'] as const).map((locale) => {
@@ -24,7 +31,7 @@ export default defineEventHandler((event) => {
         `    <lastmod>${meta.reviewedThrough}</lastmod>`,
         links,
         `    <xhtml:link rel="alternate" hreflang="x-default" href="${escape(`${base}${path}`)}"/>`,
-    `    <priority>${path === '/' ? '1.0' : path === '/docs' ? '0.7' : '0.8'}</priority>`,
+        `    <priority>${path === '/' ? '1.0' : path === '/docs' || path.startsWith('/learn') ? '0.7' : '0.8'}</priority>`,
         '  </url>',
       ].join('\n')
     }),

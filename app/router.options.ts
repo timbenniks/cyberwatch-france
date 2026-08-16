@@ -21,9 +21,10 @@ function frenchTwin(path: string) {
 }
 
 /**
- * File routes cover `/`, `/docs` and `/incident/:id`. French twins are real
- * route records (not aliases) so `/fr/incident/:id` keeps the same page
- * component — language switch is a navigation, not a client flip.
+ * File routes cover `/`, `/docs`, `/learn`, `/learn/:slug` and `/incident/:id`.
+ * French twins are real route records (not aliases) so `/fr/incident/:id`
+ * keeps the same page component — language switch is a navigation, not a
+ * client flip.
  *
  * Query-only changes (timeline filters) must keep the current position.
  * Opening an incident page is a real navigation and scrolls to the top.
@@ -32,6 +33,8 @@ export default <RouterConfig>{
   routes: (routes) => {
     const home = routes.find((route) => route.path === '/')
     const docs = routes.find((route) => route.path === '/docs')
+    const learn = routes.find((route) => route.path === '/learn')
+    const learnSlug = routes.find((route) => route.path === '/learn/:slug' || route.path.startsWith('/learn/:slug'))
     const incident = routes.find((route) => route.path === '/incident/:id' || route.path.startsWith('/incident/:id'))
     if (!home) return routes
     return [
@@ -39,6 +42,8 @@ export default <RouterConfig>{
       { ...home, name: 'home-fr', path: frenchTwin(home.path) },
       ...(incident ? [{ ...incident, name: 'incident-fr', path: frenchTwin(incident.path) }] : []),
       ...(docs ? [{ ...docs, name: 'docs-fr', path: frenchTwin(docs.path) }] : []),
+      ...(learn ? [{ ...learn, name: 'learn-fr', path: frenchTwin(learn.path) }] : []),
+      ...(learnSlug ? [{ ...learnSlug, name: 'learn-slug-fr', path: frenchTwin(learnSlug.path) }] : []),
     ]
   },
 

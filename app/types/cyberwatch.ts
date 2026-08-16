@@ -112,6 +112,25 @@ export interface Recommendation {
   description: Bilingual
 }
 
+/** Educational copy. Incident facts still live only in the dossier JSON. */
+export interface ExplainerSection {
+  heading: Bilingual
+  body: Bilingual
+}
+
+export interface Explainer {
+  slug: string
+  title: Bilingual
+  dek: Bilingual
+  sections: ExplainerSection[]
+  takeaways: Bilingual[]
+  relatedIncidentIds: string[]
+}
+
+export interface ExplainerFile {
+  explainers: Explainer[]
+}
+
 export interface CyberwatchData {
   schemaVersion: string
   project: Project

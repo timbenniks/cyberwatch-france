@@ -4,6 +4,8 @@ import { fileURLToPath } from 'node:url'
 
 const datasetPath = fileURLToPath(new URL('./data/france-cyberwatch-data.json', import.meta.url))
 const dataset = JSON.parse(readFileSync(datasetPath, 'utf8')) as { incidents: { id: string }[] }
+const explainerPath = fileURLToPath(new URL('./data/explainers.json', import.meta.url))
+const explainerData = JSON.parse(readFileSync(explainerPath, 'utf8')) as { explainers: { slug: string }[] }
 
 const siteUrl =
   process.env.NUXT_PUBLIC_SITE_URL ||
@@ -20,6 +22,11 @@ const plausibleApiHost = process.env.NUXT_PUBLIC_PLAUSIBLE_API_HOST || ''
 const incidentRoutes = dataset.incidents.flatMap((incident) => [
   `/incident/${incident.id}`,
   `/fr/incident/${incident.id}`,
+])
+
+const explainerRoutes = explainerData.explainers.flatMap((explainer) => [
+  `/learn/${explainer.slug}`,
+  `/fr/learn/${explainer.slug}`,
 ])
 
 export default defineNuxtConfig({
@@ -90,7 +97,7 @@ export default defineNuxtConfig({
     publicAssets: [{ baseURL: '/data', dir: fileURLToPath(new URL('./data', import.meta.url)), maxAge: 3600 }],
     prerender: {
       crawlLinks: false,
-      routes: ['/', '/fr', '/docs', '/fr/docs', ...incidentRoutes],
+      routes: ['/', '/fr', '/docs', '/fr/docs', '/learn', '/fr/learn', ...incidentRoutes, ...explainerRoutes],
     },
   },
 
@@ -124,6 +131,18 @@ export default defineNuxtConfig({
       headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
     },
     '/fr/docs': {
+      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
+    },
+    '/learn': {
+      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
+    },
+    '/fr/learn': {
+      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
+    },
+    '/learn/**': {
+      headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
+    },
+    '/fr/learn/**': {
       headers: { 'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400' },
     },
     '/incident/**': {

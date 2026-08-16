@@ -22,6 +22,9 @@ const { locale, t, localePath } = useLocale()
       >
         <p class="max-w-[62ch] leading-relaxed">{{ t('footerNote') }}</p>
         <p class="flex flex-wrap items-baseline gap-x-4 font-mono text-[0.6875rem] uppercase tracking-widest sm:ml-auto sm:shrink-0">
+          <NuxtLink :to="localePath('/learn')" class="link-underline hover:text-amber" @click="trackPlausibleEvent('Open Learn')">
+            {{ t('learnNav') }}
+          </NuxtLink>
           <NuxtLink :to="localePath('/docs')" class="link-underline hover:text-amber" @click="trackPlausibleEvent('Open API Docs')">
             {{ t('apiLink') }}
           </NuxtLink>

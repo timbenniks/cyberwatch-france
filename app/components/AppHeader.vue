@@ -8,6 +8,15 @@ const menuOpen = ref(false)
 const active = ref('overview')
 const progress = ref(0)
 
+const isHome = computed(() => {
+  const path = route.path.replace(/\/$/, '') || '/'
+  return path === '/' || path === '/fr'
+})
+const isLearn = computed(() => {
+  const path = route.path
+  return path === '/learn' || path.startsWith('/learn/') || path === '/fr/learn' || path.startsWith('/fr/learn/')
+})
+
 useScrollLock(menuOpen)
 
 /** While a header click is scrolling, ignore the observer so it cannot snap back. */
@@ -73,6 +82,11 @@ function onNav(id: string) {
   trackPlausibleEvent('Nav', { section: id })
 }
 
+function onLearn() {
+  menuOpen.value = false
+  trackPlausibleEvent('Open Learn')
+}
+
 function onLanguage(code: string) {
   writeLocalePref(code === 'fr' ? 'fr' : 'en')
   trackPlausibleEvent('Language Switch', { locale: code })
@@ -107,11 +121,20 @@ async function goToSearch() {
           :key="section.id"
           :to="{ path: localePath('/'), hash: `#${section.id}` }"
           class="rounded px-3 py-2 text-[0.8125rem] transition-colors"
-          :class="active === section.id ? 'text-amber' : 'text-ink-2 hover:text-ink'"
-          :aria-current="active === section.id ? 'true' : undefined"
+          :class="isHome && active === section.id ? 'text-amber' : 'text-ink-2 hover:text-ink'"
+          :aria-current="isHome && active === section.id ? 'true' : undefined"
           @click="onNav(section.id)"
         >
           {{ t(section.key) }}
+        </NuxtLink>
+        <NuxtLink
+          :to="localePath('/learn')"
+          class="rounded px-3 py-2 text-[0.8125rem] transition-colors"
+          :class="isLearn ? 'text-amber' : 'text-ink-2 hover:text-ink'"
+          :aria-current="isLearn ? 'page' : undefined"
+          @click="onLearn"
+        >
+          {{ t('learnNav') }}
         </NuxtLink>
       </nav>
 
@@ -171,11 +194,20 @@ async function goToSearch() {
           v-for="section in navSections"
           :key="section.id"
           :to="{ path: localePath('/'), hash: `#${section.id}` }"
-          class="block border-b border-hairline py-3.5 font-display text-lg last:border-0"
-          :class="active === section.id ? 'text-amber' : 'text-ink'"
+          class="block border-b border-hairline py-3.5 font-display text-lg"
+          :class="isHome && active === section.id ? 'text-amber' : 'text-ink'"
           @click="onNav(section.id)"
         >
           {{ t(section.key) }}
+        </NuxtLink>
+        <NuxtLink
+          :to="localePath('/learn')"
+          class="block py-3.5 font-display text-lg"
+          :class="isLearn ? 'text-amber' : 'text-ink'"
+          :aria-current="isLearn ? 'page' : undefined"
+          @click="onLearn"
+        >
+          {{ t('learnNav') }}
         </NuxtLink>
       </nav>
     </div>

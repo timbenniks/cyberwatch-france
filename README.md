@@ -2,7 +2,7 @@
 
 A bilingual (EN/FR) public dossier of major publicly reported cyberattacks and data breaches affecting French public institutions and companies in 2025 and 2026, read alongside the national figures published by ANSSI and the CNIL — plus a read-only public API over the same data.
 
-Live language is in the URL: [`/`](/) is English, [`/fr`](/fr) is French. Human-readable API docs live at [`/docs`](/docs) and [`/fr/docs`](/fr/docs).
+Live language is in the URL: [`/`](/) is English, [`/fr`](/fr) is French. Human-readable API docs live at [`/docs`](/docs) and [`/fr/docs`](/fr/docs). Public explainers live at [`/learn`](/learn) and [`/fr/learn`](/fr/learn).
 
 `data/france-cyberwatch-data.json` is the single source of truth. No incident content is written outside it, unknown victim counts stay unknown, and disputed attacker claims never enter a chart, a total, or an API aggregate.
 
@@ -14,7 +14,7 @@ npm run dev        # http://localhost:3000
 ```
 
 ```bash
-npm run build      # prerenders / , /fr , /docs , /fr/docs and every incident page in both languages
+npm run build      # prerenders / , /fr , /docs , /fr/docs , /learn and every incident and explainer page in both languages
 npm run preview
 npm run typecheck
 ```
@@ -40,8 +40,8 @@ Plausible is off until `NUXT_PUBLIC_PLAUSIBLE_DOMAIN` is set. After that, pagevi
 
 The displayed language always comes from the path — never from `localStorage`, and never flipped on the client, which would disagree with the prerendered markup.
 
-- `/`, `/incident/:id`, `/docs` — English
-- `/fr`, `/fr/incident/:id`, `/fr/docs` — French
+- `/`, `/incident/:id`, `/docs`, `/learn`, `/learn/:slug` — English
+- `/fr`, `/fr/incident/:id`, `/fr/docs`, `/fr/learn`, `/fr/learn/:slug` — French
 
 If the browser language starts with `fr`, a tiny inline script sends the reader to the matching French URL **before paint**. Everyone else stays on English. An explicit EN/FR click is remembered in a cookie so auto-detect does not bounce people who chose English.
 
@@ -80,10 +80,12 @@ The site itself does not call the API: the dataset is read on the server and arr
 
 ```
 data/france-cyberwatch-data.json   source of truth; served at /data, imported by the API
+data/explainers.json               bilingual public guides (no incident facts)
 app/
   pages/index.vue        the dossier (/ and /fr)
   pages/incident/[id].vue article page for /incident/:id and /fr/incident/:id
   pages/docs.vue         human-readable API reference (/docs and /fr/docs)
+  pages/learn/           public explainers (/learn, /learn/:slug, and /fr twins)
   router.options.ts      French twins of those file routes
   components/            dossier, timeline, charts, incident article
   composables/           data, filters, locale, focus trap, reduced motion

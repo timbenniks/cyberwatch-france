@@ -247,6 +247,31 @@ const dictionary = {
     fr: 'Construit à partir de communications publiques. Aucun contenu d’incident de ce site n’a été rédigé en dehors du jeu de données.',
   },
   whatDoesThisMean: { en: 'What does this mean?', fr: 'Qu’est-ce que cela veut dire ?' },
+
+  learnNav: { en: 'Learn', fr: 'Comprendre' },
+  learnEyebrow: { en: 'Public explainers', fr: 'Guides grand public' },
+  learnTitle: { en: 'What criminals do with leaked data', fr: 'Ce que les criminels font des données divulguées' },
+  learnLead: {
+    en: 'These guides explain the scams that follow a breach, in plain language. They do not replace official notices. They do not guess unpublished numbers.',
+    fr: 'Ces guides expliquent, en langage simple, les arnaques qui suivent une fuite. Ils ne remplacent pas les notifications officielles. Ils n’inventent pas les chiffres non publiés.',
+  },
+  learnGuides: { en: 'guides', fr: 'guides' },
+  learnTakeaways: { en: 'What to do', fr: 'Quoi faire' },
+  learnRelated: { en: 'Named in this dossier', fr: 'Cités dans ce dossier' },
+  learnHelp: { en: 'Official help', fr: 'Aide officielle' },
+  learnHelpLead: {
+    en: 'Cybermalveillance.gouv.fr is the public service for advice after a cyber incident or scam.',
+    fr: 'Cybermalveillance.gouv.fr est le service public d’aide après un incident ou une arnaque.',
+  },
+  learnHelpLink: { en: 'Open Cybermalveillance.gouv.fr', fr: 'Ouvrir Cybermalveillance.gouv.fr' },
+  learnBack: { en: 'All explainers', fr: 'Tous les guides' },
+  learnCtaLead: {
+    en: 'Want the longer version of why a leak is dangerous?',
+    fr: 'Pour comprendre plus en détail pourquoi une fuite est dangereuse :',
+  },
+  learnCta: { en: 'Read the public explainers', fr: 'Lire les guides grand public' },
+  learnOpen: { en: 'Read this guide', fr: 'Lire ce guide' },
+
   errorNotFound: { en: 'This page could not be found.', fr: 'Cette page est introuvable.' },
   errorGeneric: { en: 'Something went wrong.', fr: 'Une erreur s’est produite.' },
   errorBack: { en: 'Back to the dossier', fr: 'Retour au dossier' },
@@ -263,9 +288,10 @@ function bare(path: string): string {
 
 /**
  * The language lives in the URL: `/` and `/incident/:id` are English, `/fr`
- * and `/fr/incident/:id` are French. Both are prerendered, both are
- * indexable, and switching is a navigation — so there is no client-side flip
- * to disagree with the server's markup.
+ * and `/fr/incident/:id` are French. `/learn` and `/docs` follow the same
+ * pattern. Both languages are prerendered, both are indexable, and switching
+ * is a navigation — so there is no client-side flip to disagree with the
+ * server's markup.
  */
 export function useLocale() {
   const route = useRoute()

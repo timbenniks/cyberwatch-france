@@ -2,7 +2,7 @@
 import { Building2, Info, Users } from '@lucide/vue'
 
 const { data } = useCyberData()
-const { t, L } = useLocale()
+const { t, L, localePath } = useLocale()
 
 const tabs = ['organizations', 'public'] as const
 type Tab = (typeof tabs)[number]
@@ -76,6 +76,17 @@ function onTabKey(event: KeyboardEvent, option: Tab) {
           </div>
         </li>
       </ol>
+
+      <p v-if="tab === 'public'" class="mt-8 max-w-[62ch] text-[0.9375rem] leading-relaxed text-ink-2">
+        {{ t('learnCtaLead') }}
+        <NuxtLink
+          :to="localePath('/learn')"
+          class="link-underline text-amber hover:text-ink"
+          @click="trackPlausibleEvent('Open Learn', { from: 'guidance' })"
+        >
+          {{ t('learnCta') }}
+        </NuxtLink>
+      </p>
     </div>
   </section>
 </template>

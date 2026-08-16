@@ -1,4 +1,5 @@
 import { dataset, incidents, isLocale } from '~~/server/utils/dataset'
+import { explainers } from '~~/server/utils/explainers'
 
 /**
  * https://llmstxt.org convention: a compact, link-first briefing an LLM can
@@ -48,6 +49,7 @@ Methodology: ${dataset.project.methodology[lang]}
 - [Sources](${base}/api/sources): every source, with the incidents citing it.
 - [Patterns](${base}/api/patterns) and [recommendations](${base}/api/recommendations): the recurring weaknesses, and guidance for organisations and the public.
 - [Raw dataset](${base}/data/france-cyberwatch-data.json): the complete file this site is built from.
+- [Public explainers](${base}${prefix}/learn): bilingual guides on what leaked data is used for. Incident facts still live only in the dataset; these pages link to records by id.
 - [Full text for LLMs](${base}/llms-full.txt): every record as markdown.
 
 ## Pages
@@ -56,6 +58,17 @@ ${incidents
   .map(
     (incident) =>
       `- [${incident.org[lang]} — ${incident.date}](${base}${prefix}/incident/${incident.id}): ${dataset.ui.sectorLabels[incident.sector]?.[lang] ?? incident.sector}, ${incident.severity}, ${incident.status}. ${incident.affectedLabel[lang]}`,
+  )
+  .join('\n')}
+
+## Public explainers
+
+Educational copy, not incident records. Do not treat these pages as a source of victim counts.
+
+${explainers
+  .map(
+    (explainer) =>
+      `- [${explainer.title[lang]}](${base}${prefix}/learn/${explainer.slug}): ${explainer.dek[lang]}`,
   )
   .join('\n')}
 

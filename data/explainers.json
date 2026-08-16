@@ -1,0 +1,334 @@
+{
+  "explainers": [
+    {
+      "slug": "why-leaks-matter",
+      "title": {
+        "en": "Why leaked data is useful to criminals",
+        "fr": "Pourquoi les données divulguées intéressent les criminels"
+      },
+      "dek": {
+        "en": "A data breach is not only a password problem. The details that leak are what make the next message or phone call look official.",
+        "fr": "Une fuite de données n’est pas seulement une affaire de mot de passe. Ce sont les détails exposés qui rendent le prochain message ou appel crédible."
+      },
+      "sections": [
+        {
+          "heading": {
+            "en": "The leak writes the script",
+            "fr": "La fuite écrit le scénario"
+          },
+          "body": {
+            "en": "When criminals get a file of names, addresses, phone numbers, IBANs, school details or tax details, they are not only collecting trophies. They are collecting facts they can read back to you.\n\nA caller who knows your address, your operator, your child’s school or a contract number is not proving they work for that organisation. They are proving they have a copy of a leak, or enough of one to sound real.",
+            "fr": "Quand des criminels obtiennent un fichier de noms, d’adresses, de téléphones, d’IBAN, de données scolaires ou fiscales, ils ne collectionnent pas seulement des trophées. Ils collectent des faits qu’ils peuvent vous relire.\n\nUn appelant qui connaît votre adresse, votre opérateur, l’école de votre enfant ou un numéro de contrat ne prouve pas qu’il travaille pour cet organisme. Il prouve qu’il a une copie d’une fuite, ou assez d’éléments pour paraître vrai."
+          }
+        },
+        {
+          "heading": {
+            "en": "What they actually want",
+            "fr": "Ce qu’ils veulent vraiment"
+          },
+          "body": {
+            "en": "The usual goal is not to empty an account in one click. It is to get you to do something: click a link, read out a one-time code, approve a payment, send a document, or stay on the line while they connect to your bank.\n\nLeaked data makes that conversation cheaper to run at scale. A generic “your parcel is waiting” scam is easy to ignore. A message that names the right ministry, the right telco, or the right airline loyalty programme is harder to dismiss.",
+            "fr": "L’objectif habituel n’est pas de vider un compte en un clic. C’est de vous faire agir : cliquer un lien, dicter un code à usage unique, valider un paiement, envoyer un document, ou rester en ligne pendant qu’ils se connectent à votre banque.\n\nLes données divulguées rendent cette conversation moins chère à industrialiser. Une arnaque générique du type « votre colis vous attend » est facile à ignorer. Un message qui nomme le bon ministère, le bon opérateur ou le bon programme de fidélité aérien est plus difficile à écarter."
+          }
+        },
+        {
+          "heading": {
+            "en": "It does not have to be a password",
+            "fr": "Il n’est pas besoin d’un mot de passe"
+          },
+          "body": {
+            "en": "Many incidents in this dossier did not publish passwords. They still matter. Identity details, contact details, bank identifiers, tax figures and customer-service notes are enough to impersonate an official service.\n\nIf someone already has the facts an agency would know about you, “they knew my file” is not a reason to trust them. It is a reason to hang up and open the official site yourself.",
+            "fr": "Beaucoup d’incidents de ce dossier n’ont pas rendu publics des mots de passe. Ils restent graves. Identité, coordonnées, identifiants bancaires, données fiscales et notes de service client suffisent à usurper un service officiel.\n\nSi quelqu’un a déjà les faits qu’une administration connaîtrait sur vous, « ils connaissaient mon dossier » n’est pas une raison de leur faire confiance. C’est une raison de raccrocher et d’ouvrir vous-même le site officiel."
+          }
+        },
+        {
+          "heading": {
+            "en": "The news cycle ends. The data does not.",
+            "fr": "L’actualité passe. Les données restent."
+          },
+          "body": {
+            "en": "Stolen files are copied, sold and reused. A scam can arrive weeks or years after the original notice. Treating a breach as finished because it left the headlines is how delayed attacks work.",
+            "fr": "Les fichiers volés sont copiés, revendus et réutilisés. Une arnaque peut arriver des semaines ou des années après la notification initiale. Considérer qu’une fuite est terminée parce qu’elle a quitté les titres est précisément le mode d’emploi des attaques différées."
+          }
+        }
+      ],
+      "takeaways": [
+        {
+          "en": "Knowing real details about you is not proof of identity.",
+          "fr": "Connaître de vrais détails sur vous n’est pas une preuve d’identité."
+        },
+        {
+          "en": "Open taxes, banking, identity documents and school services yourself. Type the address. Do not use a link from an unexpected message.",
+          "fr": "Ouvrez vous-même impôts, banque, titres d’identité et services scolaires. Saisissez l’adresse. N’utilisez pas un lien d’un message inattendu."
+        },
+        {
+          "en": "Keep the caution for months, not days.",
+          "fr": "Gardez la vigilance pendant des mois, pas des jours."
+        },
+        {
+          "en": "If you think stolen data is being used against you, keep the messages and report through official channels.",
+          "fr": "Si vous pensez que des données volées sont utilisées contre vous, conservez les messages et signalez-les par les canaux officiels."
+        }
+      ],
+      "relatedIncidentIds": ["bouygues", "airfrance", "ants", "ficoba", "dgfip"]
+    },
+    {
+      "slug": "phishing-that-knows-you",
+      "title": {
+        "en": "Phishing that already knows you",
+        "fr": "Le hameçonnage qui vous connaît déjà"
+      },
+      "dek": {
+        "en": "After a leak, the dangerous message is the one that sounds informed. Names, addresses, contract numbers and loyalty IDs are the raw material.",
+        "fr": "Après une fuite, le message dangereux est celui qui a l’air renseigné. Noms, adresses, numéros de contrat et identifiants de fidélité en sont la matière première."
+      },
+      "sections": [
+        {
+          "heading": {
+            "en": "From bulk spam to a tailored pitch",
+            "fr": "Du spam de masse au discours sur mesure"
+          },
+          "body": {
+            "en": "Ordinary phishing guesses. Post-breach phishing recites. Once a dump includes your name, email, phone, postal address or a customer number, a message can mention those facts in the first sentence.\n\nThat is the point of stealing contact and contract data. It lets criminals skip the generic greeting and go straight to a story that looks like it came from your operator, your airline or your child’s school.",
+            "fr": "Le hameçonnage ordinaire devine. Le hameçonnage après une fuite récite. Dès qu’un dump contient votre nom, e-mail, téléphone, adresse postale ou un numéro client, un message peut citer ces faits dès la première phrase.\n\nC’est tout l’intérêt de voler des coordonnées et des données de contrat. Les criminels sautent la formule générique et passent directement à une histoire qui semble venir de votre opérateur, de votre compagnie aérienne ou de l’école de votre enfant."
+          }
+        },
+        {
+          "heading": {
+            "en": "The channels",
+            "fr": "Les canaux"
+          },
+          "body": {
+            "en": "This is not only email. SMS, messaging apps, phone calls and fake login pages all use the same trick: lead with a true detail, then ask for a code, a password, a payment or a document.\n\nA phone call is often more convincing than an email because you can hear urgency. The script is the same. They already know something. They need you to hand over the thing they do not have: access.",
+            "fr": "Ce n’est pas seulement l’e-mail. SMS, applications de messagerie, appels et fausses pages de connexion utilisent le même procédé : commencer par un détail vrai, puis demander un code, un mot de passe, un paiement ou un document.\n\nUn appel est souvent plus convaincant qu’un e-mail, parce que l’urgence s’entend. Le scénario est le même. Ils savent déjà quelque chose. Ils ont besoin que vous leur donniez ce qui leur manque : l’accès."
+          }
+        },
+        {
+          "heading": {
+            "en": "What a customer-service leak is for",
+            "fr": "À quoi sert une fuite de service client"
+          },
+          "body": {
+            "en": "Notes from a support mailbox, a loyalty number, a ticket subject line: these look minor until someone uses them. “We are calling about the message you sent on Tuesday” is a powerful opener if they actually have that subject line.\n\nTreat unexpected contact about a delivery, a bill, a booking or a school account as a prompt to go to the official app or website yourself.",
+            "fr": "Des notes d’une messagerie d’assistance, un numéro de fidélité, l’objet d’un ticket : cela paraît mineur jusqu’à ce que quelqu’un s’en serve. « Nous vous appelons au sujet du message que vous avez envoyé mardi » est une ouverture puissante s’ils ont réellement cet objet.\n\nTraitez un contact inattendu au sujet d’une livraison, d’une facture, d’une réservation ou d’un compte scolaire comme le signal d’ouvrir vous-même l’application ou le site officiel."
+          }
+        }
+      ],
+      "takeaways": [
+        {
+          "en": "A message that uses your real name, address or contract number is more dangerous, not more trustworthy.",
+          "fr": "Un message qui utilise votre vrai nom, votre adresse ou votre numéro de contrat est plus dangereux, pas plus digne de confiance."
+        },
+        {
+          "en": "Never read a one-time code to someone who called you.",
+          "fr": "Ne dictez jamais un code à usage unique à quelqu’un qui vous a appelé."
+        },
+        {
+          "en": "Do not use links in unexpected SMS or email. Open the official app or type the site address.",
+          "fr": "N’utilisez pas les liens d’un SMS ou d’un e-mail inattendu. Ouvrez l’application officielle ou saisissez l’adresse du site."
+        },
+        {
+          "en": "Airlines, telcos and schools will not ask you to confirm a password over the phone.",
+          "fr": "Les compagnies aériennes, les opérateurs et les écoles ne vous demanderont pas de confirmer un mot de passe au téléphone."
+        }
+      ],
+      "relatedIncidentIds": ["bouygues", "airfrance", "edustudents"]
+    },
+    {
+      "slug": "iban-and-banking",
+      "title": {
+        "en": "What an IBAN leak actually lets someone do",
+        "fr": "Ce qu’une fuite d’IBAN permet vraiment"
+      },
+      "dek": {
+        "en": "An IBAN in a stolen file is not a PIN. It is still dangerous, because it lets a stranger talk about your bank account as if they already belong in the conversation.",
+        "fr": "Un IBAN dans un fichier volé n’est pas un code PIN. Il reste dangereux, parce qu’il permet à un inconnu de parler de votre compte comme s’il avait déjà sa place dans la conversation."
+      },
+      "sections": [
+        {
+          "heading": {
+            "en": "What an IBAN is",
+            "fr": "Ce qu’est un IBAN"
+          },
+          "body": {
+            "en": "An IBAN, and the French RIB, identifies an account so that payments can be sent to it. Banks, employers and tax services use it every day. That is why it appears in customer files and in national account directories.\n\nKnowing an IBAN does not, by itself, let someone log into your bank or take money out. Your bank still needs authentication you control: a password, an app approval, a card reader, a passkey.",
+            "fr": "Un IBAN, et le RIB français, identifie un compte pour que des paiements puissent y être envoyés. Banques, employeurs et services fiscaux s’en servent tous les jours. C’est pourquoi il figure dans des fichiers clients et dans des répertoires nationaux de comptes.\n\nConnaître un IBAN ne permet pas, à lui seul, de se connecter à votre banque ni d’en sortir de l’argent. Votre banque exige encore une authentification que vous contrôlez : mot de passe, validation dans une application, lecteur de carte, passkey."
+          }
+        },
+        {
+          "heading": {
+            "en": "Why criminals still want it",
+            "fr": "Pourquoi les criminels le veulent quand même"
+          },
+          "body": {
+            "en": "They want the conversation. A caller who can recite your IBAN, your name and your address can pretend to be the bank, the tax office, an operator collecting a bill, or a company updating a mandate.\n\nTypical asks: approve a SEPA mandate you did not create, send a “refund” the other way, install remote-access software, or read a code from your banking app to cancel a transfer. The IBAN is the prop. You are the one who completes the fraud.",
+            "fr": "Ils veulent la conversation. Un appelant capable de réciter votre IBAN, votre nom et votre adresse peut se faire passer pour la banque, les impôts, un opérateur qui recouvre une facture, ou une entreprise qui « met à jour un mandat ».\n\nDemandes typiques : valider un mandat SEPA que vous n’avez pas créé, renvoyer un « remboursement » dans l’autre sens, installer un logiciel de prise de contrôle, ou dicter un code de l’application bancaire pour « annuler un virement ». L’IBAN est l’accessoire. C’est vous qui terminez la fraude."
+          }
+        },
+        {
+          "heading": {
+            "en": "Directories of accounts",
+            "fr": "Les répertoires de comptes"
+          },
+          "body": {
+            "en": "When a file of account holders leaks, or when a national directory of bank accounts is reached without authorisation, the same details appear together: who holds the account, where they live, and the identifier of the account. That combination is enough to run targeted bank and tax impersonation at scale.\n\nIf you are told your details were in such an incident, watch your statements and bank alerts. Treat any unexpected call about a transfer, a mandate or a tax refund as a scam until you have checked in the official app you opened yourself.",
+            "fr": "Quand un fichier de titulaires de comptes fuit, ou quand un répertoire national de comptes bancaires est atteint sans autorisation, les mêmes éléments apparaissent ensemble : qui détient le compte, où la personne vit, et l’identifiant du compte. Cette combinaison suffit à industrialiser l’usurpation bancaire et fiscale.\n\nSi l’on vous indique que vos données figuraient dans un tel incident, surveillez vos relevés et alertes bancaires. Traitez tout appel inattendu au sujet d’un virement, d’un mandat ou d’un remboursement fiscal comme une arnaque jusqu’à vérification dans l’application officielle que vous avez ouverte vous-même."
+          }
+        }
+      ],
+      "takeaways": [
+        {
+          "en": "An exposed IBAN is not the same as an emptied account. Do not panic into following the caller’s instructions.",
+          "fr": "Un IBAN exposé n’est pas un compte vidé. Ne suivez pas les consignes de l’appelant sous le coup de la panique."
+        },
+        {
+          "en": "Never approve a payment, mandate or code because someone recited your IBAN.",
+          "fr": "Ne validez jamais un paiement, un mandat ou un code parce que quelqu’un a récité votre IBAN."
+        },
+        {
+          "en": "Review transactions and alerts. Report suspicious mandates to your bank.",
+          "fr": "Vérifiez les opérations et les alertes. Signalez les mandats suspects à votre banque."
+        },
+        {
+          "en": "Tax and bank services will not ask you to verify an IBAN over the phone by sending money.",
+          "fr": "Les impôts et les banques ne vous demanderont pas de « vérifier » un IBAN au téléphone en envoyant de l’argent."
+        }
+      ],
+      "relatedIncidentIds": ["bouygues", "ficoba"]
+    },
+    {
+      "slug": "when-the-state-is-the-source",
+      "title": {
+        "en": "When the leaked file is a government one",
+        "fr": "Quand le fichier divulgué est un fichier de l’État"
+      },
+      "dek": {
+        "en": "A message that sounds like the tax office, the identity-document service or the police is easier to believe. That is exactly why those files are valuable to scammers.",
+        "fr": "Un message qui a l’air de venir des impôts, du service des titres ou de la police est plus facile à croire. C’est précisément pour cela que ces fichiers intéressent les escrocs."
+      },
+      "sections": [
+        {
+          "heading": {
+            "en": "Official context is the product",
+            "fr": "Le contexte officiel est le produit"
+          },
+          "body": {
+            "en": "France runs services that already know a lot about you: tax, identity documents, driving licences, school administration, law-enforcement files. When those systems are reached without authorisation, criminals do not only get data. They get a costume.\n\n“We are calling from the tax office” is a weak line until the caller can mention a plausible income figure, a withholding rate, a property address or a pending title application. Then it is a strong line.",
+            "fr": "La France gère des services qui savent déjà beaucoup de choses sur vous : impôts, titres d’identité, permis, administration scolaire, fichiers de police. Quand ces systèmes sont atteints sans autorisation, les criminels n’obtiennent pas seulement des données. Ils obtiennent un costume.\n\n« Nous appelons des impôts » est une phrase faible, jusqu’à ce que l’appelant puisse citer un revenu plausible, un taux de prélèvement, une adresse de bien ou une demande de titre en cours. Alors la phrase devient forte."
+          }
+        },
+        {
+          "heading": {
+            "en": "Identity documents and account files",
+            "fr": "Titres d’identité et fichiers de comptes"
+          },
+          "body": {
+            "en": "Portals for identity documents and driving licences hold the kind of civil-status data a phishing kit needs: names, dates of birth, email addresses, sometimes postal addresses and phone numbers. Even when supporting documents and biometrics are not in the leak, the remaining fields are enough to send a very convincing “your card is ready, pay the fee here” message.\n\nOpen ANTS, taxes and identity services by typing the official address or using the official app. A link in an SMS is not the service.",
+            "fr": "Les portails de titres d’identité et de permis conservent le type d’état civil dont un kit de hameçonnage a besoin : noms, dates de naissance, e-mails, parfois adresses postales et téléphones. Même lorsque les pièces justificatives et les données biométriques ne sont pas dans la fuite, les champs restants suffisent à envoyer un message très convaincant du type « votre titre est prêt, réglez les frais ici ».\n\nOuvrez ANTS, les impôts et les services d’identité en saisissant l’adresse officielle ou via l’application officielle. Un lien dans un SMS n’est pas le service."
+          }
+        },
+        {
+          "heading": {
+            "en": "Tax and bank-account files",
+            "fr": "Fichiers fiscaux et fichiers de comptes"
+          },
+          "body": {
+            "en": "Tax data such as income, household details, withholding rates and property references, together with bank-account directories (who holds which IBAN, and where they live), are a kit for wealth-targeted fraud. The scam can look like a regularisation, a refund, a control, or a problem with a mandate.\n\nThe tax office will not ask you to buy vouchers, install software, or read codes from your espace impôt over the phone.",
+            "fr": "Les données fiscales (revenu, foyer, taux de prélèvement, références de biens), associées aux répertoires de comptes bancaires (qui détient quel IBAN, et où), forment un kit pour la fraude patrimoniale. L’arnaque peut ressembler à une régularisation, un remboursement, un contrôle, ou un problème de mandat.\n\nLes impôts ne vous demanderont pas d’acheter des bons, d’installer un logiciel, ni de dicter des codes de votre espace impôt au téléphone."
+          }
+        },
+        {
+          "heading": {
+            "en": "Law-enforcement files are different, and still a lure",
+            "fr": "Les fichiers de police sont autre chose, et restent un appât"
+          },
+          "body": {
+            "en": "Police files are not a consumer mailing list. When they are reached, the public risk is both the sensitivity of the records and the wave of copycat messages that follow the news. A message that claims to be from the police, or “about your file”, after a widely reported incident is a classic follow-on scam.\n\nDo not treat a headline figure as a personal notification. If an authority needs to contact you, use the channel you opened. On this site, disputed mass-theft claims stay labelled as claims. They are never treated as a confirmed count.",
+            "fr": "Les fichiers de police ne sont pas un fichier client. Quand ils sont atteints, le risque public tient à la sensibilité des dossiers et à la vague de messages copiés qui suit l’actualité. Un message qui se prétend de la police, ou « au sujet de votre dossier », après un incident très médiatisé est une arnaque classique de second rideau.\n\nNe prenez pas un chiffre à la une comme une notification personnelle. Si une autorité doit vous contacter, utilisez le canal que vous avez ouvert. Sur ce site, les revendications de vol massif contestées restent des revendications. Elles ne sont jamais traitées comme un décompte confirmé."
+          }
+        }
+      ],
+      "takeaways": [
+        {
+          "en": "“They knew my tax, title or school file” is a warning sign, not a credential.",
+          "fr": "« Ils connaissaient mon dossier fiscal, de titre ou scolaire » est un signal d’alerte, pas une preuve d’identité."
+        },
+        {
+          "en": "Never pay a fee or fine from a link in an unexpected message.",
+          "fr": "Ne payez jamais des frais ou une amende via un lien d’un message inattendu."
+        },
+        {
+          "en": "Use official apps and typed URLs for impôts, ANTS and identity documents.",
+          "fr": "Utilisez les applications officielles et des URL saisies pour les impôts, ANTS et les titres d’identité."
+        },
+        {
+          "en": "After a widely reported government incident, expect fake messages that borrow the story.",
+          "fr": "Après un incident administratif très médiatisé, attendez-vous à de faux messages qui empruntent l’histoire."
+        }
+      ],
+      "relatedIncidentIds": ["ants", "dgfip", "ficoba", "interior"]
+    },
+    {
+      "slug": "health-school-long-tail",
+      "title": {
+        "en": "Health, school, and why leaked data ages badly",
+        "fr": "Santé, école, et pourquoi les données divulguées vieillissent mal"
+      },
+      "dek": {
+        "en": "Some leaks look small because they are not passwords. Contact details, absences, and records tied to health or school stay useful to criminals for a long time.",
+        "fr": "Certaines fuites paraissent modestes parce qu’il ne s’agit pas de mots de passe. Coordonnées, absences et dossiers liés à la santé ou à l’école restent utiles aux criminels longtemps."
+      },
+      "sections": [
+        {
+          "heading": {
+            "en": "Sensitive does not always mean a medical record",
+            "fr": "Sensible ne veut pas toujours dire dossier médical"
+          },
+          "body": {
+            "en": "A health-themed leak can be contact and delivery details from a public-health platform, with no medical file attached. That is still enough to send a message about a vaccination, a kit, a reimbursement or an appointment that uses your real address and phone number.\n\nA medical software incident is a different problem. If the patient-data scope is not published, treat it as unknown. Do not assume nothing was taken, and do not assume a number that was not confirmed.",
+            "fr": "Une fuite à thème santé peut n’être que des coordonnées de contact et de livraison d’une plateforme de santé publique, sans dossier médical. Cela suffit encore à envoyer un message sur une vaccination, un kit, un remboursement ou un rendez-vous qui utilise votre vraie adresse et votre téléphone.\n\nUn incident sur un logiciel médical est un autre problème. Si le périmètre des données patients n’est pas publié, tenez-le pour inconnu. Ne supposez pas que rien n’a été pris, et n’inventez pas un chiffre qui n’a pas été confirmé."
+          }
+        },
+        {
+          "heading": {
+            "en": "Schools and staff files",
+            "fr": "Fichiers scolaires et fichiers d’agents"
+          },
+          "body": {
+            "en": "Education files hold identity, contact details, sometimes absences, tutor names and professional phone numbers. That is a map of who works where, who can be reached, and when someone might be away.\n\nTypical misuse: a message to a parent that names the school, a message to a teacher that names a colleague, or a fake HR or payroll notice. The facts make it local. You still should not follow the link.",
+            "fr": "Les fichiers de l’Éducation portent l’identité, les coordonnées, parfois des absences, des noms de tuteurs et des téléphones professionnels. C’est une carte de qui travaille où, qui est joignable, et quand quelqu’un peut être absent.\n\nUsages typiques : un message à un parent qui nomme l’établissement, un message à un enseignant qui nomme un collègue, ou un faux avis RH ou de paie. Les faits rendent cela local. Il ne faut toujours pas suivre le lien."
+          }
+        },
+        {
+          "heading": {
+            "en": "Delayed reuse",
+            "fr": "La réutilisation différée"
+          },
+          "body": {
+            "en": "Stolen data is cheap to keep. A dump from this year can fuel SMS next winter. Health and school context also tracks life events, a new school year or a public-health campaign, that give scammers a fresh excuse.\n\nIncreased caution should not end a week after a notice. Watch for messages that reuse the organisation’s name long after the incident left the news.",
+            "fr": "Les données volées coûtent peu à conserver. Un dump de cette année peut alimenter des SMS l’hiver suivant. Le contexte santé et scolaire suit aussi des événements de la vie, une rentrée ou une campagne de santé publique, qui offrent un prétexte neuf.\n\nLa vigilance accrue ne doit pas s’arrêter une semaine après une notification. Surveillez les messages qui réutilisent le nom de l’organisation longtemps après que l’incident a quitté l’actualité."
+          }
+        }
+      ],
+      "takeaways": [
+        {
+          "en": "Health-branded contact details are enough for health-themed phishing, even when no medical record was in the file.",
+          "fr": "Des coordonnées estampillées santé suffisent au hameçonnage sur ce thème, même sans dossier médical dans le fichier."
+        },
+        {
+          "en": "If a patient-data scope is unpublished, that is unknown, not zero.",
+          "fr": "Si le périmètre des données patients n’est pas publié, c’est inconnu, pas zéro."
+        },
+        {
+          "en": "Parents and staff should open school services themselves, not from an unexpected SMS.",
+          "fr": "Parents et agents doivent ouvrir eux-mêmes les services scolaires, pas depuis un SMS inattendu."
+        },
+        {
+          "en": "Keep evidence of suspicious messages. Report them through official channels.",
+          "fr": "Conservez les preuves des messages suspects. Signalez-les par les canaux officiels."
+        }
+      ],
+      "relatedIncidentIds": ["weda", "sante", "educompas", "edustaff", "edustudents"]
+    }
+  ]
+}
