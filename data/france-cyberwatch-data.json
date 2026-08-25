@@ -7,7 +7,7 @@
       "en",
       "fr"
     ],
-    "reviewedThrough": "2026-08-16",
+    "reviewedThrough": "2026-08-25",
     "scope": {
       "en": "Curated public-interest dataset of major publicly reported cyberattacks and data breaches affecting French public institutions and companies in 2025 and 2026. It is not a complete register. Unknown or disputed victim counts are not converted into confirmed statistics.",
       "fr": "Jeu de données d’intérêt public sur les principales cyberattaques et fuites de données rendues publiques touchant des institutions publiques et des entreprises françaises en 2025 et 2026. Il ne constitue pas un registre exhaustif. Les nombres de victimes inconnus ou contestés ne sont pas convertis en statistiques confirmées."
@@ -554,6 +554,62 @@
       "publisher": "Entrevue",
       "kind": "secondary",
       "published": "2026-08-16"
+    },
+    {
+      "id": "sfrAfp",
+      "name": "BFMTV / AFP — SFR confirms July 2026 fibre subscriber leak",
+      "url": "https://www.bfmtv.com/tech/actualites/telecoms/sfr-confirme-son-piratage-de-juillet-2026-plus-de-2-millions-de-donnees-potentiellement-concernees_AD-202608200332.html",
+      "publisher": "BFMTV",
+      "kind": "secondary",
+      "published": "2026-08-20"
+    },
+    {
+      "id": "sfr01net",
+      "name": "01net — SFR confirms a fibre-tool leak; 2.1 million rows claimed",
+      "url": "https://www.01net.com/actualites/sfr-confirme-une-fuite-de-donnees-21-millions-de-lignes-revendiquees-par-le-pirate-des-impots.html",
+      "publisher": "01net",
+      "kind": "secondary",
+      "published": "2026-08-20"
+    },
+    {
+      "id": "sfrItconnect",
+      "name": "IT-Connect — SFR customer notice on the fibre-connection tool",
+      "url": "https://www.it-connect.fr/sfr-fuite-donnees-abonnes-fibre-nova/",
+      "publisher": "IT-Connect",
+      "kind": "secondary",
+      "published": "2026-08-20"
+    },
+    {
+      "id": "irdFrenchbreaches",
+      "name": "French Breaches — IRD notification: 7,500 people exposed",
+      "url": "https://frenchbreaches.com/blog/cyberattaque-a-lird-les-donnees-personnelles-de-7-500-personnes-ont-ete-exposees",
+      "publisher": "French Breaches",
+      "kind": "secondary",
+      "published": "2026-08-20"
+    },
+    {
+      "id": "ird01net",
+      "name": "01net — IRD cyberattack exposes data of 7,500 people",
+      "url": "https://www.01net.com/actualites/institut-francais-victime-cyberattaque-donnees-7500-personnes-compromises.html",
+      "publisher": "01net",
+      "kind": "secondary",
+      "published": "2026-08-20"
+    },
+    {
+      "id": "protecEurope1",
+      "name": "Europe 1 / AFP — Protection civile confirms a volunteer-platform breach",
+      "url": "https://www.europe1.fr/societe/la-protection-civile-victime-dun-piratage-les-donnees-de-centaines-de-milliers-de-benevoles-potentiellement-exposees-1026842",
+      "publisher": "Europe 1",
+      "kind": "secondary",
+      "published": "2026-08-21"
+    },
+    {
+      "id": "protecParisien",
+      "name": "Le Parisien — Protection civile eProtec attack confirmed",
+      "url": "https://www.leparisien.fr/faits-divers/apres-les-impots-et-sfr-la-protection-civile-a-son-tour-visee-par-une-cyberattaque-21-08-2026-IMJLKNOQWFFHDNMXYPW2JU6XNE.php",
+      "publisher": "Le Parisien",
+      "kind": "secondary",
+      "published": "2026-08-21"
     }
   ],
   "incidents": [
@@ -2499,6 +2555,384 @@
         ]
       },
       "lastResearched": "2026-08-16"
+    },
+    {
+      "id": "sfr",
+      "date": "2026-08-20",
+      "year": 2026,
+      "org": {
+        "en": "SFR fibre subscribers",
+        "fr": "Abonnés fibre SFR"
+      },
+      "domain": "sfr.fr",
+      "kind": "company",
+      "sector": "Telecommunications",
+      "severity": "high",
+      "status": "confirmed",
+      "affected": null,
+      "affectedLabel": {
+        "en": "SFR and RED fibre subscribers; operator has not published a person count. A criminal claim of 2,104,093 rows is not confirmed.",
+        "fr": "Abonnés fibre SFR et RED ; l’opérateur n’a pas publié de nombre de personnes. Une revendication criminelle de 2 104 093 lignes n’est pas confirmée."
+      },
+      "data": {
+        "en": "Title, name, postal address, mobile number, contract identifier and technical line data. Passwords and banking data not concerned, SFR said.",
+        "fr": "Civilité, nom, adresse postale, numéro de mobile, identifiant de contrat et données techniques de ligne. Mots de passe et données bancaires non concernés, selon SFR."
+      },
+      "method": {
+        "en": "Unauthorised use of an account on an internal fibre-connection management tool. SFR has not named an attacker.",
+        "fr": "Usage non autorisé d’un compte sur un outil interne de gestion des raccordements fibre. SFR n’a pas nommé d’attaquant."
+      },
+      "risk": {
+        "en": "Convincing fake-technician or customer-service scams using a real address, contract and line context.",
+        "fr": "Arnaques crédibles de faux technicien ou service client s’appuyant sur une vraie adresse, un contrat et le contexte de ligne."
+      },
+      "sourceName": "SFR via AFP",
+      "confidence": {
+        "en": "Company confirmation to AFP and customer notices; headcount unpublished",
+        "fr": "Confirmation de l’entreprise à l’AFP et courriers clients ; effectif non publié"
+      },
+      "sourceId": "sfrAfp",
+      "sourceUrl": "https://www.bfmtv.com/tech/actualites/telecoms/sfr-confirme-son-piratage-de-juillet-2026-plus-de-2-millions-de-donnees-potentiellement-concernees_AD-202608200332.html",
+      "logo": {
+        "domain": "sfr.fr",
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "sfr.svg"
+      },
+      "sourceIds": [
+        "sfrAfp",
+        "sfr01net",
+        "sfrItconnect"
+      ],
+      "detail": {
+        "lead": {
+          "en": "SFR confirmed to AFP on 20 August 2026 that it had suffered a security incident on an internal tool used to manage and analyse fibre connections. Customer notices sent to SFR and RED fibre subscribers say security teams detected the incident on 2 July 2026.\n\nSFR has not published how many people are concerned. A 17 July criminal-forum claim described extraction of 2,104,093 rows from an internal portal named NOVA. That figure remains an attacker claim, not an operator count, and is not used as a chart total.",
+          "fr": "SFR a confirmé à l’AFP le 20 août 2026 avoir subi un incident de sécurité sur un outil interne de gestion et d’analyse des raccordements fibre. Les courriers adressés aux abonnés fibre SFR et RED indiquent que les équipes de sécurité ont détecté l’incident le 2 juillet 2026.\n\nSFR n’a pas publié le nombre de personnes concernées. Une revendication du 17 juillet sur un forum criminel décrit l’extraction de 2 104 093 lignes depuis un portail interne nommé NOVA. Ce chiffre reste une revendication d’attaquant, pas un décompte de l’opérateur, et n’est pas utilisé comme total graphique."
+        },
+        "timeline": [
+          {
+            "date": "2026-06-30",
+            "label": {
+              "en": "A criminal claim later dated the start of extraction from the internal fibre tool to 30 June (not confirmed by SFR).",
+              "fr": "Une revendication criminelle date ensuite le début de l’extraction depuis l’outil fibre interne au 30 juin (non confirmé par SFR)."
+            }
+          },
+          {
+            "date": "2026-07-02",
+            "label": {
+              "en": "SFR security teams detect the incident on a fibre-connection management and analysis tool, according to the customer notice. SFR says it cut the access used and added protections.",
+              "fr": "Les équipes de sécurité de SFR détectent l’incident sur un outil de gestion et d’analyse des raccordements fibre, selon le courrier client. SFR indique avoir coupé l’accès utilisé et ajouté des protections."
+            }
+          },
+          {
+            "date": "2026-07-17",
+            "label": {
+              "en": "A criminal-forum post claims 2,104,093 rows from an internal SFR portal named NOVA. Press reporting attributes the post to the ZeroBytes signature. SFR has not confirmed an attacker identity.",
+              "fr": "Une publication sur un forum criminel revendique 2 104 093 lignes depuis un portail interne SFR nommé NOVA. La presse attribue le message à la signature ZeroBytes. SFR n’a pas confirmé l’identité d’un attaquant."
+            }
+          },
+          {
+            "date": "2026-08-20",
+            "label": {
+              "en": "SFR confirms the incident to AFP after customer notices begin. It says CNIL was notified and a complaint was filed with the public prosecutor. The operator still does not publish a person count.",
+              "fr": "SFR confirme l’incident à l’AFP après le début des courriers clients. Elle indique avoir notifié la CNIL et déposé plainte auprès du procureur. L’opérateur ne publie toujours pas de nombre de personnes."
+            }
+          }
+        ],
+        "how": {
+          "en": "The customer notice and later reporting describe unauthorised access to an internal fibre-connection management tool. IT-Connect, quoting the RED notice, says SFR deactivated the account used to reach the tool and blocked and monitored the originating IP addresses. That is consistent with a compromised legitimate account rather than a named software flaw. SFR has not published a complete technical account or named an attacker.",
+          "fr": "Le courrier client et les articles ultérieurs décrivent un accès non autorisé à un outil interne de gestion des raccordements fibre. IT-Connect, citant le courrier RED, indique que SFR a désactivé le compte utilisé pour accéder à l’outil, puis bloqué et surveillé les adresses IP à l’origine des accès. Cela correspond à un compte légitime détourné plutôt qu’à une faille logicielle nommée. SFR n’a pas publié de récit technique complet ni nommé d’attaquant."
+        },
+        "taken": {
+          "en": "SFR told affected fibre subscribers that the unauthorised access covered title, name, postal address, mobile phone number, contract identifier and technical data linked to the line. Press coverage of the criminal samples also refers to identifiers such as MAC addresses, box serial numbers and ONT identifiers under that technical heading. No official unique-person total has been published.",
+          "fr": "SFR a indiqué aux abonnés fibre concernés que l’accès non autorisé portait sur la civilité, le nom, l’adresse postale, le numéro de mobile, l’identifiant de contrat et les données techniques liées à la ligne. La presse, à partir d’échantillons criminels, rattache aussi à ce volet technique des identifiants tels que adresses MAC, numéros de série de box et identifiants ONT. Aucun total officiel de personnes distinctes n’a été publié."
+        },
+        "notTaken": {
+          "en": "The operator told customers that passwords and banking information were not concerned. SFR has not confirmed the 2.1 million-row criminal figure.",
+          "fr": "L’opérateur a indiqué aux clients que les mots de passe et les informations bancaires n’étaient pas concernés. SFR n’a pas confirmé le chiffre criminel de 2,1 millions de lignes."
+        },
+        "impact": {
+          "en": "A scammer who knows a subscriber’s name, exact address, mobile number and fibre-line context can pose as an SFR or RED technician or customer-service agent. Combined with contract identifiers, that is enough for doorstep or phone fraud without needing a password or IBAN.",
+          "fr": "Un arnaqueur qui connaît le nom d’un abonné, son adresse exacte, son mobile et le contexte de la ligne fibre peut se faire passer pour un technicien ou un conseiller SFR ou RED. Associés à un identifiant de contrat, ces éléments suffisent à une fraude à domicile ou par téléphone, sans mot de passe ni IBAN."
+        },
+        "response": {
+          "en": "SFR said it cut the access used, added further protections, notified the CNIL, filed a complaint with the public prosecutor, and began contacting SFR and RED fibre customers about seven weeks after detection.",
+          "fr": "SFR indique avoir coupé l’accès utilisé, ajouté des protections, notifié la CNIL, déposé plainte auprès du procureur, et commencé à contacter les clients fibre SFR et RED environ sept semaines après la détection."
+        },
+        "methodDisclosure": "partial",
+        "attackerClaim": {
+          "en": "A 17 July criminal-forum post claimed 2,104,093 rows extracted from an internal SFR portal named NOVA, with extraction said to have begun on 30 June. Press reporting attributes that post to the ZeroBytes signature. SFR has not confirmed the volume or the attacker.",
+          "fr": "Une publication du 17 juillet sur un forum criminel revendique 2 104 093 lignes extraites d’un portail interne SFR nommé NOVA, l’extraction étant dite commencée le 30 juin. La presse attribue ce message à la signature ZeroBytes. SFR n’a confirmé ni le volume ni l’attaquant."
+        },
+        "revision": {
+          "en": "Public confirmation arrived on 20 August, after customer notices. The detection date in those notices is 2 July. The operator still has not published a person count, so the numeric affected field stays null.",
+          "fr": "La confirmation publique est arrivée le 20 août, après les courriers clients. La date de détection dans ces courriers est le 2 juillet. L’opérateur n’a toujours pas publié de nombre de personnes : le champ numérique affected reste donc null."
+        },
+        "quotes": [
+          {
+            "original": "SFR a détecté un incident de sécurité suite à un acte de cybermalveillance dont les conséquences ont pu se traduire par l’accessibilité temporaire de données liées aux lignes d’abonnés Fibre comme l’adresse, l’e-mail ou le numéro de téléphone",
+            "originalLang": "fr",
+            "translation": "SFR detected a security incident following an act of cybermalice whose consequences may have resulted in temporary accessibility of data linked to fibre subscriber lines such as address, email or telephone number",
+            "attribution": {
+              "en": "SFR statement reported by AFP / BFMTV, 20 August 2026",
+              "fr": "Déclaration de SFR rapportée par l’AFP / BFMTV, 20 août 2026"
+            },
+            "sourceId": "sfrAfp"
+          },
+          {
+            "original": "Vos mots de passe et informations bancaires ne sont pas concernés.",
+            "originalLang": "fr",
+            "translation": "Your passwords and banking information are not concerned.",
+            "attribution": {
+              "en": "SFR customer notice, quoted by IT-Connect, 20 August 2026",
+              "fr": "Courrier client SFR, cité par IT-Connect, 20 août 2026"
+            },
+            "sourceId": "sfrItconnect"
+          }
+        ]
+      },
+      "lastResearched": "2026-08-25"
+    },
+    {
+      "id": "ird",
+      "date": "2026-08-17",
+      "year": 2026,
+      "org": {
+        "en": "IRD (French National Research Institute for Sustainable Development)",
+        "fr": "IRD (Institut de recherche pour le développement)"
+      },
+      "domain": "ird.fr",
+      "kind": "government",
+      "sector": "Research",
+      "severity": "high",
+      "status": "confirmed",
+      "affected": 7500,
+      "affectedLabel": {
+        "en": "7,500 people whose data were exposed; exfiltration not confirmed",
+        "fr": "7 500 personnes dont les données ont été exposées ; exfiltration non confirmée"
+      },
+      "data": {
+        "en": "Identity, personal contact details, detailed professional HR fields and social-security numbers. IRD has not confirmed that the data were copied out.",
+        "fr": "Identité, coordonnées personnelles, champs RH professionnels détaillés et numéros de sécurité sociale. L’IRD n’a pas confirmé que les données aient été copiées hors du système."
+      },
+      "method": {
+        "en": "External intrusion into the information system. Initial access path not disclosed.",
+        "fr": "Intrusion d’origine externe dans le système d’information. Voie d’accès initiale non divulguée."
+      },
+      "risk": {
+        "en": "Identity fraud and targeted phishing using real HR context and social-security numbers.",
+        "fr": "Fraude à l’identité et hameçonnage ciblé s’appuyant sur un vrai contexte RH et des numéros de sécurité sociale."
+      },
+      "sourceName": "IRD notification via French Breaches / 01net",
+      "confidence": {
+        "en": "Institute notification reported in the press; exfiltration still unconfirmed",
+        "fr": "Notification de l’institut rapportée par la presse ; exfiltration encore non confirmée"
+      },
+      "sourceId": "irdFrenchbreaches",
+      "sourceUrl": "https://frenchbreaches.com/blog/cyberattaque-a-lird-les-donnees-personnelles-de-7-500-personnes-ont-ete-exposees",
+      "logo": {
+        "domain": "ird.fr",
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "ird.svg"
+      },
+      "sourceIds": [
+        "irdFrenchbreaches",
+        "ird01net"
+      ],
+      "detail": {
+        "lead": {
+          "en": "The IRD, a French public research institute, informed affected people in a 17 August 2026 notification that an external intrusion into its information system had exposed personal data concerning 7,500 people. The institute said the incident was detected on 24 July 2026. On 6 August, internal investigation established a confidentiality risk and the event was qualified as a personal-data breach.\n\nThe IRD stated that it was not, at that stage, able to confirm that the exposed data had actually been exfiltrated. The 7,500 figure is therefore an official exposure count, not a confirmed theft total.",
+          "fr": "L’IRD, établissement public de recherche, a informé les personnes concernées, dans une notification du 17 août 2026, qu’une intrusion d’origine externe dans son système d’information avait exposé des données personnelles concernant 7 500 personnes. L’institut indique que l’incident a été détecté le 24 juillet 2026. Le 6 août, l’investigation interne a établi un risque d’atteinte à la confidentialité et l’événement a été qualifié de violation de données personnelles.\n\nL’IRD a indiqué n’être pas en mesure, à ce stade, de confirmer que les données exposées avaient effectivement été exfiltrées. Le chiffre de 7 500 est donc un effectif officiel d’exposition, pas un total de vol confirmé."
+        },
+        "timeline": [
+          {
+            "date": "2026-07-24",
+            "label": {
+              "en": "IRD detects an external intrusion into its information system and begins investigation. A complaint is filed and CNIL is notified, according to later reporting of the notification.",
+              "fr": "L’IRD détecte une intrusion d’origine externe dans son système d’information et ouvre une investigation. Une plainte est déposée et la CNIL notifiée, selon le récit ultérieur de la notification."
+            }
+          },
+          {
+            "date": "2026-08-06",
+            "label": {
+              "en": "Investigation establishes a confidentiality risk. The institute qualifies the event as a personal-data breach.",
+              "fr": "L’investigation établit un risque d’atteinte à la confidentialité. L’institut qualifie l’événement de violation de données personnelles."
+            }
+          },
+          {
+            "date": "2026-08-17",
+            "label": {
+              "en": "IRD dates a notification to affected people: 7,500 individuals are in scope; exfiltration is still not confirmed.",
+              "fr": "L’IRD date une notification aux personnes concernées : 7 500 individus sont dans le périmètre ; l’exfiltration n’est toujours pas confirmée."
+            }
+          }
+        ],
+        "how": {
+          "en": "The institute describes an external intrusion into its information system. It has not published the initial access vector, a vulnerability, or an attacker. Servers concerned were isolated after detection. The exact start of the compromise and how long access lasted remain unpublished.",
+          "fr": "L’institut décrit une intrusion d’origine externe dans son système d’information. Il n’a pas publié la voie d’accès initiale, une vulnérabilité ni un attaquant. Les serveurs concernés ont été isolés après la détection. Le début exact de la compromission et la durée d’accès restent non publiés."
+        },
+        "taken": {
+          "en": "The notification lists identity fields (name, sex, nationality, date and place of birth), personal postal address and phone number, detailed professional fields (agent number, administrative attachment, geographic posting, status, corps, grade, post, level, echelon, job, discipline, work email and work phone), and social-security numbers. It does not say that every one of the 7,500 people is concerned by every category.",
+          "fr": "La notification liste des champs d’identité (nom, sexe, nationalité, date et lieu de naissance), l’adresse postale et le téléphone personnels, des champs professionnels détaillés (matricule, rattachement administratif, affectation géographique, statut, corps, grade, poste, niveau, échelon, emploi, discipline, e-mail et téléphone professionnels) et des numéros de sécurité sociale. Elle n’indique pas que chacune des 7 500 personnes est concernée par toutes les catégories."
+        },
+        "notTaken": {
+          "en": "IRD said it was not able to confirm that the exposed data had been copied or taken out of the system. The initial compromise date and attacker identity are unpublished.",
+          "fr": "L’IRD a indiqué n’être pas en mesure de confirmer que les données exposées avaient été copiées ou sorties du système. La date initiale de compromission et l’identité de l’attaquant ne sont pas publiées."
+        },
+        "impact": {
+          "en": "Social-security numbers combined with civil status, home address and detailed HR context create durable identity-fraud risk. A scammer can impersonate payroll, IT support, social-security or the institute itself with facts an employer would know.",
+          "fr": "Les numéros de sécurité sociale, combinés à l’état civil, l’adresse personnelle et un contexte RH détaillé, créent un risque durable de fraude à l’identité. Un arnaqueur peut usurper la paie, le support informatique, la sécurité sociale ou l’institut lui-même avec des faits qu’un employeur connaîtrait."
+        },
+        "response": {
+          "en": "Reporting of the notification says IRD filed a police complaint, notified the CNIL, activated a crisis cell, isolated the servers concerned, applied containment measures, restored services gradually, and informed the 7,500 people in scope.",
+          "fr": "Le récit de la notification indique que l’IRD a déposé plainte, notifié la CNIL, activé une cellule de crise, isolé les serveurs concernés, appliqué des mesures de confinement, rétabli les services progressivement, et informé les 7 500 personnes du périmètre."
+        },
+        "methodDisclosure": "undisclosed",
+        "revision": {
+          "en": "Exposure of 7,500 people is the official scope. Because the institute has not confirmed exfiltration, this record treats 7,500 as people whose data were exposed, not as a proven extract. The initial intrusion date remains unknown.",
+          "fr": "L’exposition de 7 500 personnes est le périmètre officiel. L’institut n’ayant pas confirmé d’exfiltration, cette fiche traite 7 500 comme des personnes dont les données ont été exposées, pas comme un extrait prouvé. La date initiale d’intrusion reste inconnue."
+        },
+        "quotes": [
+          {
+            "original": "À ce stade, nous ne sommes pas en mesure de confirmer que ces données aient été exfiltrées.",
+            "originalLang": "fr",
+            "translation": "At this stage, we are not in a position to confirm that these data were exfiltrated.",
+            "attribution": {
+              "en": "IRD notification, 17 August 2026, as quoted by French Breaches",
+              "fr": "Notification de l’IRD, 17 août 2026, citée par French Breaches"
+            },
+            "sourceId": "irdFrenchbreaches"
+          }
+        ]
+      },
+      "lastResearched": "2026-08-25"
+    },
+    {
+      "id": "protec",
+      "date": "2026-08-21",
+      "year": 2026,
+      "org": {
+        "en": "Protection civile (FNPC)",
+        "fr": "Protection civile (FNPC)"
+      },
+      "domain": "protection-civile.org",
+      "kind": "company",
+      "sector": "Civil security",
+      "severity": "high",
+      "status": "disputed",
+      "affected": null,
+      "affectedLabel": {
+        "en": "Volunteer eProtec profiles, including minors; FNPC has not published a person count. A 525,000-profile figure is contested.",
+        "fr": "Profils bénévoles eProtec, dont des mineurs ; la FNPC n’a pas publié de nombre de personnes. Un chiffre de 525 000 profils est contesté."
+      },
+      "data": {
+        "en": "Civil-status data, phone numbers, roles in the association, and data of minors. Rescue-beneficiary data not concerned, FNPC said. A 15,000-photo figure is not confirmed.",
+        "fr": "Données d’état civil, numéros de téléphone, rôles dans l’association, et données de mineurs. Données des personnes secourues non concernées, selon la FNPC. Un chiffre de 15 000 photos n’est pas confirmé."
+      },
+      "method": {
+        "en": "Cyberattack on the eProtec volunteer platform in March 2026. Initial access not disclosed.",
+        "fr": "Cyberattaque contre la plateforme bénévole eProtec en mars 2026. Accès initial non divulgué."
+      },
+      "risk": {
+        "en": "Impersonation of a civil-security association using real volunteer details, including minors.",
+        "fr": "Usurpation d’une association de sécurité civile à partir de vraies données de bénévoles, y compris des mineurs."
+      },
+      "sourceName": "FNPC via AFP",
+      "confidence": {
+        "en": "Association confirmation to AFP; 525,000-profile figure contested",
+        "fr": "Confirmation de l’association à l’AFP ; chiffre de 525 000 profils contesté"
+      },
+      "sourceId": "protecEurope1",
+      "sourceUrl": "https://www.europe1.fr/societe/la-protection-civile-victime-dun-piratage-les-donnees-de-centaines-de-milliers-de-benevoles-potentiellement-exposees-1026842",
+      "logo": {
+        "domain": "protection-civile.org",
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "protec.svg"
+      },
+      "sourceIds": [
+        "protecEurope1",
+        "protecParisien"
+      ],
+      "detail": {
+        "lead": {
+          "en": "The Fédération nationale de Protection civile confirmed to AFP on 21 August 2026 that it had suffered a cyberattack and a personal-data breach in March 2026 on eProtec, the platform used by its volunteers. A spokeswoman said the federation learned of the incident on 17 August.\n\nFrench Breaches reported more than 525,000 profiles and about 15,000 photographs. The FNPC contests that profile figure, citing many duplicates in the leaked file, and is still trying to establish how many distinct people are concerned. Those numbers are not used as chart totals.",
+          "fr": "La Fédération nationale de Protection civile a confirmé à l’AFP le 21 août 2026 avoir subi en mars 2026 une cyberattaque et une violation de données personnelles sur eProtec, la plateforme utilisée par ses bénévoles. Une porte-parole a indiqué que la fédération avait appris l’incident le 17 août.\n\nFrench Breaches a fait état de plus de 525 000 profils et d’environ 15 000 photographies. La FNPC conteste ce chiffre de profils, évoquant de nombreux doublons dans le fichier ayant fuité, et cherche encore combien de personnes distinctes sont concernées. Ces nombres ne sont pas utilisés comme totaux graphiques."
+        },
+        "timeline": [
+          {
+            "date": "2026-03-01",
+            "label": {
+              "en": "Attack on eProtec occurs in March 2026 (exact day not published).",
+              "fr": "L’attaque contre eProtec a lieu en mars 2026 (jour exact non publié)."
+            }
+          },
+          {
+            "date": "2026-08-17",
+            "label": {
+              "en": "FNPC says it learned of the breach.",
+              "fr": "La FNPC indique avoir appris la violation."
+            }
+          },
+          {
+            "date": "2026-08-21",
+            "label": {
+              "en": "FNPC confirms the March attack to AFP, files a complaint with the Paris prosecutor’s cyber section, and contests the 525,000-profile figure.",
+              "fr": "La FNPC confirme l’attaque de mars à l’AFP, dépose plainte auprès de la section cyber du parquet de Paris, et conteste le chiffre de 525 000 profils."
+            }
+          }
+        ],
+        "how": {
+          "en": "The confirmed target is eProtec, used to manage volunteers. FNPC told its teams, according to Le Parisien, that the attack sits in a series that had already hit several sports federations. The initial access path has not been published. Extraction is said not to have been detected at the time.",
+          "fr": "La cible confirmée est eProtec, utilisée pour gérer les bénévoles. La FNPC a indiqué à ses équipes, selon Le Parisien, que l’attaque s’inscrit dans une série ayant déjà visé plusieurs fédérations sportives. La voie d’accès initiale n’a pas été publiée. L’extraction n’aurait pas été détectée à l’époque."
+        },
+        "taken": {
+          "en": "An FNPC spokeswoman told AFP that civil-status data, dates of birth, telephone numbers, roles in the association and data of minors were concerned. French Breaches separately reported more than 525,000 profiles and about 15,000 photographs; FNPC contests the profile count because of duplicates and does not confirm the photograph figure. Investigations were still trying to establish what was actually consulted or extracted.",
+          "fr": "Une porte-parole de la FNPC a indiqué à l’AFP que des données d’état civil, dates de naissance, numéros de téléphone, rôles dans l’association et données de mineurs étaient concernées. French Breaches a séparément fait état de plus de 525 000 profils et d’environ 15 000 photographies ; la FNPC conteste le nombre de profils en raison de doublons et ne confirme pas le chiffre de photographies. Les investigations cherchaient encore à établir ce qui avait réellement été consulté ou extrait."
+        },
+        "notTaken": {
+          "en": "FNPC said none of the stolen data belong to people the association had rescued or assisted. It has not confirmed a unique-person total.",
+          "fr": "La FNPC a indiqué qu’aucune des données piratées n’appartenait à des personnes auxquelles l’association avait porté secours. Elle n’a pas confirmé de total de personnes distinctes."
+        },
+        "impact": {
+          "en": "Volunteer civil-status and phone data, including records of minors, can support impersonation of a recognised rescue organisation. The association counts far fewer active volunteers than the contested 525,000-profile file, so the file may mix current members, former members and duplicates — which is why no numeric count is charted.",
+          "fr": "Des données d’état civil et de téléphone de bénévoles, y compris des mineurs, peuvent servir à usurper une association de secours reconnue. L’association compte beaucoup moins de bénévoles actifs que le fichier contesté de 525 000 profils : le fichier peut mêler membres actuels, anciens et doublons, ce qui explique l’absence de total graphique."
+        },
+        "response": {
+          "en": "FNPC confirmed the incident, said investigations were continuing to establish the leaked information, and filed a complaint with the Paris prosecutor’s cybercrime section.",
+          "fr": "La FNPC a confirmé l’incident, indiqué que les recherches se poursuivaient pour déterminer les informations concernées, et déposé plainte auprès de la section de lutte contre la cybercriminalité du parquet de Paris."
+        },
+        "methodDisclosure": "undisclosed",
+        "attackerClaim": {
+          "en": "French Breaches reported more than 525,000 profiles and about 15,000 photographs. FNPC contests the profile figure, citing many duplicates, and does not confirm the photograph count. Neither figure is copied into the numeric affected field.",
+          "fr": "French Breaches a fait état de plus de 525 000 profils et d’environ 15 000 photographies. La FNPC conteste le chiffre de profils, évoquant de nombreux doublons, et ne confirme pas le nombre de photographies. Aucun de ces chiffres n’est recopié dans le champ numérique affected."
+        },
+        "revision": {
+          "en": "Public confirmation is dated 21 August 2026; the association says the attack itself was in March and that it learned of the leak on 17 August. The person count remains unpublished.",
+          "fr": "La confirmation publique est datée du 21 août 2026 ; l’association situe l’attaque en mars et dit avoir appris la fuite le 17 août. Le nombre de personnes reste non publié."
+        },
+        "quotes": [
+          {
+            "original": "beaucoup de doublons dans le fichier qui a fuité",
+            "originalLang": "fr",
+            "translation": "many duplicates in the file that leaked",
+            "attribution": {
+              "en": "FNPC spokeswoman to AFP, 21 August 2026",
+              "fr": "Porte-parole de la FNPC à l’AFP, 21 août 2026"
+            },
+            "sourceId": "protecEurope1"
+          },
+          {
+            "original": "Aucune donnée piratée n’appartient à des personnes à qui la Protection Civile a porté secours",
+            "originalLang": "fr",
+            "translation": "No stolen data belong to people whom Protection civile rescued",
+            "attribution": {
+              "en": "FNPC spokeswoman to AFP, 21 August 2026",
+              "fr": "Porte-parole de la FNPC à l’AFP, 21 août 2026"
+            },
+            "sourceId": "protecEurope1"
+          }
+        ]
+      },
+      "lastResearched": "2026-08-25"
     }
   ],
   "patterns": [
@@ -2509,8 +2943,8 @@
         "fr": "Identifiants volés"
       },
       "description": {
-        "en": "Compromised staff or third-party accounts can turn a normal login into a privileged intrusion. FICOBA, Education and DGFiP incidents all highlight identity and access risk.",
-        "fr": "Des comptes de personnel ou de tiers compromis peuvent transformer une connexion ordinaire en intrusion privilégiée. Les incidents FICOBA, Éducation et DGFiP illustrent le risque lié aux identités et aux accès."
+        "en": "Compromised staff or third-party accounts can turn a normal login into a privileged intrusion. FICOBA, Education, DGFiP and SFR incidents all highlight identity and access risk.",
+        "fr": "Des comptes de personnel ou de tiers compromis peuvent transformer une connexion ordinaire en intrusion privilégiée. Les incidents FICOBA, Éducation, DGFiP et SFR illustrent le risque lié aux identités et aux accès."
       },
       "priority": {
         "en": "Phishing-resistant MFA + tighter privileges",
@@ -2584,8 +3018,8 @@
         "fr": "Lacunes de détection"
       },
       "description": {
-        "en": "Some breaches were discovered only after attacker claims or after access had already occurred. Logging alone is not enough if unusual extraction is not detected.",
-        "fr": "Certaines fuites n’ont été détectées qu’après des revendications d’attaquants ou après que l’accès a déjà eu lieu. Les journaux ne suffisent pas si les extractions anormales ne sont pas détectées."
+        "en": "Some breaches were discovered only after attacker claims or after access had already occurred. Logging alone is not enough if unusual extraction is not detected. Protection civile said a March intrusion was learned only in August.",
+        "fr": "Certaines fuites n’ont été découvertes qu’après des revendications d’attaquants ou après que l’accès a déjà eu lieu. Les journaux ne suffisent pas si les extractions anormales ne sont pas détectées. La Protection civile a indiqué n’avoir appris qu’en août une intrusion de mars."
       },
       "priority": {
         "en": "Behaviour analytics + exfiltration alerts",
@@ -2855,6 +3289,14 @@
       "Telecommunications": {
         "en": "Telecommunications",
         "fr": "Télécommunications"
+      },
+      "Research": {
+        "en": "Research",
+        "fr": "Recherche"
+      },
+      "Civil security": {
+        "en": "Civil security",
+        "fr": "Sécurité civile"
       }
     }
   }
