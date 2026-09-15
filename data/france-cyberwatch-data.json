@@ -7,7 +7,7 @@
       "en",
       "fr"
     ],
-    "reviewedThrough": "2026-08-16",
+    "reviewedThrough": "2026-09-15",
     "scope": {
       "en": "Curated public-interest dataset of major publicly reported cyberattacks and data breaches affecting French public institutions and companies in 2025 and 2026. It is not a complete register. Unknown or disputed victim counts are not converted into confirmed statistics.",
       "fr": "Jeu de données d’intérêt public sur les principales cyberattaques et fuites de données rendues publiques touchant des institutions publiques et des entreprises françaises en 2025 et 2026. Il ne constitue pas un registre exhaustif. Les nombres de victimes inconnus ou contestés ne sont pas convertis en statistiques confirmées."
@@ -554,6 +554,158 @@
       "publisher": "Entrevue",
       "kind": "secondary",
       "published": "2026-08-16"
+    },
+    {
+      "id": "ird",
+      "name": "IRD - personal-data exposure notice",
+      "url": "https://www.ird.fr/incident-de-securite-information-sur-lexposition-de-donnees-caractere-personnel",
+      "publisher": "IRD",
+      "kind": "primary",
+      "published": "2026-08-18"
+    },
+    {
+      "id": "irdNext",
+      "name": "Next - IRD CEO letter, 7,500 people exposed",
+      "url": "https://next.ink/brief-article/lird-confirme-un-piratage-les-donnees-de-7-500-personnes-exposees/",
+      "publisher": "Next",
+      "kind": "secondary",
+      "published": "2026-08-21"
+    },
+    {
+      "id": "resamaniaFaq",
+      "name": "Resamania - security-incident FAQ",
+      "url": "https://info.resamania.fr/",
+      "publisher": "Resamania",
+      "kind": "primary",
+      "published": "2026-08-19"
+    },
+    {
+      "id": "resamaniaHashtag",
+      "name": "Hashtag Avocats - Resamania 19 August communiqué, 5.2 million users",
+      "url": "https://hashtagavocats.com/fuite-resamania-salles-de-sport/",
+      "publisher": "Hashtag Avocats",
+      "kind": "secondary",
+      "published": "2026-08-21"
+    },
+    {
+      "id": "sfrFrance24",
+      "name": "France 24 / AFP - SFR fibre subscriber leak",
+      "url": "https://www.france24.com/fr/info-en-continu/20260820-l-op%C3%A9rateur-sfr-victime-d-une-fuite-de-donn%C3%A9es-affectant-ses-abonn%C3%A9s-fibre",
+      "publisher": "France 24",
+      "kind": "secondary",
+      "published": "2026-08-20"
+    },
+    {
+      "id": "sfr01net",
+      "name": "01net - SFR fibre-tool leak and 2.1 million-line claim",
+      "url": "https://www.01net.com/actualites/sfr-confirme-une-fuite-de-donnees-21-millions-de-lignes-revendiquees-par-le-pirate-des-impots.html",
+      "publisher": "01net",
+      "kind": "secondary",
+      "published": "2026-08-20"
+    },
+    {
+      "id": "protectionEurope1",
+      "name": "Europe 1 / AFP - Protection civile eProtec leak",
+      "url": "https://www.europe1.fr/societe/la-protection-civile-victime-dun-piratage-les-donnees-de-centaines-de-milliers-de-benevoles-potentiellement-exposees-1026842",
+      "publisher": "Europe 1",
+      "kind": "secondary",
+      "published": "2026-08-21"
+    },
+    {
+      "id": "protection20min",
+      "name": "20 Minutes - Protection civile March intrusion, August discovery",
+      "url": "https://www.20minutes.fr/societe/4240286-20260821-cyberattaque-protection-civile-victime-aussi-vol-donnees-mars",
+      "publisher": "20 Minutes",
+      "kind": "secondary",
+      "published": "2026-08-21"
+    },
+    {
+      "id": "ecologieFranceinfo",
+      "name": "franceinfo / AFP - Ecological Transition ministry cyberattack",
+      "url": "https://www.franceinfo.fr/internet/securite-sur-internet/cyberattaques/plusieurs-sites-gouvernementaux-lies-au-ministere-de-la-transition-ecologique-inaccessibles-mercredi-a-la-suite-d-une-cyberattaque_8174462.html",
+      "publisher": "franceinfo",
+      "kind": "secondary",
+      "published": "2026-09-02"
+    },
+    {
+      "id": "ecologie01net",
+      "name": "01net - Ecological Transition Bnum messaging measures",
+      "url": "https://www.01net.com/actualites/une-cyberattaque-sophistiquee-frappe-un-pole-ministeriel-des-mesures-particulieres-ont-ete-prises.html",
+      "publisher": "01net",
+      "kind": "secondary",
+      "published": "2026-09-03"
+    },
+    {
+      "id": "amfLocaltis",
+      "name": "Banque des Territoires / Localtis - AMF confirms website data theft",
+      "url": "https://www.banquedesterritoires.fr/cyberattaque-de-lamf-lassociation-confirme-une-fuite-de-donnees-et-saisit-la-cnil",
+      "publisher": "Banque des Territoires",
+      "kind": "secondary",
+      "published": "2026-09-07"
+    },
+    {
+      "id": "amfBfm",
+      "name": "BFM Tech - AMF confirms leak of elected-official and local-authority data",
+      "url": "https://www.bfmtv.com/tech/cybersecurite/l-association-des-maires-de-france-victime-d-une-cyberattaque-plus-de-100-000-donnees-d-elus-et-de-collectivites-ont-ete-derobees_AV-202609040634.html",
+      "publisher": "BFM TV",
+      "kind": "secondary",
+      "published": "2026-09-04"
+    },
+    {
+      "id": "snexiFrenchbreaches",
+      "name": "FrenchBreaches - Snexi confirms 2 September personal-data breach",
+      "url": "https://frenchbreaches.com/alertes/snexi-mtndjyfm1p926jbh30z",
+      "publisher": "FrenchBreaches",
+      "kind": "secondary",
+      "published": "2026-09-07"
+    },
+    {
+      "id": "snexiCyberattaque",
+      "name": "Cyberattaque.org - Snexi confirmation and later Citya-labelled claim",
+      "url": "https://www.cyberattaque.org/citya-snexi-fuite-de-donnees-cyberattaque/",
+      "publisher": "Cyberattaque.org",
+      "kind": "secondary",
+      "published": "2026-09-11"
+    },
+    {
+      "id": "jinkoClubic",
+      "name": "Clubic - Jinko confirms unauthorised access and health-data exfiltration",
+      "url": "https://www.clubic.com/actualite-628717-l-enorme-fuite-de-donnees-chez-jinko-plateforme-francaise-dediee-aux-malades-du-cancer-qui-confirme-le-piratage.html",
+      "publisher": "Clubic",
+      "kind": "secondary",
+      "published": "2026-09-08"
+    },
+    {
+      "id": "jinkoFranceinfo",
+      "name": "franceinfo - Jinko cancer-platform leak",
+      "url": "https://www.franceinfo.fr/internet/securite-sur-internet/cyberattaques/la-plateforme-d-accompagnement-de-personnes-atteintes-d-un-cancer-jinko-victime-d-une-fuite-de-donnees_8182610.html",
+      "publisher": "franceinfo",
+      "kind": "secondary",
+      "published": "2026-09-08"
+    },
+    {
+      "id": "passpassFranceinfo",
+      "name": "franceinfo - Pass Pass Mobilités confirms about 19,000 users",
+      "url": "https://www.franceinfo.fr/internet/securite-sur-internet/cyberattaques/le-site-et-l-application-pass-pass-mobilites-victimes-d-une-cyberattaque-dans-les-hauts-de-france-19-000-usagers-concernes-par-un-vol-de-donnees_8188553.html",
+      "publisher": "franceinfo",
+      "kind": "secondary",
+      "published": "2026-09-11"
+    },
+    {
+      "id": "passpassVdn",
+      "name": "La Voix du Nord - Pass Pass syndicat statement, 18,637 plus 2,228",
+      "url": "https://www.lavoixdunord.fr/1736331/article/2026-09-11/le-site-et-l-application-pass-pass-mobilites-victimes-d-une-cyberattaque-et-d",
+      "publisher": "La Voix du Nord",
+      "kind": "secondary",
+      "published": "2026-09-11"
+    },
+    {
+      "id": "dgfipZdnet",
+      "name": "ZDNet - Paris prosecutor, two arrests in the DGFiP case",
+      "url": "https://www.zdnet.fr/actualites/piratage-de-la-dgfip-deux-interpellations-et-une-mise-en-examen-502870.htm",
+      "publisher": "ZDNet France",
+      "kind": "secondary",
+      "published": "2026-09-05"
     }
   ],
   "incidents": [
@@ -2392,7 +2544,8 @@
         "dgfip",
         "dgfipLemonde",
         "dgfipBriefing",
-        "dgfipEntrevue"
+        "dgfipEntrevue",
+        "dgfipZdnet"
       ],
       "detail": {
         "lead": {
@@ -2448,6 +2601,20 @@
               "en": "DGFiP plans to contact each affected individual or business from the week of 17 August, with details of the data that may have been consulted or extracted.",
               "fr": "La DGFiP prévoit de contacter chaque particulier ou professionnel concerné à compter de la semaine du 17 août, avec le détail des données susceptibles d’avoir été consultées ou extraites."
             }
+          },
+          {
+            "date": "2026-08-18",
+            "label": {
+              "en": "An 18-year-old is arrested in the case, according to later AFP reporting of the Paris prosecutor’s office. He is later charged and held in pre-trial detention.",
+              "fr": "Le parquet de Paris, selon un compte rendu AFP ultérieur, fait interpeller un homme de 18 ans dans le dossier. Il est ensuite mis en examen et placé en détention provisoire."
+            }
+          },
+          {
+            "date": "2026-09-05",
+            "label": {
+              "en": "ZDNet, citing AFP, reports the prosecutor’s confirmation of two arrests of suspected members of the group that claimed the intrusion, including a second suspect under 16 arrested a few days after 18 August.",
+              "fr": "ZDNet, citant l’AFP, rapporte la confirmation par le parquet de deux interpellations de membres présumés du groupe ayant revendiqué l’intrusion, dont un second suspect de moins de 16 ans interpellé quelques jours après le 18 août."
+            }
           }
         ],
         "how": {
@@ -2467,13 +2634,13 @@
           "fr": "C’est l’un des jeux de données d’identité les plus sensibles du recueil, car il révèle à la fois l’identité personnelle et la situation financière. Un escroc qui connaît le revenu de référence, le quotient familial et le taux de prélèvement d’une victime peut usurper de façon convaincante l’administration fiscale, une banque, un expert-comptable ou un service de gestion de patrimoine. Pour les foyers à hauts revenus, la divulgation peut aussi créer des risques de ciblage et de sécurité physique au-delà de l’hameçonnage ordinaire."
         },
         "response": {
-          "en": "DGFiP cut access associated with the compromised accounts, then made additional preventive cuts to sensitive information systems after the August discoveries. It notified the CNIL, worked with SHFDS and ANSSI, planned individual notification, and announced a criminal complaint. Reporting on 16 August said a Paris prosecutor investigation had been opened with OFAC.",
-          "fr": "La DGFiP a coupé les accès associés aux comptes compromis, puis procédé à des coupures préventives supplémentaires sur des systèmes sensibles après les découvertes d’août. Elle a notifié la CNIL, travaillé avec le SHFDS et l’ANSSI, prévu une information individuelle et annoncé une plainte pénale. Le 16 août, la presse indiquait qu’une enquête du parquet de Paris avait été ouverte et confiée à l’OFAC."
+          "en": "DGFiP cut access associated with the compromised accounts, then made additional preventive cuts to sensitive information systems after the August discoveries. It notified the CNIL, worked with SHFDS and ANSSI, planned individual notification, and announced a criminal complaint. Reporting on 16 August said a Paris prosecutor investigation had been opened with OFAC. AFP reporting published on 5 September said an 18-year-old arrested on 18 August had been charged and held, and that a second suspect under 16 had been arrested a few days later and released after custody while devices were examined.",
+          "fr": "La DGFiP a coupé les accès associés aux comptes compromis, puis procédé à des coupures préventives supplémentaires sur des systèmes sensibles après les découvertes d’août. Elle a notifié la CNIL, travaillé avec le SHFDS et l’ANSSI, prévu une information individuelle et annoncé une plainte pénale. Le 16 août, la presse indiquait qu’une enquête du parquet de Paris avait été ouverte et confiée à l’OFAC. Un compte rendu AFP publié le 5 septembre indiquait qu’un homme de 18 ans interpellé le 18 août avait été mis en examen et écroué, et qu’un second suspect de moins de 16 ans, interpellé quelques jours plus tard, avait été relâché à l’issue de sa garde à vue, ses équipements étant analysés."
         },
         "methodDisclosure": "disclosed",
         "revision": {
-          "en": "This case was still evolving at the research cutoff. Criminal posts described a VPN and made additional claims about bypassing authentication controls; those claims remain separate from the official method. The written release also says the exact nature and volume of extracted data and the final number of users concerned were still being investigated, so even the 678,000 figure should be understood as the established scope at 14 August, not necessarily the final endpoint of the inquiry.",
-          "fr": "Ce dossier évoluait encore à la clôture de la recherche. Des publications criminelles ont décrit un VPN et fait d’autres allégations sur le contournement des contrôles d’authentification ; ces revendications restent distinctes de la méthode officielle. Le communiqué écrit indique aussi que la nature et le volume exacts des données extraites, ainsi que le nombre définitif d’usagers concernés, étaient encore en investigation : le chiffre de 678 000 est donc le périmètre établi au 14 août, pas nécessairement le point d’arrivée de l’enquête."
+          "en": "Later AFP reporting, summarised by ZDNet on 5 September, said the Paris prosecutor confirmed two arrests in late August of suspected members of the group that claimed the intrusion. The written 14 August release remains the source of the 678,000 figure. Criminal posts about a VPN stay separate from the official method.",
+          "fr": "Un compte rendu AFP, résumé par ZDNet le 5 septembre, indique que le parquet de Paris a confirmé deux interpellations fin août de membres présumés du groupe ayant revendiqué l’intrusion. Le communiqué écrit du 14 août reste la source du chiffre de 678 000. Les publications criminelles sur un VPN restent distinctes de la méthode officielle."
         },
         "quotes": [
           {
@@ -2498,7 +2665,1087 @@
           }
         ]
       },
-      "lastResearched": "2026-08-16"
+      "lastResearched": "2026-09-15"
+    },
+    {
+      "id": "ird",
+      "date": "2026-08-18",
+      "year": 2026,
+      "org": {
+        "en": "IRD",
+        "fr": "IRD"
+      },
+      "domain": "ird.fr",
+      "kind": "government",
+      "sector": "Research",
+      "severity": "high",
+      "status": "confirmed",
+      "affected": 7500,
+      "affectedLabel": {
+        "en": "7,500 people exposed; exfiltration not confirmed",
+        "fr": "7 500 personnes exposées ; exfiltration non confirmée"
+      },
+      "data": {
+        "en": "Identity, personal and professional contact details. For IRD staff, place of birth and social-security number. No bank details, session passwords or ID-card copies identified.",
+        "fr": "Identité, coordonnées personnelles et professionnelles. Pour les agents IRD, lieu de naissance et numéro de sécurité sociale. Pas de coordonnées bancaires, de mots de passe de session ni de copies de cartes d’identité identifiées."
+      },
+      "method": {
+        "en": "External intrusion detected by the security operations centre. Initial access path not published. Exposure of a server established on 6 August.",
+        "fr": "Intrusion d’origine externe détectée par le centre opérationnel de sécurité. Voie d’accès initiale non publiée. Exposition d’un serveur établie le 6 août."
+      },
+      "risk": {
+        "en": "Account takeover, identity theft and social-security-themed fraud.",
+        "fr": "Piratage de compte, usurpation d’identité et fraude à thème sécurité sociale."
+      },
+      "sourceName": "IRD",
+      "confidence": {
+        "en": "Official IRD notice; 7,500 comes from the CEO letter reported by Next, not from the public FAQ",
+        "fr": "Avis officiel IRD ; le chiffre 7 500 vient de la lettre de la PDG rapportée par Next, pas de la FAQ publique"
+      },
+      "sourceId": "ird",
+      "sourceUrl": "https://www.ird.fr/incident-de-securite-information-sur-lexposition-de-donnees-caractere-personnel",
+      "logo": {
+        "domain": "ird.fr",
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "ird.svg"
+      },
+      "sourceIds": [
+        "ird",
+        "irdNext"
+      ],
+      "detail": {
+        "lead": {
+          "en": "The Institut de recherche pour le développement published a notice on 18 August 2026 after detecting an external intrusion on 24 July. Investigations established on 6 August that a concerned server had exposed personal data, which the institute treats as a confidentiality breach.\n\nA letter signed by president and CEO Valérie Verdier, reported by Next, set the exposed population at 7,500 staff, partners and external contributors. The public FAQ, updated on 4 September, still says investigators cannot confirm that the data were copied off the network.",
+          "fr": "L’Institut de recherche pour le développement a publié un avis le 18 août 2026 après avoir détecté une intrusion d’origine externe le 24 juillet. Les investigations ont établi le 6 août qu’un serveur concerné avait exposé des données à caractère personnel, ce que l’institut qualifie d’atteinte à la confidentialité.\n\nUne lettre signée par la présidente-directrice générale Valérie Verdier, rapportée par Next, fixe la population exposée à 7 500 agents, partenaires et intervenants externes. La FAQ publique, mise à jour le 4 septembre, indique toujours que les investigations ne permettent pas de confirmer une exfiltration."
+        },
+        "timeline": [
+          {
+            "date": "2026-07-24",
+            "label": {
+              "en": "IRD detects an external intrusion after a security-operations-centre alert.",
+              "fr": "L’IRD détecte une intrusion d’origine externe après une alerte de son centre opérationnel de sécurité."
+            }
+          },
+          {
+            "date": "2026-08-06",
+            "label": {
+              "en": "Investigations establish that personal data on a concerned server were exposed.",
+              "fr": "Les investigations établissent que des données à caractère personnel présentes sur un serveur concerné ont été exposées."
+            }
+          },
+          {
+            "date": "2026-08-18",
+            "label": {
+              "en": "IRD publishes a public notice and emails the people concerned. The CEO letter reported by Next cites 7,500 people.",
+              "fr": "L’IRD publie un avis public et écrit aux personnes concernées. La lettre de la PDG rapportée par Next cite 7 500 personnes."
+            }
+          },
+          {
+            "date": "2026-09-04",
+            "label": {
+              "en": "The public FAQ is updated and still says exfiltration has not been confirmed.",
+              "fr": "La FAQ publique est mise à jour et indique toujours que l’exfiltration n’est pas confirmée."
+            }
+          }
+        ],
+        "how": {
+          "en": "IRD describes an external intrusion found after a SOC alert. It has not published the initial access path. What it has established is that personal data on one of the servers involved were exposed. Exposure here means a confidentiality breach under the GDPR definition the FAQ cites. It is not, in IRD’s wording, a confirmed copy of the files off the network.",
+          "fr": "L’IRD décrit une intrusion d’origine externe trouvée après une alerte du centre opérationnel de sécurité. Elle n’a pas publié la voie d’accès initiale. Ce qui est établi, c’est que des données à caractère personnel présentes sur l’un des serveurs concernés ont été exposées. L’exposition désigne ici une atteinte à la confidentialité au sens de la définition RGPD citée par la FAQ. Ce n’est pas, dans les termes de l’IRD, une copie confirmée des fichiers hors du réseau."
+        },
+        "taken": {
+          "en": "The public FAQ lists identification data (name, first names, sex, nationality, date), personal-life data (postal address and personal phone) and professional data (staff number, administrative attachment, posting, status, corps, grade, job, email and professional phone). For IRD staff, place of birth and social-security number are also listed. Next’s account of the CEO letter matches that list and supplies the 7,500 figure.",
+          "fr": "La FAQ publique liste des données d’identification (nom, prénom(s), sexe, nationalité, date), des données relatives à la vie personnelle (adresse postale et téléphone personnel) et des données professionnelles (matricule, rattachement, affectation, statut, corps, grade, poste, e-mail et téléphone professionnels). Pour les agents de l’IRD, le lieu de naissance et le numéro de sécurité sociale sont aussi cités. Le compte rendu par Next de la lettre de la PDG concorde avec cette liste et fournit le chiffre de 7 500."
+        },
+        "notTaken": {
+          "en": "IRD says investigations have not identified exposure of bank details, user-session passwords or copies of identity cards. Exfiltration of the exposed fields is not confirmed.",
+          "fr": "L’IRD indique que les investigations n’ont pas identifié d’exposition de coordonnées bancaires, de mots de passe de session utilisateur ni de copies de cartes d’identité. L’exfiltration des champs exposés n’est pas confirmée."
+        },
+        "impact": {
+          "en": "A social-security number plus identity and home contact details is enough for durable identity fraud, false health-insurance approaches and account takeover. Partners and external contributors are in the same notification population as staff.",
+          "fr": "Un numéro de sécurité sociale, plus l’identité et des coordonnées domicile, suffit à une fraude d’identité durable, à de fausses démarches Assurance maladie et à la prise de comptes. Les partenaires et intervenants externes font partie de la même population notifiée que les agents."
+        },
+        "response": {
+          "en": "IRD isolated the servers, set up a crisis cell, filed a police complaint, notified the CNIL, hired an incident-response provider and worked with ANSSI, CERT RENATER, COSSIM and the ministry FSSI. People concerned were emailed.",
+          "fr": "L’IRD a isolé les serveurs, mis en place une cellule de crise, déposé plainte, notifié la CNIL, recouru à un prestataire de réponse à incident et travaillé avec l’ANSSI, le CERT RENATER, le COSSIM et le FSSI ministériel. Les personnes concernées ont reçu un courriel."
+        },
+        "methodDisclosure": "partial",
+        "revision": {
+          "en": "The 18 August public page did not publish a headcount. The 7,500 figure is taken from the CEO letter reported by Next. The 4 September FAQ update still does not confirm exfiltration, so the numeric field is an exposure count, not a confirmed stolen-copy count.",
+          "fr": "La page publique du 18 août ne publiait pas d’effectif. Le chiffre 7 500 est pris dans la lettre de la PDG rapportée par Next. La mise à jour de FAQ du 4 septembre ne confirme toujours pas d’exfiltration : le champ numérique est un décompte d’exposition, pas un décompte de copies volées confirmées."
+        },
+        "quotes": [
+          {
+            "original": "À ce stade, les investigations ne permettent toutefois pas de confirmer que ces informations aient été exfiltrées.",
+            "originalLang": "fr",
+            "translation": "At this stage, however, the investigations do not make it possible to confirm that this information was exfiltrated.",
+            "attribution": {
+              "en": "IRD public notice, 18 August 2026",
+              "fr": "Avis public IRD, 18 août 2026"
+            },
+            "sourceId": "ird"
+          },
+          {
+            "original": "à l’exposition des données de 7 500 personnes",
+            "originalLang": "fr",
+            "translation": "to the exposure of the data of 7,500 people",
+            "attribution": {
+              "en": "Valérie Verdier, IRD CEO letter, reported by Next, 18 August 2026",
+              "fr": "Valérie Verdier, lettre de la PDG de l’IRD, rapportée par Next, 18 août 2026"
+            },
+            "sourceId": "irdNext"
+          }
+        ]
+      },
+      "lastResearched": "2026-09-15"
+    },
+    {
+      "id": "resamania",
+      "date": "2026-08-19",
+      "year": 2026,
+      "org": {
+        "en": "Resamania",
+        "fr": "Resamania"
+      },
+      "domain": "resamania.fr",
+      "kind": "company",
+      "sector": "Fitness software",
+      "severity": "critical",
+      "status": "confirmed",
+      "affected": 5200000,
+      "affectedLabel": {
+        "en": "5.2 million users, per the 19 August communiqué as quoted by Hashtag Avocats",
+        "fr": "5,2 millions d’utilisateurs, selon le communiqué du 19 août tel que cité par Hashtag Avocats"
+      },
+      "data": {
+        "en": "Name, email, phone, postal address, postcode and club name. For a limited subset: login credentials, IBAN and health information supplied to a club. Payment-card data were not stored in the affected system.",
+        "fr": "Nom, e-mail, téléphone, adresse postale, code postal et nom du club. Pour un sous-ensemble limité : identifiants, IBAN et informations de santé fournies à un club. Les données de cartes de paiement n’étaient pas stockées dans le système concerné."
+      },
+      "method": {
+        "en": "Unauthorised access on 1 August 2026 to personal data hosted on a legacy version of the platform. The FAQ says the access path was then blocked; it does not name a vulnerability class.",
+        "fr": "Accès non autorisé le 1er août 2026 à des données personnelles hébergées sur une ancienne version de la plateforme. La FAQ indique que le chemin d’accès a ensuite été bloqué ; elle ne nomme pas une classe de vulnérabilité."
+      },
+      "risk": {
+        "en": "Gym-branded phishing, reused-password takeover, SEPA fraud where an IBAN was present, and misuse of health details for a limited subset.",
+        "fr": "Hameçonnage à l’enseigne d’une salle, prise de comptes par mot de passe réutilisé, fraude SEPA lorsque l’IBAN était présent, et usage abusif d’informations de santé pour un sous-ensemble limité."
+      },
+      "sourceName": "Resamania",
+      "confidence": {
+        "en": "Company FAQ is primary. The 5.2 million figure is from the 19 August communiqué as quoted by Hashtag Avocats, not from the FAQ itself.",
+        "fr": "La FAQ de l’éditeur est la source primaire. Le chiffre de 5,2 millions vient du communiqué du 19 août tel que cité par Hashtag Avocats, pas de la FAQ elle-même."
+      },
+      "sourceId": "resamaniaFaq",
+      "sourceUrl": "https://info.resamania.fr/",
+      "logo": {
+        "domain": "resamania.fr",
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "resamania.svg"
+      },
+      "sourceIds": [
+        "resamaniaFaq",
+        "resamaniaHashtag"
+      ],
+      "detail": {
+        "lead": {
+          "en": "Resamania, a French fitness-club management platform, says an unauthorised party accessed personal data hosted on a legacy version of its platform on 1 August 2026. The company published a dedicated FAQ and notified the CNIL.\n\nA 19 August communiqué, quoted by Hashtag Avocats, put the number of users concerned at 5.2 million. The FAQ itself does not reprint that headcount. A criminal forum claim of 5,273,884 unique records, published the same day as the access, is not the official figure. Press lists of gym brands are not company disclosure.",
+          "fr": "Resamania, plateforme française de gestion de salles de sport, indique qu’un tiers non autorisé a accédé, le 1er août 2026, à des données personnelles hébergées sur une ancienne version de sa plateforme. L’éditeur a publié une FAQ dédiée et notifié la CNIL.\n\nUn communiqué du 19 août, cité par Hashtag Avocats, fixe le nombre d’utilisateurs concernés à 5,2 millions. La FAQ elle-même ne reprend pas cet effectif. Une revendication sur un forum criminel de 5 273 884 enregistrements uniques, publiée le jour de l’accès, n’est pas le chiffre officiel. Les listes d’enseignes dans la presse ne sont pas une communication de l’éditeur."
+        },
+        "timeline": [
+          {
+            "date": "2026-08-01",
+            "label": {
+              "en": "Resamania detects unauthorised access to data on a legacy platform. A criminal claim of 5,273,884 records appears the same day.",
+              "fr": "Resamania détecte un accès non autorisé à des données sur une ancienne plateforme. Une revendication criminelle de 5 273 884 enregistrements paraît le même jour."
+            }
+          },
+          {
+            "date": "2026-08-19",
+            "label": {
+              "en": "Resamania issues a communiqué citing 5.2 million users, opens a FAQ and a helpline, and says the CNIL has been notified.",
+              "fr": "Resamania publie un communiqué citant 5,2 millions d’utilisateurs, ouvre une FAQ et un numéro vert, et indique que la CNIL a été notifiée."
+            }
+          }
+        ],
+        "how": {
+          "en": "The FAQ says a third party accessed data still hosted on an old version of the platform that was already planned for retirement and was used by only a limited number of clubs, while older membership records remained. Resamania says it blocked the access path. It has not published a vulnerability class or named an attacker.",
+          "fr": "La FAQ indique qu’un tiers a accédé à des données encore hébergées sur une ancienne version de la plateforme, déjà prévue pour mise hors service et n’utilisée plus que par un nombre limité de clubs, alors que des historiques d’adhésion y restaient. Resamania indique avoir bloqué le chemin d’accès. Elle n’a pas publié de classe de vulnérabilité ni nommé d’attaquant."
+        },
+        "taken": {
+          "en": "Depending on the member profile: name, email, phone, postal address, postcode and club name. For a limited number of people, login identifiers and passwords, IBAN and associated bank details, and health information supplied to a club. The 5.2 million figure is the official user count quoted from the 19 August communiqué. The 5,273,884 record claim stays an attacker figure.",
+          "fr": "Selon le profil d’adhérent : nom, e-mail, téléphone, adresse postale, code postal et nom du club. Pour un nombre limité de personnes, identifiants et mots de passe, IBAN et coordonnées bancaires associées, et informations de santé fournies à un club. Le chiffre de 5,2 millions est l’effectif officiel cité d’après le communiqué du 19 août. Les 5 273 884 enregistrements restent un chiffre d’attaquant."
+        },
+        "notTaken": {
+          "en": "Payment-card data were not stored in the affected system. The company FAQ says not every listed category was compromised for every person. Named gym brands in press coverage are not confirmed by the communiqué.",
+          "fr": "Les données de cartes de paiement n’étaient pas stockées dans le système concerné. La FAQ indique que toutes les catégories listées n’ont pas nécessairement été compromises pour chaque personne. Les enseignes nommées dans la presse ne sont pas confirmées par le communiqué."
+        },
+        "impact": {
+          "en": "A caller who knows a club name, a mobile number and an address can impersonate the gym or a bank. Where an IBAN was present, the practical risk is fraudulent SEPA mandates. Health fields, even for a small subset, are special-category data.",
+          "fr": "Un appelant qui connaît le nom du club, un mobile et une adresse peut usurper la salle ou une banque. Lorsque l’IBAN était présent, le risque pratique est le faux mandat SEPA. Les champs de santé, même pour un petit sous-ensemble, sont des données de catégorie particulière."
+        },
+        "response": {
+          "en": "Resamania says it blocked the access path, hardened stored bank information, is deleting non-essential data, hired independent security experts, accelerated migration off the legacy platform, notified the CNIL, and is contacting people by email, SMS or post. A helpline and a right-of-access address (donnees@info.resamania.fr) are open.",
+          "fr": "Resamania indique avoir bloqué le chemin d’accès, renforcé les informations bancaires stockées, supprimer les données non essentielles, mandaté des experts indépendants, accéléré la migration hors de l’ancienne plateforme, notifié la CNIL, et contacter les personnes par e-mail, SMS ou courrier. Un numéro vert et une adresse d’exercice du droit d’accès (donnees@info.resamania.fr) sont ouverts."
+        },
+        "methodDisclosure": "partial",
+        "attackerClaim": {
+          "en": "A criminal publication on 1 August claimed 5,273,884 unique records and a country split. That record count is not the official 5.2 million user figure.",
+          "fr": "Une publication criminelle du 1er août revendiquait 5 273 884 enregistrements uniques et une répartition par pays. Ce décompte d’enregistrements n’est pas le chiffre officiel de 5,2 millions d’utilisateurs."
+        },
+        "revision": {
+          "en": "The FAQ confirms the 1 August access and the data categories, including a limited subset with IBAN and health data. It does not itself state 5.2 million. That number is taken from the 19 August communiqué as quoted by Hashtag Avocats.",
+          "fr": "La FAQ confirme l’accès du 1er août et les catégories de données, y compris un sous-ensemble limité avec IBAN et données de santé. Elle n’énonce pas elle-même 5,2 millions. Ce nombre est pris dans le communiqué du 19 août tel que cité par Hashtag Avocats."
+        },
+        "quotes": [
+          {
+            "original": "Le 1er août 2026, Resamania a constaté qu’un tiers non autorisé avait accédé à des données personnelles hébergées sur une ancienne version de la plateforme Resamania.",
+            "originalLang": "fr",
+            "translation": "On 1 August 2026, Resamania found that an unauthorised third party had accessed personal data hosted on an old version of the Resamania platform.",
+            "attribution": {
+              "en": "Resamania FAQ",
+              "fr": "FAQ Resamania"
+            },
+            "sourceId": "resamaniaFaq"
+          },
+          {
+            "original": "l’accès non autorisé à certaines données personnelles de 5,2 millions d’utilisateurs",
+            "originalLang": "fr",
+            "translation": "unauthorised access to some personal data of 5.2 million users",
+            "attribution": {
+              "en": "Resamania communiqué of 19 August 2026, quoted by Hashtag Avocats",
+              "fr": "Communiqué Resamania du 19 août 2026, cité par Hashtag Avocats"
+            },
+            "sourceId": "resamaniaHashtag"
+          }
+        ]
+      },
+      "lastResearched": "2026-09-15"
+    },
+    {
+      "id": "sfr",
+      "date": "2026-08-20",
+      "year": 2026,
+      "org": {
+        "en": "SFR",
+        "fr": "SFR"
+      },
+      "domain": "sfr.fr",
+      "kind": "company",
+      "sector": "Telecommunications",
+      "severity": "high",
+      "status": "confirmed",
+      "affected": null,
+      "affectedLabel": {
+        "en": "SFR has not published a customer count; 2,104,093 lines remain an attacker claim",
+        "fr": "SFR n’a pas publié de nombre de clients ; 2 104 093 lignes restent une revendication d’attaquant"
+      },
+      "data": {
+        "en": "Title, name, postal address, mobile number, contract identifier and technical line data for fibre subscribers. Passwords and bank data not concerned, according to SFR.",
+        "fr": "Civilité, nom, adresse postale, numéro de mobile, identifiant de contrat et données techniques de ligne pour les abonnés fibre. Mots de passe et données bancaires non concernés, selon SFR."
+      },
+      "method": {
+        "en": "Unauthorised use of an account on an internal fibre-connection analysis tool, detected on 2 July 2026. SFR says it disabled the account and blocked source IP addresses.",
+        "fr": "Usage non autorisé d’un compte sur un outil interne d’analyse des raccordements fibre, détecté le 2 juillet 2026. SFR indique avoir désactivé le compte et bloqué les adresses IP d’origine."
+      },
+      "risk": {
+        "en": "Highly convincing operator impersonation using a real address, mobile number and contract ID.",
+        "fr": "Usurpation d’opérateur très convaincante s’appuyant sur une vraie adresse, un mobile et un identifiant de contrat."
+      },
+      "sourceName": "France 24 / AFP",
+      "confidence": {
+        "en": "Operator confirmation to AFP and customer letters reported by the press. SFR did not name an attacker.",
+        "fr": "Confirmation de l’opérateur à l’AFP et courriers clients rapportés par la presse. SFR n’a pas nommé d’attaquant."
+      },
+      "sourceId": "sfrFrance24",
+      "sourceUrl": "https://www.france24.com/fr/info-en-continu/20260820-l-op%C3%A9rateur-sfr-victime-d-une-fuite-de-donn%C3%A9es-affectant-ses-abonn%C3%A9s-fibre",
+      "logo": {
+        "domain": "sfr.fr",
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "sfr.svg"
+      },
+      "sourceIds": [
+        "sfrFrance24",
+        "sfr01net"
+      ],
+      "detail": {
+        "lead": {
+          "en": "SFR confirmed to AFP on 20 August 2026 a security incident affecting fibre subscribers, after customer letters began to go out. The operator said its security teams detected the incident on 2 July on a fibre-connection analysis tool. Address, email or phone data linked to fibre lines may have been temporarily accessible. SFR said passwords and bank data were not concerned.\n\nSFR has not published how many customers were affected. A 17 July criminal claim described partial extraction of 2,104,093 lines from an internal tool named NOVA. That volume remains an attacker figure. Press reports linked the claim to ZeroBytes; SFR’s own statements, as reported, did not name the actor.",
+          "fr": "SFR a confirmé à l’AFP le 20 août 2026 un incident de sécurité touchant des abonnés fibre, après l’envoi de courriers clients. L’opérateur a indiqué que ses équipes de sécurité avaient détecté l’incident le 2 juillet sur un outil d’analyse des raccordements fibre. Des données d’adresse, d’e-mail ou de téléphone liées aux lignes fibre ont pu être temporairement accessibles. SFR a indiqué que les mots de passe et les données bancaires n’étaient pas concernés.\n\nSFR n’a pas publié le nombre de clients touchés. Une revendication criminelle du 17 juillet décrit l’extraction partielle de 2 104 093 lignes d’un outil interne nommé NOVA. Ce volume reste un chiffre d’attaquant. La presse a lié la revendication à ZeroBytes ; les déclarations de SFR, telles que rapportées, n’ont pas nommé l’acteur."
+        },
+        "timeline": [
+          {
+            "date": "2026-06-30",
+            "label": {
+              "en": "The criminal claim later said extraction from the internal tool began around this date.",
+              "fr": "La revendication criminelle indiquera plus tard que l’extraction depuis l’outil interne a commencé vers cette date."
+            }
+          },
+          {
+            "date": "2026-07-02",
+            "label": {
+              "en": "SFR security teams detect the incident and, according to the customer letter, cut the relevant access.",
+              "fr": "Les équipes de sécurité de SFR détectent l’incident et, selon le courrier client, coupent l’accès concerné."
+            }
+          },
+          {
+            "date": "2026-07-17",
+            "label": {
+              "en": "A criminal post claims partial extraction of 2,104,093 lines from an internal tool named NOVA.",
+              "fr": "Une publication criminelle revendique l’extraction partielle de 2 104 093 lignes d’un outil interne nommé NOVA."
+            }
+          },
+          {
+            "date": "2026-08-20",
+            "label": {
+              "en": "SFR confirms the leak to AFP as fibre customers receive letters. No official headcount is published.",
+              "fr": "SFR confirme la fuite à l’AFP alors que les abonnés fibre reçoivent des courriers. Aucun effectif officiel n’est publié."
+            }
+          }
+        ],
+        "how": {
+          "en": "Customer letters reported by 01net say an unauthorised party used an account on a fibre-connection management and analysis tool. SFR says it disabled that account, blocked and monitored the source IP addresses, notified the CNIL and filed a complaint. That description is consistent with a diverted legitimate account, not with a named software exploit. SFR has not published a full technical postmortem.",
+          "fr": "Les courriers clients rapportés par 01net indiquent qu’un tiers non autorisé a utilisé un compte sur un outil de gestion et d’analyse des raccordements fibre. SFR indique avoir désactivé ce compte, bloqué et surveillé les adresses IP d’origine, notifié la CNIL et déposé plainte. Cette description est cohérente avec un compte légitime détourné, pas avec un exploit logiciel nommé. SFR n’a pas publié de post-mortem technique complet."
+        },
+        "taken": {
+          "en": "SFR’s customer notice, as reported, lists title, name, postal address, mobile number, contract identifier and technical data associated with the line. France 24 / AFP quoted SFR as saying fibre-line data such as address, email or phone may have been temporarily accessible. No official unique-customer total has been given.",
+          "fr": "L’avis client de SFR, tel que rapporté, liste la civilité, le nom, l’adresse postale, le numéro de mobile, l’identifiant de contrat et des données techniques associées à la ligne. France 24 / AFP a cité SFR indiquant que des données liées aux lignes fibre, comme l’adresse, l’e-mail ou le téléphone, avaient pu être temporairement accessibles. Aucun total officiel de clients distincts n’a été donné."
+        },
+        "notTaken": {
+          "en": "SFR said passwords and bank data were not concerned. The 2,104,093-line figure is not an SFR count and is not copied into the numeric field.",
+          "fr": "SFR a indiqué que les mots de passe et les données bancaires n’étaient pas concernés. Le chiffre de 2 104 093 lignes n’est pas un décompte SFR et n’est pas recopié dans le champ numérique."
+        },
+        "impact": {
+          "en": "A scammer who knows a fibre address, a mobile number and a contract ID can impersonate SFR or RED support with unusual precision, including line-fault or box-replacement pretexts. That risk does not require bank data.",
+          "fr": "Un escroc qui connaît une adresse fibre, un mobile et un identifiant de contrat peut usurper le service client SFR ou RED avec une précision inhabituelle, y compris sous prétexte de panne de ligne ou de remplacement de box. Ce risque ne nécessite pas de données bancaires."
+        },
+        "response": {
+          "en": "SFR said it cut the relevant access, blocked source IPs, strengthened monitoring, notified the CNIL and filed a complaint with the public prosecutor. Fibre customers of SFR and RED were written to about seven weeks after detection.",
+          "fr": "SFR a indiqué avoir coupé l’accès concerné, bloqué les IP d’origine, renforcé la veille, notifié la CNIL et déposé plainte auprès du procureur de la République. Les abonnés fibre SFR et RED ont été écrits environ sept semaines après la détection."
+        },
+        "methodDisclosure": "partial",
+        "attackerClaim": {
+          "en": "A 17 July criminal post claimed partial extraction of 2,104,093 lines from an internal tool named NOVA, beginning around 30 June and stopped by detection. Press reporting attributed that claim to ZeroBytes. SFR’s confirmation, as reported by AFP, did not name the attacker.",
+          "fr": "Une publication criminelle du 17 juillet revendiquait l’extraction partielle de 2 104 093 lignes d’un outil interne nommé NOVA, commencée vers le 30 juin et interrompue par la détection. La presse a attribué cette revendication à ZeroBytes. La confirmation de SFR, telle que rapportée par l’AFP, n’a pas nommé l’attaquant."
+        },
+        "revision": {
+          "en": "Customer letters arrived in mid-August for a July detection. The operator still has not published a victim count. The NOVA name and 2.1 million-line volume remain claim material, not SFR statistics.",
+          "fr": "Les courriers clients sont arrivés à la mi-août pour une détection de juillet. L’opérateur n’a toujours pas publié de nombre de victimes. Le nom NOVA et le volume de 2,1 millions de lignes restent des éléments de revendication, pas des statistiques SFR."
+        },
+        "quotes": [
+          {
+            "original": "Les mots de passe et données bancaires ne sont pas concernés",
+            "originalLang": "fr",
+            "translation": "Passwords and bank data are not concerned",
+            "attribution": {
+              "en": "SFR, quoted by France 24 / AFP, 20 August 2026",
+              "fr": "SFR, cité par France 24 / AFP, 20 août 2026"
+            },
+            "sourceId": "sfrFrance24"
+          }
+        ]
+      },
+      "lastResearched": "2026-09-15"
+    },
+    {
+      "id": "protectioncivile",
+      "date": "2026-08-21",
+      "year": 2026,
+      "org": {
+        "en": "French Protection Civile",
+        "fr": "Protection civile"
+      },
+      "domain": "protection-civile.org",
+      "kind": "company",
+      "sector": "Civil protection",
+      "severity": "high",
+      "status": "disputed",
+      "affected": null,
+      "affectedLabel": {
+        "en": "Confirmed volunteer, former-volunteer and external personal data, including minors; 525,000 profiles remain a contested press figure",
+        "fr": "Données confirmées de bénévoles, anciens bénévoles et personnes externes, y compris des mineurs ; 525 000 profils restent un chiffre de presse contesté"
+      },
+      "data": {
+        "en": "Civil-status data, dates of birth, phone numbers, roles and profile photos, including data on minors registered as cadets. Rescue-beneficiary data said not to be in the leak.",
+        "fr": "État civil, dates de naissance, téléphones, rôles et photos de profil, y compris des données de mineurs enregistrés comme cadets. Les données des personnes secourues sont indiquées comme absentes de la fuite."
+      },
+      "method": {
+        "en": "Unauthorised access to the eProtec volunteer platform, dated to March 2026 and discovered on 17 August. Initial access path not published.",
+        "fr": "Accès non autorisé à la plateforme bénévoles eProtec, daté de mars 2026 et découvert le 17 août. Voie d’accès initiale non publiée."
+      },
+      "risk": {
+        "en": "Impersonation of a civil-protection organisation, targeting of volunteers including minors, and reuse of photos and roles.",
+        "fr": "Usurpation d’une organisation de sécurité civile, ciblage de bénévoles y compris mineurs, et réutilisation de photos et de rôles."
+      },
+      "sourceName": "Europe 1 / AFP",
+      "confidence": {
+        "en": "Federation spokeswoman to AFP. The 525,000-profile figure is contested and is not used as a person count.",
+        "fr": "Porte-parole de la fédération à l’AFP. Le chiffre de 525 000 profils est contesté et n’est pas utilisé comme un décompte de personnes."
+      },
+      "sourceId": "protectionEurope1",
+      "sourceUrl": "https://www.europe1.fr/societe/la-protection-civile-victime-dun-piratage-les-donnees-de-centaines-de-milliers-de-benevoles-potentiellement-exposees-1026842",
+      "logo": {
+        "domain": "protection-civile.org",
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "protection-civile.svg"
+      },
+      "sourceIds": [
+        "protectionEurope1",
+        "protection20min"
+      ],
+      "detail": {
+        "lead": {
+          "en": "The Fédération nationale de Protection civile confirmed to AFP on 21 August 2026 a computer intrusion and data theft in March, discovered on 17 August. A spokeswoman said the leak concerns the eProtec platform used by volunteers. Names, dates of birth, phone numbers, roles and data on minors were among the stolen categories.\n\nFrenchBreaches reported more than 525,000 profiles and about 15,000 photos. The federation disputes that scale, citing many duplicates, and says it is still establishing how many people are concerned. It also said no stolen data belong to people the association has rescued.",
+          "fr": "La Fédération nationale de Protection civile a confirmé à l’AFP le 21 août 2026 un piratage et un vol de données en mars, découverts le 17 août. Une porte-parole a indiqué que la fuite concerne la plateforme eProtec utilisée par les bénévoles. Noms, dates de naissance, téléphones, rôles et données de mineurs figurent parmi les catégories volées.\n\nFrenchBreaches a fait état de plus de 525 000 profils et d’environ 15 000 photos. La fédération conteste cet ordre de grandeur, évoquant de nombreux doublons, et indique chercher encore le nombre de personnes concernées. Elle a aussi indiqué qu’aucune donnée volée n’appartient à des personnes à qui l’association a porté secours."
+        },
+        "timeline": [
+          {
+            "date": "2026-03-01",
+            "label": {
+              "en": "The federation later dates the intrusion to March 2026 (exact day not published).",
+              "fr": "La fédération date ensuite l’intrusion de mars 2026 (jour exact non publié)."
+            }
+          },
+          {
+            "date": "2026-08-17",
+            "label": {
+              "en": "The federation learns of the leak.",
+              "fr": "La fédération apprend l’existence de la fuite."
+            }
+          },
+          {
+            "date": "2026-08-21",
+            "label": {
+              "en": "A spokeswoman confirms the eProtec incident to AFP and contests the 525,000-profile figure.",
+              "fr": "Une porte-parole confirme l’incident eProtec à l’AFP et conteste le chiffre de 525 000 profils."
+            }
+          }
+        ],
+        "how": {
+          "en": "The confirmed target is eProtec, used for volunteers, schedules and training. The federation has not published the initial access path. Internal messaging reported by the press placed the attack in a series that had also hit sports federations. Whether every record in the leaked file was actually consulted or extracted remains under investigation, according to 20 Minutes.",
+          "fr": "La cible confirmée est eProtec, utilisée pour les bénévoles, les plannings et les formations. La fédération n’a pas publié la voie d’accès initiale. Un message interne rapporté par la presse situait l’attaque dans une série ayant aussi visé des fédérations sportives. Savoir si chaque enregistrement du fichier fuité a effectivement été consulté ou extrait reste en investigation, selon 20 Minutes."
+        },
+        "taken": {
+          "en": "Confirmed categories: civil-status data, dates of birth, phone numbers, roles in the association, and data on minors. Profile photos are described in internal messaging reported by the press; the federation did not confirm the 15,000-photo figure. Files cover volunteers, former volunteers and people outside the association. No unique-person total is established.",
+          "fr": "Catégories confirmées : état civil, dates de naissance, téléphones, rôles dans l’association, et données de mineurs. Des photos de profil sont décrites dans un message interne rapporté par la presse ; la fédération n’a pas confirmé le chiffre de 15 000 photos. Les fichiers concernent des bénévoles, d’anciens bénévoles et des personnes externes. Aucun total de personnes distinctes n’est établi."
+        },
+        "notTaken": {
+          "en": "The spokeswoman said no stolen data belong to people the Protection civile has rescued. The federation does not confirm 525,000 unique people or 15,000 photos. Passwords and bank details are not described as part of the leak in the AFP account.",
+          "fr": "La porte-parole a indiqué qu’aucune donnée volée n’appartient à des personnes à qui la Protection civile a porté secours. La fédération ne confirme ni 525 000 personnes distinctes ni 15 000 photos. Mots de passe et données bancaires ne sont pas décrits comme faisant partie de la fuite dans le compte rendu AFP."
+        },
+        "impact": {
+          "en": "Volunteer contact details plus a civil-protection role, and in some cases a photo and a minor’s record, support targeted impersonation and intimidation. The five-month gap between the March intrusion and the 17 August discovery means the file may already have circulated.",
+          "fr": "Des coordonnées de bénévoles plus un rôle de sécurité civile, et dans certains cas une photo et une fiche de mineur, aident une usurpation et une intimidation ciblées. Les cinq mois entre l’intrusion de mars et la découverte du 17 août signifient que le fichier a pu déjà circuler."
+        },
+        "response": {
+          "en": "The federation filed a complaint with the Paris prosecutor’s cyber section and said investigations to establish the exact number of people and the information involved were continuing.",
+          "fr": "La fédération a déposé plainte auprès de la section cyber du parquet de Paris et indiqué que les recherches pour établir le nombre exact de personnes et les informations concernées se poursuivaient."
+        },
+        "methodDisclosure": "undisclosed",
+        "attackerClaim": {
+          "en": "Specialist reporting cited more than 525,000 profiles and about 15,000 photos. The federation contests those figures, pointing to duplicates, and they are not used as a person count.",
+          "fr": "La presse spécialisée a cité plus de 525 000 profils et environ 15 000 photos. La fédération conteste ces chiffres, évoquant des doublons, et ils ne sont pas utilisés comme un décompte de personnes."
+        },
+        "revision": {
+          "en": "The breach is confirmed. The numeric scale is not. Status is disputed for that reason, following the same rule as other confirmed incidents with contested counts.",
+          "fr": "La violation est confirmée. L’échelle numérique ne l’est pas. Le statut est disputed pour cette raison, suivant la même règle que d’autres incidents confirmés aux décomptes contestés."
+        },
+        "quotes": [
+          {
+            "original": "beaucoup de doublons dans le fichier qui a fuité",
+            "originalLang": "fr",
+            "translation": "many duplicates in the file that leaked",
+            "attribution": {
+              "en": "Protection civile spokeswoman, quoted by Europe 1 / AFP, 21 August 2026",
+              "fr": "Porte-parole de la Protection civile, citée par Europe 1 / AFP, 21 août 2026"
+            },
+            "sourceId": "protectionEurope1"
+          },
+          {
+            "original": "Aucune donnée piratée n’appartient à des personnes à qui la Protection Civile a porté secours",
+            "originalLang": "fr",
+            "translation": "No stolen data belong to people the Protection civile has rescued",
+            "attribution": {
+              "en": "Protection civile spokeswoman, quoted by Europe 1 / AFP, 21 August 2026",
+              "fr": "Porte-parole de la Protection civile, citée par Europe 1 / AFP, 21 août 2026"
+            },
+            "sourceId": "protectionEurope1"
+          }
+        ]
+      },
+      "lastResearched": "2026-09-15"
+    },
+    {
+      "id": "ecologie",
+      "date": "2026-09-02",
+      "year": 2026,
+      "org": {
+        "en": "French Ecological Transition Ministry",
+        "fr": "Ministère de la Transition écologique"
+      },
+      "domain": "ecologie.gouv.fr",
+      "kind": "government",
+      "sector": "Environment / government",
+      "severity": "high",
+      "status": "confirmed",
+      "affected": null,
+      "affectedLabel": {
+        "en": "Confirmed messaging-tool attack and suspected account compromise; no official person count",
+        "fr": "Attaque confirmée sur des outils de messagerie et suspicion de compromission de comptes ; pas de décompte officiel de personnes"
+      },
+      "data": {
+        "en": "Ministry confirmed a sophisticated attack on messaging tools. ANSSI cited suspected compromise of some user accounts. A criminal claim of 8,166 users and 14,656 controller records is not an official count.",
+        "fr": "Le ministère a confirmé une attaque sophistiquée sur des outils de messagerie. L’ANSSI a cité la suspicion de compromission de certains comptes utilisateurs. Une revendication criminelle de 8 166 utilisateurs et 14 656 enregistrements de contrôleurs n’est pas un décompte officiel."
+      },
+      "method": {
+        "en": "Sophisticated attack the previous week targeting messaging tools, including the shared Bnum digital office according to 01net. Initial access path not published by the ministry.",
+        "fr": "Attaque sophistiquée la semaine précédente visant des outils de messagerie, dont le bureau numérique Bnum selon 01net. Voie d’accès initiale non publiée par le ministère."
+      },
+      "risk": {
+        "en": "Mailbox impersonation of ministry staff, disruption of public consultation sites, and follow-on use of any data later shown to have been taken.",
+        "fr": "Usurpation de messageries d’agents, interruption de sites de consultation publique, et usage ultérieur de toute donnée dont l’extraction serait ensuite établie."
+      },
+      "sourceName": "franceinfo / AFP",
+      "confidence": {
+        "en": "Ministry and ANSSI statements to AFP. Data-theft volumes remain an unconfirmed criminal claim. The attacker is unnamed in those official statements.",
+        "fr": "Déclarations du ministère et de l’ANSSI à l’AFP. Les volumes de vol de données restent une revendication criminelle non confirmée. L’attaquant n’est pas nommé dans ces déclarations officielles."
+      },
+      "sourceId": "ecologieFranceinfo",
+      "sourceUrl": "https://www.franceinfo.fr/internet/securite-sur-internet/cyberattaques/plusieurs-sites-gouvernementaux-lies-au-ministere-de-la-transition-ecologique-inaccessibles-mercredi-a-la-suite-d-une-cyberattaque_8174462.html",
+      "logo": {
+        "domain": "ecologie.gouv.fr",
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "ecologie.svg"
+      },
+      "sourceIds": [
+        "ecologieFranceinfo",
+        "ecologie01net"
+      ],
+      "detail": {
+        "lead": {
+          "en": "The Ecological Transition ministry told AFP on 2 September 2026 that its ministerial cluster had suffered a sophisticated computer attack the previous week, targeting messaging tools. Several related government sites, including the environmental public-consultation platform and regional administration sites, displayed maintenance messages. A report was made to the public prosecutor.\n\nANSSI said it was assisting the ministry’s administrations after suspected compromise of some user accounts, and that investigation and remediation could interrupt digital services. 01net, citing an internal communiqué, reported password resets, emergency shutdown of the Zpush smartphone mail service, and restricted access to Bnum. The ministry has not published a stolen-data headcount.",
+          "fr": "Le ministère de la Transition écologique a indiqué à l’AFP le 2 septembre 2026 que le pôle ministériel avait subi la semaine précédente une attaque informatique sophistiquée, visant des outils de messagerie. Plusieurs sites gouvernementaux liés, dont la plateforme de consultations publiques environnementales et des sites d’administrations régionales, affichaient des messages de maintenance. Un signalement au parquet a été fait.\n\nL’ANSSI a indiqué intervenir auprès des administrations du ministère après des suspicions de compromission de certains comptes utilisateurs, et que les investigations et la remédiation pouvaient interrompre des services numériques. 01net, citant un communiqué interne, a rapporté des réinitialisations de mots de passe, l’arrêt d’urgence du service de messagerie mobile Zpush et des restrictions d’accès au Bnum. Le ministère n’a pas publié de décompte de données volées."
+        },
+        "timeline": [
+          {
+            "date": "2026-08-26",
+            "label": {
+              "en": "The ministry later said the sophisticated attack on messaging tools took place the week before 2 September (exact day not published).",
+              "fr": "Le ministère indiquera que l’attaque sophistiquée sur les outils de messagerie a eu lieu la semaine précédant le 2 septembre (jour exact non publié)."
+            }
+          },
+          {
+            "date": "2026-09-02",
+            "label": {
+              "en": "Related sites show maintenance messages. The ministry and ANSSI confirm the attack and suspected account compromise to AFP. A criminal claim of two data sets appears.",
+              "fr": "Des sites liés affichent des messages de maintenance. Le ministère et l’ANSSI confirment l’attaque et la suspicion de compromission de comptes à l’AFP. Une revendication criminelle de deux jeux de données apparaît."
+            }
+          }
+        ],
+        "how": {
+          "en": "Official statements describe a sophisticated attack on messaging tools and suspected compromise of user accounts. 01net reported that Bnum, a shared digital office with mail, calendar and directory, was among the tools concerned, and that Zpush was shut as a containment step. The ministry has not confirmed the criminal claim of a misconfigured API or an IDOR on OISO.",
+          "fr": "Les déclarations officielles décrivent une attaque sophistiquée sur des outils de messagerie et la suspicion de compromission de comptes utilisateurs. 01net a indiqué que le Bnum, bureau numérique partagé avec messagerie, agenda et annuaire, figurait parmi les outils concernés, et que Zpush avait été arrêté comme mesure de confinement. Le ministère n’a pas confirmé la revendication criminelle d’une API mal configurée ou d’un IDOR sur OISO."
+        },
+        "taken": {
+          "en": "No official extracted-data inventory has been published. ANSSI spoke of suspected compromise of some user accounts. A criminal claim listed 8,166 users and 14,656 controller records linked to developpement-durable.gouv.fr. Those numbers stay outside the numeric field.",
+          "fr": "Aucun inventaire officiel de données extraites n’a été publié. L’ANSSI a parlé de suspicions de compromission de certains comptes utilisateurs. Une revendication criminelle a listé 8 166 utilisateurs et 14 656 enregistrements de contrôleurs liés à developpement-durable.gouv.fr. Ces nombres restent hors du champ numérique."
+        },
+        "notTaken": {
+          "en": "The ministry has not confirmed theft of the claimed databases. Official wording centres on messaging tools, account compromise suspicions and service interruption, not on a published victim population.",
+          "fr": "Le ministère n’a pas confirmé le vol des bases revendiquées. Le libellé officiel porte sur les outils de messagerie, les suspicions de compromission de comptes et l’interruption de services, pas sur une population de victimes publiée."
+        },
+        "impact": {
+          "en": "Even without a published dump, a mailbox compromise in a ministry cluster can enable impersonation of officials and access to ongoing files. Public consultation and regional sites going offline is itself an operational impact.",
+          "fr": "Même sans dump publié, la compromission d’une messagerie dans un pôle ministériel peut permettre l’usurpation d’agents et l’accès à des dossiers en cours. L’indisponibilité de sites de consultation publique et d’administrations régionales est déjà un impact opérationnel."
+        },
+        "response": {
+          "en": "The ministry said special measures were taken and a prosecutor report was filed. ANSSI is assisting. Reporting on an internal communiqué described password resets, shutdown of Zpush and restricted Bnum access.",
+          "fr": "Le ministère a indiqué que des mesures particulières avaient été prises et qu’un signalement au parquet avait été fait. L’ANSSI intervient. La presse, s’appuyant sur un communiqué interne, a décrit des réinitialisations de mots de passe, l’arrêt de Zpush et des accès Bnum restreints."
+        },
+        "methodDisclosure": "partial",
+        "attackerClaim": {
+          "en": "A criminal post on 2 September, reported by specialist sites, claimed two sets linked to developpement-durable.gouv.fr: 8,166 users and 14,656 controller records, and described an API misconfiguration and an OISO IDOR. The ministry statements to AFP did not confirm those volumes or that method, and did not name the actor.",
+          "fr": "Une publication criminelle du 2 septembre, rapportée par des sites spécialisés, revendiquait deux ensembles liés à developpement-durable.gouv.fr : 8 166 utilisateurs et 14 656 enregistrements de contrôleurs, et décrivait une API mal configurée et un IDOR sur OISO. Les déclarations du ministère à l’AFP n’ont confirmé ni ces volumes ni cette méthode, et n’ont pas nommé l’acteur."
+        },
+        "revision": {
+          "en": "This record is a confirmed ministerial cyberattack. Data theft is claimed, not officially counted. The card date is the 2 September public confirmation.",
+          "fr": "Ce dossier est une cyberattaque ministérielle confirmée. Le vol de données est revendiqué, pas officiellement décompté. La date de fiche est la confirmation publique du 2 septembre."
+        },
+        "quotes": [
+          {
+            "original": "Le pôle ministériel a fait l’objet d’une attaque informatique sophistiquée la semaine dernière, ciblant des outils de messagerie.",
+            "originalLang": "fr",
+            "translation": "The ministerial cluster was the subject of a sophisticated computer attack last week, targeting messaging tools.",
+            "attribution": {
+              "en": "Ecological Transition ministry, quoted by franceinfo / AFP, 2 September 2026",
+              "fr": "Ministère de la Transition écologique, cité par franceinfo / AFP, 2 septembre 2026"
+            },
+            "sourceId": "ecologieFranceinfo"
+          }
+        ]
+      },
+      "lastResearched": "2026-09-15"
+    },
+    {
+      "id": "snexi",
+      "date": "2026-09-02",
+      "year": 2026,
+      "org": {
+        "en": "Snexi",
+        "fr": "Snexi"
+      },
+      "domain": "snexi.fr",
+      "kind": "company",
+      "sector": "Real estate",
+      "severity": "high",
+      "status": "confirmed",
+      "affected": null,
+      "affectedLabel": {
+        "en": "Confirmed personal-data breach; no official headcount. 1,139,584 people and about 50,000 door codes remain a later attacker claim.",
+        "fr": "Violation de données personnelles confirmée ; pas d’effectif officiel. 1 139 584 personnes et environ 50 000 digicodes restent une revendication d’attaquant ultérieure."
+      },
+      "data": {
+        "en": "Names, emails, postal addresses and phone numbers, according to Snexi. No financial, bank or sensitive data in the concerned environment, the company said. Property-visit files appear in specialist samples.",
+        "fr": "Noms, e-mails, adresses postales et téléphones, selon Snexi. Aucune donnée financière, bancaire ou sensible dans l’environnement concerné, a indiqué l’entreprise. Des dossiers de visites immobilières apparaissent dans des échantillons spécialisés."
+      },
+      "method": {
+        "en": "Cyberattack on snexi.fr on 2 September 2026. Initial access path not published.",
+        "fr": "Cyberattaque visant snexi.fr le 2 septembre 2026. Voie d’accès initiale non publiée."
+      },
+      "risk": {
+        "en": "Property-themed phishing of tenants and owners. If later claims of active door codes are accurate, a physical-access risk as well.",
+        "fr": "Hameçonnage à thème immobilier visant locataires et propriétaires. Si les revendications ultérieures de digicodes encore actifs sont exactes, un risque d’accès physique s’y ajoute."
+      },
+      "sourceName": "FrenchBreaches",
+      "confidence": {
+        "en": "Company confirmation reported by FrenchBreaches. Headcount and door-code volumes are not Snexi figures.",
+        "fr": "Confirmation de l’entreprise rapportée par FrenchBreaches. L’effectif et les volumes de digicodes ne sont pas des chiffres Snexi."
+      },
+      "sourceId": "snexiFrenchbreaches",
+      "sourceUrl": "https://frenchbreaches.com/alertes/snexi-mtndjyfm1p926jbh30z",
+      "logo": {
+        "domain": "snexi.fr",
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "snexi.svg"
+      },
+      "sourceIds": [
+        "snexiFrenchbreaches",
+        "snexiCyberattaque"
+      ],
+      "detail": {
+        "lead": {
+          "en": "Snexi, a French inventory and property-diagnostics firm, confirmed to FrenchBreaches a cyberattack on snexi.fr on Wednesday 2 September 2026 that led to a personal-data breach. The company said potentially concerned fields include names, emails, postal addresses and phone numbers, and that the environment held no financial, bank or sensitive data. It notified the CNIL and said technical investigations were continuing.\n\nOn 11 September a criminal listing presented 2,249,970 lines as Citya Immobilier data, claiming 1,139,584 people, 1,833 agencies and about 50,000 door codes. Snexi and Citya belong to the same Arche group. FrenchBreaches had already reported Snexi’s statement that Citya-labelled samples came from the Snexi incident, not from a separate compromise of Citya systems. Those later volumes stay attacker claims.",
+          "fr": "Snexi, société française d’états des lieux et de diagnostics immobiliers, a confirmé à FrenchBreaches une cyberattaque visant snexi.fr le mercredi 2 septembre 2026, ayant entraîné une violation de données personnelles. L’entreprise a indiqué que les champs potentiellement concernés comprennent noms, e-mails, adresses postales et téléphones, et que l’environnement ne détenait aucune donnée financière, bancaire ou sensible. Elle a notifié la CNIL et indiqué que les investigations techniques se poursuivaient.\n\nLe 11 septembre, une annonce criminelle a présenté 2 249 970 lignes comme des données Citya Immobilier, revendiquant 1 139 584 personnes, 1 833 agences et environ 50 000 digicodes. Snexi et Citya appartiennent au même groupe Arche. FrenchBreaches avait déjà rapporté la précision de Snexi : les échantillons étiquetés Citya venaient de l’incident Snexi, pas d’une compromission distincte des systèmes Citya. Ces volumes ultérieurs restent des revendications d’attaquant."
+        },
+        "timeline": [
+          {
+            "date": "2026-09-02",
+            "label": {
+              "en": "Snexi dates a cyberattack on snexi.fr that leads to a personal-data breach.",
+              "fr": "Snexi date une cyberattaque visant snexi.fr, qui entraîne une violation de données personnelles."
+            }
+          },
+          {
+            "date": "2026-09-07",
+            "label": {
+              "en": "FrenchBreaches publishes Snexi’s confirmation, CNIL notification, and the statement that Citya-labelled samples belong to this incident.",
+              "fr": "FrenchBreaches publie la confirmation de Snexi, la notification CNIL, et la précision selon laquelle les échantillons étiquetés Citya relèvent de cet incident."
+            }
+          },
+          {
+            "date": "2026-09-11",
+            "label": {
+              "en": "A criminal listing claims about 1.14 million people and 50,000 door codes under a Citya label.",
+              "fr": "Une annonce criminelle revendique environ 1,14 million de personnes et 50 000 digicodes sous une étiquette Citya."
+            }
+          }
+        ],
+        "how": {
+          "en": "Snexi has confirmed an attack on snexi.fr on 2 September without publishing the initial access path. Specialist samples described inventory-style files (tenant, owner, agency, appointment, property). The company has not adopted the later listing’s door-code count as an official finding.",
+          "fr": "Snexi a confirmé une attaque visant snexi.fr le 2 septembre sans publier la voie d’accès initiale. Des échantillons spécialisés décrivaient des dossiers de type état des lieux (locataire, propriétaire, agence, rendez-vous, bien). L’entreprise n’a pas repris le décompte de digicodes de l’annonce ultérieure comme une conclusion officielle."
+        },
+        "taken": {
+          "en": "Snexi’s confirmed categories are identity and contact fields. Specialist samples also showed property and appointment context. No official unique-person total has been published.",
+          "fr": "Les catégories confirmées par Snexi sont des champs d’identité et de contact. Des échantillons spécialisés montraient aussi un contexte de bien et de rendez-vous. Aucun total officiel de personnes distinctes n’a été publié."
+        },
+        "notTaken": {
+          "en": "Snexi said it holds no financial, bank or sensitive data in the concerned environment. It has not confirmed 1.14 million people or 50,000 door codes. It told FrenchBreaches that Citya-labelled data were not a separate Citya-system breach.",
+          "fr": "Snexi a indiqué ne détenir aucune donnée financière, bancaire ou sensible dans l’environnement concerné. Elle n’a pas confirmé 1,14 million de personnes ni 50 000 digicodes. Elle a indiqué à FrenchBreaches que les données étiquetées Citya n’étaient pas une fuite distincte des systèmes Citya."
+        },
+        "impact": {
+          "en": "Contact details plus a real property visit make rental-deposit, locksmith and agency impersonation easy. Claimed door codes, if still valid, would add a physical-security problem that identity fields alone do not create. Validity of those codes is unverified.",
+          "fr": "Des coordonnées plus une vraie visite immobilière facilitent l’usurpation autour d’un dépôt de garantie, d’un serrurier ou d’une agence. Des digicodes revendiqués, s’ils sont encore valides, ajouteraient un problème de sécurité physique que les seuls champs d’identité ne créent pas. La validité de ces codes n’est pas vérifiée."
+        },
+        "response": {
+          "en": "Snexi said it secured systems after detection, notified the CNIL, continues investigations, and opened a contact address for people who want to know if they are concerned.",
+          "fr": "Snexi a indiqué avoir sécurisé ses systèmes après la détection, notifié la CNIL, poursuivre les investigations, et ouvert une adresse de contact pour les personnes souhaitant savoir si elles sont concernées."
+        },
+        "methodDisclosure": "undisclosed",
+        "attackerClaim": {
+          "en": "An 11 September listing claimed 2,249,970 lines, 1,139,584 people, 1,833 agencies and about 50,000 door codes, labelled as Citya. Those figures are not Snexi statistics.",
+          "fr": "Une annonce du 11 septembre revendiquait 2 249 970 lignes, 1 139 584 personnes, 1 833 agences et environ 50 000 digicodes, sous étiquette Citya. Ces chiffres ne sont pas des statistiques Snexi."
+        },
+        "revision": {
+          "en": "The 2 September attack and a personal-data breach are confirmed. The 11 September Citya-labelled volumes arrived later and remain claims. Investigations on who is actually concerned were still open on 15 September.",
+          "fr": "L’attaque du 2 septembre et une violation de données personnelles sont confirmées. Les volumes étiquetés Citya du 11 septembre sont arrivés ensuite et restent des revendications. Les investigations sur les personnes réellement concernées étaient encore ouvertes au 15 septembre."
+        },
+        "quotes": [
+          {
+            "original": "SNEXI précise ne disposer d’aucune donnée financière, bancaire ou sensible.",
+            "originalLang": "fr",
+            "translation": "SNEXI states that it holds no financial, bank or sensitive data.",
+            "attribution": {
+              "en": "Snexi, reported by FrenchBreaches, 7 September 2026",
+              "fr": "Snexi, rapporté par FrenchBreaches, 7 septembre 2026"
+            },
+            "sourceId": "snexiFrenchbreaches"
+          }
+        ]
+      },
+      "lastResearched": "2026-09-15"
+    },
+    {
+      "id": "amf",
+      "date": "2026-09-04",
+      "year": 2026,
+      "org": {
+        "en": "Association des maires de France",
+        "fr": "Association des maires de France"
+      },
+      "domain": "amf.asso.fr",
+      "kind": "government",
+      "sector": "Local government association",
+      "severity": "high",
+      "status": "disputed",
+      "affected": null,
+      "affectedLabel": {
+        "en": "AMF confirmed about 114,000 lines via its website, partly a public directory; 533 subscribers had cleartext passwords. Not a unique-person total.",
+        "fr": "L’AMF a confirmé environ 114 000 lignes via son site, en partie un annuaire public ; 533 abonnés avaient des mots de passe en clair. Pas un total de personnes distinctes."
+      },
+      "data": {
+        "en": "Website data including newsletter and directory fields. For 533 subscribers to external services: names, emails and passwords stored in cleartext. No bank or payment data, according to the AMF.",
+        "fr": "Données du site, dont champs d’infolettre et d’annuaire. Pour 533 abonnés à des services externes : noms, e-mails et mots de passe stockés en clair. Pas de données bancaires ou de paiement, selon l’AMF."
+      },
+      "method": {
+        "en": "Attack on the public website, not the wider information system, according to the AMF. A criminal claim described a SQL injection; the AMF has not published that method.",
+        "fr": "Attaque sur le site internet public, pas sur le système d’information élargi, selon l’AMF. Une revendication criminelle a décrit une injection SQL ; l’AMF n’a pas publié cette méthode."
+      },
+      "risk": {
+        "en": "Targeted approaches to mayors and local-authority staff, plus password reuse where 533 cleartext credentials were taken.",
+        "fr": "Démarchages ciblés de maires et d’agents de collectivités, plus réutilisation de mots de passe pour les 533 identifiants en clair."
+      },
+      "sourceName": "Banque des Territoires",
+      "confidence": {
+        "en": "AMF statements to Localtis and BFM Tech. Line count is confirmed; unique private individuals are not.",
+        "fr": "Déclarations de l’AMF à Localtis et BFM Tech. Le nombre de lignes est confirmé ; le nombre de personnes privées distinctes ne l’est pas."
+      },
+      "sourceId": "amfLocaltis",
+      "sourceUrl": "https://www.banquedesterritoires.fr/cyberattaque-de-lamf-lassociation-confirme-une-fuite-de-donnees-et-saisit-la-cnil",
+      "logo": {
+        "domain": "amf.asso.fr",
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "amf.svg"
+      },
+      "sourceIds": [
+        "amfBfm",
+        "amfLocaltis"
+      ],
+      "detail": {
+        "lead": {
+          "en": "The Association des maires de France confirmed on 4 September 2026 a data theft via its website. Speaking to Localtis, it said about 114,000 lines had been taken, that its wider computer system was not concerned, and that effects were therefore limited. Part of the data matches the online directory, which is already public, plus newsletter-subscriber fields. The CNIL was notified the same day.\n\nFor 533 people subscribed to external services, names, emails and passwords stored in cleartext were recovered. Those people were emailed the day of the attack and told to change the password. A complaint was filed on 7 September. Director-general Éric Verlhac, quoted elsewhere, stressed there were no personal phone numbers or personal emails in the public-directory portion.",
+          "fr": "L’Association des maires de France a confirmé le 4 septembre 2026 un vol de données via son site internet. Auprès de Localtis, elle a indiqué qu’environ 114 000 lignes avaient été prises, que son système informatique élargi n’était pas concerné, et que les effets étaient donc limités. Une partie des données correspond à l’annuaire en ligne, déjà public, plus des champs d’abonnés aux infolettres. La CNIL a été notifiée le jour même.\n\nPour 533 personnes abonnées à des services externes, des noms, e-mails et mots de passe stockés en clair ont été récupérés. Ces personnes ont reçu un courriel le jour de l’attaque pour changer le mot de passe. Une plainte a été déposée le 7 septembre. Le directeur général Éric Verlhac, cité ailleurs, a souligné l’absence de téléphones personnels et d’e-mails personnels dans la partie annuaire public."
+        },
+        "timeline": [
+          {
+            "date": "2026-09-04",
+            "label": {
+              "en": "A criminal claim appears. The AMF confirms a website data theft, notifies the CNIL, and emails the 533 people whose cleartext passwords were taken.",
+              "fr": "Une revendication criminelle paraît. L’AMF confirme un vol de données via le site, notifie la CNIL, et écrit aux 533 personnes dont les mots de passe en clair ont été pris."
+            }
+          },
+          {
+            "date": "2026-09-07",
+            "label": {
+              "en": "A complaint is filed. Localtis publishes a detailed AMF account of the 114,000 lines and the 533-password subset.",
+              "fr": "Une plainte est déposée. Localtis publie le récit détaillé de l’AMF sur les 114 000 lignes et le sous-ensemble de 533 mots de passe."
+            }
+          }
+        ],
+        "how": {
+          "en": "The AMF says the attack hit the website, not the association’s broader information system. A criminal actor using the name Alduin claimed a UNION SQL injection on amf.asso.fr. The AMF has not adopted that technical account in the Localtis interview.",
+          "fr": "L’AMF indique que l’attaque a visé le site internet, pas le système d’information plus large de l’association. Un acteur criminel se présentant comme Alduin a revendiqué une injection SQL de type UNION sur amf.asso.fr. L’AMF n’a pas repris ce récit technique dans l’entretien Localtis."
+        },
+        "taken": {
+          "en": "About 114,000 lines via the website, described as partly the public directory and partly newsletter data, which the AMF called a heterogeneous file because registration does not require every field. Separately, 533 subscribers to external services had names, emails and cleartext passwords taken. Those 533 are a confirmed person subset. The 114,000 figure is a line count, not a unique-person total.",
+          "fr": "Environ 114 000 lignes via le site, décrites comme en partie l’annuaire public et en partie des données d’infolettre, fichier que l’AMF a dit hétéroclite parce que l’inscription n’impose pas tous les champs. Séparément, 533 abonnés à des services externes ont eu noms, e-mails et mots de passe en clair de pris. Ces 533 sont un sous-ensemble de personnes confirmé. Le chiffre 114 000 est un décompte de lignes, pas un total de personnes distinctes."
+        },
+        "notTaken": {
+          "en": "The AMF said the wider information system was not compromised, and that no bank or payment data were concerned. Personal phone numbers and personal emails were described as absent from the public-directory portion.",
+          "fr": "L’AMF a indiqué que le système d’information élargi n’était pas compromis, et qu’aucune donnée bancaire ou de paiement n’était concernée. Téléphones personnels et e-mails personnels ont été décrits comme absents de la partie annuaire public."
+        },
+        "impact": {
+          "en": "Even public directory fields that identify who holds which post in a town hall can support targeted phishing of mayors and directors-general. The 533 cleartext passwords are the acute credential risk, especially if reused.",
+          "fr": "Même des champs d’annuaire public qui identifient qui occupe quel poste en mairie peuvent servir à un hameçonnage ciblé de maires et de DGS. Les 533 mots de passe en clair sont le risque aigu d’identifiants, surtout s’ils sont réutilisés."
+        },
+        "response": {
+          "en": "The AMF notified the CNIL on 4 September, emailed the 533 password subset the same day, filed a complaint on 7 September, said affected people were informed individually from that Friday, and said it was taking further steps to secure the site.",
+          "fr": "L’AMF a notifié la CNIL le 4 septembre, écrit dès le jour de l’attaque aux 533 personnes du sous-ensemble mots de passe, déposé plainte le 7 septembre, indiqué que les personnes concernées avaient été informées individuellement dès le vendredi, et dit mener des actions complémentaires pour sécuriser le site."
+        },
+        "methodDisclosure": "partial",
+        "attackerClaim": {
+          "en": "The criminal claim presented 114,000 entries and a SQL-injection method. The AMF confirmed a website theft of about 114,000 lines while arguing that much of it is already public directory data. Unique private individuals remain far below that line count.",
+          "fr": "La revendication criminelle présentait 114 000 entrées et une méthode d’injection SQL. L’AMF a confirmé un vol via le site d’environ 114 000 lignes tout en indiquant qu’une grande partie correspond à l’annuaire déjà public. Le nombre de personnes privées distinctes reste très inférieur à ce décompte de lignes."
+        },
+        "revision": {
+          "en": "The incident is confirmed. Treating 114,000 lines as 114,000 victims would overstate the private-data population, so status is disputed and affected stays null.",
+          "fr": "L’incident est confirmé. Traiter 114 000 lignes comme 114 000 victimes surestimerait la population de données privées : le statut est disputed et affected reste null."
+        },
+        "quotes": [
+          {
+            "original": "Les effets de l’attaque sont donc limités",
+            "originalLang": "fr",
+            "translation": "The effects of the attack are therefore limited",
+            "attribution": {
+              "en": "AMF, quoted by Banque des Territoires / Localtis, 7 September 2026",
+              "fr": "AMF, citée par Banque des Territoires / Localtis, 7 septembre 2026"
+            },
+            "sourceId": "amfLocaltis"
+          }
+        ]
+      },
+      "lastResearched": "2026-09-15"
+    },
+    {
+      "id": "jinko",
+      "date": "2026-09-08",
+      "year": 2026,
+      "org": {
+        "en": "Jinko",
+        "fr": "Jinko"
+      },
+      "domain": "jinko.care",
+      "kind": "company",
+      "sector": "Healthcare",
+      "severity": "critical",
+      "status": "confirmed",
+      "affected": null,
+      "affectedLabel": {
+        "en": "Confirmed exfiltration of identity data and, for some users, health and care-pathway data; about 3,500 patients remains a claim, not a Jinko count",
+        "fr": "Exfiltration confirmée de données d’identité et, pour certains utilisateurs, de données de santé et de parcours de soins ; environ 3 500 patients reste une revendication, pas un décompte Jinko"
+      },
+      "data": {
+        "en": "Identity and contact details, and for some people health and care-pathway information. Detailed clinical categories in the criminal archive are not all company-confirmed.",
+        "fr": "Identité et coordonnées, et pour certaines personnes des informations de santé et de parcours de soins. Les catégories cliniques détaillées de l’archive criminelle ne sont pas toutes confirmées par l’entreprise."
+      },
+      "method": {
+        "en": "Unauthorised access and exfiltration confirmed by Jinko. Initial access path not published.",
+        "fr": "Accès non autorisé et exfiltration confirmés par Jinko. Voie d’accès initiale non publiée."
+      },
+      "risk": {
+        "en": "Extortion, discrimination and highly targeted medical phishing against people with cancer, plus misuse of clinician contact details.",
+        "fr": "Extorsion, discrimination et hameçonnage médical très ciblé contre des personnes atteintes d’un cancer, plus usage abusif des coordonnées de soignants."
+      },
+      "sourceName": "Clubic",
+      "confidence": {
+        "en": "Company statement to Clubic confirming exfiltration, including health data for some users. Record counts are the criminal claim.",
+        "fr": "Déclaration de l’entreprise à Clubic confirmant l’exfiltration, y compris des données de santé pour certains utilisateurs. Les décomptes d’enregistrements sont la revendication criminelle."
+      },
+      "sourceId": "jinkoClubic",
+      "sourceUrl": "https://www.clubic.com/actualite-628717-l-enorme-fuite-de-donnees-chez-jinko-plateforme-francaise-dediee-aux-malades-du-cancer-qui-confirme-le-piratage.html",
+      "logo": {
+        "domain": "jinko.care",
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "jinko.svg"
+      },
+      "sourceIds": [
+        "jinkoClubic",
+        "jinkoFranceinfo"
+      ],
+      "detail": {
+        "lead": {
+          "en": "Jinko, a French platform that accompanies people with cancer, confirmed to Clubic in the night of 7 to 8 September 2026 an unauthorised access and exfiltration of personal data after a criminal claim appeared on 7 September. The company said the data concern users’ identity and contact details and, for some people, health and care-pathway information. It apologised, said systems had been secured, people concerned informed, and a complaint would be filed.\n\nThe claim described about 3.7 GB, thousands of user accounts and detailed oncology fields. franceinfo reported that more than 3,500 people’s information, including some medical documents, was in the wild, after reviewing material. Jinko’s own statement, as published by Clubic, does not adopt those counts. They stay out of the numeric field.",
+          "fr": "Jinko, plateforme française d’accompagnement des personnes atteintes d’un cancer, a confirmé à Clubic dans la nuit du 7 au 8 septembre 2026 un accès non autorisé et l’exfiltration de données personnelles, après une revendication criminelle parue le 7 septembre. L’entreprise a indiqué que les données concernent l’identité et les coordonnées des utilisateurs et, pour certaines personnes, des informations de santé et de parcours de soins. Elle a présenté ses excuses, indiqué que les systèmes avaient été sécurisés, les personnes concernées informées, et qu’une plainte serait déposée.\n\nLa revendication décrivait environ 3,7 Go, des milliers de comptes et des champs d’oncologie détaillés. franceinfo a indiqué que les informations de plus de 3 500 personnes, dont certains documents médicaux, étaient dans la nature, après avoir consulté des éléments. La déclaration de Jinko, telle que publiée par Clubic, ne reprend pas ces décomptes. Ils restent hors du champ numérique."
+        },
+        "timeline": [
+          {
+            "date": "2026-09-07",
+            "label": {
+              "en": "A criminal post publishes an archive attributed to Jinko.care. Jinko replies to Clubic confirming unauthorised access and exfiltration.",
+              "fr": "Une publication criminelle met en ligne une archive attribuée à Jinko.care. Jinko répond à Clubic en confirmant l’accès non autorisé et l’exfiltration."
+            }
+          },
+          {
+            "date": "2026-09-08",
+            "label": {
+              "en": "Clubic and franceinfo publish the company confirmation. franceinfo reports more than 3,500 people after reviewing material.",
+              "fr": "Clubic et franceinfo publient la confirmation de l’entreprise. franceinfo fait état de plus de 3 500 personnes après avoir consulté des éléments."
+            }
+          }
+        ],
+        "how": {
+          "en": "Jinko has confirmed unauthorised access and exfiltration. It has not published the initial access path. Specialist descriptions of Firestore tables and Firebase Storage files are an attacker and observer account, not a company technical finding.",
+          "fr": "Jinko a confirmé un accès non autorisé et une exfiltration. Elle n’a pas publié la voie d’accès initiale. Les descriptions spécialisées de tables Firestore et de fichiers Firebase Storage relèvent d’un récit d’attaquant et d’observateurs, pas d’une conclusion technique de l’entreprise."
+        },
+        "taken": {
+          "en": "Company-confirmed: identity and contact details, and for some users health and care-pathway information. The criminal archive, as described by the press, also listed cancer type, stage, metastases, treatments, messages and medical documents. Those detailed categories are not all restated in Jinko’s quote.",
+          "fr": "Confirmé par l’entreprise : identité et coordonnées, et pour certains utilisateurs des informations de santé et de parcours de soins. L’archive criminelle, telle que décrite par la presse, listait aussi le type de cancer, le stade, les métastases, les traitements, des messages et des documents médicaux. Ces catégories détaillées ne sont pas toutes reprises dans la citation de Jinko."
+        },
+        "notTaken": {
+          "en": "Jinko has not published a victim total. About 3,500 people, 3.7 GB and 883,000 lines are claim or press-review figures, not a company census.",
+          "fr": "Jinko n’a pas publié de total de victimes. Environ 3 500 personnes, 3,7 Go et 883 000 lignes sont des chiffres de revendication ou de revue de presse, pas un recensement d’entreprise."
+        },
+        "impact": {
+          "en": "Oncology details, messages and documents are among the most harmful personal-data categories in this dataset. They enable extortion, workplace or insurance discrimination, and medical impersonation that ordinary contact leaks do not.",
+          "fr": "Les détails d’oncologie, les messages et les documents sont parmi les catégories de données les plus nuisibles de ce recueil. Ils permettent l’extorsion, la discrimination professionnelle ou assurantielle, et une usurpation médicale que les fuites de simples coordonnées ne permettent pas."
+        },
+        "response": {
+          "en": "Jinko told Clubic it had opened an investigation, secured systems, informed people concerned, was working with the competent authorities on legal duties, and planned to file a complaint.",
+          "fr": "Jinko a indiqué à Clubic avoir ouvert une investigation, sécurisé ses systèmes, informé les personnes concernées, travailler avec les autorités compétentes sur ses obligations, et prévoir de déposer plainte."
+        },
+        "methodDisclosure": "undisclosed",
+        "attackerClaim": {
+          "en": "The 7 September claim described about 3.7 GB, some 3,552 user accounts, detailed oncology fields, messages and clinician data. Those counts are not copied into affected.",
+          "fr": "La revendication du 7 septembre décrivait environ 3,7 Go, quelque 3 552 comptes utilisateurs, des champs d’oncologie détaillés, des messages et des données de soignants. Ces décomptes ne sont pas recopiés dans affected."
+        },
+        "revision": {
+          "en": "Exfiltration and the presence of health data for some users are company-confirmed. The patient census is not. Status is confirmed because the breach is not in dispute; only the numeric scale is unpublished.",
+          "fr": "L’exfiltration et la présence de données de santé pour certains utilisateurs sont confirmées par l’entreprise. Le recensement des patients ne l’est pas. Le statut est confirmed parce que la violation n’est pas contestée ; seule l’échelle numérique n’est pas publiée."
+        },
+        "quotes": [
+          {
+            "original": "un incident de cybersécurité ayant entraîné l’accès non autorisé et l’exfiltration de données personnelles",
+            "originalLang": "fr",
+            "translation": "a cybersecurity incident that led to unauthorised access and the exfiltration of personal data",
+            "attribution": {
+              "en": "Jinko, quoted by Clubic, 8 September 2026",
+              "fr": "Jinko, citée par Clubic, 8 septembre 2026"
+            },
+            "sourceId": "jinkoClubic"
+          },
+          {
+            "original": "Nous sommes profondément désolés que des informations aussi personnelles aient pu être compromises",
+            "originalLang": "fr",
+            "translation": "We are deeply sorry that such personal information could have been compromised",
+            "attribution": {
+              "en": "Jinko, quoted by Clubic, 8 September 2026",
+              "fr": "Jinko, citée par Clubic, 8 septembre 2026"
+            },
+            "sourceId": "jinkoClubic"
+          }
+        ]
+      },
+      "lastResearched": "2026-09-15"
+    },
+    {
+      "id": "passpass",
+      "date": "2026-09-11",
+      "year": 2026,
+      "org": {
+        "en": "Pass Pass Mobilités",
+        "fr": "Pass Pass Mobilités"
+      },
+      "domain": "passpass.fr",
+      "kind": "government",
+      "sector": "Public transport",
+      "severity": "medium",
+      "status": "confirmed",
+      "affected": 18637,
+      "affectedLabel": {
+        "en": "18,637 online customers (January 2021 to 18 August 2026); 2,228 later buyers notified without certainty of theft",
+        "fr": "18 637 clients en ligne (janvier 2021 au 18 août 2026) ; 2 228 acheteurs ultérieurs notifiés sans certitude de vol"
+      },
+      "data": {
+        "en": "Names, postal addresses, emails, dates of birth and ticket purchases. No bank data, according to the syndicat. Ticket-office and machine sales not concerned.",
+        "fr": "Noms, adresses postales, e-mails, dates de naissance et achats de titres. Pas de données bancaires, selon le syndicat. Achats aux guichets et aux bornes non concernés."
+      },
+      "method": {
+        "en": "Theft of data from passpass.fr and the mobile app, claimed on a criminal forum on 5 September. Initial access path not published by the syndicat.",
+        "fr": "Vol de données sur passpass.fr et l’application mobile, revendiqué sur un forum criminel le 5 septembre. Voie d’accès initiale non publiée par le syndicat."
+      },
+      "risk": {
+        "en": "Transport-themed phishing using a real name, address and ticket history. No bank data in the confirmed scope.",
+        "fr": "Hameçonnage à thème transport s’appuyant sur un vrai nom, une adresse et un historique de titres. Pas de données bancaires dans le périmètre confirmé."
+      },
+      "sourceName": "franceinfo",
+      "confidence": {
+        "en": "Syndicat mixte statement reported by regional press and franceinfo, with named customer counts.",
+        "fr": "Communiqué du syndicat mixte rapporté par la presse régionale et franceinfo, avec des effectifs nommés."
+      },
+      "sourceId": "passpassFranceinfo",
+      "sourceUrl": "https://www.franceinfo.fr/internet/securite-sur-internet/cyberattaques/le-site-et-l-application-pass-pass-mobilites-victimes-d-une-cyberattaque-dans-les-hauts-de-france-19-000-usagers-concernes-par-un-vol-de-donnees_8188553.html",
+      "logo": {
+        "domain": "passpass.fr",
+        "strategy": "domain-favicon-or-official-logo",
+        "file": "passpass.svg"
+      },
+      "sourceIds": [
+        "passpassFranceinfo",
+        "passpassVdn"
+      ],
+      "detail": {
+        "lead": {
+          "en": "The Syndicat mixte des mobilités des Hauts-de-France said on 11 September 2026 that passpass.fr and its mobile app had suffered a data theft, after a criminal claim the previous weekend. Vice-president Christophe Coulon said the breach concerns 18,637 customers who bought tickets or Pass Pass cards online between January 2021 and 18 August 2026. For 2,228 further customers who bought between 19 August and 8 September, the syndicat said it had no certainty that their data were taken.\n\nStolen fields named in the statement are names, postal addresses, emails, dates of birth and ticket purchases. The syndicat said it could affirm that no bank data were stolen. Ticket-office and machine sales are outside the scope. The online shop was closed on 8 September and due to reopen on 11 September, with an app update required.",
+          "fr": "Le Syndicat mixte des mobilités des Hauts-de-France a indiqué le 11 septembre 2026 que passpass.fr et son application mobile avaient subi un vol de données, après une revendication criminelle le week-end précédent. Le vice-président Christophe Coulon a indiqué que l’effraction concerne 18 637 clients ayant acheté en ligne des titres ou des cartes Pass Pass entre janvier 2021 et le 18 août 2026. Pour 2 228 clients supplémentaires ayant acheté entre le 19 août et le 8 septembre, le syndicat a indiqué n’avoir pas de certitude que leurs données aient été prises.\n\nLes champs volés nommés dans le communiqué sont les noms, adresses postales, e-mails, dates de naissance et achats de titres. Le syndicat a indiqué pouvoir affirmer qu’aucune donnée bancaire n’avait été dérobée. Les achats aux guichets et aux bornes sont hors périmètre. La boutique en ligne a été fermée le 8 septembre et devait rouvrir le 11 septembre, avec une mise à jour de l’application."
+        },
+        "timeline": [
+          {
+            "date": "2026-09-05",
+            "label": {
+              "en": "A criminal claim about Pass Pass data appears on a forum.",
+              "fr": "Une revendication criminelle concernant des données Pass Pass paraît sur un forum."
+            }
+          },
+          {
+            "date": "2026-09-08",
+            "label": {
+              "en": "The online shop is closed in the morning as a security step.",
+              "fr": "La boutique en ligne est fermée le matin, mesure de sécurisation."
+            }
+          },
+          {
+            "date": "2026-09-11",
+            "label": {
+              "en": "The syndicat publishes customer counts, says 20,865 people were emailed, notifies the CNIL and files a complaint. The shop is due to reopen.",
+              "fr": "Le syndicat publie les effectifs clients, indique que 20 865 personnes ont reçu un e-mail, saisit la CNIL et dépose plainte. La boutique doit rouvrir."
+            }
+          }
+        ],
+        "how": {
+          "en": "The syndicat has confirmed theft from the website and app after a 5 September claim. It has not published the initial access path. Regional reporting attributed the claim to an actor known as ChimeraZ; that name is press attribution, not a syndicat naming.",
+          "fr": "Le syndicat a confirmé un vol sur le site et l’application après une revendication du 5 septembre. Il n’a pas publié la voie d’accès initiale. La presse régionale a attribué la revendication à un acteur connu sous le nom de ChimeraZ ; ce nom est une attribution de presse, pas une nomination par le syndicat."
+        },
+        "taken": {
+          "en": "The confirmed stolen set is 18,637 online customers from January 2021 to 18 August 2026, with names, postal addresses, emails, dates of birth and purchases. The numeric field uses that confirmed figure. A further 2,228 people were notified because theft of their data was uncertain, not because it was established.",
+          "fr": "L’ensemble volé confirmé est de 18 637 clients en ligne de janvier 2021 au 18 août 2026, avec noms, adresses postales, e-mails, dates de naissance et achats. Le champ numérique reprend ce chiffre confirmé. 2 228 personnes supplémentaires ont été notifiées parce que le vol de leurs données était incertain, pas parce qu’il était établi."
+        },
+        "notTaken": {
+          "en": "The syndicat said no bank data were stolen. Purchases at network machines or ticket offices are not concerned.",
+          "fr": "Le syndicat a indiqué qu’aucune donnée bancaire n’avait été dérobée. Les achats aux bornes des réseaux ou aux guichets ne sont pas concernés."
+        },
+        "impact": {
+          "en": "A message that knows a real TER or urban-network purchase can impersonate Pass Pass, Ilevia or another Hauts-de-France operator. Without bank data the direct payment risk is lower than for billing-platform leaks, but phishing for new card details remains the obvious follow-on.",
+          "fr": "Un message qui connaît un vrai achat TER ou de réseau urbain peut usurper Pass Pass, Ilévia ou un autre opérateur des Hauts-de-France. Sans données bancaires, le risque de paiement direct est plus faible que pour une fuite de plateforme de facturation, mais l’hameçonnage pour de nouvelles données de carte reste la suite évidente."
+        },
+        "response": {
+          "en": "The syndicat closed the shop, emailed 20,865 customers, asked for an app update, notified the CNIL and filed a complaint with cybercrime police, and apologised.",
+          "fr": "Le syndicat a fermé la boutique, écrit à 20 865 clients, demandé une mise à jour de l’application, saisi la CNIL et déposé plainte auprès de la police cyber, et présenté ses excuses."
+        },
+        "methodDisclosure": "undisclosed",
+        "revision": {
+          "en": "The 18,637 figure is the syndicat’s certain-theft cohort. Adding the 2,228 uncertain buyers into the numeric field would mix established and unestablished counts, so they stay in the label only.",
+          "fr": "Le chiffre 18 637 est la cohorte de vol certain du syndicat. Ajouter les 2 228 acheteurs incertains dans le champ numérique mélangerait des décomptes établis et non établis : ils restent dans le libellé seulement."
+        },
+        "quotes": [
+          {
+            "original": "Nous sommes en mesure d’affirmer qu’aucune donnée bancaire n’a été dérobée.",
+            "originalLang": "fr",
+            "translation": "We are in a position to state that no bank data were stolen.",
+            "attribution": {
+              "en": "Christophe Coulon, syndicat statement reported 11 September 2026",
+              "fr": "Christophe Coulon, communiqué du syndicat rapporté le 11 septembre 2026"
+            },
+            "sourceId": "passpassVdn"
+          }
+        ]
+      },
+      "lastResearched": "2026-09-15"
     }
   ],
   "patterns": [
@@ -2855,6 +4102,34 @@
       "Telecommunications": {
         "en": "Telecommunications",
         "fr": "Télécommunications"
+      },
+      "Research": {
+        "en": "Research",
+        "fr": "Recherche"
+      },
+      "Fitness software": {
+        "en": "Fitness software",
+        "fr": "Logiciel fitness"
+      },
+      "Civil protection": {
+        "en": "Civil protection",
+        "fr": "Sécurité civile"
+      },
+      "Environment / government": {
+        "en": "Environment / government",
+        "fr": "Environnement / État"
+      },
+      "Local government association": {
+        "en": "Local government association",
+        "fr": "Association d’élus locaux"
+      },
+      "Real estate": {
+        "en": "Real estate",
+        "fr": "Immobilier"
+      },
+      "Public transport": {
+        "en": "Public transport",
+        "fr": "Transports publics"
       }
     }
   }
