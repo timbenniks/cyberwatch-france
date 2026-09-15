@@ -328,7 +328,7 @@
           "fr": "Conservez les preuves des messages suspects. Signalez-les par les canaux officiels."
         }
       ],
-      "relatedIncidentIds": ["weda", "sante", "educompas", "edustaff", "edustudents"]
+      "relatedIncidentIds": ["weda", "sante", "educompas", "edustaff", "edustudents", "jinko"]
     },
     {
       "slug": "ai-written-attacks",
