@@ -70,7 +70,7 @@
           "fr": "Si vous pensez que des données volées sont utilisées contre vous, conservez les messages et signalez-les par les canaux officiels."
         }
       ],
-      "relatedIncidentIds": ["bouygues", "airfrance", "ants", "ficoba", "dgfip"]
+      "relatedIncidentIds": ["bouygues", "airfrance", "ants", "ficoba", "dgfip", "afpa"]
     },
     {
       "slug": "phishing-that-knows-you",
@@ -328,7 +328,7 @@
           "fr": "Conservez les preuves des messages suspects. Signalez-les par les canaux officiels."
         }
       ],
-      "relatedIncidentIds": ["weda", "sante", "educompas", "edustaff", "edustudents"]
+      "relatedIncidentIds": ["weda", "sante", "educompas", "edustaff", "edustudents", "jinko"]
     },
     {
       "slug": "ai-written-attacks",
